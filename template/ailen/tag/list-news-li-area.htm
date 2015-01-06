@@ -1,0 +1,4 @@
+{loop $tags $i $t}
+<li><span>{area_pos($t[areaid], '/', 1)}</span><a href="{$t[linkurl]}"{if $target} target="{$target}"{/if}{if $class} class="{$class}"{/if} title="{$t[company]}">{$t[company]}</a></li>
+{/loop}
+

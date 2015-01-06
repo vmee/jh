@@ -1,0 +1,381 @@
+{template 'header'}
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}style.css"/>
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}article.css"/>
+
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}style-screen-292fecd0.css" media="screen" />
+<div style="width:960px;margin:0 auto;background-color:rgb(244, 244, 244);height:30px;line-height:30px;text-indent:1em;">
+    结婚百科：{loop $maincat $k $v}
+    <a href="{$MOD[linkurl]}{$v[linkurl]}">{set_style($v[catname],$v[style])}</a> |
+    {/loop}
+</div>
+<div id="content">
+<!--主体内容-->
+<div class="layout overhid">
+    <!--公共框架-->
+    <div class="pl-indexleft">
+        <!--左侧-->
+        <div class="pl-hotnews">
+            <!--今日头条-->
+            <div class="title"> <span class="time">{php echo timetodate(time(),0)}</span>
+                <!--<span class="more"><a href="#" target="_blank">往日头条>></a></span>-->
+            </div>
+            <!--{tag("moduleid=21&table=article_21&catid=432&pagesize=2&order=addtime desc&template=today_hot")}-->
+            <div class="hottitle">商家优惠</div>
+            <ul class="list">
+                {php $_tags=tag("moduleid=23&table=article_23&catid=397,398,402,411&pagesize=6&order=addtime desc&template=null")}
+                {loop $_tags $k $t}
+                {if $k>-1}
+                <li><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[title]}</a></li>
+                {/if}
+                {/loop}
+            </ul>
+        </div>
+        <!--今日头条end-->
+        {php $_tags=tag("moduleid=24&table=article_24&catid=431&pagesize=4&order=addtime desc&template=null")}
+        <div class="ai_focus">
+            <div><img src="/skin/default/img/ai_focus.jpg" /></div>
+            <div class="ai_focus_tool">
+                <h3>热门资讯分类</h3>
+                <ul>
+                    <li><a target="_blank" href="/news/list.php?catid=31" title="结婚登记"><img src="/skin/default/img/ico_01.jpg" /><br />结婚登记</a></li>
+                    <li><a target="_blank" href="/news/list.php?catid=143" title="婚礼习俗"><img src="/skin/default/img/ico_02.jpg" /><br />婚礼习俗</a></li>
+                    <li><a target="_blank" href="/news/list.php?catid=34" title="黄道吉日"><img src="/skin/default/img/ico_03.jpg" /><br />黄道吉日</a></li>
+                    <li><a target="_blank" href="/news/list.php?catid=148" title="定亲彩礼"><img src="/skin/default/img/ico_04.jpg" /><br />定亲彩礼</a></li>
+                    <li><a target="_blank" href="/news/list.php?catid=37" title="婚宴酒店"><img src="/skin/default/img/ico_05.jpg" /><br />婚宴酒店</a></li>
+                    <li><a target="_blank" href="/news/list.php?catid=38" title="婚纱摄影"><img src="/skin/default/img/ico_06.jpg" /><br />婚纱摄影</a></li>
+                    <li><a target="_blank" href="/news/list.php?catid=43" title="婚礼百货"><img src="/skin/default/img/ico_07.jpg" /><br />婚礼百货</a></li>
+                    <li><a target="_blank" href="/news/list.php?catid=433" title="新房装修"><img src="/skin/default/img/ico_08.jpg" /><br />新房装修</a></li>
+                    <li><a target="_blank" href="/news/list.php?catid=142" title="结婚誓词"><img src="/skin/default/img/ico_09.jpg" /><br />结婚誓词</a></li>
+                    <li><a target="_blank" href="/news/list.php?catid=140" title="接亲游戏"><img src="/skin/default/img/ico_10.jpg" /><br />接亲游戏</a></li>
+                    <li><a target="_blank" href="/news/list.php?catid=45" title="蜜月旅行"><img src="/skin/default/img/ico_11.jpg" /><br />蜜月旅行</a></li>
+                    <li><a target="_blank" href="/company/search.php?kw=&catid=0&areaid=0&x=35&y=9" title="结婚商家汇总"><img src="/skin/default/img/ico_12.jpg" /><br />挑选商家</a></li>
+                </ul>
+            </div>
+        </div>
+        <!--焦点图end-->
+    </div>
+    <!--左侧end-->
+    <div class="pl-indexright">
+        <!--右侧-->
+        <div class="pl-cpuser-title">
+            <!--title-->
+            <span>策划专题</span> </div>
+        <!--title-end-->
+        <div class="pl-cpuser-content">
+            <!--内容-->
+            <div class="pl-newst-ad"><a href="#"><img src="/files/images/2011/0221/17-20-56-1217084007.jpg" /></a><span class="adtitle"><a href="#">结婚定亲知多少</a></span></div>
+            <div class="pl-side-title">
+                <!--title-->
+                <span>热门关键词</span> </div>
+            <!--title-end-->
+            <div class="pl-tag">
+                <!--关键词-->
+                {php $_tags=tag("moduleid=21&table=keyword&pagesize=22&order=total_search desc&template=null")}
+                {loop $_tags $i $t} <a href="{$path}{rewrite('search.php?kw='.urlencode($t['word']))}" target="_blank" {if $target} style="color:#a3a5ad" {/if} title="">{$t[word]}</a> {/loop} </div>
+            <!--关键词end-->
+            <div class="pl-ranktitle">
+                <!--商家排行title-->
+                <span>热门资讯排行榜</span> </div>
+            <!--商家排行title-end-->
+            {php $_tag=tag("moduleid=21&table=article_21&pagesize=7&order=hits desc&template=null")}
+            <div class="pl-rank pl-news-rank">
+                <!--商家排行内容-->
+                <ul>
+                    {loop $_tag $k $t}
+                    <li><a href="{$t[linkurl]}" target="_blank" title="{$t[title]}">{$t[title]}</a></li>
+                    {/loop}
+                </ul>
+            </div>
+            <!--商家排行内容end-->
+        </div>
+        <!--内容end-->
+    </div>
+    <!--右侧end-->
+</div>
+<!--公共框架end-->
+<div class="layout overhid">
+    <!--公共框架-->
+    <div class="pl-newstitle1">
+        <!--title-->
+        <div class="title-sort"> <a href="/news/list.php?catid=61" target="_blank" title="">工作室</a> <a href="/news/list.php?catid=63" target="_blank" title="">订单</a> <a href="/news/list.php?catid=64" target="_blank" title="">安瓶</a> <a href="/news/list.php?catid=73" target="_blank" title="">旅游婚纱</a> </div>
+        <a href="/news/list.php?catid=38" target="_blank" class="pl-more">更多>></a> </div>
+    <!--title-end-->
+    {php $_tag=tag("moduleid=21&table=article_21&catid=62&thumb<>''&pagesize=6&order=addtime desc&template=null")}
+    <div class="pl-indexleft pl-marryphoto">
+        <!--婚纱摄影左-->
+        <div class="pl-newsright">
+            <!--右侧-->
+            <h2>婚纱影楼</h2>
+            <div class="newslistbox">
+                <div class="picbox"> <a href="{$_tag[1][linkurl]}" target="_blank" title="{$_tag[1][title]}"><img src="{imgurl($_tag[1][thumb], 0)}" alt="{$_tag[1][title]}" /></a> <a href="{$_tag[1][linkurl]}" target="_blank" title="{$_tag[1][title]}" class="cpname">{$_tag[1][title]}</a> </div>
+                <ul class="list">
+                    {loop $_tag $k $t}
+                    {if $k>1 and $k<6}
+                    <li><a href="{$_tag[$k][linkurl]}" target="_blank">{$_tag[$k][title]}</a></li>
+                    {/if}
+                    {/loop}
+                </ul>
+            </div>
+            <h2>拍照姿势</h2>
+            {php $_tag=tag("moduleid=21&table=article_21&catid=68&thumb<>''&pagesize=6&order=addtime desc&template=null")}
+            <div class="newslistbox">
+                <div class="picbox"> <a href="{$_tag[0][linkurl]}" target="_blank" title="{$_tag[0][title]}"><img src="{imgurl($_tag[0][thumb], 0)}" alt="{$_tag[0][title]}" /></a> <a href="{$_tag[0][linkurl]}" target="_blank" title="{$_tag[0][title]}" class="cpname">{$_tag[0][title]}</a> </div>
+                <ul class="list">
+                    {loop $_tag $k $t}
+                    {if $k>0}
+                    <li><a href="{$_tag[$k][linkurl]}" target="_blank">{$_tag[$k][title]}</a></li>
+                    {/if}
+                    {/loop}
+                </ul>
+            </div>
+        </div>
+        <!--右侧end-->
+        <div class="pl-newsleft">
+            <!--左侧-->
+            <a href="{$_tag[0][linkurl]}" target="_blank" title="{$_tag[0][title]}"><img src="{imgurl($_tag[0][thumb], 0)}" alt="{$_tag[0][title]}" /></a> <a href="{$_tag[0][linkurl]}" target="_blank" title="{$_tag[0][title]}" class="bigname">{$_tag[0][title]}</a>
+            <p>{$_tag[0][introduce]}</p>
+        </div>
+        <!--左侧end-->
+    </div>
+    <!--婚纱摄影左end-->
+    <div class="pl-indexright pl-news-rside pl-marryphoto-right">
+        <!--婚纱摄影右-->
+        <div class="title"> <span>选片</span> </div>
+        {php $_tag=tag("moduleid=21&table=article_21&catid=70&thumb<>''&pagesize=5&order=addtime desc&template=null")}
+        <ul class="list">
+            {loop $_tag $k $t}
+            <li><a href="{$_tag[$k][linkurl]}" target="_blank">{$_tag[$k][title]}</a></li>
+            {/loop}
+        </ul>
+        <div class="title"> <span>后期制作</span> </div>
+        {php $_tag=tag("moduleid=21&table=article_21&catid=72&thumb<>''&pagesize=5&order=addtime desc&template=null")}
+        <ul class="list">
+            {loop $_tag $k $t}
+            <li><a href="{$_tag[$k][linkurl]}" target="_blank">{$_tag[$k][title]}</a></li>
+            {/loop}
+        </ul>
+    </div>
+    <!--婚纱摄影右end-->
+    <div class="pl-newspicbox pl-newspic1">
+        {php $_tags=tag("moduleid=12&table=photo&catid=374&pagesize=5&order=addtime desc&template=null")}
+
+        {loop $_tags $k $t}
+        <a href="{$t[linkurl]}" target="_blank" title="{$t[title]}"> <img src="{imgurl($t[thumb], 0)}" alt="{$t[title]}" /> <span>{$t[title]}</span> </a>
+        {/loop}
+    </div>
+</div>
+<!--公共框架end-->
+<div class="layout overhid">
+    <!--公共框架-->
+    <div class="pl-newstitle2">
+        <!--title-->
+        <div class="title-sort"> <a href="/news/list.php?catid=105" target="_blank">价格</a> <a href="/news/list.php?catid=106" target="_blank">造型师</a> <a href="/news/list.php?catid=109" target="_blank">化妆品</a> <a href="/news/list.php?catid=111" target="_blank">卸妆</a> </div>
+        <a href="/news/list.php?catid=42" target="_blank" class="pl-more">更多>></a> </div>
+    <!--title-end-->
+    <div class="pl-indexleft pl-jewelry">
+        <!--婚饰美妆左-->
+        <div class="pl-newsright">
+            <!--右侧-->
+            {php $_tag=tag("moduleid=21&table=article_21&catid=103&pagesize=7&order=addtime desc&template=null")}
+            <h2>试妆</h2>
+            <div class="newslistbox">
+                <div class="picbox"> <a href="{$_tag[1][linkurl]}" target="_blank" title="{$_tag[1][title]}"><img src="{imgurl($_tag[1][thumb], 0)}" alt="{$_tag[1][title]}" /></a> <a href="{$_tag[1][linkurl]}" target="_blank" title="{$_tag[1][title]}" class="cpname">{$_tag[1][title]}</a> </div>
+                <ul class="list">
+                    {loop $_tag $k $t}
+                    {if $k>0 and $k<6}
+                    <li><a href="{$_tag[$k][linkurl]}" target="_blank">{$_tag[$k][title]}</a></li>
+                    {/if}
+                    {/loop}
+                </ul>
+            </div>
+            <h2>造型</h2>
+            {php $_tag=tag("moduleid=21&table=article_21&catid=104&pagesize=6&order=addtime desc&template=null")}
+            <div class="newslistbox">
+                <div class="picbox"> <a href="{$_tag[1][linkurl]}" target="_blank" title="{$_tag[1][title]}"><img src="{imgurl($_tag[1][thumb], 0)}" alt="{$_tag[1][title]}" /></a> <a href="{$_tag[1][linkurl]}" target="_blank" title="{$_tag[1][title]}" class="cpname">{$_tag[1][title]}</a> </div>
+                <ul class="list">
+                    {loop $_tag $k $t}
+                    {if $k>0}
+                    <li><a href="{$_tag[$k][linkurl]}" target="_blank">{$_tag[$k][title]}</a></li>
+                    {/if}
+                    {/loop}
+                </ul>
+            </div>
+        </div>
+        <!--右侧end-->
+        <div class="pl-newsleft">
+            <!--左侧-->
+            <a href="{$_tag[0][linkurl]}" target="_blank" title="{$_tag[0][title]}"><img src="{imgurl($_tag[0][thumb], 0)}" alt="{$_tag[0][title]}" /></a> <a href="{$_tag[0][linkurl]}" target="_blank" title="{$_tag[0][title]}" class="bigname">{$_tag[0][title]}</a>
+            <p>{$_tag[0][introduce]}</p>
+        </div>
+        <!--左侧end-->
+    </div>
+    <!--婚饰美妆左end-->
+    <div class="pl-indexright pl-news-rside pl-jewelry-right">
+        <!--婚饰美妆右-->
+        <div class="title"> <span>跟妆</span> </div>
+        <ul class="list">
+            {php $_tag=tag("moduleid=21&table=article_21&catid=107&pagesize=5&order=addtime desc&template=null")}
+            {loop $_tag $k $t}
+            <li><a href="{$_tag[$k][linkurl]}" target="_blank">{$_tag[$k][title]}</a></li>
+            {/loop}
+        </ul>
+        <div class="title"> <span>DIY</span> </div>
+        <ul class="list">
+            {php $_tag=tag("moduleid=21&table=article_21&catid=108&pagesize=5&order=addtime desc&template=null")}
+            {loop $_tag $k $t}
+            <li><a href="{$_tag[$k][linkurl]}" target="_blank">{$_tag[$k][title]}</a></li>
+            {/loop}
+        </ul>
+    </div>
+    <!--婚饰美妆右end-->
+    <div class="pl-newspicbox pl-newspic1 pl-newspic2">
+        {php $_tags=tag("moduleid=12&table=photo&catid=394&pagesize=5&order=addtime desc&template=null")}
+
+        {loop $_tags $k $t} <a href="{$t[linkurl]}" target="_blank" title="{$t[title]}"> <img src="{imgurl($t[thumb], 0)}" alt="{$t[title]}" /> <span>{$t[title]}</span> </a> {/loop} </div>
+</div>
+<!--公共框架end-->
+<div class="layout overhid">
+    <!--公共框架-->
+    <div class="pl-newstitle3">
+        <!--title-->
+        <div class="title-sort"> <a href="/news/list.php?catid=80" target="_blank"title="">婚车</a> <a href="/news/list.php?catid=76" target="_blank"title="">会场布置</a> <a href="/news/list.php?catid=47" target="_blank"title="">交通停车</a> <a href="/news/list.php?catid=82" target="_blank"title="">跟拍</a> </div>
+        <a href="/news/list.php?catid=39" class="pl-more">更多>></a> </div>
+    <!--title-end-->
+    <div class="pl-indexleft pl-banquet">
+        <!--婚饰美妆左-->
+        <div class="pl-newsright">
+            <!--右侧-->
+            {php $_tag=tag("moduleid=21&table=article_21&catid=75&pagesize=6&order=addtime desc&template=null")}
+            <h2>婚礼策划</h2>
+            <div class="newslistbox">
+                <div class="picbox"><a href="{$_tag[1][linkurl]}" target="_blank" title="{$_tag[1][title]}"><img src="{imgurl($_tag[1][thumb], 0)}" alt="{$_tag[1][title]}" /></a> <a href="{$_tag[1][linkurl]}" target="_blank" title="{$_tag[1][title]}" class="cpname">{$_tag[1][title]}</a> </div>
+                <ul class="list">
+                    {loop $_tag $k $t}
+                    {if $k>0}
+                    <li><a href="{$_tag[$k][linkurl]}" target="_blank">{$_tag[$k][title]}</a></li>
+                    {/if}
+                    {/loop}
+                </ul>
+            </div>
+            <h2>喜宴设计</h2>
+            {php $_tag=tag("moduleid=21&table=article_21&catid=52&pagesize=6&order=addtime desc&template=null")}
+            <div class="newslistbox">
+                <div class="picbox"> <a href="{$_tag[1][linkurl]}" target="_blank" title="{$_tag[1][title]}"><img src="{imgurl($_tag[1][thumb], 0)}" alt="{$_tag[1][title]}" /></a> <a href="{$_tag[1][linkurl]}" target="_blank" title="{$_tag[1][title]}" class="cpname">{$_tag[1][title]}</a> </div>
+                <ul class="list">
+                    {loop $_tag $k $t}
+                    {if $k>0}
+                    <li><a href="{$_tag[$k][linkurl]}" target="_blank">{$_tag[$k][title]}</a></li>
+                    {/if}
+                    {/loop}
+                </ul>
+            </div>
+        </div>
+        <!--右侧end-->
+        <div class="pl-newsleft">
+            <!--左侧-->
+            <a href="{$_tag[0][linkurl]}" target="_blank" title="{$_tag[0][title]}"><img src="{imgurl($_tag[0][thumb], 0)}" alt="{$_tag[0][title]}" /></a> <a href="{$_tag[0][linkurl]}" target="_blank" title="{$_tag[0][title]}" class="bigname">{$_tag[0][title]}</a>
+            <p>{$_tag[0][introduce]}</p>
+        </div>
+        <!--左侧end-->
+    </div>
+    <!--婚饰美妆左end-->
+    <div class="pl-indexright pl-news-rside pl-banquet-right">
+        <!--婚饰美妆右-->
+        <div class="title"> <span>司仪</span> </div>
+        <ul class="list">
+            {php $_tag=tag("moduleid=21&table=article_21&catid=81&pagesize=5&order=addtime desc&template=null")}
+            {loop $_tag $k $t}
+            <li><a href="{$_tag[$k][linkurl]}" target="_blank">{$_tag[$k][title]}</a></li>
+            {/loop}
+        </ul>
+        <div class="title"> <span>婚礼套系</span> </div>
+        <ul class="list">
+            {php $_tag=tag("moduleid=21&table=article_21&catid=74&pagesize=5&order=addtime desc&template=null")}
+            {loop $_tag $k $t}
+            <li><a href="{$_tag[$k][linkurl]}" target="_blank">{$_tag[$k][title]}</a></li>
+            {/loop}
+        </ul>
+    </div>
+    <!--婚饰美妆右end-->
+    <div class="pl-newspicbox pl-newspic3">
+        <div class="pic3box1">
+            <!--美食-->
+            {php $_tags=tag("moduleid=12&table=photo&catid=374&pagesize=3&order=addtime desc&template=null")}
+
+            {loop $_tags $k $t} <a href="{$t[linkurl]}" target="_blank" title="{$t[title]}"> <img src="{imgurl($t[thumb], 0)}" alt="{$t[title]}" /> <span>{$t[title]}</span> </a> {/loop} </div>
+        <!--美食end-->
+        <div class="pic3box2">
+            <!--花艺-->
+            <p class="ptx"> <strong><a href="" title="自己打造婚礼鲜花" target="_blank">自己打造婚礼鲜花</a></strong> 婚礼上不论是新娘捧花、新郎钮孔花还是婚车上的花、餐桌上的花饰，一样都不能少。 </p>
+            <div class="piclist">
+                {php $_tags=tag("moduleid=12&table=photo&catid=391&pagesize=6&order=addtime desc&template=null")}
+                {loop $_tags $k $t}<a href="{$t[linkurl]}" target="_blank" title="{$t[title]}"> <img src="{imgurl($t[thumb], 0)}" alt="{$t[title]}" /></a>{/loop}</div>
+        </div>
+        <!--花艺end-->
+    </div>
+</div>
+<!--公共框架end-->
+<div class="layout overhid">
+    <!--公共框架-->
+    <div class="pl-newstitle4">
+        <!--title-->
+        <div class="title-sort"> <a href="{DT_PATH}news/list.php?catid=131" target="_blank" title="">费用</a> <a href="{DT_PATH}news/list.php?catid=135" target="_blank" title="">餐饮住宿</a> <a href="{DT_PATH}news/list.php&catid=136" target="_blank" title="">用品</a> <a href="{DT_PATH}news/list.php?catid=137" target="_blank" title="">购物</a> </div>
+        <a href="{DT_PATH}news/list.php?catid=45" class="pl-more">更多>></a> </div>
+    <!--title-end-->
+    <div class="pl-indexleft pl-honey">
+        <!--蜜月旅行左-->
+        <div class="pl-newsright">
+            <!--右侧-->
+            {php $_tags=tag("moduleid=21&table=article_21&catid=133&pagesize=7&order=addtime desc&template=null")}
+
+            <h2>旅游须知</h2>
+            <div class="pic-tx"> <a href="{$_tags[0][linkurl]}" target="_blank" title="{$_tags[0][title]}"><img src="{imgurl($_tags[0][thumb], 0)}" alt="{$_tags[0][title]}" /></a>
+                <p><a href="{$_tags[0][linkurl]}" target="_blank" title="{$_tags[0][title]}">{$_tags[0][introduce]}</a></p>
+            </div>
+            <ul class="list">
+                {loop $_tags $k $t}{if $k>0}
+                <li><a href="{$t[linkurl]}" target="_blank" title="{$t[title]}">{$t[title]}</a></li>
+                {/if}
+                {/loop}
+            </ul>
+            <h2>旅行社</h2>
+            {php $_tags=tag("moduleid=21&table=article_21&catid=132&pagesize=6&order=addtime desc&template=null")}
+            <div class="pl-honeycity">
+                <!--热门地标-->
+                <ul class="list">
+                    {loop $_tags $k $t}
+                    <li><a href="{$t[linkurl]}" target="_blank" title="{$t[title]}">{$t[title]}</a></li>
+
+                    {/loop}
+                </ul>
+            </div>
+            <!--热门地标end-->
+        </div>
+        <!--右侧end-->
+        {php $_tags=tag("moduleid=21&table=article_21&catid=119&pagesize=3&order=addtime desc&template=null")}
+        <div class="pl-newsleft">
+            <!--左侧-->
+            <div class="picbox"> <a href="{$_tags[0][linkurl]}" target="_blank" title="{$_tags[0][title]}"> <img src="{imgurl($_tags[0][thumb], 0)}" alt="{$_tags[0][title]}" /></a>
+                <h3><a href="{$_tags[0][linkurl]}" target="_blank" title="{$_tags[0][title]}">{$_tags[0][title]}</a></h3>
+                <p>{$_tags[0][introduce]}</p>
+            </div>
+        </div>
+        <!--左侧end-->
+    </div>
+    <!--蜜月旅行左end-->
+    <div class="pl-indexright pl-news-rside pl-honey-right">
+        <!--蜜月记录右-->
+        {php $_tags=tag("moduleid=21&table=article_21&catid=134&pagesize=2&order=addtime desc&template=null")}
+        <div class="title"> <span>境外游</span> <a href="news/list.php?catid=134" target="_blank" class="pl-more">更多>></a> </div>
+        {loop $_tags $k $t}  <a href="{$t[linkurl]}" target="_blank" title="{$t[title]}"><img src="{imgurl($t[thumb], 0)}" alt="{$t[title]}" /></a>
+        <h3><a href="{$t[linkurl]}" target="_blank" title="{$t[title]}">{$t[title]}</a></h3>
+        <p>{$t[introduce]}</p>
+
+
+        {/loop} </div>
+    <!--蜜月记录右end-->
+</div>
+<!--公共框架end-->
+</div>
+<!--主体内容end-->
+{template 'footer'}

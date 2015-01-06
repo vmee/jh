@@ -1,0 +1,370 @@
+{template 'header'}
+
+
+
+<div class="wrap pic_img">
+    {ad(26)}
+</div>
+<!--第一屏-->
+<div class="wrap wrap_b">
+    <div class="ind_js">
+        <script>
+            var box =new PPTBox();
+            box.width = 277; //宽度
+            box.height = 277;//高度
+            box.autoplayer = 4;//自动播放间隔时间
+
+            {php $_tags=tag("moduleid=24&table=article_24&catid=431&pagesize=3&order=addtime desc&template=null")}
+            {loop $_tags $k $t}
+            box.add({"url":"{imgurl($t[thumb], 0)}","href":"{$t[linkurl]}","title":"{$t[title]}"});
+            {/loop}
+
+            box.show();
+        </script>
+    </div>
+    <div class="ind_news">
+        <h4><span>结婚热点</span><a href="love/list.php?catid=397" title="热点结婚资讯" target="_blank">查看更多</a></h4>
+
+        <!--{tag("moduleid=23&table=article_23&catid=397&pagesize=2&order=addtime desc&template=today_hot")}-->
+
+
+
+    </div>
+    <ul class="ind_ico">
+        <li><a title="婚姻登记" href="news/list.php?catid=31" target="_blank"><i class="a"></i>婚姻登记</a></li>
+        <li><a title="结婚吉日" href="news/list.php?catid=34" target="_blank"><i class="b"></i>结婚吉日</a></li>
+        <li><a title="婚礼习俗" href="news/list.php?catid=143" target="_blank"><i class="c"></i>婚礼习俗</a></li>
+        <li><a title="婚期倒数" href="special/show.php?itemid=4" target="_blank"><i class="d"></i>婚期倒数</a></li>
+        <li><a title="省钱攻略" href="news/show.php?itemid=245" target="_blank"><i class="e"></i>省钱攻略</a></li>
+        <li><a title="预算管理" href="news/show.php?itemid=4460" target="_blank"><i class="f"></i>预算管理</a></li>
+        <li><a title="当日安排" href="news/show.php?itemid=4680" target="_blank"><i class="g"></i>当日安排</a></li>
+        <li><a title="婚礼合同" href="news/list.php?catid=146.html" target="_blank"><i class="h"></i>婚礼合同</a></li>
+        <li><a title="宾客管理" href="news/show.php?itemid=207" target="_blank"><i class="i"></i>宾客管理</a></li>
+        <li><a title="婚礼游戏" href="news/list.php?catid=140" target="_blank"><i class="j"></i>婚礼游戏</a></li>
+        <li><a title="婚礼音乐" href="news/list.php?catid=141" target="_blank"><i class="k"></i>婚礼音乐</a></li>
+        <li><a title="婚礼誓言" href="news/list.php?catid=142" target="_blank"><i class="l"></i>婚礼誓言</a></li>
+    </ul>
+    <div class="clearfix"></div>
+</div>
+<h3><span class="title">婚嫁企业</span><span class="info">去筹办，省钱省力，结婚不必盲目奔走……</span><span class="right">【<a href="{DT_PATH}member/my.php" target="_blank" title="菏泽结婚网信息发布">商家信息发布</a>】【<a href="{DT_PATH}member/grade.php" target="_blank" title="菏泽结婚网商家入驻">商家申请入驻</a>】</span></h3>
+<div class="wrap wrap_b">
+    <div class="wed_2b">
+        <h4><span><a href="company/list.php?catid=413" target="_blank" title="菏泽婚纱摄影">婚纱摄影</a></span><a title="菏泽数码后期" href="company/list.php?catid=426" target="_blank">数码后期</a><a title="菏泽旅游摄影" href="company/list.php?catid=416" target="_blank">旅游摄影</a><a title="菏泽摄影工作室" href="company/list.php?catid=414" target="_blank">摄影工作室</a><a title="菏泽婚纱影楼" href="company/list.php?catid=413" target="_blank">品牌影楼</a></h4>
+
+        <div class="wed_pic">
+
+            {php $_tags=tag("moduleid=5&table=sell&catid=153&pagesize=6&order=addtime desc&template=null")}
+            {loop $_tags $k $t}
+            {if $k>-1}
+            <a target="_blank" href="{userurl($t[username])}" title="{$t[company]}"><img width="224" height="149" src="{imgurl($t[thumb], 0)}" class="lazy" original="{imgurl($t[thumb], 1)}" alt="{$t[company]}"><br>{$t[title]}<br><font>{$t[company]}</font></a>
+
+            {/if}
+            {/loop}
+
+        </div>
+    </div>
+    <dl class="wed_2a">
+        <dt><a href="news/list.php?catid=38" target="_blank" title="菏泽婚纱摄影">婚纱摄影资讯</a></dt>
+        <p><a href="news/list.php?catid=62" target="_blank" title="菏泽婚纱影楼">婚纱影楼</a><a href="news/list.php?catid=61" target="_blank" title="菏泽摄影工作室">摄影工作室</a><a href="news/list.php?catid=68" target="_blank" title="拍照摄影姿势">拍照姿势</a><a href="news/list.php?catid=65" target="_blank" title="婚纱搭配造型">搭配造型</a><a href="news/list.php?catid=66" target="_blank" title="菏泽婚纱外景摄影">外景</a><a href="news/list.php?catid=67" target="_blank" title="菏泽婚纱摄影内景">内景</a><a href="news/list.php?catid=70" target="_blank" title="菏泽婚纱影楼选片">选片</a></p>
+
+        {php $_tags=tag("moduleid=23&table=article_23&catid=398,399,400,401,402,435&pagesize=5&order=addtime desc&template=null")}
+        {loop $_tags $k $t}
+        {if $k>-1}
+        <dd><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[title]}</a></dd>
+        {/if}
+        {/loop}
+        <div>
+
+
+            {php $_tags=tag("moduleid=5&table=company&pagesize=6&condition=level=3&template=null");}
+            {loop $_tags $k $t}
+            <a target="_blank" href="{$t[linkurl]}" title="{$t[company]}"><img src="{imgurl($t[thumb], 0)}" alt="{$t[company]}"></a>
+            {/loop}
+
+
+
+        </div>
+    </dl>
+    <ul class="wed_2c">
+
+        {php $_tags=tag("moduleid=5&table=company&condition=level=2&pagesize=12&order=hits desc&template=null")}
+        {loop $_tags $k $t}
+        {if $k>-1}
+        <li><a target="_blank" href="{$t[linkurl]}" title="{$t[company]}">{$t[company]}</a></li>
+        {/if}
+        {/loop}
+
+        <div class="clearfix"></div>
+    </ul>
+</div>
+<div class="wrap_pic">{ad(27)}</div>
+<div class="wrap wrap_b wedT20">
+    <div class="wed_2b">
+        <h4><span><a href="company/list.php?catid=418" target="_blank" title="菏泽婚庆公司">婚庆公司</a></span><a title="菏泽婚车租赁" href="company/list.php?catid=422" target="_blank">婚车租赁</a><a title="菏泽司仪督导" href="company/list.php?catid=421" target="_blank">司仪督导</a><a title="菏泽婚礼摄录" href="company/list.php?catid=420" target="_blank">婚礼摄录</a><a title="菏泽彩妆造型" href="company/list.php?catid=419" target="_blank">彩妆造型</a><a title="菏泽婚礼庆典" href="company/list.php?catid=418" target="_blank">婚礼庆典</a></h4>
+        <div class="wed_pic">
+
+            {php $_tags=tag("moduleid=5&table=sell&catid=155&pagesize=6&order=addtime desc&template=null")}
+            {loop $_tags $k $t}
+            {if $k>-1}
+            <a target="_blank" href="{userurl($t[username])}" title="{$t[company]}"><img width="224" height="149" src="{imgurl($t[thumb], 0)}" class="lazy" original="{imgurl($t[thumb], 1)}" alt="{$t[company]}"><br>{$t[title]}<br><font>{$t[company]}</font></a>
+
+            {/if}
+            {/loop}
+        </div>
+    </div>
+    <dl class="wed_2a">
+        <dt><a href="news/list.php?catid=39" target="_blank" title="选择婚庆常识">婚庆常识</a></dt>
+        <p><a href="news/list.php?catid=74" title="菏泽婚庆套系" target="_blank">婚庆套系</a><a href="news/list.php?catid=75" title="菏泽婚礼策划" target="_blank">婚礼策划</a><a href="news/list.php?catid=80" title="菏泽婚礼用车" target="_blank">婚车</a><a href="news/list.php?catid=81" title="菏泽婚礼司仪" target="_blank">司仪</a><a href="news/list.php?catid=82" title="菏泽婚礼跟拍" target="_blank">跟拍摄影</a><a href="news/list.php?catid=76" title="菏泽婚礼会场" target="_blank">会场布置</a><a href="news/list.php?catid=79" title="菏泽婚礼用花" target="_blank">婚礼用花</a></p>
+
+
+        {php $_tags=tag("moduleid=21&table=article_21&catid=39&pagesize=5&order=addtime desc&template=null")}
+        {loop $_tags $k $t}
+        {if $k>-1}
+        <dd><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[title]}</a></dd>
+        {/if}
+        {/loop}
+
+        <div>
+
+
+            {php $_tags=tag("moduleid=5&table=company&pagesize=6&condition=level=3&template=null");}
+            {loop $_tags $k $t}
+            <a target="_blank" href="{$t[linkurl]}" title="{$t[company]}"><img src="{imgurl($t[thumb], 0)}" alt="{$t[company]}"></a>
+            {/loop}
+
+
+
+        </div>
+
+    </dl>
+    <ul class="wed_2c">
+        {php $_tags=tag("moduleid=5&table=company&condition=level=5&pagesize=12&order=hits desc&template=null")}
+        {loop $_tags $k $t}
+        {if $k>-1}
+        <li><a target="_blank" href="{$t[linkurl]}" title="{$t[company]}">{$t[company]}</a></li>
+        {/if}
+        {/loop}
+
+        <div class="clearfix"></div>
+    </ul>
+</div>
+<div class="wrap wrap_b wedT20">
+    <div class="wed_2b">
+        <h4><span><a href="company/list.php?catid=417" target="_blank" title="菏泽婚宴酒店">婚宴酒店</a></span><a title="菏泽蜜月旅行" href="company/list.php?catid=428" target="_blank">蜜月旅行</a><a title="菏泽婚戒首饰" href="company/list.php?catid=425" target="_blank">婚戒首饰</a><a title="菏泽婚纱礼服" href="company/list.php?catid=424" target="_blank">婚纱礼服</a><a title="菏泽喜宴酒店" href="company/list.php?catid=417">喜宴酒店</a></h4>
+        <div class="wed_pic">
+
+            {php $_tags=tag("moduleid=5&table=sell&catid=184&pagesize=3&order=addtime desc&template=null")}
+            {loop $_tags $k $t}
+            {if $k>-1}
+            <a target="_blank" href="{userurl($t[username])}" title="{$t[company]}"><img width="224" height="149" src="{imgurl($t[thumb], 0)}" class="lazy" original="{imgurl($t[thumb], 1)}" alt="{$t[company]}"><br>{$t[title]}<br><font>{$t[company]}</font></a>
+
+            {/if}
+            {/loop}
+
+            </div>
+    </div>
+    <dl class="wed_2a">
+        <dt><a href="news/list.php?catid=37" target="_blank" title="婚宴酒店如何选择">婚宴须知</a></dt>
+        <p><a href="news/list.php?catid=49" title="菏泽婚宴菜单" target="_blank">婚宴菜单</a><a href="news/list.php?catid=51" title="菏泽婚宴费用" target="_blank">婚宴费用</a><a href="news/list.php?catid=52" title="菏泽婚宴安排" target="_blank">婚宴安排</a><a href="news/list.php?catid=53" title="菏泽婚宴桌数" target="_blank">婚宴桌数</a><a href="news/list.php?catid=48" title="菏泽场地设施" target="_blank">场地设施</a><a href="news/list.php?catid=50" title="菏泽婚宴剖析" target="_blank">婚宴剖析</a></p>
+
+        {php $_tags=tag("moduleid=21&table=article_21&catid=37&pagesize=5&order=addtime desc&template=null")}
+        {loop $_tags $k $t}
+        {if $k>-1}
+        <dd><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[title]}</a></dd>
+        {/if}
+        {/loop}
+
+    </dl>
+    <ul class="wed_2c">
+
+        {php $_tags=tag("moduleid=5&table=company&condition=level=6&pagesize=12&order=hits desc&template=null")}
+        {loop $_tags $k $t}
+        {if $k>-1}
+        <li><a target="_blank" href="{$t[linkurl]}" title="{$t[company]}">{$t[company]}</a></li>
+        {/if}
+        {/loop}
+
+        <div class="clearfix"></div>
+    </ul>
+</div>
+<div class="wrap_pic">
+
+</div>
+
+<!--
+<h3><span class="title">热销宝贝</span><span class="info">去发现，结婚也有你所未见……</span><span class="right">【<a title="菏泽结婚网退换货流程" href="">服务保障体制</a>】【<a title="菏泽结婚网购物流程" href="">购物流程</a>】</span></h3>
+<div class="wrap wrap_b">
+    <ul class="wed_3layer">
+        <p><span class="left">今日最火热的精品爆款<a rel="nofollow" href="http://redirect.simba.taobao.com/rd?w=unionnojs&f=http://re.taobao.com/eauction?e=vf5Gmsn%252B%252FW3ghojqVNxKsUaenLL5WuPv%252BU7Jn%252FXZxiaLltG5xFicOSZqewpHPyZzDYX3Sjf2c6hmFGiDDRY%252BnFZatX8ks5V8&ptype=100010&k=e2e107a2b72ca1b1&c=un&b=alimm_0&p=mm_10112999_0_0" target="_blank">时尚婚鞋</a><a rel="nofollow"  href="http://s.click.taobao.com/t?e=zGU34CA7K+PkqB07S4/K0CFcRfH0GoT805sipKkJZFs3jFvQ0/8YW1q4OgsU1jckQxhGeldtQlybTAZ35lSyXl4dxyG/kpQYkeqEU2KC60MiOQ==" target="_blank">婚礼用酒</a><a rel="nofollow"  href="http://s.click.taobao.com/t?e=zGU34CA7K+PkqB07S4/K0CFcRfH0GoT805sipKkJZFs3jYPfDKH6IY5K11XodcxSNMcD/fCj1ASJmrZgxgU+EK0J1FYTs+f+/YkYn4sYvVcOhQ==" target="_blank">浪漫满屋花球</a></span><span class="right"><a rel="nofollow"  href="http://s.click.taobao.com/t?e=zGU34CA7K+PkqB07S4/K0CITy7klxxrJ35Nnc0luEY3P4ulGs/r61cPrM20zIlcaKdRCnHyTIYWbFrup0EohZpDzub5kec4QApnNVMuzYOTy9Q==" target="_blank">韩式婚床四件套</a></span></p>
+        <li><a rel="nofollow" href="http://s.click.taobao.com/t?e=zGU34CA7K+PkqB07S4/K0CITy7klxxrJ35Nnc0lgjzRaQrkAT7mobad+4Nk9oEwEKl9YhRAMMgaKzHaPeDX9u7hBgXsaHNR4xghH1d9g0btq" target="_blank"><img alt="红色新娘装伴娘结婚敬酒服晚礼服晚装婚纱小礼服婚礼旗袍长款短款" src="http://www.ailen.cn/skin/default/ai_img/sp1.jpg"><br><span>[婚纱旗袍]</span>红色新娘装伴娘结婚敬酒服晚礼服晚装婚纱小礼服婚礼旗袍</a><b class="zuo a">￥237.00</b><b class="you"><i>7.0</i> 折</b><b class="zuo"><i>￥165.90</i></b><b class="you">最近成交：1647</b></li>
+        <li><a rel="nofollow" href="http://s.click.taobao.com/t?e=zGU34CA7K+PkqB07S4/K0CFcRfH0GoT805sipKkIUva8a5RM4eO83ZhMbebLwkcGL35Zw5X3wwvdD4RJWJgvi73pvb8e8RuSBsVYNhUlEyoDs+A=" target="_blank"><img alt="招财猫 大号储蓄罐 日本结婚招财猫开业 金色陶瓷 树脂 摇手摆件" src="http://www.ailen.cn/skin/default/ai_img/sp2.jpg"><br><span>[招财猫]</span>大号储蓄罐 日本结婚招财猫开业 金色陶瓷 摇手摆件</a><b class="zuo a">￥373.00</b><b class="you"><i>2.8</i> 折</b><b class="zuo"><i>￥96.00</i></b><b class="you">最近成交：2021</b></li>
+        <li><a rel="nofollow" href="http://s.click.taobao.com/t?e=zGU34CA7K+PkqB07S4/K0CFcRfH0GoT805sipKkJZFs2lFofRNzNxg9OHD+4QkAX7dZ6zHP75LJma7YxXCt9Dkyo3GmgwarkU2+pSIG24k/cHQ==" target="_blank"><img alt="2013创新求婚、结婚蜡烛" src="http://www.ailen.cn/skin/default/ai_img/sp3.jpg"><br><span>[创意蜡烛]</span>结婚蜡烛 浪漫生日蜡烛 求婚婚庆小蜡烛 表白蜡烛最佳创意</a><b class="zuo a">￥388.00</b><b class="you"><i>7.5</i> 折</b><b class="zuo"><i>￥291.00</i></b><b class="you">最近成交：2629</b></li>
+        <li><a rel="nofollow" href="http://s.click.taobao.com/t?e=zGU34CA7K+PkqB07S4/K0CFcRfH0GoT805sipKkIUva/Y+tTtPMcL0uaNTR91Gy5PGSbAqz1A3f9+Z38RS+9/OA08awHaMR+YUN2EA1Ir1oP" target="_blank"><img alt="佐卡伊珠宝触电1克拉直径钻戒钻石戒指女款专柜正品专利设计婚戒" src="http://www.ailen.cn/skin/default/ai_img/sp4.jpg"><br><span>[佐卡伊]</span>珠宝触电1克拉直径钻戒钻石戒指女款专柜正品专利设计婚戒</a><b class="zuo a">￥3788.00</b><b class="you"><i>4.7</i> 折</b><b class="zuo"><i>￥1799.30</i></b><b class="you">最近成交：539</b></li>
+        <div class="clearfix"></div>
+    </ul>
+</div>
+-->
+<h3><span class="title">结婚攻略</span><span class="info">去学习，结婚也有武功秘籍……</span><span class="right">【<a title="婚礼倒计时" href="special/show.php?itemid=4">婚礼流程</a>】【<a title="新人结婚帮助手册" href="news/">查看更多</a>】</span></h3>
+<div class="wrap wrap_b mar_15">
+    <div class="wed_4 wed_4d">
+        <ul class="ul_a">
+
+            {php $_tags=tag("moduleid=21&table=article_21&pagesize=10&order=hits desc&template=null")}
+            {loop $_tags $k $t}
+            {if $k>-1}
+            {php $k++}
+            <li><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}"><i>{$k}</i>{$t[title]}</a></li>
+            {/if}
+            {/loop}
+
+        </ul>
+        <ul class="ul_b">
+            {php $_tags=tag("moduleid=21&table=special&pagesize=4&order=addtime desc&template=null")}
+            {loop $_tags $k $t}
+            {if $k>-1}
+            {php $k++}
+            <li><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[title]}</a></li>
+            {/if}
+            {/loop}
+
+        </ul>
+    </div>
+    <div class="wed_4 wed_4b">
+
+        {php $_tags=tag("moduleid=21&table=article_21&pagesize=1&condition=level=1&order=addtime desc&template=null")}
+        {loop $_tags $k $t}
+        <h2><a title="{$t[title]}" href="{$t[linkurl]}" target="_blank">{$t[title]}</a></h2>
+        <p>{$t[introduce]}</p>
+        {/loop}
+
+        <ul class="wed_txt wed_tend">
+
+            {php $_tags=tag("moduleid=21&table=article_21&pagesize=1&condition=level=2&order=addtime desc&template=null")}
+            {loop $_tags $k $t}
+            <div class="left"><a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb], 0)}" width="100" height="130" alt="{$t[title]}"/></a></div>
+            {/loop}
+
+            {php $_tags=tag("moduleid=21&table=article_21&pagesize=4&condition=level=4&order=addtime desc&template=null")}
+            {loop $_tags $k $t}
+            {if $k>-1}
+            {php $k++}
+            <li><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[title]}</a></li>
+            {/if}
+            {/loop}
+            <div class="clearfix"></div>
+        </ul>
+        <ul class="wed_txt">
+            <h5><span class="left">婚礼习俗</span><span class="right"><a title="全国婚礼习俗" href="news/list.php?catid=143" target="_blank">更多 >></a></span></h5>
+
+            {php $_tags=tag("moduleid=21&table=article_21&pagesize=1&catid=143&condition=level=2&order=addtime desc&template=null")}
+            {loop $_tags $k $t}
+            <div class="left"><a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb], 0)}" width="100" height="130" alt="{$t[title]}"/></a></div>
+            {/loop}
+
+            {php $_tags=tag("moduleid=21&table=article_21&pagesize=4&catid=143&order=addtime desc&template=null")}
+            {loop $_tags $k $t}
+            {if $k>-1}
+            {php $k++}
+            <li><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[title]}</a></li>
+            {/if}
+            {/loop}
+
+            <div class="clearfix"></div>
+        </ul>
+    </div>
+    <div class="wed_4 wed_4c">
+        <ul class="wed_txt wed_tend">
+            <h5><span class="left">结婚科普</span><span class="right"><a title="结婚大讲堂,科普结婚知识" href="news/list.php?catid=32" target="_blank">更多 >></a></span></h5>
+
+
+            <div class="left"><a href="news/list.php?catid=76" target="_blank"><img src="/skin/default/img/index154_120.jpg" width="100" height="130" alt="结婚会场布置"/></a><br><a href="special/show.php?itemid=23" title="找婚庆" target="_blank">如何找婚庆公司?</a></div>
+            <div class="left"><a href="news/list.php?catid=75" target="_blank"><img src="/skin/default/img/index134_175.jpg" width="100" height="130" alt="菏泽婚礼策划"/></a><br><a href="special/show.php?itemid=20" title="婚礼跟拍" target="_blank">结婚婚礼跟拍</div>
+
+            <li><a target="_blank" href="special/show.php?itemid=24" title="婚纱照专题">菏泽婚纱照</a> <a href="special/type.php-tid=141.html" title="影楼婚纱摄影须知" target="_blank">影楼婚纱照</a> <a href="special/show.php?itemid=2" title="婚纱照拍照姿势专题" target="_blank">拍照姿势</a></li>
+
+            {php $_tags=tag("moduleid=21&table=article_21&pagesize=1&catid=32&order=addtime desc&template=null")}
+            {loop $_tags $k $t}
+            {if $k>-1}
+            {php $k++}
+            <li><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[title]}</a></li>
+            {/if}
+            {/loop}
+            <div class="clearfix"></div>
+        </ul>
+        <ul class="wed_txt">
+            <h5 style="height:34px;line-height:34px;"><span class="left">婚庆套系</span><span class="right"><a title="婚庆套系" href="news/list.php?catid=74" target="_blank">更多 >></a></span></h5>
+
+            {php $_tags=tag("moduleid=21&table=article_21&pagesize=5&catid=74&order=addtime desc&template=null")}
+            {loop $_tags $k $t}
+            {if $k>-1}
+            {php $k++}
+            <li><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[title]}</a></li>
+            {/if}
+            {/loop}
+
+            <div class="clearfix"></div>
+        </ul>
+    </div>
+    <dl class="wed_4a">
+        <dt><a href="news/list.php?catid=38" target="_blank" title="菏泽婚纱摄影">婚纱摄影</a></dt>
+        <dd></dd>
+
+        {php $_tags=tag("moduleid=21&table=article_21&pagesize=3&catid=38&order=addtime desc&template=null")}
+        {loop $_tags $k $t}
+        {if $k>-1}
+        {php $k++}
+        <dd><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[title]}</a></dd>
+        {/if}
+        {/loop}
+
+
+        <dt class="a"><a href="news/list.php?catid=75" target="_blank" title="菏泽婚礼策划">婚礼策划</a></dt>
+        <dd></dd>
+
+        {php $_tags=tag("moduleid=21&table=article_21&pagesize=3&catid=75&order=addtime desc&template=null")}
+        {loop $_tags $k $t}
+        {if $k>-1}
+        {php $k++}
+        <dd><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[title]}</a></dd>
+        {/if}
+        {/loop}
+        <dt class="b"><a href="news/list.php?catid=44" target="_blank" title="菏泽美容跟妆">美容跟妆</a></dt>
+        <dd></dd>
+
+        {php $_tags=tag("moduleid=21&table=article_21&pagesize=3&catid=44&order=addtime desc&template=null")}
+        {loop $_tags $k $t}
+        {if $k>-1}
+        {php $k++}
+        <dd><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[title]}</a></dd>
+        {/if}
+        {/loop}
+        <dt class="c"><a href="news/list.php?catid=45" target="_blank" title="菏泽蜜月旅行">蜜月旅行</a></dt>
+        <dd></dd>
+
+        {php $_tags=tag("moduleid=21&table=article_21&pagesize=3&catid=45&order=addtime desc&template=null")}
+        {loop $_tags $k $t}
+        {if $k>-1}
+        {php $k++}
+        <dd><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[title]}</a></dd>
+        {/if}
+        {/loop}
+    </dl>
+    <div class="clearfix"></div>
+</div>
+<div class="wrap wrap_b">
+    <h3><span class="title">看样说话</span><span class="info">去看样，结婚也能有模有样……</span><span class="right" style="margin-right:15px"><a href="photo/list.php?catid=395" target="_blank" title="菏泽婚宴酒店">婚宴酒店</a> <a href="photo/list.php?catid=374" target="_blank" title="菏泽婚纱摄影">婚纱摄影</a> <a href="photo/list.php?catid=391" target="_blank" title="菏泽婚礼策划">时尚婚礼</a> <a href="photo/list.php?catid=390" target="_blank" title="菏泽婚纱礼服">婚纱礼服</a> <a href="photo/list.php?catid=393" target="_blank" title="菏泽婚礼跟拍">婚礼跟拍</a> <a href="photo/" target="_blank" title="菏泽婚庆图库">进入频道 >></a></span></h3>
+    <ul class="wed_5layer">
+        <p><!--line--></p>
+
+        {php $_tags=tag("moduleid=12&table=photo&condition=level=1&pagesize=5&template=null&order=addtime desc")}
+        {loop $_tags $k $t}
+        <li><a target="_blank" href="{$t[linkurl]}" title="爱的弥漫婚纱主题摄影"><img src="{imgurl($t[thumb], 0)}" class="lazy" original="{imgurl($t[thumb], 1)}" alt="{$t[title]}" /><br>{$t[title]}</a></li>
+        {/loop}
+
+
+        <div class="clearfix"></div>
+    </ul>
+</div>
+
+
+{template 'footer'}

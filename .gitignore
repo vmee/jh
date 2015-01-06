@@ -1,0 +1,14 @@
+_Store
+.nodemonignore
+npm-debug.log
+.sass-cache/
+.bower-*/
+.idea/
+nbproject/
+node_modules/
+bower_components
+mean.iml
+/install
+/file
+/common.inc.php
+/config.inc.php

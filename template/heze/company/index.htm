@@ -1,0 +1,153 @@
+{template 'header'}
+
+
+
+<div class="wrap pic_img">
+
+</div>
+<div class="pos">当前位置: <a href="{$MODULE[1][linkurl]}">首页</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a></div>
+<div class="wrap wrap_b mar_15">
+    <dl class="s_type"><dt>行业：</dt><dd>
+
+        {php $mid = 4;}
+        {template 'catalog', 'chip'}
+
+    </dd><div class="clearfix"></div></dl>
+    <dl class="s_type"><dt>区域：</dt><dd>
+
+
+            {php $mainarea = get_mainarea(0)}
+            {loop $mainarea $k $v}
+            <a href="{$MOD[linkurl]}search.php?areaid={$v[areaid]}" rel="nofollow">{$v[areaname]}</a>
+            {/loop}
+
+     </dd><div class="clearfix"></div></dl>
+</div>
+<div class="wrap wrap_b">
+    <div class="s_type_l">
+        <div class="list">
+            <h2>新人喜欢的 <strong>婚纱影楼</strong></h2><a href="list.php?catid=413" class="more" title="菏泽影楼">更多影楼</a><div class="clearfix"></div>
+
+            {php $_tags=tag("moduleid=5&table=company&pagesize=3&condition=catid like '%,413,%'&template=null")}
+            {loop $_tags $k $t}
+            {php $com_logo=get_company_setting(get_user($t['username']),'logo', 'CACHE');}
+
+                <dl><dd><a href="{$t[linkurl]}" title="{$t[company]}" target="_blank"><img src="{$com_logo}" class="lazy" original="{imgurl($t[thumb], 0)}" alt="{$t[company]}"></a></dd><dt>{$t[company]}</dt></dl>
+
+            {/loop}
+
+            <div class="clearfix"></div>
+        </div>
+        <div class="list">
+            <h2>新人喜欢的 <strong>摄影工作室</strong></h2><a href="list.php?catid=414" class="more" title="菏泽摄影工作室">更多摄影工作室</a><div class="clearfix"></div>
+            {php $_tags=tag("moduleid=5&table=company&pagesize=3&condition=catid like '%,414,%'&template=null")}
+            {loop $_tags $k $t}
+            {php $com_logo=get_company_setting(get_user($t['username']),'logo', 'CACHE');}
+
+            <dl><dd><a href="{$t[linkurl]}" title="{$t[company]}" target="_blank"><img src="{$com_logo}" class="lazy" original="{imgurl($t[thumb], 0)}" alt="{$t[company]}"></a></dd><dt>{$t[company]}</dt></dl>
+
+            {/loop}
+            <div class="clearfix"></div>
+        </div>
+        <div class="list">
+            <h2>新人喜欢的 <strong>婚宴酒店</strong></h2><a href="list.php?catid=417" class="more" title="菏泽婚宴酒店">更多婚宴酒店</a><div class="clearfix"></div>
+
+            {php $_tags=tag("moduleid=5&table=company&pagesize=3&condition=catid like '%,417,%'&template=null")}
+            {loop $_tags $k $t}
+            {php $com_logo=get_company_setting(get_user($t['username']),'logo', 'CACHE');}
+
+            <dl><dd><a href="{$t[linkurl]}" title="{$t[company]}" target="_blank"><img src="{$com_logo}" class="lazy" original="{imgurl($t[thumb], 0)}" alt="{$t[company]}"></a></dd><dt>{$t[company]}</dt></dl>
+
+            {/loop}
+
+            <div class="clearfix"></div>
+        </div>
+        <div class="list">
+            <h2>新人喜欢的 <strong>婚庆策划</strong></h2><a href="list.php?catid=418" class="more" title="菏泽婚庆策划">更多婚庆公司</a><div class="clearfix"></div>
+
+            {php $_tags=tag("moduleid=5&table=company&pagesize=3&condition=catid like '%,418,%'&template=null")}
+            {loop $_tags $k $t}
+            {php $com_logo=get_company_setting(get_user($t['username']),'logo', 'CACHE');}
+
+            <dl><dd><a href="{$t[linkurl]}" title="{$t[company]}" target="_blank"><img src="{$com_logo}" class="lazy" original="{imgurl($t[thumb], 0)}" alt="{$t[company]}"></a></dd><dt>{$t[company]}</dt></dl>
+
+            {/loop}
+
+            <div class="clearfix"></div>
+        </div>
+        <div class="list">
+            <h2>新人喜欢的 <strong>婚纱礼服</strong></h2><a href="list.php?catid=424" class="more" title="菏泽婚纱礼服">更多婚纱礼服</a><div class="clearfix"></div>
+
+            {php $_tags=tag("moduleid=5&table=company&pagesize=3&condition=catid like '%,424,%'&template=null")}
+            {loop $_tags $k $t}
+            {php $com_logo=get_company_setting(get_user($t['username']),'logo', 'CACHE');}
+
+            <dl><dd><a href="{$t[linkurl]}" title="{$t[company]}" target="_blank"><img src="{$com_logo}" class="lazy" original="{imgurl($t[thumb], 0)}" alt="{$t[company]}"></a></dd><dt>{$t[company]}</dt></dl>
+
+            {/loop}
+
+
+            <div class="clearfix"></div>
+        </div>
+        <div class="list">
+            <h2>新人喜欢的 <strong>婚礼跟妆</strong></h2><a href="list.php?catid=419" class="more" title="菏泽婚礼跟妆">更多婚礼跟妆</a><div class="clearfix"></div>
+            {php $_tags=tag("moduleid=5&table=company&pagesize=3&condition=catid like '%,419,%'&template=null")}
+            {loop $_tags $k $t}
+            {php $com_logo=get_company_setting(get_user($t['username']),'logo', 'CACHE');}
+
+            <dl><dd><a href="{$t[linkurl]}" title="{$t[company]}" target="_blank"><img src="{$com_logo}" class="lazy" original="{imgurl($t[thumb], 0)}" alt="{$t[company]}"></a></dd><dt>{$t[company]}</dt></dl>
+
+            {/loop}
+            <div class="clearfix"></div>
+        </div>
+        <div class="list">
+            <h2>新人喜欢的 <strong>婚车租赁</strong></h2><a href="list.php?catid=422" class="more" title="菏泽婚车租赁">更多婚车租赁</a><div class="clearfix"></div>
+            {php $_tags=tag("moduleid=5&table=company&pagesize=3&condition=catid like '%,422,%'&template=null")}
+            {loop $_tags $k $t}
+            {php $com_logo=get_company_setting(get_user($t['username']),'logo', 'CACHE');}
+
+            <dl><dd><a href="{$t[linkurl]}" title="{$t[company]}" target="_blank"><img src="{$com_logo}" class="lazy" original="{imgurl($t[thumb], 0)}" alt="{$t[company]}"></a></dd><dt>{$t[company]}</dt></dl>
+
+            {/loop}
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="s_type_r">
+        <div class="mar_15">
+
+        </div>
+        <div class="mar_15"></div>
+        <ul>
+            <h5>最新商家优惠</h5>
+
+            {php $tags=tag("moduleid=5&&pagesize=10&order=addtime desc&template=list-news-li")}
+
+            <a href="{DT_PATH}sell/" class="more" target="_blank">更多优惠信息</a>
+        </ul>
+        <ul>
+            <h5>最新VIP</h5>
+
+            {php $tags=tag("moduleid=4&table=company&pagesize=10&condition=vip>1&order=validtime desc&template=list-news-li-area")}
+
+            <a href="search.php?vip=1" target="_blank" class="more">更多VIP商家</a>
+        </ul>
+
+        <ul>
+            <h5>最新加盟</h5>
+
+            {php $tags=tag("moduleid=4&table=company&pagesize=10&order=fromtime desc&template=list-news-li-area")}
+
+            <a href="search.php-page=1.html" class="more" target="_blank">更多最新加盟</a>
+        </ul>
+    </div>
+</div>
+
+
+{template 'footer'}
+
+<script type="text/javascript">
+    show_task('moduleid=4&html=index');
+    $(function(){$("img").lazyload();});$('#back2top').click(function() {
+        $("html, body").animate({scrollTop:0}, 200);
+    });
+</script>

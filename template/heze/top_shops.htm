@@ -1,0 +1,355 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{$DT[sitename]}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}style-a6df30f3.css" />
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}style-screen-30980157.css" media="screen" />
+<script type="text/javascript" src="{DT_PATH}file/webscript/script-0-912045.js"></script>
+<!--[if IE 6]>
+<script type="text/javascript" src="{DT_PATH}file/webscript/DD_belatedPNG_0.0.8a-min.js"></script>
+<script type="text/javascript">
+ DD_belatedPNG.fix('.logo img,.marketing1,.marketing2');
+</script>
+<![endif]-->
+<script type="text/javascript">
+    function addCollection(genre,seller_id,collection) {
+        $.get("/fav/add",{"genre":genre,"seller_id":seller_id,"collection":collection},function(data){
+            var s = eval(data);
+            alert(s);
+        });
+    }         
+    $(function(){//我的商城
+        $(".login-after li").hover(function(){
+            $(this).find("div").slideDown(200);
+        },
+        function(){
+            $(this).find("div").slideUp(200);
+        });                
+        $(".shops-sorts h3 s").not(".new").click(function(){
+            var s=$(this).attr("class")
+            s==="less"?$(this).removeClass("less").addClass("add"):$(this).removeClass("add").addClass("less");
+            $(this).parent().next().slideToggle(200);
+        })
+    });
+
+    function setTab(name,cursel,n){
+        for(i=1;i<=n;i++){
+            var menu=document.getElementById(name+i);
+            var con=document.getElementById("con_"+name+"_"+i);
+            menu.className=i==cursel?"on":"";
+            con.style.display=i==cursel?"block":"none";
+
+        }
+    }
+    //复制到剪贴板
+    function copyToClipBoard(txt)
+    {
+        if(window.clipboardData)
+        {
+            // the IE-manier
+            window.clipboardData.clearData();
+            window.clipboardData.setData("Text", txt);
+            alert("复制到剪贴板成功!");
+        }
+        else if(navigator.userAgent.indexOf("Opera") != -1)
+        {
+            window.location = txt;
+            alert("复制到剪贴板成功!");
+        }
+        else if (window.netscape)
+        {
+            // dit is belangrijk maar staat nergens duidelijk vermeld:
+            // you have to sign the code to enable this, or see notes below
+            try {
+                netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+            } catch (e) {
+                alert("被浏览器禁止了相关设置！\n请在浏览器地址栏输入\'about:config\'並回車\n然后将\'signed.applets.codebase_principal_support\'设置为\'true\'");
+            }
+            // maak een interface naar het clipboard
+            var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);
+            if (!clip){return;}
+            // alert(clip);
+            // maak een transferable
+            var trans = Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable);
+            if (!trans){return;}
+            // specificeer wat voor soort data we op willen halen; text in dit geval
+            trans.addDataFlavor('text/unicode');
+            // om de data uit de transferable te halen hebben we 2 nieuwe objecten
+            // nodig om het in op te slaan
+            var str = new Object();
+            var len = new Object();
+            str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+            var copytext = txt;
+            str.data = copytext;
+            trans.setTransferData("text/unicode",str,copytext.length*2);
+            var clipid = Components.interfaces.nsIClipboard;
+            if (!clip){return false;}
+            clip.setData(trans,null,clipid.kGlobalClipboard);
+            alert("复制到剪贴板成功!!");
+        }
+    }            
+</script>
+</head>
+
+<body>
+    <div id="header"><!--头部-->
+        <div id="mall-site-nav" >
+            <!--页眉-->
+            <div class="mall-title" >菏泽一站式结婚消费平台,只选对的不选贵的!</div>
+            <div id="destoon_member" style="line-height:28px;float:right;"></div>
+        </div>
+        <!--页眉end-->
+        <div id="mall-top">
+            <!--mall-top-->
+            <h1 class="logo">
+                <!--logo-->
+                <a href="{DT_PATH}"><img src="{DT_SKIN}img/mall_logo.png" alt="菏泽结婚一条龙商城" /></a> 
+            </h1>
+            <!--logo-end-->
+            <div class="shopname"><!--店名-->
+                <h2>{$member[company]}</h2>
+            </div> <!--店名end-->
+            <script>
+function checkSearchForm() {
+    if($(".mall-searchcont .input-tx").val()=='请输入商铺进行搜索'||$(".mall-searchcont .input-tx").val()=='请输入商品进行搜索'){
+        $(".mall-searchcont .input-tx").val('');
+    }
+    return true;
+}
+$(function(){
+    //商城搜索
+    $(".mall-searchtab li").each(function(i){
+        $(this).click(function(){
+            var act=$("form[name='form']");
+            var index=$(this).index();
+            var hval=$(".mall-searchcont .input-tx");
+            index===0?hval.val("请输入商铺进行搜索"):hval.val("请输入商品进行搜索");
+            //index===0?hval.attr("id","search_product_text"):hval.attr("id","search_shop_text");
+            index===0?act.attr("action","/list/store"):act.attr("action","/list/product")
+            $(this).addClass("hover").siblings().removeClass("hover");
+        });
+    });
+    $(".mall-searchcont .input-tx").focusin(function(){
+        if(($(this).val()==="请输入商铺进行搜索")||($(this).val()==="请输入商品进行搜索")){
+            $(this).val("");
+        }
+    });
+    $(".mall-searchcont .input-tx").focusout(function(){
+        if($(this).val()===""){
+            $(this).attr("id")==="search_product_text"?$(this).val("请输入商铺进行搜索"):$(this).val("请输入商品进行搜索");
+        }
+    });                
+})
+</script>
+<!--城市切换end-->
+<div id="mall-search">
+    <!--搜索-->
+    <div class="mall-searchtab">
+        <ul>
+            <li class="hover">商铺</li>
+            <li>商品</li>
+        </ul>
+    </div>
+    <div class="mall-searchcont">
+        <form action="/list/store" name="form" method="get" onsubmit="return checkSearchForm();">
+            <input name="keyword" class="input-tx" value="请输入商铺进行搜索"  id="search_product_text"/>
+            <input class="input-btn" value="" type="submit" />
+        </form>
+    </div>
+    <div class="moresearch"> <a href="http://jiehun.pinla.com/help/index.php?q=%E6%90%9C%E7%B4%A2" target="_blank">搜索帮助</a><br /><a href="http://jiehun.pinla.com/member/own_shop.php?action=new" target="_blank">商家入驻</a>
+         </div>
+</div>
+                <!--搜索end-->
+            </div>
+            <!--mall-topend-->
+            <div class="shopnav"><!--导航-->
+                <ul>
+                    <li ><a href="{$member[linkurl]}" target="_blank"><span><em>商家首页</em></span></a></li>
+                    <li class="now"><a href="{$member[linkurl]}&file=sell" target="_blank"><span><em>全部商品</em></span></a></li>
+                    <li ><a href="{$member[linkurl]}&file=photo" target="_blank"><span><em>店铺相册</em></span></a></li>
+                    <li ><a href="{$member[linkurl]}&file=news" target="_blank"><span><em>店铺新闻</em></span></a></li>
+                    <li ><a href="{$member[linkurl]}&file=introduce" target="_blank"><span><em>店铺介绍</em></span></a></li>
+                    <li ><a href="{$member[linkurl]}&file=contact" target="_blank"><span><em>联系方式</em></span></a></li>
+                                                        </ul>
+            </div><!--导航end-->
+        </div><!--头部end-->
+        <script type="text/javascript">
+    $(function(){//我的商城
+        $(".shops-sorts h3 s").not(".new").click(function(){
+            var s=$(this).attr("class")
+            s==="less"?$(this).removeClass("less").addClass("add"):$(this).removeClass("add").addClass("less");
+            $(this).parent().next().slideToggle(200);
+        })
+        //商品大小图切换
+        $(".small-pic a").focus(function(){
+            if(this.blur){this.blur()};
+        })
+          
+        imgload();
+        $(".small-pic").find("a").click(function(){ //点击小图
+            var src=$(this).attr("href");	
+            $(".pro-bigpic img").attr("src",src);
+            $(this).parent().addClass("ppton").siblings().removeClass("ppton");
+            imgload();
+            return false;
+        }
+    );
+        var s_index=1;
+        var m_index=$(".small-pic ul li").length;
+        var l_width=$(".small-pic").find("li").width()+10;
+        var s_width=m_index*l_width;
+        $(".small-pic ul").width(s_width);
+        $(".pre").click(function(){	
+            if(s_index>=m_index-5){
+                s_index=m_index-5;
+            }
+			if(m_index<5){
+				return false;
+			}
+			else{
+				$(".small-pic ul").stop().animate({"margin-left":-l_width*s_index},200);
+				s_index++;
+			}
+        });
+        $(".next").click(function(){
+            var margin_px=$(".small-pic ul").css("margin-left");
+            if(margin_px==="0px"){
+                margin=-50;
+                s_index=1;
+            }else{
+                var margin=parseInt(margin_px);
+                s_index--;
+            } 
+            $(".small-pic ul").stop().animate({"margin-left":margin+l_width},200);
+        })
+        $('.pro-info img').each(function(){
+            if($(this).width() > 690){
+                $(this).css({"width":"690px"});
+            }            
+        })				
+    });
+    function imgload(){
+        //控制图片预加载效果
+        var img = new Image(); //创建一个Image对象，实现图片的预下载
+        url=$(".pro-bigpic").find("img").attr("src");
+        img.src = url; 
+        if (img.complete) { // 如果图片已经存在于浏览器缓存，直接调用回调函数  
+            return; // 直接返回，不用再处理onload事件    
+        }else{
+            $(".ad-loader").show(0);
+        }
+        img.onload = function () { //图片下载完毕时异步调用callback函数。
+            $(".ad-loader").hide(0);   
+        };    
+
+    }
+    function setTab(name,cursel,n){
+        for(i=1;i<=n;i++){
+            var menu=document.getElementById(name+i);
+            var con=document.getElementById("con_"+name+"_"+i);
+            menu.className=i==cursel?"on":"";
+            con.style.display=i==cursel?"block":"none";
+
+        }
+    }
+
+    function product_collection(){
+        $.getJSON("/fav/add/genre/product/seller_id/617/collection/24397",
+        function(data){
+            if(data == '-1'){
+                alert("请登录后操作！");
+            }
+            if(data == '0'){
+                alert("不能收藏自己的商品！");
+            }
+            if(data == '1'){
+                alert("收藏成功！");
+            }
+            if(data == '2'){
+                alert("该商品已收藏！");
+            }
+
+        });
+    }
+    function postage_calculate(area_id,area_name){
+        //alert(1);
+        $('#cityname').text(area_name);
+        $(".pro-city").hide(0);
+        var str = '';
+        var default_sign = false;
+        var default_value = '';
+        //change postage money, tmp is key
+        for(var tmp_key in ordinaryArray){
+            var tmp_value = ordinaryArray[tmp_key];
+            if(tmp_value == 'default'){
+                default_value = tmp_key;
+            }
+            var tmp_array = tmp_value.split(',');
+            var result = $.inArray(area_id,tmp_array);
+            if(result >= 0){//exsits
+                default_sign = true;
+                str += '平邮:'+'<em>'+tmp_key+'</em>'+'	';
+            }
+        }
+        if(default_sign == false && default_value != ''){
+            str += '平邮:'+'<em>'+default_value+'</em>'+'	';
+            default_value = '';
+        }
+        for(var tmp_key in fastArray){
+            var tmp_value = fastArray[tmp_key];
+            if(tmp_value == 'default'){
+                default_value = tmp_key;
+            }
+            var tmp_array = tmp_value.split(',');
+            var result = $.inArray(area_id,tmp_array);
+            if(result >= 0){//exsits
+                default_sign = true;
+                str += '快递:'+'<em>'+tmp_key+'</em>'+'	';
+            }
+        }
+        if(default_sign == false && default_value != ''){
+            str += '快递:'+'<em>'+default_value+'</em>'+'	';
+            default_value = '';
+        }
+        for(var tmp_key in emsArray){
+            var tmp_value = emsArray[tmp_key];
+            if(tmp_value == 'default'){
+                default_value = tmp_key;
+            }
+            var tmp_array = tmp_value.split(',');
+            var result = $.inArray(area_id,tmp_array);
+            if(result >= 0){//exsits
+                default_sign = true;
+                str += 'EMS:'+'<em>'+tmp_key+'</em>'+'	';
+            }
+        }
+        if(default_sign == false && default_value != ''){
+            str += 'EMS:'+'<em>'+default_value+'</em>'+'	';
+            default_value = '';
+        }
+        //show html
+        $('#show_postage_money').html(str);
+    }
+    // area array
+        //复制到剪贴板
+    
+
+    function keyNumber()
+    {
+        if($("#txtMessage").val().length<=120)
+        {
+            $("#keynum").html("剩余"+(120-$("#txtMessage").val().length)+"字");
+            $("#keynum").css('color','#009900');
+        }else{
+            $("#keynum").html("超出"+($("#txtMessage").val().length-120)+"字");
+            $("#keynum").css('color','#FF0000');
+        }
+    }
+</script>

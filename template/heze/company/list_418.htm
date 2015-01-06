@@ -1,0 +1,99 @@
+{template 'top_shop'}
+<link rel="stylesheet" type="text/css" href="http://images.pinla.com/mall/front/style-f7f94406.css?v1299580071" />
+<link rel="stylesheet" type="text/css" href="http://images.pinla.com/mall/front/style-screen-1e6f960f.css?v1299580073" media="screen" />
+<div id="content">
+  <!--主体-->
+  <div class="mall-webplace">您现在的位置： <a href="{$MOD[linkurl]}">{$MOD[name]}</a> {if $typeid!=99}&raquo; <a href="{$MOD[linkurl]}{rewrite('index.php?typeid='.$typeid)}">{$TYPE[$typeid]}</a>{/if}
+    {if $catid}&raquo; {cat_pos($catid)}{/if} </div>
+  <div class="layout">
+    <div class="mall-col-main">
+      <!--右侧-->
+      <div class="mall-col-warp">
+        <!--外围-->
+        <div class="mall-result">
+          <!--搜索结果-->
+          <strong>{cat_pos($catid)}</strong> 共有 <strong>594</strong> 家商铺符合您的要求。 </div>
+        <!--搜索结果end-->
+        <form id="search_form" action="/list/store" method="get">
+          <div class="mall-search-indicator">
+            <!--搜索条件-->
+            <div class="indicator-box  clearfix">
+              <!--条件-->
+              <ul>
+                <li>
+                  <label class="indictor-info">关键字：</label>
+                  <input type="text" class="input_tx" name="keyword" value=""/>
+                </li>
+                <li>
+                  <label class="indictor-info">所在地：</label>
+                  <select id="region_id1" class="select">
+                    <option>全部</option>
+                  </select>
+                  <select id="region_id2" default=""  class="select">
+                    <option>全部</option>
+                  </select>
+                  <input type="hidden" name="area_id" id="area_id" value=""/>
+                </li>
+              </ul>
+              <a href="javascript:void();" onclick="$('#search_form').submit();" class="search-btn"></a> </div>
+            <!--条件-->
+          </div>
+          <!--搜索条件end-->
+          <div class="mall-select">
+            <!--筛选-->
+            <span>消费保障：</span>
+            <input type="checkbox" name="truth" value="1" id="is_truth"  />
+            <label for="is_truth">如实描述</label>
+            <input type="checkbox" name="quality" id="is_quality" value="1"/>
+            <label for="is_quality">正品保障</label>
+            <input type="checkbox" name="pay" id="is_pay" value="1" />
+            <label for="is_pay">先行赔付</label>
+            <input type="checkbox" name="onlinepay" id="is_onlinepay" value="1"/>
+            <label for="is_onlinepay">72小时无条件退款</label>
+            <div class="mall-toppage">
+              <!--分页-->
+              <a href="/list/store?cate_id=4&page=2" class="nextpage" title="下一页">下一页</a> <span class="prepage" title="上一页"></span> <span>1/60</span> </div>
+            <!--分页end-->
+          </div>
+          <!--筛选end-->
+        </form>
+		
+        
+          
+          {if $page == 1}{load('ad_m'.$moduleid.'_c'.$catid.'.htm')}{/if}	
+		<!--{tag("moduleid=$moduleid&condition=groupid>5 and catids like '%,".$catid.",%'&catid=$catid&pagesize=".$MOD[pagesize]."&page=$page&showpage=1&update=1&datetype=5&order=".$MOD[order]."&template=list-company-1j1")}-->
+         
+      </div>
+      <!--外围end-->
+    </div>
+    <!--右侧end-->
+    <div class="mall-col-sub">
+      <!--左侧-->
+      {php $tags_comp=tag("moduleid=4&table=category&condition=parentid=0 and moduleid=4&pagesize=20&template=null")}
+	  
+      <div class="mall-col-box">
+        <!--分类-->
+        <h2>商铺分类</h2>
+        {loop $tags_comp $k $c}
+        <div class="mall-sortnav clearfix">
+          <h3>{set_style($c[catname], $c[style])}</h3>
+          <ul>
+            {if $c[child]}{php $sub = get_maincat($c[catid], $CATEGORY, 1);}
+            {loop $sub $j $s}
+            <li><a href="{$MODULE[$mid][linkurl]}{$s[linkurl]}">{set_style($s[catname], $s[style])}</li>           
+            {/loop}
+			{/if}
+          </ul>
+        </div>
+		{/loop}  
+		
+          
+      </div>
+      <!--分类end-->
+      <!--条件筛选酒店end-->
+    </div>
+    <!--左侧end-->
+  </div>
+</div>
+<!--主体end-->
+{template 'footer'}

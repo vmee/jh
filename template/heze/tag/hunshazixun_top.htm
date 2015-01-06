@@ -1,0 +1,8 @@
+
+{loop $tags $i $t}
+<div class="picnews">
+<a target="_blank" href="{$t[linkurl]}" title="{$t[title]}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[title]}"/></a>
+<h3><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[title]}</a></h3>
+<p>{$t[introduce]}</p>                    
+</div>
+{/loop}

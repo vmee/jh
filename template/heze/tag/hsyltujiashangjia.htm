@@ -1,0 +1,28 @@
+{loop $tags $k $t}
+{php $_tags=tag("table=sell&condition=status=3 and username='".$t[username]."'&thumb<>''&pagesize=2&template=null");}
+<div class="mall-recom"><!--推荐商家-->
+    <div class="recom-cont">
+    <a target="_blank" href="{$t[linkurl]}"><img src="{imgurl($t[thumb], 0)}"></a>
+    <h2><a target="_blank" href="{$t[linkurl]}">{$t[company]}</a></h2>
+    <p>{$t[introduce]}</p>
+    </div>
+</div><!--推荐商家end-->
+<div class="mall-newshop"><!--最新商品-->
+<div class="newshop-cont"><!--图文列表-->
+{loop $_tags $kk $tt}
+<div class="newshop-list clearfix">
+    <div class="newimgbox"> <!--图-->
+    <a target="_blank" href="sell{$tt[linkurl]}"><img src="{imgurl($tt[thumb], 0)}"></a>
+    <s class="newcion"></s>
+    </div><!--图end-->
+    <div class="malllist"> <!--文字-->
+    <h2><a target="_blank" href="sell{$t[linkurl]}">{dsubstr($tt[title],30)}</a></h2>
+    <p class="martprice">市场价：<span>{$tt[price]}</span></p>
+    <p class="pl-price">便民价：<span>{$tt[price1j1]}</span></p>
+    <p>产品特色：{dsubstr($tt[introduce],100)}</p>
+    </div><!--文字end-->
+</div>
+{/loop}
+</div><!--图文列表end-->
+</div><!--最新商品end-->
+{/loop}

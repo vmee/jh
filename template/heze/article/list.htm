@@ -1,0 +1,89 @@
+{template 'header'}
+
+
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}wed_art.css" media="screen" />
+<div class="wed_class_warp">
+    <div class="wed_class_class">
+        按分类浏览：
+        {loop $maincat $k $v}
+        <a href="{$MOD[linkurl]}{$v[linkurl]}">{set_style($v[catname],$v[style])}</a>
+        {/loop}
+        </div>
+</div>
+<div class="wrap pic_img">
+
+</div>
+<div class="wrap wrap_b">
+    <div class="wed_art_left" style="padding:0 20px">
+
+        {php $_tags_news_cat=tag("moduleid=$moduleid&condition=status=3&catid=$catid&pagesize=".$MOD[pagesize]."&page=$page&showpage=1&update=1&datetype=5&target=_blank&order=".$MOD[order]."&fields=".$MOD[fields]."&template=list-cat-news&cols=5")}
+
+
+    </div>
+    <div class="wed_art_right">
+        <div class="wed_google">
+
+        </div>
+        <div class="wed_google"></div>
+        <dl class="wed_4a">
+            <dt><a href="/news/list.php?catid=38" target="_blank" title="菏泽婚纱摄影">婚纱摄影</a></dt>
+            <dd></dd>
+
+            {php $_tags=tag("moduleid=21&table=article_21&pagesize=5&catid=38&order=addtime desc&template=null")}
+            {loop $_tags $k $t}
+            {if $k>-1}
+            {php $k++}
+            <dd><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[title]}</a></dd>
+            {/if}
+            {/loop}
+
+
+            <dt class="a"><a href="/news/list.php?catid=75" target="_blank" title="菏泽婚礼策划">婚礼策划</a></dt>
+            <dd></dd>
+
+            {php $_tags=tag("moduleid=21&table=article_21&pagesize=5&catid=75&order=addtime desc&template=null")}
+            {loop $_tags $k $t}
+            {if $k>-1}
+            {php $k++}
+            <dd><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[title]}</a></dd>
+            {/if}
+            {/loop}
+            <dt class="b"><a href="/news/list.php?catid=44" target="_blank" title="菏泽美容跟妆">美容跟妆</a></dt>
+            <dd></dd>
+
+            {php $_tags=tag("moduleid=21&table=article_21&pagesize=5&catid=44&order=addtime desc&template=null")}
+            {loop $_tags $k $t}
+            {if $k>-1}
+            {php $k++}
+            <dd><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[title]}</a></dd>
+            {/if}
+            {/loop}
+            <dt class="c"><a href="/news/list.php?catid=45" target="_blank" title="菏泽蜜月旅行">蜜月旅行</a></dt>
+            <dd></dd>
+
+            {php $_tags=tag("moduleid=21&table=article_21&pagesize=5&catid=45&order=addtime desc&template=null")}
+            {loop $_tags $k $t}
+            {if $k>-1}
+            {php $k++}
+            <dd><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[title]}</a></dd>
+            {/if}
+            {/loop}
+        </dl>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{template 'footer'}

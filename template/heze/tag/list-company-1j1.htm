@@ -1,0 +1,41 @@
+
+{loop $tags $k $t}
+
+<div class="mall-shops-list clearfix">
+          <div class="shops-title">
+            <!--title-->
+            <span  class="flagship-name">{if $t[vip]}<em class="flagship">VIP店</em>{/if}<a href="{$t[linkurl]}" class="flagship-name">{$t[company]}</a></span>
+            <div class="chat">
+              <!--在线客服-->
+              <div class="chatlist">
+                <ul>
+                  <li><a target=blank href=tencent://message/?uin=931866625.&Site=http://jiehun.pinla.com/&Menu=yes><img border="0" SRC=http://wpa.qq.com/pa?p=1:931866625.:1 alt="点击这里给我发消息"></a></li>
+                  <li><a target=blank href=tencent://message/?uin=842864622&Site=http://jiehun.pinla.com/&Menu=yes><img border="0" SRC=http://wpa.qq.com/pa?p=1:842864622:1 alt="点击这里给我发消息"></a></li>
+                  <li><a target="_blank" href="msnim:chat?contact=happily1999@hotmail.com"><img style="border-style: none; padding-top:7px;" src="http://img8.cn.msn.com/images/msfp_008.gif" width="16" height="16" alt="点击这里给我发消息"/></a></li>
+                  <li><a target="_blank" href="msnim:chat?contact=happysince1999@houtmail.com"><img style="border-style: none; padding-top:7px;" src="http://img8.cn.msn.com/images/msfp_008.gif" width="16" height="16" alt="点击这里给我发消息"/></a></li>
+                </ul>
+              </div>
+            </div>
+            <!--在线客服end-->
+            <div class="flagship-info"> <a title="136" class="credit-xin4"></a> <span>[{area_pos($t[areaid], '/', 2)}]</span> </div>
+          </div>
+          <!--title-end-->
+		  {php $tags_sells=tag("moduleid=5&table=sell&condition=username='".$t[username]."'&pagesize=3&template=null");}
+		  
+          <ul class="mall-shops-pic clearfix">
+		  {loop $tags_sells $k $l}
+            <li> <a href="{$l[linkurl]}" target="_blank"><img src="{imgurl($l[thumb], 1)}"></a>
+              <h4><a href="{$l[linkurl]}" target="_blank">{$l[title]}</a></h4>
+              <p class="martprice">市场价：<span>{$l[price]}</span></p>
+              <p class="pl-price">本站价：<span>{$l[price1j1]}</span></p>
+            </li>
+			{/loop}
+            
+          </ul>
+          <p class="shops-more"><a href="/store/index?shop_id=1065">查看本店10件相关商品>></a></p>
+        </div>
+        <!--商铺end-->
+		
+{/loop}		
+		
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

@@ -1,0 +1,88 @@
+{template 'header'}
+
+
+
+<div class="wrap pic_img">
+
+</div>
+<div class="wrap wrap_b mar_15">
+    <dl class="s_type"><dt>类型：</dt>
+        <dd> {php $mid = 4;}
+            {template 'catalog', 'chip'}
+        </dd><div class="clearfix"></div></dl>
+    <dl class="s_type"><dt>区域：</dt><dd>
+        {php $mainarea = get_mainarea(0)}
+        {loop $mainarea $k $v}
+        <a href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$v['areaid'])}">{$v[areaname]}</a>
+        {/loop}
+
+    </dd><div class="clearfix"></div></dl>
+</div>
+<div class="wrap">
+    <div class="s_type_l">
+
+        {if $page==1 && $kw}
+        {ad($moduleid,$catid,$kw,6)}
+        {load('m'.$moduleid.'_k'.urlencode($kw).'.htm')}
+        {/if}
+        {if $tags}
+        {template 'list-company', 'tag'}
+        {else}
+        {template 'noresult', 'message'}
+        {/if}
+    </div>
+
+
+
+    <div class="s_type_r">
+        <div class="mar_15">
+
+        </div>
+        <div class="mar_15"></div>
+        <ul>
+            <h5>最新商家优惠</h5>
+
+            {php $tags=tag("moduleid=5&table=sell&pagesize=10&order=addtime desc&template=list-news-li")}
+
+            <a href="{DT_PATH}sell/" class="more" target="_blank">更多优惠信息</a>
+        </ul>
+        <ul>
+            <h5>最新VIP</h5>
+
+            {php $tags=tag("moduleid=4&table=company&pagesize=10&condition=vip>1&order=validtime desc&template=list-news-li-area")}
+
+            <a href="search.php?vip=1" target="_blank" class="more">更多VIP商家</a>
+        </ul>
+        <ul>
+            <h5>企业新闻</h5>
+
+            {php $tags=tag("moduleid=2&table=news&pagesize=10&order=addtime desc&template=list-news-li")}
+
+
+            <a href="news.php-page=1.html" target="_blank" class="more">更多企业新闻</a>
+        </ul>
+        <ul>
+            <h5>最新加盟</h5>
+
+            {php $tags=tag("moduleid=4&table=company&pagesize=10&order=fromtime desc&template=list-news-li-area")}
+
+            <a href="search.php-page=1.html" class="more" target="_blank">更多最新加盟</a>
+        </ul>
+    </div>
+
+
+
+
+
+
+    <div class="clear15"></div>
+</div>
+{template 'footer'}
+
+
+
+
+
+
+
+

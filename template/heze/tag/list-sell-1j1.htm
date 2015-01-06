@@ -1,0 +1,33 @@
+{loop $tags $k $t}
+{php $imgurl=imgurl($t[thumb], 0);}
+<li>
+  <div href="#" class="pic"> <a href="{$t[linkurl]}" target="_blank" ><img src="{$imgurl}"></a>
+    <!-- input type="checkbox" class="input_check" name="compare[]" value="216"/ -->
+  </div>
+  <h4><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></h4>
+  <p class="martprice">市场价：<span>{$t[price]}</span></p>
+  <p class="pl-price"><span class="hotnum">热度：{$t[hits]}</span>优惠价：<span class="pricenum">{$t[price1j1]}</span></p>
+  <div><span class="city"> [{area_pos($t[areaid], '')}] </span>
+    <h5><a href="{userurl($t[username])}" target="_blank">{$t[company]}</a>&nbsp;</h5>
+  </div>
+  <div class="cionlist clearfix"> 
+    {if $t[qq] || $t[ali] || $t[msn] || $t[skype]}
+	<div class="chat">
+      <!--在线客服-->
+      <div class="chatlist" style="display: none;">
+        <ul>          
+          {if $t[qq] && $DT[im_qq]}<li>{im_qq($t[qq])}&nbsp;</li>{/if}
+          {if $t[ali] && $DT[im_ali]}<li>{im_ali($t[ali])}&nbsp;</li>{/if}
+          {if $t[msn] && $DT[im_msn]}<li>{im_msn($t[msn])}&nbsp;</li>{/if}
+          {if $t[skype] && $DT[im_skype]}<li>{im_skype($t[skype])}&nbsp;</li>{/if}
+        </ul>
+      </div>
+    </div>
+	{/if}
+    <!--在线客服end-->
+  </div>
+</li>
+{/loop}		
+{if $showpage && $pages}
+<div class="pages">{$pages}</div>
+{/if}

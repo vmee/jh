@@ -1,0 +1,36 @@
+{template 'header'}
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}a_style.css"/>
+
+<div class="m">
+
+<div class="sj_left">
+	<div class="sj_add">当前位置: <a href="{$MODULE[1][linkurl]}">首页</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a> &raquo; {$member[company]}</div>
+    <div class="sj_show">
+    	<h1>{$member[company]} {if $member[vcompany]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_company.gif" align="absmiddle" title="通过工商认证"/>{/if}{if $member[vtruename]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_truename.gif" align="absmiddle" title="通过实名认证"/>{/if}{if $member[vbank]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_bank.gif" align="absmiddle" title="通过银行帐号认证"/>{/if}{if $member[vmobile]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_mobile.gif" align="absmiddle" title="通过手机认证"/>{/if}{if $member[vemail]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_email.gif" align="absmiddle" title="通过邮件认证"/>{/if}{if $member[validated]}&nbsp;<img src="{DT_SKIN}image/check_right.gif" align="absmiddle"/>{/if}</h1>
+        <h2>{$member[business]}</h2>
+        <div class="sj_info">{if $member[sell]}<span>服务范围：</span>{$member[sell]}<br />{/if}{if $member[address]}<span>详细地址：</span>{$member[address]}<br />{/if}<span>联系人员：</span><font color="#0066cc">{$member[truename]}</font> ({gender($member[gender])}) {if $member[qq] && $DT[im_qq]}{im_qq($member[qq])}&nbsp;{/if}{if $member[ali] && $DT[im_ali]}{im_ali($member[ali])}&nbsp;{/if}{if $member[msn] && $DT[im_msn]}{im_msn($member[msn])}&nbsp;{/if}{if $member[skype] && $DT[im_skype]}{im_skype($member[skype])}&nbsp;{/if}<br /><span>联系电话：</span>{anti_spam($member[telephone])}<br /><span>站内联络：</span><a href="{$MODULE[2][linkurl]}friend.php?action=add&username={$username}">[加为好友]</a> <a href="{$MODULE[2][linkurl]}message.php?action=send&touser={$username}">[发送信件]</a><br />{if $member[regyear]}<span>成立年份：</span>{$member[regyear]} 年{/if}</div>
+        <div class="sj_js" style="*+height:100%;_height:270px;min-height:270px;height:auto!important;height:270px;"><strong style="color:#000;">{$member[company]}简介</strong><br><img src="{$member[thumb]}" alt="{$member[company]}" align="right" style="margin:5px 0 5px 10px;padding:5px;border:#C0C0C0 1px solid;"/>{$content}</div>
+        <div class="sj_js"><strong style="color:#000;">{$member[company]}图库</strong><br><!--{tag("moduleid=12&condition=status=3 AND username='$username'&pagesize=8&template=sj-photo")}--></div>
+        <div class="sj_js"><strong style="color:#000;">{$member[company]}产品</strong><br><!--{tag("moduleid=5&condition=status=3 AND username='$username'&pagesize=8&template=sj-photo")}--></div>
+    </div>
+</div>
+
+<div class="sj_right">
+    <div class="sjxz">
+    	<!--<div class="syqun"><a target="_blank" href="http://qun.qq.com/#jointhegroup/gid/1824196"><img src="/skin/default/image/qun.jpg" title="菏泽新人交流群"/></a></div>-->
+        <dl><dt>新人如何选择商家?</dt><dd>1.菏泽婚嫁所有审核的商家都有相应的认证图标,请选择已认证的商家;</dd><dd>2.选择资料详细的商家进行合作;</dd><dd>3.加入官方QQ群交流在线咨询;</dd><dd>4.如果您在本栏目浏览到可疑信息,或对信息有任何疑问,请联系我们.</dd></dl>
+        <!--<p><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=29449972&site=qq&menu=yes">对话官方QQ客服 >></a></p>-->
+    </div>
+    <ul class="sjyh">
+    	<h3>优惠折扣</h3>
+        {php $_tags=tag("moduleid=23&table=article_23&catid=397,398,399,400,401,402,403,404,405,406,407,408,409,410,412,411&pagesize=10&order=addtime desc&template=null")}
+        {loop $_tags $k $t} 
+        {if $k>-1}
+        <li><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[title]}</a></li>
+        {/if}
+        {/loop}
+    </ul>
+</div>
+
+</div>
+{template 'footer'}

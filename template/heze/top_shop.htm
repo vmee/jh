@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{$DT[sitename]}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}style-4c0cbb42.css" />
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}style-screen-6e73925c.css" media="screen" />
+<script type="text/javascript" src="{DT_PATH}file/webscript/script-0-4b79e2cf.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/config.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/_area.js"></script>
+<!--[if IE 6]>
+<script type="text/javascript" src="{DT_PATH}file/webscript/DD_belatedPNG_0.0.8a-min.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix('.logo img,.marketing1,.marketing2');
+</script>
+<![endif]-->
+<script type="text/javascript">
+	function addCollection(genre,seller_id,collection) {
+		$.get("/fav/add",{"genre":genre,"seller_id":seller_id,"collection":collection},function(data){
+			var s = eval(data);
+			alert(s);
+		});
+	}
+	$(function(){//我的商城
+		$(".login-after li").hover(function(){
+			$(this).find("div").slideDown(200);
+		},
+		function(){
+			$(this).find("div").slideUp(200);
+		});
+		$(".morecity").hover(function(){//切换城市
+			$(".citycont").stop().show(0);
+		},function(){
+			$(".citycont").stop().hide(0);
+		});
+
+		$("#mall-focus").adfocus({
+			drection: "filter",
+			numbox: ".numBox",
+			imgbox: ".imgbox",
+			speed: 3000,
+			addClass: "pptOn",
+			imgboxWidth:748,
+			imgboxHeight:248,
+			imgLen:4,
+			pull:"",
+			usevent:"mouseover"
+		});
+
+		$(".mall-notice").adtext({
+			obj:".notice-cont ul",
+			time:5000
+		});
+				
+	});
+</script>
+<script type="text/javascript">
+	$(function(){
+		//商场分类
+		$(".sortlist li").not(".pinla_shopindex_hotlistbox li").hover(function(){
+			$(this).css({"background-color":"#ef5355","background-position":"275px -294px"}).children("a").css({"color":"#fff",
+				"font-weight":"bold"
+			});
+			$(this).find(".pinla_shopindex_hotlistbox,.icon_j").show();
+		},
+		function(){
+			$(this).css({"background-color":"","background-position":"175px -294px"}).children("a").css({"color":"","font-weight":""});
+			$(this).find(".pinla_shopindex_hotlistbox,.icon_j").hide();
+
+		})
+	})
+</script>
+</head><body>
+<div id="header">
+  <!--头部-->
+  <div id="mall-site-nav" >
+    <!--页眉-->
+    <div class="mall-title" >菏泽一站式结婚消费平台,只选对的不选贵的!</div>
+    <div id="destoon_member" style="float:right;line-height:28px;"></div>
+  </div>
+  <!--页眉end-->
+  <div id="mall-top">
+    <!--mall-top-->
+    <h1 class="logo">
+      <!--logo-->
+      <a href="{DT_PATH}"><img src="{DT_SKIN}img/mall_logo.png" alt="菏泽结婚一条龙商城" /></a> </h1>
+    <!--logo-end-->
+    <div class="mall-city">
+      <!--城市切换-->
+      <strong>菏泽市</strong><br />
+      <div class="morecity">[各区]
+        <div class="citycont">
+          <iframe frameborder="0" class="iframe"></iframe>
+          <ul class="citylist">
+            <li><span>区域</span>
+              <div class="citybox"> {php $mainarea = get_mainarea(1, $AREA)}
+                {loop $mainarea $k $v}
+                {if $k%10==0}
+                <tr>{/if} <a  target="_self" href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$v['areaid'])}">{$v[areaname]}</a> {if $k%10==9}</tr>
+                {/if}
+                {/loop} </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script>
+function checkSearchForm() {
+    if($(".mall-searchcont .input-tx").val()=='请输入商铺进行搜索'||$(".mall-searchcont .input-tx").val()=='请输入商品进行搜索'){
+        $(".mall-searchcont .input-tx").val('');
+    }
+    return true;
+}
+
+
+$(function(){
+
+    //商城搜索
+    $(".mall-searchtab li").each(function(i){
+        $(this).click(function(){
+            var act=$("form[name='form']");
+            var index=$(this).index();
+            var hval=$(".mall-searchcont .input-tx");
+            index===0?hval.val("请输入商铺进行搜索"):hval.val("请输入商品进行搜索");
+            //index===0?hval.attr("id","search_product_text"):hval.attr("id","search_shop_text");
+            index===0?act.attr("action","{DT_PATH}company/search.php"):act.attr("action","{DT_PATH}sell/search.php")
+            $(this).addClass("hover").siblings().removeClass("hover");
+        });
+    });
+    $(".mall-searchcont .input-tx").focusin(function(){
+        if(($(this).val()==="请输入商铺进行搜索")||($(this).val()==="请输入商品进行搜索")){
+            $(this).val("");
+        }
+    });
+    $(".mall-searchcont .input-tx").focusout(function(){
+        if($(this).val()===""){
+            $(this).attr("id")==="search_product_text"?$(this).val("请输入商铺进行搜索"):$(this).val("请输入商品进行搜索");
+        }
+    });                
+})
+
+</script>
+    <!--城市切换end-->
+    <div id="mall-search">
+      <!--搜索-->
+      <div class="mall-searchtab">
+        <ul>
+          <li class="hover">商铺</li>
+          <li>商品</li>
+        </ul>
+      </div>
+      <div class="mall-searchcont">
+        <form action="{DT_PATH}search.php" name="form" method="get" onsubmit="return checkSearchForm();">
+          <input name="kw" class="input-tx" value="{if $kw}{$kw}{else}请输入商铺进行搜索{/if}"  id="search_product_text"/>
+          <input class="input-btn" value="" type="submit" />
+        </form>
+      </div>
+      <div class="moresearch"> <a href="http://jiehun.pinla.com/help/index.php?q=%E6%90%9C%E7%B4%A2" target="_blank">搜索帮助</a><br />
+        <a href="{DT_PATH}member/my.php" target="_blank">商家入驻</a> </div>
+    </div>
+    <!--搜索end-->
+  </div>
+  <!--mall-topend-->
+  <div id="mall-nav">
+    <!--导航-->
+    <ul class="navlist">
+      <li{if $moduleid<4} class="click"{/if}><a href="{DT_PATH}"><span>首页</span></a>
+      </li>
+      {loop $MODULE $m}
+      {if $m[ismenu]}
+      <li><a {if $m[moduleid]==$moduleid} class="click"{/if} href="{$m[linkurl]}"{if $m[isblank]} target="_blank"{/if}><span{if $m[style]} style="color:{$m[style]};"{/if}>{$m[name]}</span></a></li>
+      {/if}{/loop}
+    </ul>
+    {php $tags=tag("table=announce&condition=1&pagesize=3&datetype=2&order=listorder desc,addtime desc&template=null");}
+    <div class="mall-notice">
+      <!--通告-->
+      <div class="notice-cont">
+        <ul style="top: 0px;">
+          {loop $tags $k $t}
+          <li><font style="">{$t[title]}</font></li>
+          {/loop}
+        </ul>
+      </div>
+    </div>
+    <!--通告end-->
+  </div>
+  <!--导航end-->
+</div>
+<!--头部end-->
