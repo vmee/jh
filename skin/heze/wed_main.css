@@ -26,7 +26,7 @@ em{color:#f44870;font-style:normal;}
 .logo { float:left; margin:14px 40px 14px 18px; width:167px; height:52px; display:block;}
 .head_height { height:80px; overflow:hidden;}
 .navbg { height:40px; font:16px/40px "宋体",tahoma,arial; font-weight:bold;}
-.navbg a { color:#fff; margin-left:40px;display:inline-table;}
+.navbg a { color:#fff; margin-right:40px;display:inline-table;}
 .navbg a:hover { color:#FFFF00;}
 .navbg .navhot { background-color:#555555; width:200px; height:40px; margin-left:0; text-align:center;}
 
@@ -46,7 +46,7 @@ em{color:#f44870;font-style:normal;}
 
 .wrap_b { background-color:#fff; box-shadow:0 2px 4px -2px #CCCCCC}
 h3 {width:960px;margin:0 auto;height:60px;line-height:60px;font-family:Arial,"Microsoft YaHei";overflow:hidden;font-size:14px;}
-h3 .title {float:left;font-size:20px;margin-right:10px;background:url(ai_img/ind_01.gif) 10px -113px no-repeat;text-indent:34px;}
+h3 .title {float:left;font-size:20px;margin-right:10px;background:url(ai_img/ind_01.gif) 10px -113px no-repeat;}
 h3 .info { float:left; line-height:66px; color:#838383;}
 h3 .right{ float:right; color:#838383;}
 h3 .right a {color:#838383;}h3 .right a:hover {color:#f44870;}

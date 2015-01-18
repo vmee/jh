@@ -27,7 +27,16 @@ document.domain = '{DT_DOMAIN}';
 {if $css}<style type="text/css">{$css}</style>{/if}
 </head>
 <body{if $bgcolor || $background} style="background:{if $bgcolor}{$bgcolor} {/if}{if $background}url('{$background}') no-repeat center 0{/if};"{/if}>
-<div class="m"><div class="top" id="top"><a href="{$COM[linkurl]}" title="{$COM[company]}" rel="sidebar" onclick="window.external.addFavorite(this.href, this.title);return false;">收藏本页</a> | <a href="{$COM[linkurl]}" onclick="javascript:try{this.style.behavior='url(#default#homepage)';this.setHomePage(location.href);}catch(e){}return false;">设为主页</a> | <a href="javascript:Go(DTTour);">随便看看</a></div></div>
+
+
+<div class="top_nav wrap">
+    <div class="m">
+    <p class="ai_title">{$DT['sitename']},让选择更多,让服务更全,让婚礼更美!</p>
+    <div id="destoon_member" style="float:right;padding-top:5px;"></div>
+    </div>
+</div>
+
+
 <div class="m">
 <div class="sign">
 {if $COM[vip]}

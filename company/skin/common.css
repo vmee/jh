@@ -96,3 +96,6 @@ a.b:hover {color:#FF6600;}
 .dsn {display:none;}
 .c_p {cursor:pointer;}
 .highlight {color:red;}
+
+.top_nav{height:48px;background: #000;}
+.top_nav .ai_title{float:left;color:#E54B7F;line-height:16px;font-size:16px;}

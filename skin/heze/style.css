@@ -180,7 +180,7 @@ a.g:hover {color:#FF6600;}
 .lazy {background:#FAFAFA url('image/loading.gif') no-repeat center center;}
 .slide {background:#FAFAFA;overflow:hidden;}
 /* position */
-.pos {padding:0 10px 0 10px;line-height:31px;background:#EEEEEE url('image/box_head_bg.gif') repeat-x;}
+.pos {margin:0 10px 0 10px;line-height:31px;}
 .nav {padding:0 10px 10px 10px;}
 /* show */
 .title {height:25px;font-size:20px;text-align:center;font-family:\9ED1\4F53;font-weight:normal;}
@@ -224,7 +224,7 @@ a.g:hover {color:#FF6600;}
 .category {padding:10px 20px 5px 15px;}
 .category p {padding:5px 0 5px 0;margin:0;}
 .category div {padding:0 20px 0 20px;}
-.list {line-height:180%;margin:0 10px 0 10px;}
+.list {line-height:180%;}
 .list div img {border:#CCCCCC 1px solid;}
 .list table {width:100%;border-bottom:#CCCCCC 1px dotted;}
 .list td {padding:10px 0 10px 0;}
