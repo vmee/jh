@@ -5,22 +5,34 @@
 /* global */
 body {margin:0px;font-size:12px;color:#000000;background:#F9F9F9;}
 /* common */
-.m {width:960px;margin:auto;}
+.m {width:960px;margin:auto;margin-top:15px;}
+.box{width: 920px;padding:20px;background:#fff;border:1px solid #e1e1e1}
 .top {height:26px;line-height:26px;background:#F7CEF9;padding:0 10px 0 10px;}
 #top a {text-decoration:none;}
 
-.head {height:115px;overflow:hidden;}
-.head div {float:left;}
-.head .logo {padding:15px 10px 0 0px;height:90px;overflow:hidden;}
-.head h1 {font-size:24px;margin:32px 0 5px 10px;color:#EEEEEE;font-family:\9ED1\4F53;filter:glow(color=#FFFFFF,strength=3);}
-.head h4 {font-size:15px;margin:0 0 0 10px;color:#EEEEEE;}
+.head {height:220px;overflow:hidden;}
+.head .logobox{float:left;width:165px;border:1px solid #f4f4f4;vertical-align:middle;padding:10px
+10px 10px 10px;background:#fff}
+.head .logo {width:165px;height:165px;overflow:hidden}
+.head .basic{padding-left:20px;width:420px}
+.head .basic .clearfix{margin-top: 10px;}
+.head .basic .topname h1{font-size: 18px;font-weight: 600;margin: 0px;padding: 0px;}
+.head .basic .leftname {color: #999;height: 20px;
+    line-height: 20px;}
+.head .basic .leftname span{color: #666;}
+.head .rankBox {margin-top:60px;}
+.head .rankBox .clearfix{margin-top:10px;}
+.head .rankBox .leftname {color:#666}
+.head .rankBox .leftname i{color:#999}
+.rankBtn{width:240px;height:37px;line-height:37px;text-align:center;background:#ef0d4d repeat-x;border:none;margin-left:10px;color:#fff;cursor:pointer;font-weight:bold;font-size:16px;box-shadow:0px  4px 2px -3px #a79797}.rankBtn:hover{opacity:0.8}
+
 
 #menu a {text-decoration:none;}
-.menu {height:30px;overflow:hidden;padding:0 0 0 20px;font-size:14px;font-weight:bold;background:#E54B7F;}
-.menu_li {float:left;white-space:nowrap;border-right:#e1e1e1 1px solid;line-height:30px;padding:0 20px 0 20px;}
-.menu_li span {color:#FFFFFF;}
-.menu_on {float:left;white-space:nowrap;border-right:#e1e1e1 1px solid;line-height:30px;padding:0 20px 0 20px;}
-.menu_on span {color:#333333;}
+.menu {height:60px;overflow:hidden;font-size:14px;font-weight:bold;background:#ef0d4d;}
+.menu li{float:left;white-space:nowrap;text-align:center;line-height:40px;color:#FFFFFF}
+.menu li a{display:block;font-weight:bold;color:#fff;width:96px}
+.menu_li a:hover{background:#cb1032;}
+.menu_on a{background:#cb1032;}
 
 .side_head {border:#e1e1e1 1px solid;border-bottom:none;}
 .side_head div {padding:0 10px 0 10px;font-size:14px;height:28px;line-height:30px;overflow:hidden;letter-spacing:1px;}

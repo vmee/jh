@@ -3,9 +3,10 @@
 	This is NOT a freeware, use is subject to license.txt
 */
 /* global */
-* {word-break:break-all;font-family:Verdana,Arial;-webkit-text-size-adjust:none;}
-input,select,textarea {font-size:12px;}
+* {word-break:break-all;font-family:"微软雅黑","microsoft yahei",Arial,Helvetica,sans-serif,"宋体";font-size:13px;-webkit-text-size-adjust:none;}
+input,select,textarea {font-size:13px;}
 img {border:none;}
+p{margin:0px;padding:0px}
 ul li {list-style-type:none;}
 ol li {list-style-type:decimal;}
 ul,form {margin:0px;padding:0px;}
@@ -92,10 +93,13 @@ a.b:hover {color:#FF6600;}
 .lh18 {line-height:180%;}
 .b10 {font-size:1px;height:10px;}
 .pd10 {padding:10px;}
+.mt15 {margin-top:15px;}
 .c_b{clear:both;}
 .dsn {display:none;}
 .c_p {cursor:pointer;}
 .highlight {color:red;}
+.clearfix:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}.clearfix{*zoom:1}
 
-.top_nav{height:48px;background: #000;}
-.top_nav .ai_title{float:left;color:#E54B7F;line-height:16px;font-size:16px;}
+.top_nav{height:48px;background:#000;}
+.top_nav .head{width:960px;margin:auto;padding-top: 10px;}
+.top_nav .ai_title{float:left;color:#E54B7F;font-size:16px;}

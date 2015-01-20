@@ -29,15 +29,34 @@ document.domain = '{DT_DOMAIN}';
 <body{if $bgcolor || $background} style="background:{if $bgcolor}{$bgcolor} {/if}{if $background}url('{$background}') no-repeat center 0{/if};"{/if}>
 
 
-<div class="top_nav wrap">
-    <div class="m">
+<div class="top_nav">
+    <div class="head">
     <p class="ai_title">{$DT['sitename']},让选择更多,让服务更全,让婚礼更美!</p>
-    <div id="destoon_member" style="float:right;padding-top:5px;"></div>
+    <div id="destoon_member"></div>
     </div>
 </div>
 
-
+{if $bannert || $banner}
 <div class="m">
+    <div class="banner">
+        {if $bannert == 2}
+        <script type="text/javascript">
+            var config = '5|0xFFFFFF|0x333333|80|0xFAFAFA|0x333333|0x000000';
+            var files = "{$banner1}|{$banner2}{if $banner3}|{$banner3}{/if}{if $banner4}|{$banner4}{/if}{if $banner5}|{$banner5}{/if}";
+            var links = '';
+            var texts = '';
+            document.write('<embed src="{DT_PATH}file/flash/slide.swf" wmode="opaque" FlashVars="config='+config+'&bcastr_flie='+files+'&bcastr_link='+links+'&bcastr_title='+texts+'&menu="false" quality="high" width="{$bannerw}" height="{$bannerh}" type="application/x-shockwave-flash" extendspage="http://get.adobe.com/flashplayer/"></embed>');
+        </script>
+        {elseif $bannert == 1}
+        <embed src="{$bannerf}" quality="high" loop="true" extendspage="http://get.adobe.com/flashplayer/" type="application/x-shockwave-flash" wmode="transparent" width="{$bannerw}" height="{$bannerh}"></embed>
+        {elseif $banner}
+        <img src="{$banner}" width="100%"/>
+        {/if}
+    </div>
+</div>
+{/if}
+
+<div class="m box">
 <div class="sign">
 {if $COM[vip]}
 <div><strong>{$COM[year]}</strong><span title="指数满分为10">{$COM[vip]}</span></div>
@@ -46,15 +65,79 @@ document.domain = '{DT_DOMAIN}';
 {/if}
 </div>
 <div class="head">
-{if $logo}<div class="logo"><a href="{$COM[linkurl]}"><img src="{$logo}" alt="{$COM[company]}" onload="if(this.width>300)this.width=300;"/></a></div>{/if}
-<div>
-<h1>{$COM[company]}</h1>
-<h4>{dsubstr($COM['business'], $logo ? 60 : 80, '...')}</h4>
+    <div class="logobox">
+{if $logo}<div class="logo"><a href="{$COM[linkurl]}"><img src="{$logo}" alt="{$COM[company]}" onload="if(this.width>165)this.width=165;"/></a></div>{/if}
+        </div>
+
+    <div class="basic f_l">
+
+            <div class="topname">
+                <h1>{$COM[company]}</h1>
+            </div>
+
+
+        <div class="clearfix">
+            <div class="leftname">营业时间：<span>周一到周日上午8：30-下午18:00 </span></div>
+        </div>
+
+        <div class="clearfix">
+            <div class="addTxt "><div class="f_l leftname">商家地址：<span>[丰台区]世界公园对面水晶之恋婚纱摄影广场</span></div>
+                <a class="mapicon f_r" href="http://shuijingzh.vip.wed114.cn/ditu_3898.html" target="_blank">地图</a>
+            </div>
+        </div>
+        <div class="clearfix">
+            <p class="topphone f_l leftname">联系电话：<span>15210888169</span>
+            </p>
+            <p class="sendadd f_r"><span><a href="javascript:;" data-url="http://shuijingzh.vip.wed114.cn/dizhi_3898.html" class="mdialog" title="还在抄写地址电话吗？点一下，免费短信发给您">免费发送地址到手机</a></span></p>
+        </div>
+
+        <div class="clearfix">
+            <p class="leftname">官方网站：<a href="http://shuijingzh.vip.wed114.cn/" target="_blank" rel="nofollow">http://shuijingzh.vip.wed114.cn/</a></p>
+            </div>
+        <div class="serol clearfix"><div class="f_l leftname">在线咨询：</div>
+
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1410219919&amp;Site=www.wed114.cn&amp;Menu=yes" rel="nofollow" title="QQ交谈"><img border="0" src="http://static.wed114.cn/static_shop/images/ptsp_33.png" alt="请说明来自wed114结婚网" title="请说明来自wed114结婚网"></a>&nbsp;<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1121279078&amp;Site=www.wed114.cn&amp;Menu=yes" rel="nofollow" title="QQ交谈"><img border="0" src="http://static.wed114.cn/static_shop/images/ptsp_33.png" alt="请说明来自wed114结婚网" title="请说明来自wed114结婚网"></a>&nbsp;
+        </div>
+
+        <div class="clearfix sharebox">
+            <div class="sharetxt f_l">请分享到：</div>
+            <div class="f_l">
+                <!-- Baidu Button BEGIN -->
+                <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+                    <a class="bds_tqq" title="分享到腾讯微博" href="#"></a>
+                    <a class="bds_tsina" title="分享到新浪微博" href="#"></a>
+                    <a class="bds_qzone" title="分享到QQ空间" href="#"></a>
+                    <a class="bds_tqf" title="分享到腾讯朋友" href="#"></a>
+                    <a class="bds_renren" title="分享到人人网" href="#"></a>
+                    <span class="bds_more"></span>
+                    <a class="shareCount" href="#" title="累计分享77次">77</a>
+                </div>
+                <!-- Baidu Button END -->
+            </div>
+        </div>
+    </div>
+
+    <div class="rankBox f_r">
+
+        <div class="clearfix leftname">商铺流量：<b>172096&nbsp;&nbsp;</b><i>位新人关注过</i></div>
+        <div class="clearfix shopRank">
+            <div class="f_l ranksctxt leftname">综合系数：</div>
+            <div class="rankscore f_l">5</div>
+        </div>
+        <div class="clearfix shopRank mt5">
+            <div class="f_l ranksctxt leftname">商铺热度：</div>
+            <div class="rankscore f_l">5066</div>
+
+        </div>
+        <div class="btnBox clearfix">
+            <input class="rankBtn mdialog" data-url="http://shuijingzh.vip.wed114.cn/order_3898.html" type="button" value="立即免费预约">
+        </div>
+    </div>
 </div>
-</div>
+
 </div>
 <div class="m">
-<div class="menu" id="menu"{if count($MENU)>8} style="height:60px;"{/if}>
+<div class="menu" id="menu"{if count($MENU)>8} style="height:80px;"{/if}>
 	<ul>
 	<li class="{if $file=='homepage'}menu_on{else}menu_li{/if}"><a href="{$COM[linkurl]}"><span>网站首页</span></a></li>
 	{loop $MENU $k $v}
@@ -63,25 +146,7 @@ document.domain = '{DT_DOMAIN}';
 	</ul>
 </div>
 </div>
-{if $bannert || $banner}
-<div class="m">
-<div class="banner">
-{if $bannert == 2}
-<script type="text/javascript">
-var config = '5|0xFFFFFF|0x333333|80|0xFAFAFA|0x333333|0x000000';
-var files = "{$banner1}|{$banner2}{if $banner3}|{$banner3}{/if}{if $banner4}|{$banner4}{/if}{if $banner5}|{$banner5}{/if}";
-var links = '';
-var texts = '';
-document.write('<embed src="{DT_PATH}file/flash/slide.swf" wmode="opaque" FlashVars="config='+config+'&bcastr_flie='+files+'&bcastr_link='+links+'&bcastr_title='+texts+'&menu="false" quality="high" width="{$bannerw}" height="{$bannerh}" type="application/x-shockwave-flash" extendspage="http://get.adobe.com/flashplayer/"></embed>');
-</script>
-{elseif $bannert == 1}
-<embed src="{$bannerf}" quality="high" loop="true" extendspage="http://get.adobe.com/flashplayer/" type="application/x-shockwave-flash" wmode="transparent" width="{$bannerw}" height="{$bannerh}"></embed>
-{elseif $banner}
-<img src="{$banner}" width="100%"/>
-{/if}
-</div>
-</div>
-{/if}
+
 <div class="m">
 <div class="pos" id="pos">
 <span class="f_r">
