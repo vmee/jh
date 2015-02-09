@@ -66,7 +66,10 @@ document.domain = '{DT_DOMAIN}';
 </div>
 <div class="head">
     <div class="logobox">
-{if $logo}<div class="logo"><a href="{$COM[linkurl]}"><img src="{$logo}" alt="{$COM[company]}" onload="if(this.width>165)this.width=165;"/></a></div>{/if}
+{if $logo}<div class="logo"><a href="{$COM[linkurl]}"><img src="{$logo}" alt="{$COM[company]}" onload="if(this.width>165)this.width=165;"/></a></div>{else}
+
+        <div class="logo"><a href="{$COM[linkurl]}"><img src="{$COM[thumb]}" alt="{$COM[company]}" onload="if(this.width>165)this.width=165;"/></a></div>
+        {/if}
         </div>
 
     <div class="basic f_l">
@@ -76,42 +79,45 @@ document.domain = '{DT_DOMAIN}';
             </div>
 
 
-        <div class="clearfix">
+<!--        <div class="clearfix">
             <div class="leftname">营业时间：<span>周一到周日上午8：30-下午18:00 </span></div>
-        </div>
+        </div>-->
 
         <div class="clearfix">
-            <div class="addTxt "><div class="f_l leftname">商家地址：<span>[丰台区]世界公园对面水晶之恋婚纱摄影广场</span></div>
-                <a class="mapicon f_r" href="http://shuijingzh.vip.wed114.cn/ditu_3898.html" target="_blank">地图</a>
+            <div class="addTxt "><div class="f_l leftname">商家地址：<span>{$COM[address]}</span></div>
             </div>
         </div>
         <div class="clearfix">
-            <p class="topphone f_l leftname">联系电话：<span>15210888169</span>
+            <p class="topphone f_l leftname">联系电话：<span>{if $domain}{$COM[telephone]}{else}{anti_spam($COM[telephone])}{/if}</span>
             </p>
-            <p class="sendadd f_r"><span><a href="javascript:;" data-url="http://shuijingzh.vip.wed114.cn/dizhi_3898.html" class="mdialog" title="还在抄写地址电话吗？点一下，免费短信发给您">免费发送地址到手机</a></span></p>
         </div>
 
         <div class="clearfix">
-            <p class="leftname">官方网站：<a href="http://shuijingzh.vip.wed114.cn/" target="_blank" rel="nofollow">http://shuijingzh.vip.wed114.cn/</a></p>
+            <p class="leftname">官方网站：{if $COM[homepage]}<a href="{$COM[homepage]}" target="_blank" rel="nofollow">{$COM[homepage]}</a><br/>{/if}
+                <a href="{$COM[linkurl]}" target="_blank" rel="nofollow">{$COM[linkurl]}</a></p>
             </div>
-        <div class="serol clearfix"><div class="f_l leftname">在线咨询：</div>
 
-            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1410219919&amp;Site=www.wed114.cn&amp;Menu=yes" rel="nofollow" title="QQ交谈"><img border="0" src="http://static.wed114.cn/static_shop/images/ptsp_33.png" alt="请说明来自wed114结婚网" title="请说明来自wed114结婚网"></a>&nbsp;<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1121279078&amp;Site=www.wed114.cn&amp;Menu=yes" rel="nofollow" title="QQ交谈"><img border="0" src="http://static.wed114.cn/static_shop/images/ptsp_33.png" alt="请说明来自wed114结婚网" title="请说明来自wed114结婚网"></a>&nbsp;
+        <div class="serol clearfix"><div class="f_l leftname">商铺流量：</div>
+            {$COM[hits]}&nbsp;&nbsp;</b><i>位新人关注过</i>
         </div>
 
         <div class="clearfix sharebox">
             <div class="sharetxt f_l">请分享到：</div>
             <div class="f_l">
                 <!-- Baidu Button BEGIN -->
-                <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
-                    <a class="bds_tqq" title="分享到腾讯微博" href="#"></a>
-                    <a class="bds_tsina" title="分享到新浪微博" href="#"></a>
-                    <a class="bds_qzone" title="分享到QQ空间" href="#"></a>
-                    <a class="bds_tqf" title="分享到腾讯朋友" href="#"></a>
-                    <a class="bds_renren" title="分享到人人网" href="#"></a>
+                <div id="bdshare" class="bdshare_t bds_tools get-co des-bdshare">
+                    <a class="bds_tsina"></a>
+                    <a class="bds_qzone"></a>
+                    <a class="bds_tqq"></a>
+                    <a class="bds_renren"></a>
+                    <a class="bds_bdhome"></a>
                     <span class="bds_more"></span>
-                    <a class="shareCount" href="#" title="累计分享77次">77</a>
                 </div>
+                <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=2   502690" ></script>
+                <script type="text/javascript" id="bdshell_js"></script>
+                <script type="text/javascript">
+                    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+                </script>
                 <!-- Baidu Button END -->
             </div>
         </div>
@@ -119,14 +125,17 @@ document.domain = '{DT_DOMAIN}';
 
     <div class="rankBox f_r">
 
-        <div class="clearfix leftname">商铺流量：<b>172096&nbsp;&nbsp;</b><i>位新人关注过</i></div>
         <div class="clearfix shopRank">
-            <div class="f_l ranksctxt leftname">综合系数：</div>
-            <div class="rankscore f_l">5</div>
+            <div class="f_l ranksctxt leftname">在线咨询：</div>
+            <div class="rankscore f_l">{if $COM[username] && $DT[im_web]}{im_web($COM[username])}&nbsp;{/if}
+                {if $COM[qq] && $DT[im_qq]}{im_qq($COM[qq])}&nbsp;{/if}
+                {if $COM[ali] && $DT[im_ali]}{im_ali($COM[ali])}&nbsp;{/if}
+                {if $COM[msn] && $DT[im_msn]}{im_msn($COM[msn])}&nbsp;{/if}
+                {if $COM[skype] && $DT[im_skype]}{im_skype($COM[skype])}&nbsp;{/if}</div>
         </div>
         <div class="clearfix shopRank mt5">
-            <div class="f_l ranksctxt leftname">商铺热度：</div>
-            <div class="rankscore f_l">5066</div>
+            <div class="f_l ranksctxt leftname">在线状态：：</div>
+            <div class="rankscore f_l">{if online($COM[userid])==1}<span class="f_red">当前在线</span>{else}<span class="f_gray">当前离线</span>{/if}</div>
 
         </div>
         <div class="btnBox clearfix">

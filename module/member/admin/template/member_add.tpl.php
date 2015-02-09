@@ -270,10 +270,12 @@ function Dcheck() {
 			Dmsg('请填写公司电话', 'telephone');
 			return false;
 		}
+        /**
 		if(FCKLen('introduce') < 5) {
 			Dmsg('公司介绍不能少于5字，当前已经输入'+FCKLen('introduce')+'字', 'introduce');
 			return false;
 		}
+         **/
 	}
 	return true;
 }

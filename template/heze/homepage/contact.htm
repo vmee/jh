@@ -82,10 +82,5 @@
 	{php @include DT_ROOT.'/api/map/'.$api_map.'/show.inc.php';}
 </div>
 {/if}
-{if $could_message}
-<div class="main_head"><div><strong>在线留言</strong><a name="guestbook"></a></div></div>
-<div class="main_body">
-	<iframe src="{$MODULE[4][linkurl]}home.php?action=message&job=guestbook&template={$template}&skin={$skin}&username={$username}&sign={crypt_sign($template.$skin.$username)}" name="fra" id="fra" style="width:98%;height:488px;" scrolling="no" frameborder="0"></iframe>
-</div>
-{/if}
+
 {template 'footer', $template}

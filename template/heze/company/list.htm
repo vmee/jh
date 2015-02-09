@@ -5,7 +5,6 @@
 <div class="wrap pic_img">
 
 </div>
-<div class="pos">当前位置: <a href="{$MODULE[1][linkurl]}">首页</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a> &raquo; {cat_pos($CAT, ' &raquo; ')}</div>
 <div class="wrap wrap_b mar_15">
     <dl class="s_type"><dt>类型：</dt>
         <dd> {php $mid = 4;}
@@ -48,20 +47,13 @@
 
             <a href="search.php?vip=1" target="_blank" class="more">更多VIP商家</a>
         </ul>
-        <ul>
-            <h5>企业新闻</h5>
 
-            {php $tags=tag("moduleid=2&table=news&pagesize=10&order=addtime desc&template=list-news-li")}
-
-
-            <a href="news.php-page=1.html" target="_blank" class="more">更多企业新闻</a>
-        </ul>
         <ul>
             <h5>最新加盟</h5>
 
             {php $tags=tag("moduleid=4&table=company&pagesize=10&order=fromtime desc&template=list-news-li-area")}
 
-            <a href="search.php-page=1.html" class="more" target="_blank">更多最新加盟</a>
+            <a href="search.php" class="more" target="_blank">更多最新加盟</a>
         </ul>
     </div>
 

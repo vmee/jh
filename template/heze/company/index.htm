@@ -24,10 +24,16 @@
 </div>
 <div class="wrap wrap_b">
     <div class="s_type_l">
-        <div class="list">
-            <h2>新人喜欢的 <strong>婚纱影楼</strong></h2><a href="list.php?catid=413" class="more" title="菏泽影楼">更多影楼</a><div class="clearfix"></div>
 
-            {php $_tags=tag("moduleid=5&table=company&pagesize=3&condition=catid like '%,413,%'&template=null")}
+
+        {php $child = get_maincat(0, 4, 1);}
+        {loop $child $i $c}
+
+
+        <div class="list">
+            <h2>新人喜欢的 <strong>{set_style($c[catname], $c[style])}</strong></h2><a href="list.php?catid={$c[catid]}" class="more" title="{$c[catname]}">更多{$c[catname]}</a><div class="clearfix"></div>
+
+            {php $_tags=tag("moduleid=5&table=company&pagesize=3&condition=catid like '%,".$c[catid].",%'&template=null")}
             {loop $_tags $k $t}
             {php $com_logo=get_company_setting(get_user($t['username']),'logo', 'CACHE');}
 
@@ -37,79 +43,8 @@
 
             <div class="clearfix"></div>
         </div>
-        <div class="list">
-            <h2>新人喜欢的 <strong>摄影工作室</strong></h2><a href="list.php?catid=414" class="more" title="菏泽摄影工作室">更多摄影工作室</a><div class="clearfix"></div>
-            {php $_tags=tag("moduleid=5&table=company&pagesize=3&condition=catid like '%,414,%'&template=null")}
-            {loop $_tags $k $t}
-            {php $com_logo=get_company_setting(get_user($t['username']),'logo', 'CACHE');}
+        {/loop}
 
-            <dl><dd><a href="{$t[linkurl]}" title="{$t[company]}" target="_blank"><img src="{$com_logo}" class="lazy" original="{imgurl($t[thumb], 0)}" alt="{$t[company]}"></a></dd><dt>{$t[company]}</dt></dl>
-
-            {/loop}
-            <div class="clearfix"></div>
-        </div>
-        <div class="list">
-            <h2>新人喜欢的 <strong>婚宴酒店</strong></h2><a href="list.php?catid=417" class="more" title="菏泽婚宴酒店">更多婚宴酒店</a><div class="clearfix"></div>
-
-            {php $_tags=tag("moduleid=5&table=company&pagesize=3&condition=catid like '%,417,%'&template=null")}
-            {loop $_tags $k $t}
-            {php $com_logo=get_company_setting(get_user($t['username']),'logo', 'CACHE');}
-
-            <dl><dd><a href="{$t[linkurl]}" title="{$t[company]}" target="_blank"><img src="{$com_logo}" class="lazy" original="{imgurl($t[thumb], 0)}" alt="{$t[company]}"></a></dd><dt>{$t[company]}</dt></dl>
-
-            {/loop}
-
-            <div class="clearfix"></div>
-        </div>
-        <div class="list">
-            <h2>新人喜欢的 <strong>婚庆策划</strong></h2><a href="list.php?catid=418" class="more" title="菏泽婚庆策划">更多婚庆公司</a><div class="clearfix"></div>
-
-            {php $_tags=tag("moduleid=5&table=company&pagesize=3&condition=catid like '%,418,%'&template=null")}
-            {loop $_tags $k $t}
-            {php $com_logo=get_company_setting(get_user($t['username']),'logo', 'CACHE');}
-
-            <dl><dd><a href="{$t[linkurl]}" title="{$t[company]}" target="_blank"><img src="{$com_logo}" class="lazy" original="{imgurl($t[thumb], 0)}" alt="{$t[company]}"></a></dd><dt>{$t[company]}</dt></dl>
-
-            {/loop}
-
-            <div class="clearfix"></div>
-        </div>
-        <div class="list">
-            <h2>新人喜欢的 <strong>婚纱礼服</strong></h2><a href="list.php?catid=424" class="more" title="菏泽婚纱礼服">更多婚纱礼服</a><div class="clearfix"></div>
-
-            {php $_tags=tag("moduleid=5&table=company&pagesize=3&condition=catid like '%,424,%'&template=null")}
-            {loop $_tags $k $t}
-            {php $com_logo=get_company_setting(get_user($t['username']),'logo', 'CACHE');}
-
-            <dl><dd><a href="{$t[linkurl]}" title="{$t[company]}" target="_blank"><img src="{$com_logo}" class="lazy" original="{imgurl($t[thumb], 0)}" alt="{$t[company]}"></a></dd><dt>{$t[company]}</dt></dl>
-
-            {/loop}
-
-
-            <div class="clearfix"></div>
-        </div>
-        <div class="list">
-            <h2>新人喜欢的 <strong>婚礼跟妆</strong></h2><a href="list.php?catid=419" class="more" title="菏泽婚礼跟妆">更多婚礼跟妆</a><div class="clearfix"></div>
-            {php $_tags=tag("moduleid=5&table=company&pagesize=3&condition=catid like '%,419,%'&template=null")}
-            {loop $_tags $k $t}
-            {php $com_logo=get_company_setting(get_user($t['username']),'logo', 'CACHE');}
-
-            <dl><dd><a href="{$t[linkurl]}" title="{$t[company]}" target="_blank"><img src="{$com_logo}" class="lazy" original="{imgurl($t[thumb], 0)}" alt="{$t[company]}"></a></dd><dt>{$t[company]}</dt></dl>
-
-            {/loop}
-            <div class="clearfix"></div>
-        </div>
-        <div class="list">
-            <h2>新人喜欢的 <strong>婚车租赁</strong></h2><a href="list.php?catid=422" class="more" title="菏泽婚车租赁">更多婚车租赁</a><div class="clearfix"></div>
-            {php $_tags=tag("moduleid=5&table=company&pagesize=3&condition=catid like '%,422,%'&template=null")}
-            {loop $_tags $k $t}
-            {php $com_logo=get_company_setting(get_user($t['username']),'logo', 'CACHE');}
-
-            <dl><dd><a href="{$t[linkurl]}" title="{$t[company]}" target="_blank"><img src="{$com_logo}" class="lazy" original="{imgurl($t[thumb], 0)}" alt="{$t[company]}"></a></dd><dt>{$t[company]}</dt></dl>
-
-            {/loop}
-            <div class="clearfix"></div>
-        </div>
     </div>
     <div class="s_type_r">
         <div class="mar_15">

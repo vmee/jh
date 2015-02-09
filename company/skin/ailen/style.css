@@ -28,7 +28,7 @@ body {margin:0px;font-size:12px;color:#000000;background:#F9F9F9;}
 
 
 #menu a {text-decoration:none;}
-.menu {height:60px;overflow:hidden;font-size:14px;font-weight:bold;background:#ef0d4d;}
+.menu {overflow:hidden;font-size:14px;font-weight:bold;background:#ef0d4d;}
 .menu li{float:left;white-space:nowrap;text-align:center;line-height:40px;color:#FFFFFF}
 .menu li a{display:block;font-weight:bold;color:#fff;width:96px}
 .menu_li a:hover{background:#cb1032;}
