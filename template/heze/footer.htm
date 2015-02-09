@@ -1,11 +1,11 @@
 <div class="ai_footer">
-    <p><a href="{DT_URL}about/about.html" title="菏泽结婚网" target="_blank">关于我们</a><a href="{DT_URL}spread" title="菏泽结婚网商务合作" target="_blank">商务合作</a><a href="{DT_URL}member/register.php" title="菏泽结婚网商家申请入驻" target="_blank">商家入驻</a><a href="{DT_URL}ad/" title="菏泽结婚网广告投放" target="_blank">广告服务</a><a href="{DT_URL}member/grade.php" title="菏泽结婚网会员升级" target="_blank">升级会员</a><a href="{DT_URL}about/shenming.html" title="菏泽结婚网免责" target="_blank">免责声明</a><a href="{DT_URL}sitemap/" title="菏泽结婚网站内地图" target="_blank">站内导航</a></p>
+    <p>
+        {if $EXT[ad_enable]}<a href="{$EXT[ad_url]}">广告服务</a>{/if}
+        <!--{tag("table=webpage&condition=item=1&areaid=$cityid&order=listorder desc,itemid desc&template=list-webpage")}-->
+        | {if $EXT[guestbook_enable]}<a href="{$EXT[guestbook_url]}">网站留言</a>{/if}
+        | <a href="{$MODULE[1][linkurl]}member/grade.php" title="菏泽结婚网会员升级" target="_blank">升级会员</a></p>
     <p>&copy; 2010-2013 {$DT['sitename']}</p>
-    <!--
-    <dl>
-        <dt>合作媒体</dt><dd><a href="{DT_PATH}company/list.php?catid=413" target="_blank" title="菏泽婚纱影楼,菏泽摄影工作室">菏泽婚纱摄影</a><a href="{DT_PATH}news" target="_blank" title="结婚倒计时攻略,结婚步骤,结婚流程,结婚风俗,结婚技巧等...">结婚攻略</a><a href="{DT_PATH}company/list.php?catid=417" target="_blank" title="菏泽结婚酒店汇总,婚宴喜宴酒店">菏泽婚宴酒店</a></dd>
-    </dl>
-    -->
+
 </div>
 
 
