@@ -114,7 +114,7 @@ show_menu($menus);
 <td style="padding:10px;"><textarea style="width:100%;height:100px;"><?php echo file_get(DT_ROOT.'/license.txt');?></textarea></td>
 </tr>
 </table>
-<script type="text/javascript" src="<?php echo $notice_url;?>"></script>
+<script type="text/javascript" data="<?php echo $notice_url;?>"></script>
 <script type="text/javascript">
 var destoon_release = <?php echo DT_RELEASE;?>;
 var destoon_version = <?php echo DT_VERSION;?>;

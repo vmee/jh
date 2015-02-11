@@ -1,4 +1,4 @@
-# Robots For DESTOON B2B
+# Robots
 User-agent: *
 Disallow: /image/
 Disallow: /skin/

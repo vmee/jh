@@ -7,7 +7,7 @@ $edition = edition(1);
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=<?php echo DT_CHARSET; ?>" />
 <meta name="robots" content="noindex,nofollow"/>
-<title>管理员登录 - Powered By Destoon B2B <?php echo $edition;?></title>
+<title>管理员登录 - <?php echo $edition;?></title>
 <meta name="generator" content="Destoon B2B,www.destoon.com"/>
 <link rel="stylesheet" href="admin/image/login.css" type="text/css" />
 <script type="text/javascript" src="<?php echo DT_STATIC;?>lang/<?php echo DT_LANG;?>/lang.js"></script>
