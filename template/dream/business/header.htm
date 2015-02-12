@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}商务中心{$DT[seo_delimiter]}{if $city_sitename}{$city_sitename}{else}{$DT[sitename]}{/if}{$DT[seo_delimiter]}</title>
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="shortcut icon" href="{DT_STATIC}favicon.ico"/>
+    <link rel="bookmark" href="{DT_STATIC}favicon.ico"/>
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/colors/red.css" id="colors">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+
+<body class="boxed">
+
+<div id="wrapper">
+
+    <!-- Top Bar
+================================================== -->
+    <div id="top-bar">
+        <div class="container">
+
+            <!-- Top Bar Menu -->
+            <div class="ten columns">
+                商务中心
+            </div>
+
+            <!-- Member menu -->
+            <div class="six columns">
+                <ul class="member-menu">
+                    <li>欢迎，{$_truename}({$_username})</li>
+                    <li>|</li>
+                    <li><a href="{userurl($_username)}" target="_blank" title="{$_company}">{$_company}</a></li>
+                    <li>|</li>
+                    <li><a href="message.php">消息</a>{if $_message}<em>{$_message}</em>{/if}</li>
+                    {if $DT[im_web]}<li>|</li><li id="destoon_chat"><a href="chat.php">对话</a>{if $_chat}<em>{$_chat}</em>{/if}</li>{/if}
+                    <li>|</li>
+                    <li><<a href="logout.php?forward=">退出</a></li>
+                    {if $admin_user}<li>|</li><li><a href="index.php?action=logout">注销授权</a></li>{/if}
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="container">
+        <!-- Sidebar
+        ================================================== -->
+        <div class="three columns">
+
+            <!-- Categories -->
+            <div class="widget margin-top-0">
+                <h3 class="headline">会员服务</h3><span class="line"></span><div class="clearfix"></div>
+
+                <ul class="categories">
+
+                    {if $MG[inbox_limit]>-1 || $show_menu}
+                    <li><a href="message.php" class="{if $MG[inbox_limit]>-1}n{else}f{/if}">站内信件</a>{if $_message}<em>{$_message}</em>{/if}</li>
+                    {/if}
+
+                    {if $MG[chat] || $show_menu}
+                    {if $DT[im_web]}
+                    <li><a href="chat.php" class="{if $MG[inbox_limit]>-1}n{else}f{/if}">站内交谈</a>{if $_chat}<em>{$_chat}</em>{/if}</li>
+                    {/if}
+                    {/if}
+
+                    {if $MG[alert_limit]>-1 || $show_menu}
+                    <li><a href="alert.php" class="{if $MG[alert_limit]>-1}n{else}f{/if}">贸易提醒</a></li>
+                    {/if}
+
+                    {if $MG[spread] || $show_menu}
+                    <li><a href="spread.php" class="{if $MG[spread]}n{else}f{/if}">排名推广</a></li>
+                    {/if}
+                    {if $MG[ad] || $show_menu}
+                    <li></span><a href="ad.php" class="{if $MG[ad]}n{else}f{/if}">广告预定</a></li>
+                    {/if}
+                    <li><a href="edit.php" class="{if $_userid}n{else}f{/if}">修改资料</a></li>
+                    <li></span><a href="ask.php" class="{if $_userid}n{else}f{/if}">客服中心</a></li>
+                    <li><a href="invite_customer.php" class="{if $_userid}n{else}f{/if}">引荐客户</a></li>
+
+
+                </ul>
+
+                <div class="clearfix"></div>
+                <h3 class="headline">信息服务</h3><span class="line"></span><div class="clearfix"></div>
+
+                <ul class="categories">
+                    {loop $MENUMODS $k $v}
+                    {if in_array($v, $MYMODS)}
+                    <li><a href="{$DT[file_my]}?mid={$v}">{$MODULE[$v][name]}管理</a></li>
+                    {/if}
+                    {/loop}
+                </ul>
+
+                <div class="clearfix"></div>
+
+                <h3 class="headline">商铺管理</h3><span class="line"></span><div class="clearfix"></div>
+
+                <ul class="categories">
+                    {if $MG[homepage] || $show_menu}
+                    <li></span><a href="home.php" class="{if $MG[homepage]}n{else}f{/if}">商铺设置</a></li>
+                    {/if}
+
+                    {if ($MG[page_limit]>-1 && $MG[homepage]) || $show_menu}
+                    <li><a href="page.php" class="{if $MG[page_limit]>-1 && $MG[homepage]}n{else}f{/if}">公司单页</a></li>
+                    {/if}
+
+                </ul>
+
+                <div class="clearfix"></div>
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+        <div class="thirteen columns">
+
+            <div class="info-banner">
+                <div class="info-content">
+                    <h3>Perfect Template</h3>
+                </div>
+                <a href="index-2.html#" class="button color">Get This Theme</a>
+                <div class="clearfix"></div>
+            </div>
+
+        </div>
+
+        <div class="thirteen columns">
+        </div>
