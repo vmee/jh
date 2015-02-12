@@ -69,9 +69,10 @@
 
             <!-- Categories -->
             <div class="widget margin-top-0">
-                <h3 class="headline">会员服务</h3><span class="line"></span><div class="clearfix"></div>
 
-                <ul class="categories">
+
+                <ul id="categories">
+                    <li class="headline">会员服务</li>
 
                     {if $MG[inbox_limit]>-1 || $show_menu}
                     <li><a href="message.php" class="{if $MG[inbox_limit]>-1}n{else}f{/if}">站内信件</a>{if $_message}<em>{$_message}</em>{/if}</li>
@@ -97,25 +98,16 @@
                     <li></span><a href="ask.php" class="{if $_userid}n{else}f{/if}">客服中心</a></li>
                     <li><a href="invite_customer.php" class="{if $_userid}n{else}f{/if}">引荐客户</a></li>
 
+                    <li class="headline">信息服务</li>
 
-                </ul>
-
-                <div class="clearfix"></div>
-                <h3 class="headline">信息服务</h3><span class="line"></span><div class="clearfix"></div>
-
-                <ul class="categories">
                     {loop $MENUMODS $k $v}
                     {if in_array($v, $MYMODS)}
                     <li><a href="{$DT[file_my]}?mid={$v}">{$MODULE[$v][name]}管理</a></li>
                     {/if}
                     {/loop}
-                </ul>
 
-                <div class="clearfix"></div>
+                    <li class="headline clearfix">商铺管理</li>
 
-                <h3 class="headline">商铺管理</h3><span class="line"></span><div class="clearfix"></div>
-
-                <ul class="categories">
                     {if $MG[homepage] || $show_menu}
                     <li></span><a href="home.php" class="{if $MG[homepage]}n{else}f{/if}">商铺设置</a></li>
                     {/if}
@@ -123,6 +115,21 @@
                     {if ($MG[page_limit]>-1 && $MG[homepage]) || $show_menu}
                     <li><a href="page.php" class="{if $MG[page_limit]>-1 && $MG[homepage]}n{else}f{/if}">公司单页</a></li>
                     {/if}
+
+                </ul>
+
+                <div class="clearfix"></div>
+
+
+                <ul class="categories">
+
+                </ul>
+
+                <div class="clearfix"></div>
+
+
+
+                <ul class="categories">
 
                 </ul>
 

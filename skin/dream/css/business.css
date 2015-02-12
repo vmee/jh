@@ -7,12 +7,6 @@
 #top-bar h1, #top-bar a{color: #fff;}
 
 
-.three {padding-left: 10px;}
-.three,.three h3{
-	background: #f8f8f8;
-}
-
-.three ul{padding-left:20px}
 
 #footer-bottom {
 	background: #fff;
@@ -20,5 +14,22 @@
 	padding: 17px 0 13px 0;
 }
 
+
+
 #footer-bottom a{color:#000}
 
+#categories li a {
+	border:none;
+	color:#000;}
+.headline {
+	color:#000;
+	font-size: 20px;
+	background-color: #fff;
+	padding: 20px 0 10px;
+	z-index: 5;
+	position: relative;
+	float: none;
+	text-transform: uppercase;
+	font-weight: 900;
+	border-bottom: 1px solid #eee;
+}
