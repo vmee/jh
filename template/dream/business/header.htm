@@ -17,8 +17,9 @@
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/colors/red.css" id="colors">
+    <link rel="stylesheet" href="{DT_STATIC}/skin/dream/css/style.css">
+    <link rel="stylesheet" href="{DT_STATIC}/skin/dream/css/colors/red.css" id="colors">
+    <link rel="stylesheet" href="{DT_STATIC}/skin/dream/css/business.css">
 
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -26,7 +27,7 @@
 
 </head>
 
-<body class="boxed">
+<body class="wide">
 
 <div id="wrapper">
 
@@ -36,12 +37,12 @@
         <div class="container">
 
             <!-- Top Bar Menu -->
-            <div class="ten columns">
-                商务中心
+            <div class="eight columns">
+                <h1>菏泽结婚网商铺管理中心</h1>
             </div>
 
             <!-- Member menu -->
-            <div class="six columns">
+            <div class="eight columns">
                 <ul class="member-menu">
                     <li>欢迎，{$_truename}({$_username})</li>
                     <li>|</li>
@@ -50,7 +51,7 @@
                     <li><a href="message.php">消息</a>{if $_message}<em>{$_message}</em>{/if}</li>
                     {if $DT[im_web]}<li>|</li><li id="destoon_chat"><a href="chat.php">对话</a>{if $_chat}<em>{$_chat}</em>{/if}</li>{/if}
                     <li>|</li>
-                    <li><<a href="logout.php?forward=">退出</a></li>
+                    <li><a href="logout.php?forward=">退出</a></li>
                     {if $admin_user}<li>|</li><li><a href="index.php?action=logout">注销授权</a></li>{/if}
 
                 </ul>

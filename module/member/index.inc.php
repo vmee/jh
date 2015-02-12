@@ -42,6 +42,11 @@ if($submit) {
 	$trade = $db->count("{$DT_PRE}mall_order", "seller='$_username' AND status=0");
 	$expired = $totime && $totime < $DT_TIME ? true : false;
 	$havedays = $expired ? 0 : ceil(($totime-$DT_TIME)/86400);
+
+	$CFG['template'] = 'dream';
+
+	$module = 'business';
+	//include template('index', $module);
 	include template('index', $module);
 }
 ?>
