@@ -94,7 +94,7 @@
                     {if $MG[ad] || $show_menu}
                     <li></span><a href="ad.php" class="{if $MG[ad]}n{else}f{/if}">广告预定</a></li>
                     {/if}
-                    <li><a href="edit.php" class="{if $_userid}n{else}f{/if}">修改资料</a></li>
+
                     <li></span><a href="ask.php" class="{if $_userid}n{else}f{/if}">客服中心</a></li>
                     <li><a href="invite_customer.php" class="{if $_userid}n{else}f{/if}">引荐客户</a></li>
 
@@ -107,6 +107,9 @@
                     {/loop}
 
                     <li class="headline clearfix">商铺管理</li>
+
+                    <li><a href="edit.php" class="{if $_userid}n{else}f{/if}">账户设置</a></li>
+                    <li><a href="introduce.php" class="{if $_userid}n{else}f{/if}">商铺介绍</a></li>
 
                     {if $MG[homepage] || $show_menu}
                     <li></span><a href="home.php" class="{if $MG[homepage]}n{else}f{/if}">商铺设置</a></li>

@@ -1,0 +1,68 @@
+{template 'header',$module}
+
+{if $is_company && !$_edittime}
+<div class="eleven columns">
+    <div class="notification notice closeable margin-bottom-30">
+        <p>账户资料设定成功后，不可修改！</p>
+        <a class="close"></a>
+    </div>
+</div>
+{/if}
+
+
+<div class="eleven columns cart-totals">
+    <h3 class="headline">账户资料</h3><span class="line"></span><div class="clearfix"></div>
+
+    <table class="cart-table margin-top-5">
+
+        <tbody>
+        <tr>
+            <th>企业法人姓名</th>
+            <td>{$truename}</td>
+        </tr>
+
+        <tr>
+            <th>企业法人手机</th>
+            <td>{$truename}</td>
+        </tr>
+
+        <tr>
+            <th>企业法人qq</th>
+            <td>{$truename}</td>
+        </tr>
+
+        <tr>
+            <th>商家性质</th>
+            <td>{$truename}</td>
+        </tr>
+
+
+        <tr>
+            <th>营业执照</th>
+            <td>{$truename}</td>
+        </tr>
+        <tr>
+            <th>到期时间</th>
+            <td>{$truename}</td>
+        </tr>
+        <tr>
+            <th>管理员姓名</th>
+            <td>{$truename}</td>
+        </tr>
+        <tr>
+            <th>管理员手机</th>
+            <td>{$truename}</td>
+        </tr>
+
+        <tr>
+            <th>管理员QQ</th>
+            <td>{$truename}</td>
+        </tr>
+
+        </tbody></table>
+    <br>
+    <!-- <a href="#" class="calculate-shipping"><i class="fa fa-arrow-circle-down"></i> Calculate Shipping</a> -->
+</div>
+
+
+{template 'footer',$module}
