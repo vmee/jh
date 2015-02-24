@@ -86,12 +86,14 @@
 			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="homepage"><span class="f_r"><a href="{DT_PATH}index.php?homepage={$_username}&update=1" class="m" target="_blank">预览</a></span><a href="home.php" class="{if $MG[homepage]}n{else}f{/if}">商铺设置</a></li>
 			{/if}
 			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="edit"><span class="f_r"><a href="avatar.php" class="m">头像</a></span><a href="edit.php" class="{if $_userid}n{else}f{/if}">修改资料</a></li>
+			<!--
 			{if $MG[spread] || $show_menu}
 			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="spread"><span class="f_r"><a href="spread.php?action=add" class="m">购买</a></span><a href="spread.php" class="{if $MG[spread]}n{else}f{/if}">排名推广</a></li>
 			{/if}
 			{if $MG[ad] || $show_menu}
 			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="ad"><span class="f_r"><a href="ad.php?action=add" class="m">购买</a></span><a href="ad.php" class="{if $MG[ad]}n{else}f{/if}">广告预定</a></li>
 			{/if}
+			-->
 
 
             <li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="invite_customer"><span class="f_r"><a href="invite_customer.php?action=add" class="m">添加</a></span><a href="invite_customer.php" class="{if $_userid}n{else}f{/if}">引荐客户</a></li>
