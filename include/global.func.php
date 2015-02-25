@@ -337,9 +337,6 @@ function send_sms($mobile, $message, $word = 0, $time = 0) {
 
 	$r = yp_send_sms($mobile, $sms_message);
 
-	var_dump($r);
-	exit;
-
 	$code = '';
 	if($r) {
 

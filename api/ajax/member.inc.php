@@ -51,6 +51,15 @@ switch($job) {
 		if(!$do->is_company($value)) exit($L['member_company_reg']);
 		if($do->company_exists($value)) exit($L['member_company_reg']);
 	break;
+	case 'invitecode':
+		$value = trim($value);
+		if(strlen($value) != 6) exit('您的邀请码不正确');
+
+		if($value != 'hzjh88' && !$db->get_one("SELECT itemid,password FROM {$DT_PRE}invite_customer WHERE regtime=0 and password='$value'")){
+			exit('您的邀请码不存在');
+		}
+
+		break;
 	case 'get_company':
 		$user = $do->get_one($value);
 		if($user) {

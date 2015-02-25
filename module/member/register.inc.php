@@ -109,13 +109,12 @@ if($submit) {
 	if($could_mobilecode) {
 		if(!preg_match("/[0-9]{6}/", $post['mobilecode']) || $_SESSION['mobile_code'] != md5($post['mobile'].'|'.$post['mobilecode'])) dalert($L['register_pass_mobilecode'], '', $reload_captcha.$reload_question);
 	}
-	if($post['regid'] == 5){
-        $post['company'] = $post['truename'];
-        if(intval($post['wedate'])==0) dalert('请选择结婚日期', '', 'parent.Dd("postwedate").focus();');
-        if(empty($wed)) dalert('请选择婚礼所需服务');
 
-    }
-	$post['groupid'] = $MOD['checkuser'] ? 4 : $post['regid'];
+	if($post['invitecode'] != 'hzjh88' && !$inviter_items = $db->get_one("SELECT itemid FROM {$DT_PRE}invite_customer WHERE regtime=0 and password='{$post[invitecode]}'")){
+		dalert('您的邀请码不存在');
+	}
+
+	$post['groupid'] = $MOD['checkuser'] ? 4 : 5;
 	$post['content'] = $post['introduce'] = $post['thumb'] = $post['banner'] = $post['catid'] = $post['catids'] = '';
 	$post['edittime'] = 0;
 	$inviter = get_cookie('inviter');
@@ -125,13 +124,6 @@ if($submit) {
 		$userid = $do->userid;
 		$username = $post['username'];
 		$email = $post['email'];
-
-        //如果是个人会员 记录婚礼服务
-        if($post['regid'] == 5 && !empty($wed)){
-            foreach($wed as $wcatid){
-                $db->query("INSERT INTO {$DT_PRE}member_wed (userid,catid)  VALUES ($userid, $wcatid)");
-            }
-        }
 
 		if($MFD) fields_update($post_fields, $do->table_member, $userid, 'userid', $MFD);
 		//if($CFD) fields_update($post_fields, $do->table_company, $userid, 'userid', $CFD);
@@ -165,8 +157,8 @@ if($submit) {
 		}
 		if($could_emailcode) $db->query("UPDATE {$DT_PRE}member SET vemail=1 WHERE username='$username'");
 		if($could_mobilecode) $db->query("UPDATE {$DT_PRE}member SET vmobile=1 WHERE username='$username'");
-        if($invite_customer_id){
-            $db->query("UPDATE {$DT_PRE}invite_customer SET regtime='$DT_TIME',reg_userid='$userid',reg_useranme='$username'  WHERE itemid='$invite_customer_id'");
+        if($post['invitecode'] != 'hzjh88' && $inviter_items){
+            $db->query("UPDATE {$DT_PRE}invite_customer SET regtime='$DT_TIME',reg_userid='$userid',reg_useranme='$username'  WHERE itemid='{$inviter_items['itemid']}'");
         }
 		if(!get_cookie('bind')) session_destroy();
 		echo '<html><head><title>Login...</title><meta http-equiv="Content-Type" content="text/html;charset='.DT_CHARSET.'"></head>';

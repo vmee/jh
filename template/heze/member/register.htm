@@ -11,6 +11,11 @@ table tr td{padding:5px 0;}
 	<div class="left_box">
 		<div class="pos">当前位置: <a href="{$MODULE[1][linkurl]}">首页</a> &raquo; <a href="{$DT[file_register]}">会员注册</a></div>
 		<div style="padding:20px 50px 20px 50px;">
+
+			<div style="background:#FAFAFA;padding:10px 20px 10px 20px;line-height:24px;">
+				<span class="f_b f_red">为保证会员质量，本站将以邀请码的形式注册，如无邀请码，请向当地<a href="{DT_PATH}company/" class="b">合作商家</a>申请！</span>
+			</div>
+			<br />
 			<div style="background:#FAFAFA;padding:10px 20px 10px 20px;line-height:24px;">
 
 				<span class="f_b">
@@ -128,21 +133,22 @@ table tr td{padding:5px 0;}
 			</tr>
 			{/if}
 
+				<tr onmouseover="Ds('tinvitecode');" onmouseout="Dh('tinvitecode');">
+					<td class="tl f_red">邀请码 <span class="f_red">*</span></td>
+					<td><input type="text" class="reg_inp" style="width:100px;" name="post[invitecode]" id="invitecode" onblur="validator('invitecode');" /></td>
+					<td>
+						<div class="tips" id="tinvitecode" style="display:none;">
+							<div>请输入你收到的本站的注册邀请码</div>
+						</div>
+						<span id="dinvitecode" class="f_red"></span>&nbsp;
+					</td>
+				</tr>
 
 			</table>
 
 			<table cellpadding="5" cellspacing="5" width="100%">
 
-			<tr onmouseover="Ds('tinvite_code');" onmouseout="Dh('tinvite_code');">
-				<td class="tl">邀请码 <span class="f_red">*</span></td>
-				<td><input type="text" class="reg_inp" style="width:100px;" name="post[invite_code]" id="invite_code" onblur="validator('invite_code');" /></td>
-				<td>
-					<div class="tips" id="tinvite_code" style="display:none;">
-						<div>请输入你收到的本站的注册邀请码</div>
-					</div>
-					<span id="dinvite_code" class="f_red"></span>&nbsp;
-				</td>
-			</tr>
+
 
 			{if $MOD[captcha_register]}
 			<tr onmouseover="Ds('tcaptcha');" onmouseout="Dh('tcaptcha');">
