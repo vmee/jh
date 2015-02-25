@@ -333,8 +333,12 @@ function send_sms($mobile, $message, $word = 0, $time = 0) {
 	if(!$DT['sms'] || !$DT['sms_uid'] || !$DT['sms_key']) return false;
 
 	$word or $word = word_count($message);
-	$sms_message = rawurlencode(convert($message, DT_CHARSET, 'UTF-8'));
+	$sms_message = $message;//rawurlencode(convert($message, DT_CHARSET, 'UTF-8'));
+
 	$r = yp_send_sms($mobile, $sms_message);
+
+	var_dump($r);
+	exit;
 
 	$code = '';
 	if($r) {
@@ -1246,7 +1250,7 @@ function yp_tpl_send_sms($mobile,$tpl_id, $tpl_value){
 	$url="http://yunpian.com/v1/sms/tpl_send.json";
 	$encoded_tpl_value = urlencode("$tpl_value");
 	$post_string="apikey=$apikey&tpl_id=$tpl_id&tpl_value=$encoded_tpl_value&mobile=$mobile";
-	return sock_post($url, $post_string);
+	return yp_sock_post($url, $post_string);
 }
 
 /**
@@ -1262,5 +1266,5 @@ function yp_send_sms($mobile, $text){
 	$url="http://yunpian.com/v1/sms/send.json";
 	$encoded_text = urlencode("$text");
 	$post_string="apikey=$apikey&text=$encoded_text&mobile=$mobile";
-	return sock_post($url, $post_string);
+	return yp_sock_post($url, $post_string);
 }

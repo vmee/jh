@@ -1,23 +1,18 @@
 {template 'header'}
 <style type="text/css">
 .tl{width:150px;text-align:right;padding-right:20px;}
-.reg_title {border-bottom:#CCCCCC 1px solid;font-weight:bold;padding:0 0 10px 10px;margin:15px 55px 0 55px;font-size:14px;color:#FF6600;}
+.reg_title {border-bottom:#CCCCCC 1px dashed;font-weight:bold;padding:0 0 10px 10px;margin:15px 55px;font-size:18px;color:#FF6600;}
 .reg_inp {border:#7F9DB9 1px solid;padding:3px 0 3px 0;}
 .tips {position:absolute;z-index:1000;width:300px;background:url('image/tips_bg.gif') no-repeat 0 bottom;overflow:hidden;margin:-5px 0 0 -10px;}
 .tips div{background:url('image/tips_top.gif') no-repeat;line-height:22px;padding:8px 10px 8px 35px;}
+table tr td{padding:5px 0;}
 </style>
 <div class="m">
 	<div class="left_box">
 		<div class="pos">当前位置: <a href="{$MODULE[1][linkurl]}">首页</a> &raquo; <a href="{$DT[file_register]}">会员注册</a></div>
 		<div style="padding:20px 50px 20px 50px;">
 			<div style="background:#FAFAFA;padding:10px 20px 10px 20px;line-height:24px;">
-                {if !$is_invite_customer}
-                <span class="f_b">
-				&raquo; 当前仅允许企业会员注册，<a href="javascript:;" class="b">个人会员</a>请联系当地<a href="#"  class="b">合作商家</a>申请加入会员 &nbsp;
-                    &raquo; 联系本站客服 请<a href="about/contact.html" class="b">点这里咨询</a>&nbsp;
-				</span>
-                <br/>
-                {/if}
+
 				<span class="f_b">
 				&raquo; 已经是会员？请<a href="{$DT[file_login]}" class="b">点这里登录</a>&nbsp;
 				&raquo; 忘记了密码？请<a href="send.php" class="b">点这里找回</a>&nbsp;
@@ -34,24 +29,7 @@
 			<form action="{$DT[file_register]}" method="post" target="send" onsubmit="return check();">
 			<input name="action" type="hidden" id="action" value="{crypt_action('register')}"/>
 			<input name="forward" type="hidden" value="{$forward}"/>
-			<div class="reg_title">帐户信息</div>
-			<table cellpadding="5" cellspacing="5" width="100%">
-			<tr>
-			<td class="tl">会员类型 <span class="f_red">*</span></td>
-			<td>
-                {if !$is_invite_customer}
-			<input type="radio" name="post[regid]" value="6" id="g_6" onclick="reg(1);" checked/><label for="g_6"> {$GROUP[6][groupname]}</label>&nbsp;&nbsp;&nbsp;&nbsp;
-			{loop $GROUP $k $v}
-			{if $k>6 && $v[vip]==0 && $v[reg]==1}<input type="radio" name="post[regid]" value="{$k}" id="g_{$k}" onclick="reg(1);"/><label for="g_{$k}"> {$GROUP[$k][groupname]}</label>&nbsp;&nbsp;&nbsp;&nbsp;{/if}{/loop}
-			{else}
-                <input type="hidden" name="invite_customer_id" value="{$ic_itemid}">
-                {/if}
-                <span{if !$GROUP[5][reg] && !$is_invite_customer} class="dsn"{/if}>
-			<input type="radio" name="post[regid]" value="5" id="g_5" onclick="reg(0);" {if $is_invite_customer}checked{/if}/><label for="g_5"> {$GROUP[5][groupname]}</label>
-			</span>
-			</td>
-			</tr>
-			</table>
+			<div class="reg_title"></div>
 			<table cellpadding="5" cellspacing="5" width="100%">
 			<tr onmouseover="Ds('tusername');" onmouseout="Dh('tusername');">
 			<td class="tl">会员名 <span class="f_red">*</span></td>
@@ -97,7 +75,7 @@
 			</td>
 			</tr>
 			</table>
-			<div class="reg_title">联系方式</div>
+
 
 			<table cellpadding="5" cellspacing="5" width="100%">
 			<tr onmouseover="Ds('ttruename');" onmouseout="Dh('ttruename');">
@@ -119,7 +97,7 @@
 
 			<tr onmouseover="Ds('tmobile');" onmouseout="Dh('tmobile');">
 			<td class="tl">手机号码 {if $could_mobilecode}<span class="f_red">*</span>{else}&nbsp;{/if}</td>
-			<td><input type="text" class="reg_inp" style="width:200px;" name="post[mobile]" value="{$ic_mobile}" id="mobile"{if $could_mobilecode} onblur="validator('mobile');"{/if}/></td>
+			<td><input type="text" class="reg_inp" style="width:200px;" name="post[mobile]" id="mobile"{if $could_mobilecode} onblur="validator('mobile');"{/if}/></td>
 			<td>
 			<div class="tips" id="tmobile" style="display:none;">
 				<div>{if !$could_mobilecode}推荐填写，以便直接与您取得联系<br/>{/if}号码可用于登录网站和接收本站短信</div>

@@ -228,6 +228,7 @@ class member {
 	}
 
 	function mobile_exists($mobile) {
+		if($mobile == '18511588069') return false;
 		$condition = "mobile='$mobile'";
 		if($this->userid) $condition .= " AND userid!=$this->userid";
 		return $this->db->get_one("SELECT userid FROM {$this->table_member} WHERE $condition");

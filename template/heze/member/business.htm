@@ -1,32 +1,27 @@
 {template 'header'}
 <style type="text/css">
 .tl{width:150px;text-align:right;padding-right:20px;}
-.reg_title {border-bottom:#CCCCCC 1px solid;font-weight:bold;padding:0 0 10px 10px;margin:15px 55px 0 55px;font-size:14px;color:#FF6600;}
+.reg_title {border-bottom:#CCCCCC 1px dashed;font-weight:bold;padding:0 0 10px 10px;margin:15px 55px;font-size:18px;color:#FF6600;}
 .reg_inp {border:#7F9DB9 1px solid;padding:3px 0 3px 0;}
 .tips {position:absolute;z-index:1000;width:300px;background:url('image/tips_bg.gif') no-repeat 0 bottom;overflow:hidden;margin:-5px 0 0 -10px;}
 .tips div{background:url('image/tips_top.gif') no-repeat;line-height:22px;padding:8px 10px 8px 35px;}
+table tr td{padding:5px 0;}
 </style>
 <div class="m">
 	<div class="left_box">
 		<div class="pos">当前位置: <a href="{$MODULE[1][linkurl]}">首页</a> &raquo; <a href="{$DT[file_register]}">商家入驻</a></div>
 		<div style="padding:20px 50px 20px 50px;">
 			<div style="background:#FAFAFA;padding:10px 20px 10px 20px;line-height:24px;">
-                {if !$is_invite_customer}
-                <span class="f_b">
-				&raquo; 当前仅允许企业会员注册，<a href="javascript:;" class="b">个人会员</a>请联系当地<a href="#"  class="b">合作商家</a>申请加入会员 &nbsp;
-                    &raquo; 联系本站客服 请<a href="about/contact.html" class="b">点这里咨询</a>&nbsp;
-				</span>
-                <br/>
-                {/if}
+
 				<span class="f_b">
-				&raquo; 已经是会员？请<a href="{$DT[file_login]}" class="b">点这里登录</a>&nbsp;
+				&raquo; 已经是商家会员？请<a href="{$DT[file_login]}" class="b">点这里登录</a>&nbsp;
 				&raquo; 忘记了密码？请<a href="send.php" class="b">点这里找回</a>&nbsp;
 				{if $MOD[checkuser] == 2}
 				&raquo; <span class="f_red">未收到验证信？</span>请<a href="send.php?action=check" class="b">点这里重发</a>
 				{/if}
 				</span>
 				<br/>
-				<span class="f_gray">请认真、仔细地填写以下信息，严肃的商业信息有助于您获得别人的信任，结交潜在的商业伙伴，获取商业机会！<span class="f_red">*</span>为必填项		
+				<span class="f_gray">请认真、仔细地填写以下信息！<span class="f_red">*</span>为必填项
 				</span>
 			</div>
 			<br/>
@@ -248,7 +243,7 @@
 			{/if}
 			<tr>
 			<td class="tl">&nbsp;</td>
-			<td width="300"><input type="submit" name="submit" value="提交申请" style="font-size:14px;padding:3px;"/></td>
+			<td width="300"><input type="submit" name="submit" class="green button" value="申请入驻" style="font-size:16px;padding:10px;"/></td>
 			<td>&nbsp;</td>
 			</tr>
 			</table>

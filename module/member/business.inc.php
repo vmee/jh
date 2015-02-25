@@ -203,7 +203,7 @@ if($submit) {
 	}
 	$areaid = $cityid;
 	set_cookie('forward_url', $forward);
-	$head_title = $L['register_title'];
+	$head_title = '商家申请入驻';
 
 	//邀请用户注册
 	$is_invite_customer = false;

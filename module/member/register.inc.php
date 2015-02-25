@@ -205,26 +205,6 @@ if($submit) {
 	set_cookie('forward_url', $forward);
 	$head_title = $L['register_title'];
 
-    //邀请用户注册
-    $is_invite_customer = false;
-    $ic_itemid = $ic_areaid = $ic_gender = $ic_email = $ic_mobile = $ic_qq = $ic_truename = $ic_weddate = '';
-    if(isset($activeauth)){
-        list($ic_itemid, $ic_mobile, $ic_active_code) = explode('|', decrypt($activeauth));
-
-        $r = $db->get_one("SELECT * FROM {$DT_PRE}invite_customer WHERE regtime=0 and `mobile`='{$ic_mobile}' and `password`='{$ic_active_code}'");
-        if($r){
-            $is_invite_customer = true;
-            $ic_areaid = $r['areaid'];
-            $ic_gender = $r['gender'];
-            $ic_email = $r['email'];
-            $ic_qq = $r['qq'];
-            $ic_truename = $r['truename'];
-            $ic_weddate = $r['weddate'];
-
-        }
-    }
-
-
 	include template('register', $module);
 }
 ?>
