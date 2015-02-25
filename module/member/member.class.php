@@ -249,7 +249,7 @@ class member {
 		return $this->db->get_one("SELECT userid FROM {$this->table_member} WHERE $condition");
 	}
 
-	function add($member) {
+	function add($member, $is_company=true) {
 		global $DT, $DT_TIME, $DT_IP, $MOD, $L;
 		if(!$this->is_member($member)) return false;
 		$member = $this->set_member($member);
@@ -272,9 +272,11 @@ class member {
 		if(!$this->userid) return 0;
 		$member['userid'] = $this->userid;
 		$this->username = $member['username'];
-	    $this->db->query("INSERT INTO {$this->table_company} (userid, $company_sqlk) VALUES ('$this->userid', $company_sqlv)");
-		$content_table = content_table(4, $this->userid, is_file(DT_CACHE.'/4.part'), $this->table_company_data);
-	    $this->db->query("INSERT INTO {$content_table} (userid, content) VALUES ('$this->userid', '$member[content]')");
+		if($is_company){
+			$this->db->query("INSERT INTO {$this->table_company} (userid, $company_sqlk) VALUES ('$this->userid', $company_sqlv)");
+			$content_table = content_table(4, $this->userid, is_file(DT_CACHE.'/4.part'), $this->table_company_data);
+			$this->db->query("INSERT INTO {$content_table} (userid, content) VALUES ('$this->userid', '$member[content]')");
+		}
 		if($MOD['credit_register'] > 0) {
 			credit_add($this->username, $MOD['credit_register']);
 			credit_record($this->username, $MOD['credit_register'], 'system', $L['member_record_reg'], $DT_IP);

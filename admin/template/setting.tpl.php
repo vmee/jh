@@ -186,12 +186,6 @@ tips('位于./template/目录,一个目录即为一套模板');
 </td>
 </tr>
 <tbody id="dsms" style="display:<?php if(!$sms) echo 'none';?>">
-<?php if($sms && $sms_uid && $sms_key) { ?>
-<tr>
-<td class="tl">短信余额</td>
-<td><span class="f_red"><script type="text/javascript" src="http://www.destoon.com/sms.php?uid=<?php echo $sms_uid;?>&key=<?php echo $sms_key;?>"></script></span> 条 <a href="?file=cloud&action=sms" target="_blank" class="t">[在线充值]</a></td> 
-</tr>
-<?php } ?>
 <tr>
 <td class="tl">短信接口帐号</td>
 <td><input name="setting[sms_uid]" type="text" value="<?php echo $sms_uid;?>" size="30"/></td> 

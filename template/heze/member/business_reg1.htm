@@ -8,16 +8,9 @@
 </style>
 <div class="m">
 	<div class="left_box">
-		<div class="pos">当前位置: <a href="{$MODULE[1][linkurl]}">首页</a> &raquo; <a href="{$DT[file_register]}">会员注册</a></div>
+		<div class="pos">当前位置: <a href="{$MODULE[1][linkurl]}">首页</a> &raquo; <a href="{$DT[file_register]}">商家入驻</a></div>
 		<div style="padding:20px 50px 20px 50px;">
 			<div style="background:#FAFAFA;padding:10px 20px 10px 20px;line-height:24px;">
-                {if !$is_invite_customer}
-                <span class="f_b">
-				&raquo; 当前仅允许企业会员注册，<a href="javascript:;" class="b">个人会员</a>请联系当地<a href="#"  class="b">合作商家</a>申请加入会员 &nbsp;
-                    &raquo; 联系本站客服 请<a href="about/contact.html" class="b">点这里咨询</a>&nbsp;
-				</span>
-                <br/>
-                {/if}
 				<span class="f_b">
 				&raquo; 已经是会员？请<a href="{$DT[file_login]}" class="b">点这里登录</a>&nbsp;
 				&raquo; 忘记了密码？请<a href="send.php" class="b">点这里找回</a>&nbsp;
@@ -35,23 +28,7 @@
 			<input name="action" type="hidden" id="action" value="{crypt_action('register')}"/>
 			<input name="forward" type="hidden" value="{$forward}"/>
 			<div class="reg_title">帐户信息</div>
-			<table cellpadding="5" cellspacing="5" width="100%">
-			<tr>
-			<td class="tl">会员类型 <span class="f_red">*</span></td>
-			<td>
-                {if !$is_invite_customer}
-			<input type="radio" name="post[regid]" value="6" id="g_6" onclick="reg(1);" checked/><label for="g_6"> {$GROUP[6][groupname]}</label>&nbsp;&nbsp;&nbsp;&nbsp;
-			{loop $GROUP $k $v}
-			{if $k>6 && $v[vip]==0 && $v[reg]==1}<input type="radio" name="post[regid]" value="{$k}" id="g_{$k}" onclick="reg(1);"/><label for="g_{$k}"> {$GROUP[$k][groupname]}</label>&nbsp;&nbsp;&nbsp;&nbsp;{/if}{/loop}
-			{else}
-                <input type="hidden" name="invite_customer_id" value="{$ic_itemid}">
-                {/if}
-                <span{if !$GROUP[5][reg] && !$is_invite_customer} class="dsn"{/if}>
-			<input type="radio" name="post[regid]" value="5" id="g_5" onclick="reg(0);" {if $is_invite_customer}checked{/if}/><label for="g_5"> {$GROUP[5][groupname]}</label>
-			</span>
-			</td>
-			</tr>
-			</table>
+
 			<table cellpadding="5" cellspacing="5" width="100%">
 			<tr onmouseover="Ds('tusername');" onmouseout="Dh('tusername');">
 			<td class="tl">会员名 <span class="f_red">*</span></td>
@@ -104,6 +81,9 @@
 			<td class="tl">真实姓名 <span class="f_red">*</span></td>
 			<td width="220">
 			<input type="text" class="reg_inp" style="width:100px;" name="post[truename]" id="truename" value="{$ic_truename}" onblur="validate('truename');"/>
+			<input type="radio" name="post[gender]" value="1" {if $ic_gender==1 || $ic_gender==''}checked{/if} id="gender_1"/><label for="gender_1"> 先生</label>
+			<input type="radio" name="post[gender]" value="2" {if $ic_gender==2}checked {/if}id="gender_2"/><label for="gender_2"> 女士</label>
+			</td>
 			<td>
 			<div class="tips" id="ttruename" style="display:none;">
 				<div>请与有效身份证件上的姓名保持一致</div>
@@ -116,6 +96,42 @@
 			<td>{ajax_area_select('post[areaid]', '请选择', $ic_areaid ? $ic_areaid :$areaid, '', 2)}</td>
 			<td><span id="dareaid" class="f_red"></span>&nbsp;</td>
 			</tr>
+			<tr onmouseover="Ds('temail');" onmouseout="Dh('temail');">
+			<td class="tl">电子邮箱 <span class="f_red">*</span></td>
+			<td><input type="text" class="reg_inp" style="width:200px;" name="post[email]" id="email" value="{$ic_email}" onblur="validator('email');"{if $email} value="{$email}" readonly{/if}/></td>
+			<td>
+			<div class="tips" id="temail" style="display:none;">
+				<div>
+				{if $MOD[checkuser] == 2}
+				<span class="f_red">系统设置了邮件验证注册，请确保当前的邮件地址真实有效<br/></span>
+				{/if}
+				请使用常用常用邮箱(E-mail)地址，地址不会被公开且可用于登录网站			
+				</div>
+			</div>
+			<span id="demail" class="f_red"></span>&nbsp;	
+			</td>
+			</tr>
+			{if $could_emailcode}
+			<tr onmouseover="Ds('temailcode');" onmouseout="Dh('temailcode');">
+			<td class="tl">邮件验证码 <span class="f_red">*</span></td>
+			<td><input type="text" class="reg_inp" style="width:80px;" name="post[emailcode]" id="emailcode" onblur="validator('emailcode');"/>
+			<input type="button" value="立即发送" id="send_code" onclick="SendCode();"/>
+			</td>
+			<td>
+			<div class="tips" id="temailcode" style="display:none;">
+				<div>
+				点击“立即发送”按钮，系统将会发送一组6位数字验证码至您填写的电子邮箱，请接收邮件获取验证码后，填写在左侧的输入框内，继续完成注册
+				</div>
+			</div>
+			<span id="demailcode" class="f_red"></span>&nbsp;	
+			</td>
+			</tr>
+			<tr id="sendok" style="display:none;">
+			<td class="tl">&nbsp;</td>
+			<td id="dsendok">&nbsp;</td>
+			<td>&nbsp;</td>
+			</tr>
+			{/if}
 
 			<tr onmouseover="Ds('tmobile');" onmouseout="Dh('tmobile');">
 			<td class="tl">手机号码 {if $could_mobilecode}<span class="f_red">*</span>{else}&nbsp;{/if}</td>
@@ -150,22 +166,20 @@
 			</tr>
 			{/if}
 
-
+			<tr onmouseover="Ds('tqq');" onmouseout="Dh('tqq');">
+			<td class="tl">QQ号码 &nbsp;</td>
+			<td><input type="text" class="reg_inp" style="width:200px;" name="post[qq]" value="{$ic_qq}" id="qq"/></td>
+			<td>
+			<div class="tips" id="tqq" style="display:none;">
+				<div>推荐填写，以便即时在线与您取得联系</div>
+			</div>
+			<span id="dqq" class="f_red"></span>&nbsp;	
+			</td>
+			</tr>
 			</table>
 
+
 			<table cellpadding="5" cellspacing="5" width="100%">
-
-			<tr onmouseover="Ds('tinvite_code');" onmouseout="Dh('tinvite_code');">
-				<td class="tl">邀请码 <span class="f_red">*</span></td>
-				<td><input type="text" class="reg_inp" style="width:100px;" name="post[invite_code]" id="invite_code" onblur="validator('invite_code');" /></td>
-				<td>
-					<div class="tips" id="tinvite_code" style="display:none;">
-						<div>请输入你收到的本站的注册邀请码</div>
-					</div>
-					<span id="dinvite_code" class="f_red"></span>&nbsp;
-				</td>
-			</tr>
-
 			{if $MOD[captcha_register]}
 			<tr onmouseover="Ds('tcaptcha');" onmouseout="Dh('tcaptcha');">
 			<td class="tl">验证码 <span class="f_red">*</span></td>
@@ -180,7 +194,7 @@
 			{/if}
 			<tr>
 			<td class="tl">&nbsp;</td>
-			<td width="300"><input type="submit" name="submit" value="注册" style="font-size:14px;padding:3px;"/></td>
+			<td width="300"><input type="submit" name="submit" value="提交" style="font-size:14px;padding:3px;"/></td>
 			<td>&nbsp;</td>
 			</tr>
 			</table>

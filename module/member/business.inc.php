@@ -1,4 +1,4 @@
-<?php 
+<?php
 defined('IN_DESTOON') or exit('Access Denied');
 if($_userid) dheader($MOD['linkurl']);
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
@@ -99,7 +99,7 @@ if($submit) {
 	$RG = array();
 	foreach($GROUP as $k=>$v) {
 		if($k > 4 && $v['vip'] == 0) $RG[] = $k;
-	}	
+	}
 	$reload_captcha = $MOD['captcha_register'] ? reload_captcha() : '';
 	$reload_question = $MOD['question_register'] ? reload_question() : '';
 	in_array($post['regid'], $RG) or dalert($L['register_pass_groupid'], '', $reload_captcha.$reload_question);
@@ -110,31 +110,31 @@ if($submit) {
 		if(!preg_match("/[0-9]{6}/", $post['mobilecode']) || $_SESSION['mobile_code'] != md5($post['mobile'].'|'.$post['mobilecode'])) dalert($L['register_pass_mobilecode'], '', $reload_captcha.$reload_question);
 	}
 	if($post['regid'] == 5){
-        $post['company'] = $post['truename'];
-        if(intval($post['wedate'])==0) dalert('请选择结婚日期', '', 'parent.Dd("postwedate").focus();');
-        if(empty($wed)) dalert('请选择婚礼所需服务');
+		$post['company'] = $post['truename'];
+		if(intval($post['wedate'])==0) dalert('请选择结婚日期', '', 'parent.Dd("postwedate").focus();');
+		if(empty($wed)) dalert('请选择婚礼所需服务');
 
-    }
+	}
 	$post['groupid'] = $MOD['checkuser'] ? 4 : $post['regid'];
 	$post['content'] = $post['introduce'] = $post['thumb'] = $post['banner'] = $post['catid'] = $post['catids'] = '';
 	$post['edittime'] = 0;
 	$inviter = get_cookie('inviter');
 	$post['inviter'] = $inviter ? decrypt($inviter) : '';
 	check_name($post['inviter']) or $post['inviter'] = '';
-	if($do->add($post, false)) {
+	if($do->add($post)) {
 		$userid = $do->userid;
 		$username = $post['username'];
 		$email = $post['email'];
 
-        //如果是个人会员 记录婚礼服务
-        if($post['regid'] == 5 && !empty($wed)){
-            foreach($wed as $wcatid){
-                $db->query("INSERT INTO {$DT_PRE}member_wed (userid,catid)  VALUES ($userid, $wcatid)");
-            }
-        }
+		//如果是个人会员 记录婚礼服务
+		if($post['regid'] == 5 && !empty($wed)){
+			foreach($wed as $wcatid){
+				$db->query("INSERT INTO {$DT_PRE}member_wed (userid,catid)  VALUES ($userid, $wcatid)");
+			}
+		}
 
 		if($MFD) fields_update($post_fields, $do->table_member, $userid, 'userid', $MFD);
-		//if($CFD) fields_update($post_fields, $do->table_company, $userid, 'userid', $CFD);
+		if($CFD) fields_update($post_fields, $do->table_company, $userid, 'userid', $CFD);
 		if($MOD['passport'] == 'uc') {
 			$uid = uc_user_register($passport, $post['password'], $post['email']);
 			if($uid > 0 && $MOD['uc_bbs']) uc_user_regbbs($uid, $passport, $post['password'], $post['email']);
@@ -165,9 +165,9 @@ if($submit) {
 		}
 		if($could_emailcode) $db->query("UPDATE {$DT_PRE}member SET vemail=1 WHERE username='$username'");
 		if($could_mobilecode) $db->query("UPDATE {$DT_PRE}member SET vmobile=1 WHERE username='$username'");
-        if($invite_customer_id){
-            $db->query("UPDATE {$DT_PRE}invite_customer SET regtime='$DT_TIME',reg_userid='$userid',reg_useranme='$username'  WHERE itemid='$invite_customer_id'");
-        }
+		if($invite_customer_id){
+			$db->query("UPDATE {$DT_PRE}invite_customer SET regtime='$DT_TIME',reg_userid='$userid',reg_useranme='$username'  WHERE itemid='$invite_customer_id'");
+		}
 		if(!get_cookie('bind')) session_destroy();
 		echo '<html><head><title>Login...</title><meta http-equiv="Content-Type" content="text/html;charset='.DT_CHARSET.'"></head>';
 		echo '<body onload="document.getElementById(\'login\').submit();">';
@@ -205,26 +205,25 @@ if($submit) {
 	set_cookie('forward_url', $forward);
 	$head_title = $L['register_title'];
 
-    //邀请用户注册
-    $is_invite_customer = false;
-    $ic_itemid = $ic_areaid = $ic_gender = $ic_email = $ic_mobile = $ic_qq = $ic_truename = $ic_weddate = '';
-    if(isset($activeauth)){
-        list($ic_itemid, $ic_mobile, $ic_active_code) = explode('|', decrypt($activeauth));
+	//邀请用户注册
+	$is_invite_customer = false;
+	$ic_itemid = $ic_areaid = $ic_gender = $ic_email = $ic_mobile = $ic_qq = $ic_truename = $ic_weddate = '';
+	if(isset($activeauth)){
+		list($ic_itemid, $ic_mobile, $ic_active_code) = explode('|', decrypt($activeauth));
 
-        $r = $db->get_one("SELECT * FROM {$DT_PRE}invite_customer WHERE regtime=0 and `mobile`='{$ic_mobile}' and `password`='{$ic_active_code}'");
-        if($r){
-            $is_invite_customer = true;
-            $ic_areaid = $r['areaid'];
-            $ic_gender = $r['gender'];
-            $ic_email = $r['email'];
-            $ic_qq = $r['qq'];
-            $ic_truename = $r['truename'];
-            $ic_weddate = $r['weddate'];
+		$r = $db->get_one("SELECT * FROM {$DT_PRE}invite_customer WHERE regtime=0 and `mobile`='{$ic_mobile}' and `password`='{$ic_active_code}'");
+		if($r){
+			$is_invite_customer = true;
+			$ic_areaid = $r['areaid'];
+			$ic_gender = $r['gender'];
+			$ic_email = $r['email'];
+			$ic_qq = $r['qq'];
+			$ic_truename = $r['truename'];
+			$ic_weddate = $r['weddate'];
 
-        }
-    }
+		}
+	}
 
 
-	include template('register', $module);
+	include template('business', $module);
 }
-?>

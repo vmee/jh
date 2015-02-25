@@ -294,6 +294,7 @@ function strip_sms($message) {
 	return $message;
 }
 
+/**
 function send_sms($mobile, $message, $word = 0, $time = 0) {
 	global $db, $DT, $DT_TIME, $DT_IP, $_username;
 	if(!$DT['sms'] || !$DT['sms_uid'] || !$DT['sms_key']) return false;
@@ -301,7 +302,8 @@ function send_sms($mobile, $message, $word = 0, $time = 0) {
 	$sms_message = rawurlencode(convert($message, DT_CHARSET, 'UTF-8'));
 	$data = 'sms_uid='.$DT['sms_uid'].'&sms_key='.$DT['sms_key'].'&sms_charset='.DT_CHARSET.'&sms_mobile='.$mobile.'&sms_message='.$sms_message.'&sms_time='.$time;
 	$header = "POST /send.php HTTP/1.0\r\n";
-	$header .= "Accept: */*\r\n";
+	$header .= "Accept: *
+/*\r\n";
 	$header .= "Content-Type: application/x-www-form-urlencoded\r\n";
 	$header .= "Content-Length: ".strlen($data)."\r\n\r\n";
 	$fp = function_exists('fsockopen') ? fsockopen('sms.destoon.com', 8820) : stream_socket_client('sms.destoon.com:8820');
@@ -318,6 +320,37 @@ function send_sms($mobile, $message, $word = 0, $time = 0) {
 		} else {
 			$code = 'Can Not Connect SMS Server';
 		}
+	} else {
+		$code = 'Can Not Connect SMS Server';
+	}
+	$db->query("INSERT INTO {$db->pre}sms (mobile,message,word,editor,sendtime,code) VALUES ('$mobile','$message','$word','$_username','$DT_TIME','$code')");
+	return $code;
+}
+**/
+
+function send_sms($mobile, $message, $word = 0, $time = 0) {
+	global $db, $DT, $DT_TIME, $DT_IP, $_username;
+	if(!$DT['sms'] || !$DT['sms_uid'] || !$DT['sms_key']) return false;
+
+	$word or $word = word_count($message);
+	$sms_message = rawurlencode(convert($message, DT_CHARSET, 'UTF-8'));
+	$r = yp_send_sms($mobile, $sms_message);
+
+	$code = '';
+	if($r) {
+
+		$data = json_decode($r);
+
+		if($data['code'] === 0){
+			$code = $data['result']['sid'];
+		}elseif($data['code']>0){
+			$code = 'SMS api error';
+		}elseif($data['code']>-50 && $data['code']<=-1){
+			$code = 'SMS permission error';
+		}else{
+			$code = 'SMS server error';
+		}
+
 	} else {
 		$code = 'Can Not Connect SMS Server';
 	}
@@ -1167,4 +1200,67 @@ function invite_company_name($userid){
     return $company_name;
 
 }
-?>
+
+
+
+/**
+ * url 为服务的url地址
+ * query 为请求串
+ */
+function yp_sock_post($url,$query){
+	$data = "";
+	$info=parse_url($url);
+	$fp=fsockopen($info["host"],80,$errno,$errstr,30);
+	if(!$fp){
+		return $data;
+	}
+	$head="POST ".$info['path']." HTTP/1.0\r\n";
+	$head.="Host: ".$info['host']."\r\n";
+	$head.="Referer: http://".$info['host'].$info['path']."\r\n";
+	$head.="Content-type: application/x-www-form-urlencoded\r\n";
+	$head.="Content-Length: ".strlen(trim($query))."\r\n";
+	$head.="\r\n";
+	$head.=trim($query);
+	$write=fputs($fp,$head);
+	$header = "";
+	while ($str = trim(fgets($fp,4096))) {
+		$header.=$str;
+	}
+	while (!feof($fp)) {
+		$data .= fgets($fp,4096);
+	}
+	return $data;
+}
+
+/**
+ * 模板接口发短信
+ * apikey 为云片分配的apikey
+ * tpl_id 为模板id
+ * tpl_value 为模板值
+ * mobile 为接受短信的手机号
+ */
+function yp_tpl_send_sms($mobile,$tpl_id, $tpl_value){
+
+	$apikey = '4a486cfbfcdfd9a592e32e08de98f229';
+
+	$url="http://yunpian.com/v1/sms/tpl_send.json";
+	$encoded_tpl_value = urlencode("$tpl_value");
+	$post_string="apikey=$apikey&tpl_id=$tpl_id&tpl_value=$encoded_tpl_value&mobile=$mobile";
+	return sock_post($url, $post_string);
+}
+
+/**
+ * 普通接口发短信
+ * apikey 为云片分配的apikey
+ * text 为短信内容
+ * mobile 为接受短信的手机号
+ */
+function yp_send_sms($mobile, $text){
+
+	$apikey = '4a486cfbfcdfd9a592e32e08de98f229';
+
+	$url="http://yunpian.com/v1/sms/send.json";
+	$encoded_text = urlencode("$text");
+	$post_string="apikey=$apikey&text=$encoded_text&mobile=$mobile";
+	return sock_post($url, $post_string);
+}
