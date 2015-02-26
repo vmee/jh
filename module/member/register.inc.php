@@ -102,7 +102,7 @@ if($submit) {
 	}	
 	$reload_captcha = $MOD['captcha_register'] ? reload_captcha() : '';
 	$reload_question = $MOD['question_register'] ? reload_question() : '';
-	in_array($post['regid'], $RG) or dalert($L['register_pass_groupid'], '', $reload_captcha.$reload_question);
+	//in_array($post['regid'], $RG) or dalert($L['register_pass_groupid'], '', $reload_captcha.$reload_question);
 	if($could_emailcode) {
 		if(!preg_match("/[0-9]{6}/", $post['emailcode']) || $_SESSION['email_code'] != md5($post['email'].'|'.$post['emailcode'])) dalert($L['register_pass_emailcode'], '', $reload_captcha.$reload_question);
 	}
