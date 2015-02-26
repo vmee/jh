@@ -210,6 +210,10 @@ tips('位于./template/目录,一个目录即为一套模板');
 <td class="tl">成功标识</td>
 <td><input name="setting[sms_ok]" type="text" value="<?php echo $sms_ok;?>" size="10"/> <?php tips('短信发送成功标识字符，系统根据此字符确定是否扣除会员短信余额');?></td> 
 </tr>
+<tr>
+    <td class="tl">系统短信接收手机</td>
+    <td><input name="setting[sms_mobile]" type="text" value="<?php echo $sms_mobile;?>" size="20"/> <?php tips('用于接收系统短信, 如商家入驻通知');?></td>
+</tr>
 </tbody>
 <?php include DT_ROOT.'/api/trade/setting.inc.php';?>
 </table>

@@ -17,7 +17,8 @@ class invite_customer {
 	function pass($post) {
 		global $_userid, $L;
 		if(!is_array($post)) return false;
-		if(!$post['truename']) return $this->_($L['friend_pass_truename']);
+		if(!$post['truename']) return $this->_('请填写真实姓名');
+		if(!$post['mobile'] || !is_mobile($post['mobile'])) return $this->_($L['member_mobile_null']);
 		return true;
 	}
 

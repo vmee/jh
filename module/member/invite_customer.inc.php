@@ -7,18 +7,22 @@ require DT_ROOT.'/include/post.func.php';
 $TYPE = get_type('friend-'.$_userid);
 require MD_ROOT.'/invite_customer.class.php';
 $do = new invite_customer();
+require MD_ROOT.'/member.class.php';
+$member = new member;
 switch($action) {
 	case 'add':
 
 		if($submit) {
 			if($do->pass($post)) {
-				if($post['username'] && $db->get_one("SELECT username FROM {$DT_PRE}friend WHERE userid=$_userid AND username='$post[username]'")) message($L['friend_msg_add_again']);
+				if($post['mobile'] && $member->mobile_exists($post['mobile'])) message('此手机号已经注册');
 				$post['userid'] = $_userid;
 				$post['addtime'] = $DT_TIME;
                 $post['password'] = strtolower(random(6));
 				$do->add($post);
 
                 //添加成功发短信给用户
+				$content = lang('sms->sms_invite', array($post['password'])).$DT['sms_sign'];
+				send_sms($post['mobile'], $content);
 
 				dmsg($L['op_add_success'], 'invite_customer.php');
 			} else {

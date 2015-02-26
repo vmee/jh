@@ -1,7 +1,7 @@
 {template 'header',$module}
 {load('profile.js')}
 {if $is_company && !$_edittime}
-	<div class="warn">贵公司尚未完善详细资料！完善的商业信息有助于获得别人的信任，结交潜在的商业伙伴，获取商业机会，请尽快完善</div>
+	<div class="warn">贵公司尚未完善详细资料！完善的商业信息有助于获得别人的信任，获取商业机会，请尽快完善</div>
 {/if}
 {if isset($success)}
 	<div class="ok">资料保存成功，您可以：<a href="edit.php" class="t">继续完善</a> &nbsp;|&nbsp; <a href="{$DT[file_my]}" class="t">发布信息</a> &nbsp;|&nbsp; <a href="./" class="t">返回商务室首页</a></div>
@@ -190,6 +190,15 @@
 <span id="dcatid" class="f_red"></span></td>
 </tr>
 <tr>
+	<td class="tl"><span class="f_red">*</span>法人姓名</td>
+	<td class="tr"><input type="text" size="80" name="post[legal]" id="legal" value="{$legal}" maxlength="250"/>&nbsp;<span id="dlegal" class="f_red"></span></td>
+</tr>
+<tr>
+	<td class="tl"><span class="f_red">*</span>法人手机</td>
+	<td class="tr"><input type="text" size="80" name="post[legal_mobile]" id="legal_mobile" value="{$legal_mobile}" maxlength="250"/>&nbsp;<span id="dlegal_mobile" class="f_red"></span></td>
+</tr>
+<tr>
+<tr>
 <td class="tl"><span class="f_red">*</span>主要经营范围</td>
 <td class="tr"><input type="text" size="80" name="post[business]" id="business" value="{$business}" maxlength="250"/>&nbsp;<span id="dbusiness" class="f_red"></span></td>
 </tr>
@@ -209,6 +218,15 @@
 <tr>
 <td class="tl">注册资本</td>
 <td class="tr">{dselect($MONEY_UNIT, 'post[regunit]', '', $regunit, '', 0)} <input type="text" size="6" name="post[capital]" id="capital" value="{$capital}"/> 万</td>
+</tr>
+<tr>
+	<td class="tl"><span class="f_red">*</span>营业执照</td>
+	<td class="tr"><input name="post[license_thumb]" type="text" size="60" id="license_thumb" value="{$license_thumb}" readonly/>&nbsp;&nbsp;<span onclick="Dthumb({$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('license_thumb').value, true);" class="jt">[上传]</span>&nbsp;&nbsp;<span onclick="_preview(Dd('license_thumb').value);" class="jt">[预览]</span>&nbsp;&nbsp;<span onclick="Dd('license_thumb').value='';" class="jt">[删除]</span><br/>
+		<span class="f_gray">*高×宽*大小：500K以下</span></td>
+</tr>
+<tr>
+	<td class="tl"><span class="f_red">*</span>执照过期时间</td>
+	<td class="tr"><input type="text" size="15" name="post[license_expire]" id="license_expire" value="{$license_expire}" maxlength="4"/>&nbsp;<span id="dlicense_expire" class="f_red"></span> <span class="f_gray">(年份，如：2004)</span></td>
 </tr>
 <tr>
 <td class="tl">销售的产品<br/>(提供的服务)</td>

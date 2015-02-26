@@ -204,6 +204,22 @@ table tr td{padding:5px 0;}
 				<span id="dtype" class="f_red"></span>&nbsp;
 				</td>
 				</tr>
+				<tr>
+					<td class="tl"><span class="f_red">*</span>主营行业</td>
+					<td class="tr">
+						<div id="catesch"></div><div id="cate">{ajax_category_select('', '', 0, 4, 'size="2" style="height:80px;width:160px;"')}</div>
+						<input type="button" value=" 添加↓ " class="btn" onclick="addcate({$MOD[cate_max]});"/>
+						<input type="button" value=" ×删除 " class="btn" onclick="delcate();"/>
+						{if $DT[schcate_limit]}<input type="button" value=" 搜索 " class="btn" onclick="schcate(4);"/>{/if}
+						&nbsp;最多可添加 <strong class="f_red">{$MOD[cate_max]}</strong> 个主营行业
+						<br/><select name="cates" id="cates" size="2" style="height:100px;width:380px;margin-top:5px;">
+						{loop $cates $c}
+						<option value="{$c}">{strip_tags(cat_pos(get_cat($c), '/'))}</option>
+						{/loop}
+					</select>
+						<input type="hidden" name="post[catid]" value="{$catid}" id="catid"/><br/>
+						<span id="dcatid" class="f_red"></span></td>
+				</tr>
 				<tr onmouseover="Ds('ttelephone');" onmouseout="Dh('ttelephone');">
 				<td class="tl">公司电话 <span class="f_red">*</span></td>
 				<td><input type="text" class="reg_inp" style="width:200px;" name="post[telephone]" id="telephone" onblur="validate('telephone');"/></td>
@@ -213,6 +229,11 @@ table tr td{padding:5px 0;}
 				</div>
 				<span id="dtelephone" class="f_red"></span>&nbsp;
 				</td>
+				</tr>
+				<tr>
+					<td class="tl"><span class="f_red">*</span>公司介绍</td>
+					<td class="tr"><textarea name="post[introduce]" id="introduce">{$introduce}</textarea>
+						<br/><span id="dintroduce" class="f_red"></span></td>
 				</tr>
 				</table>
 			</div>

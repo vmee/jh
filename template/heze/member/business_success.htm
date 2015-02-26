@@ -1,0 +1,29 @@
+{template 'header'}
+<style type="text/css">
+.tl{width:150px;text-align:right;padding-right:20px;}
+.reg_title {border-bottom:#CCCCCC 1px dashed;font-weight:bold;padding:0 0 10px 10px;margin:15px 55px;font-size:18px;color:#FF6600;}
+.reg_inp {border:#7F9DB9 1px solid;padding:3px 0 3px 0;}
+.tips {position:absolute;z-index:1000;width:300px;background:url('image/tips_bg.gif') no-repeat 0 bottom;overflow:hidden;margin:-5px 0 0 -10px;}
+.tips div{background:url('image/tips_top.gif') no-repeat;line-height:22px;padding:8px 10px 8px 35px;}
+table tr td{padding:5px 0;}
+</style>
+<div class="m">
+	<div class="left_box">
+		<div class="pos">当前位置: <a href="{$MODULE[1][linkurl]}">首页</a> &raquo; <a href="{$DT[file_register]}">商家入驻</a></div>
+		<div style="padding:20px 50px 20px 50px;">
+			<div style="background:#FAFAFA;padding:10px 20px 10px 20px;line-height:24px;">
+
+				<span class="f_b f_red">
+				入驻申请已经提交成功，客服人员稍后会跟你联系，请耐心等待。
+				</span>
+
+			</div>
+			<br/>
+
+
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="{DT_STATIC}file/script/guest.js"></script>
+
+{template 'footer'}

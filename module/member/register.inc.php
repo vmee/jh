@@ -110,7 +110,7 @@ if($submit) {
 		if(!preg_match("/[0-9]{6}/", $post['mobilecode']) || $_SESSION['mobile_code'] != md5($post['mobile'].'|'.$post['mobilecode'])) dalert($L['register_pass_mobilecode'], '', $reload_captcha.$reload_question);
 	}
 
-	if($post['invitecode'] != 'hzjh88' && !$inviter_items = $db->get_one("SELECT itemid FROM {$DT_PRE}invite_customer WHERE regtime=0 and password='{$post[invitecode]}'")){
+	if($post['invitecode'] != 'hzjh88' && !$inviter_items = $db->get_one("SELECT * FROM {$DT_PRE}invite_customer WHERE regtime=0 and password='{$post[invitecode]}'")){
 		dalert('您的邀请码不存在');
 	}
 
@@ -120,6 +120,14 @@ if($submit) {
 	$inviter = get_cookie('inviter');
 	$post['inviter'] = $inviter ? decrypt($inviter) : '';
 	check_name($post['inviter']) or $post['inviter'] = '';
+
+	if($inviter_items['mobile'] == $post['mobile']){
+		$post['gender'] = $inviter_items['gender'];
+		$post['email'] = $post['email'] ? $post['email'] :$inviter_items['email'];
+		$post['qq'] = $post['qq'] ? $post['qq'] :$inviter_items['qq'];
+		$post['weddate'] = $post['weddate'] ? $post['weddate'] :$inviter_items['weddate'];
+	}
+
 	if($do->add($post, false)) {
 		$userid = $do->userid;
 		$username = $post['username'];

@@ -109,13 +109,8 @@ if($submit) {
 	if($could_mobilecode) {
 		if(!preg_match("/[0-9]{6}/", $post['mobilecode']) || $_SESSION['mobile_code'] != md5($post['mobile'].'|'.$post['mobilecode'])) dalert($L['register_pass_mobilecode'], '', $reload_captcha.$reload_question);
 	}
-	if($post['regid'] == 5){
-		$post['company'] = $post['truename'];
-		if(intval($post['wedate'])==0) dalert('请选择结婚日期', '', 'parent.Dd("postwedate").focus();');
-		if(empty($wed)) dalert('请选择婚礼所需服务');
 
-	}
-	$post['groupid'] = $MOD['checkuser'] ? 4 : $post['regid'];
+	$post['groupid'] = 4;
 	$post['content'] = $post['introduce'] = $post['thumb'] = $post['banner'] = $post['catid'] = $post['catids'] = '';
 	$post['edittime'] = 0;
 	$inviter = get_cookie('inviter');
@@ -126,12 +121,6 @@ if($submit) {
 		$username = $post['username'];
 		$email = $post['email'];
 
-		//如果是个人会员 记录婚礼服务
-		if($post['regid'] == 5 && !empty($wed)){
-			foreach($wed as $wcatid){
-				$db->query("INSERT INTO {$DT_PRE}member_wed (userid,catid)  VALUES ($userid, $wcatid)");
-			}
-		}
 
 		if($MFD) fields_update($post_fields, $do->table_member, $userid, 'userid', $MFD);
 		if($CFD) fields_update($post_fields, $do->table_company, $userid, 'userid', $CFD);
@@ -169,6 +158,14 @@ if($submit) {
 			$db->query("UPDATE {$DT_PRE}invite_customer SET regtime='$DT_TIME',reg_userid='$userid',reg_useranme='$username'  WHERE itemid='$invite_customer_id'");
 		}
 		if(!get_cookie('bind')) session_destroy();
+
+		if(!empty($DT['sms_mobile'])){
+			$content = lang('sms->sms_business', array($post['company'], $post['mobile'])).$DT['sms_sign'];
+			send_sms($DT['sms_mobile'], $content);
+		}
+		include template('business_success', $module);
+		exit;
+/**
 		echo '<html><head><title>Login...</title><meta http-equiv="Content-Type" content="text/html;charset='.DT_CHARSET.'"></head>';
 		echo '<body onload="document.getElementById(\'login\').submit();">';
 		echo '<form method="post" action="'.$MOD['linkurl'].$DT['file_login'].'" id="login" target="_top">';
@@ -179,6 +176,7 @@ if($submit) {
 		echo '<input type="hidden" name="captcha" value=""/>';
 		echo '</form></body></html>';
 		exit;
+ */
 	} else {
 		$reload_captcha = $MOD['captcha_register'] ? reload_captcha() : '';
 		$reload_question = $MOD['question_register'] ? reload_question() : '';
