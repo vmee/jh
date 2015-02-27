@@ -18,7 +18,8 @@ if($MOD['banagent']) {
 if($MOD['iptimeout']) {
 	$timeout = $DT_TIME - $MOD['iptimeout']*3600;
 	$r = $db->get_one("SELECT userid FROM {$DT_PRE}member WHERE regip='$DT_IP' AND regtime>'$timeout'");
-	if($r) message(lang($L['register_msg_ip'], array($MOD['iptimeout'])), DT_PATH);
+	//if($r) message(lang($L['register_msg_ip'], array($MOD['iptimeout'])), DT_PATH);
+	if($r) dalert(lang($L['register_msg_ip'], array($MOD['iptimeout'])));
 }
 if($DT['mail_type'] == 'close' && $MOD['checkuser'] == 2) $MOD['checkuser'] = 0;
 require DT_ROOT.'/include/post.func.php';
