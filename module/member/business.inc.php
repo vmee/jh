@@ -3,6 +3,7 @@ defined('IN_DESTOON') or exit('Access Denied');
 if($_userid) dheader($MOD['linkurl']);
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
 if(isset($print)) exit(include template('agreement', $module));
+if(isset($business_register)) exit(include template('business_success', $module));
 if(!$MOD['enable_register']) message($L['register_msg_close'], DT_PATH);
 if($MOD['defend_proxy']) {
 	if($_SERVER['HTTP_X_FORWARDED_FOR'] || $_SERVER['HTTP_VIA'] || $_SERVER['HTTP_PROXY_CONNECTION'] || $_SERVER['HTTP_USER_AGENT_VIA'] || $_SERVER['HTTP_CACHE_INFO'] || $_SERVER['HTTP_PROXY_CONNECTION']) {
@@ -18,8 +19,8 @@ if($MOD['banagent']) {
 if($MOD['iptimeout']) {
 	$timeout = $DT_TIME - $MOD['iptimeout']*3600;
 	$r = $db->get_one("SELECT userid FROM {$DT_PRE}member WHERE regip='$DT_IP' AND regtime>'$timeout'");
-	//if($r) message(lang($L['register_msg_ip'], array($MOD['iptimeout'])), DT_PATH);
-	if($r) dalert(lang($L['register_msg_ip'], array($MOD['iptimeout'])));
+	if($r) message(lang($L['register_msg_ip'], array($MOD['iptimeout'])), DT_PATH);
+	//if($r) dalert(lang($L['register_msg_ip'], array($MOD['iptimeout'])));
 }
 if($DT['mail_type'] == 'close' && $MOD['checkuser'] == 2) $MOD['checkuser'] = 0;
 require DT_ROOT.'/include/post.func.php';
@@ -166,20 +167,15 @@ if($submit) {
 			$content = lang('sms->sms_business', array($post['company'], $post['mobile'])).$DT['sms_sign'];
 			send_sms($DT['sms_mobile'], $content);
 		}
-		include template('business_success', $module);
-		exit;
-/**
+
 		echo '<html><head><title>Login...</title><meta http-equiv="Content-Type" content="text/html;charset='.DT_CHARSET.'"></head>';
-		echo '<body onload="document.getElementById(\'login\').submit();">';
-		echo '<form method="post" action="'.$MOD['linkurl'].$DT['file_login'].'" id="login" target="_top">';
-		echo '<input type="hidden" name="forward" value="'.($forward ? $forward : $MOD['linkurl']).'"/>';
+		echo '<body onload="document.getElementById(\'success\').submit();">';
+		echo '<form method="post" action="business.php" id="success" target="_top">';;
 		echo '<input type="hidden" name="username" value="'.$username.'"/>';
-		echo '<input type="hidden" name="password" value="'.$post['password'].'"/>';
-		echo '<input type="hidden" name="auto" value="1"/>';
-		echo '<input type="hidden" name="captcha" value=""/>';
+		echo '<input type="hidden" name="business_register" value="success"/>';
 		echo '</form></body></html>';
 		exit;
- */
+
 	} else {
 		$reload_captcha = $MOD['captcha_register'] ? reload_captcha() : '';
 		$reload_question = $MOD['question_register'] ? reload_question() : '';

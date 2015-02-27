@@ -9,7 +9,7 @@ table tr td{padding:5px 0;}
 </style>
 <div class="m">
 	<div class="left_box">
-		<div class="pos">当前位置: <a href="{$MODULE[1][linkurl]}">首页</a> &raquo; <a href="{$DT[file_register]}">商家入驻</a></div>
+		<div class="pos">当前位置: <a href="{$MODULE[1][linkurl]}">首页</a> &raquo; <a href="business.php">商家入驻</a></div>
 		<div style="padding:20px 50px 20px 50px;">
 			<div style="background:#FAFAFA;padding:10px 20px 10px 20px;line-height:24px;">
 
@@ -33,7 +33,7 @@ table tr td{padding:5px 0;}
 
 			<table cellpadding="5" cellspacing="5" width="100%">
 			<tr onmouseover="Ds('tusername');" onmouseout="Dh('tusername');">
-			<td class="tl">会员名 <span class="f_red">*</span></td>
+			<td class="tl">用户名 <span class="f_red">*</span></td>
 			<td width="220"><input type="text" class="reg_inp" style="width:200px;" name="post[username]" id="username" onblur="validator('username');" />
 			</td>
 			<td>
@@ -76,6 +76,60 @@ table tr td{padding:5px 0;}
 			</td>
 			</tr>
 			</table>
+
+			<div id="company_detail">
+				<div class="reg_title">公司信息</div>
+				<table cellpadding="5" cellspacing="5" width="100%">
+					<tr onmouseover="Ds('tcompany');" onmouseout="Dh('tcompany');">
+						<td class="tl">公司名称 <span class="f_red">*</span></td>
+						<td width="300"><input type="text" class="reg_inp" style="width:280px;" name="post[company]" id="company" onblur="validator('company');"/></td>
+						<td>
+							<div class="tips" id="tcompany" style="display:none;">
+								<div>请填写公司全称，与营业执照保持一致，注册之后将不可更改</div>
+							</div>
+							<span id="dcompany" class="f_red"></span>&nbsp;
+						</td>
+					</tr>
+					<tr onmouseover="Ds('ttype');" onmouseout="Dh('ttype');">
+						<td class="tl">公司类型 <span class="f_red">*</span></td>
+						<td>{dselect($COM_TYPE, 'post[type]', '请选择', '', 'id="type"', 0)}</td>
+						<td>
+							<div class="tips" id="ttype" style="display:none;">
+								<div>如果没有匹配的类型，请选择其它</div>
+							</div>
+							<span id="dtype" class="f_red"></span>&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td class="tl">主营行业<span class="f_red">*</span></td>
+						<td class="tr">
+							{php $child = get_maincat(0, 4, 1);}
+							{loop $child $i $c}
+
+							<input type="checkbox" name="catid[]" id="catid{$i}" value="{$c[catid]}" /> {set_style($c[catname], $c[style])} &nbsp;&nbsp;&nbsp;&nbsp;
+
+							{/loop}
+							<br/>
+							<span id="dcatid" class="f_red"></span></td>
+					</tr>
+					<tr onmouseover="Ds('ttelephone');" onmouseout="Dh('ttelephone');">
+						<td class="tl">公司电话 <span class="f_red">*</span></td>
+						<td><input type="text" class="reg_inp" style="width:200px;" name="post[telephone]" id="telephone" onblur="validate('telephone');"/></td>
+						<td>
+							<div class="tips" id="ttelephone" style="display:none;">
+								<div>国内用户请加区号<br/>格式范例：0530-88889999</div>
+							</div>
+							<span id="dtelephone" class="f_red"></span>&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td class="tl">公司介绍<span class="f_red">*</span></td>
+						<td class="tr"><textarea name="post[introduce]" id="introduce" rows="10" cols="100"></textarea>
+							<br/><span id="dintroduce" class="f_red"></span></td>
+					</tr>
+				</table>
+			</div>
+
 			<div class="reg_title">联系方式</div>
 
 			<table cellpadding="5" cellspacing="5" width="100%">
@@ -113,6 +167,16 @@ table tr td{padding:5px 0;}
 			</div>
 			<span id="demail" class="f_red"></span>&nbsp;	
 			</td>
+			</tr>
+			<tr onmouseover="Ds('tqq');" onmouseout="Dh('tqq');">
+				<td class="tl">QQ号码 &nbsp;</td>
+				<td><input type="text" class="reg_inp" style="width:200px;" name="post[qq]" value="{$ic_qq}" id="qq"/></td>
+				<td>
+					<div class="tips" id="tqq" style="display:none;">
+						<div>推荐填写，以便即时在线与您取得联系</div>
+					</div>
+					<span id="dqq" class="f_red"></span>&nbsp;
+				</td>
 			</tr>
 			{if $could_emailcode}
 			<tr onmouseover="Ds('temailcode');" onmouseout="Dh('temailcode');">
@@ -169,70 +233,10 @@ table tr td{padding:5px 0;}
 			</tr>
 			{/if}
 
-			<tr onmouseover="Ds('tqq');" onmouseout="Dh('tqq');">
-			<td class="tl">QQ号码 &nbsp;</td>
-			<td><input type="text" class="reg_inp" style="width:200px;" name="post[qq]" value="{$ic_qq}" id="qq"/></td>
-			<td>
-			<div class="tips" id="tqq" style="display:none;">
-				<div>推荐填写，以便即时在线与您取得联系</div>
-			</div>
-			<span id="dqq" class="f_red"></span>&nbsp;	
-			</td>
-			</tr>
+
 			</table>
 
-			<div id="company_detail"{if $is_invite_customer} class="dsn"{/if}>
-				<div class="reg_title">公司信息</div>
-				<table cellpadding="5" cellspacing="5" width="100%">
-				<tr onmouseover="Ds('tcompany');" onmouseout="Dh('tcompany');">
-				<td class="tl">公司名称 <span class="f_red">*</span></td>
-				<td width="300"><input type="text" class="reg_inp" style="width:280px;" name="post[company]" id="company" onblur="validator('company');"/></td>
-				<td>
-				<div class="tips" id="tcompany" style="display:none;">
-					<div>请填写公司全称，与营业执照保持一致，注册之后将不可更改</div>
-				</div>
-				<span id="dcompany" class="f_red"></span>&nbsp;
-				</td>
-				</tr>
-				<tr onmouseover="Ds('ttype');" onmouseout="Dh('ttype');">
-				<td class="tl">公司类型 <span class="f_red">*</span></td>
-				<td>{dselect($COM_TYPE, 'post[type]', '请选择', '', 'id="type"', 0)}</td>
-				<td>
-				<div class="tips" id="ttype" style="display:none;">
-					<div>如果没有匹配的类型，请选择其它</div>
-				</div>
-				<span id="dtype" class="f_red"></span>&nbsp;
-				</td>
-				</tr>
-				<tr>
-					<td class="tl">主营行业<span class="f_red">*</span></td>
-					<td class="tr">
-						{php $child = get_maincat(0, 4, 1);}
-						{loop $child $i $c}
 
-						<input type="checkbox" name="catid[]" id="catid{$i}" value="{$c[catid]}" /> {set_style($c[catname], $c[style])} &nbsp;&nbsp;&nbsp;&nbsp;
-
-						{/loop}
-						<br/>
-						<span id="dcatid" class="f_red"></span></td>
-				</tr>
-				<tr onmouseover="Ds('ttelephone');" onmouseout="Dh('ttelephone');">
-				<td class="tl">公司电话 <span class="f_red">*</span></td>
-				<td><input type="text" class="reg_inp" style="width:200px;" name="post[telephone]" id="telephone" onblur="validate('telephone');"/></td>
-				<td>
-				<div class="tips" id="ttelephone" style="display:none;">
-					<div>国内用户请加区号<br/>格式范例：0530-88889999</div>
-				</div>
-				<span id="dtelephone" class="f_red"></span>&nbsp;
-				</td>
-				</tr>
-				<tr>
-					<td class="tl">公司介绍<span class="f_red">*</span></td>
-					<td class="tr"><textarea name="post[introduce]" id="introduce" rows="10" cols="100"></textarea>
-						<br/><span id="dintroduce" class="f_red"></span></td>
-				</tr>
-				</table>
-			</div>
 			<table cellpadding="5" cellspacing="5" width="100%">
 			{if $MOD[question_register]}
 			<tr onmouseover="Ds('tanswer');" onmouseout="Dh('tanswer');">

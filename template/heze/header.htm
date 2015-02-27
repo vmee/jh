@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="{DT_SKIN}ie6.css"/>
     <![endif]-->
     <link rel="stylesheet" type="text/css" href="{DT_SKIN}wed_main.css"/>
+
     {if !DT_DEBUG}<script type="text/javascript">window.onerror=function(){return true;}</script>{/if}
     <script type="text/javascript" src="{DT_STATIC}lang/{DT_LANG}/lang.js"></script>
     <script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script>
@@ -74,7 +75,7 @@
     <div class="wrap head_height">
         <a href="{$MODULE[1][linkurl]}" class="logo"><img src="{if $MODULE[$moduleid][logo]}{DT_SKIN}image/logo_{$moduleid}.gif{elseif $DT[logo]}{$DT[logo]}{else}{DT_SKIN}image/logo.gif{/if}" alt="{$DT[sitename]}"/></a>
 
-        {php $search_module = array(4=>'商家',5=>'优惠',10=>'知道',12=>'图库');}
+        {php $search_module = array(4=>'商家',5=>'优惠',12=>'作品');}
         {php $search_moduleid = $moduleid==1 ? 5 : $moduleid;}
         <form id="destoon_search" action="{DT_URL}{if $module=='destoon'}sell{else}{$module}{/if}/search.php" onsubmit="return Dsearch();">
             <input type="hidden" name="moduleid" value="{$search_moduleid}" id="destoon_moduleid"/>
@@ -89,13 +90,13 @@
                 {/loop}
                 </div>
         </form>
-        <a href="{DT_PATH}company/list.php?catid=413" class="ico" title="菏泽婚纱摄影" target="_blank"><i class="ico1"></i>婚纱摄影</a>
-        <a href="{DT_PATH}company/list.php?catid=417" class="ico" title="菏泽婚宴酒店" target="_blank"><i class="ico2"></i>婚宴酒店</a>
-        <a href="{DT_PATH}company/list.php?catid=424" class="ico" title="菏泽婚纱礼服" target="_blank"><i class="ico3"></i>婚纱礼服</a>
-        <a href="{DT_PATH}company/list.php?catid=425" class="ico" title="菏泽钻戒首饰" target="_blank"><i class="ico4"></i>钻戒首饰</a>
-        <a href="{DT_PATH}company/list.php?catid=418" class="ico" title="菏泽婚庆服务" target="_blank"><i class="ico5"></i>婚庆服务</a>
+        <a href="{DT_PATH}company/list.php?catid=413" class="ico" title="菏泽婚纱摄影"><i class="ico1"></i>婚纱摄影</a>
+        <a href="{DT_PATH}company/list.php?catid=417" class="ico" title="菏泽婚宴酒店"><i class="ico2"></i>婚宴酒店</a>
+        <a href="{DT_PATH}company/list.php?catid=424" class="ico" title="菏泽婚纱礼服"><i class="ico3"></i>婚纱礼服</a>
+        <a href="{DT_PATH}company/list.php?catid=425" class="ico" title="菏泽钻戒首饰"><i class="ico4"></i>钻戒首饰</a>
+        <a href="{DT_PATH}company/list.php?catid=418" class="ico" title="菏泽婚庆服务"><i class="ico5"></i>婚庆服务</a>
     </div>
     <div class="wrap navbg">
-        <a href="{DT_PATH}" title="菏泽婚嫁" target="_blank">首 页</a><a href="{DT_PATH}company/" title="菏泽婚庆企业" target="_blank">婚嫁服务</a><a href="{DT_PATH}sell/" title="商家优惠" target="_blank">优惠大集</a><a href="{DT_PATH}know/" title="婚礼知道" target="_blank">结婚问答</a><a href="{DT_PATH}photo/" title="结婚图库" target="_blank">图 库</a>
+        <a href="{DT_PATH}" title="菏泽婚嫁" target="_blank">首 页</a><a href="{DT_PATH}company/" title="菏泽婚庆企业">婚嫁服务</a><a href="{DT_PATH}sell/" title="商家优惠" target="_blank">精品折扣</a><a href="{DT_PATH}photo/" title="精选作品" target="_blank">精选作品</a>
     </div>
 </div>

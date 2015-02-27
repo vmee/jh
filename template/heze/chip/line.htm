@@ -5,7 +5,7 @@ var destoon_chat = {$_chat};
 var destoon_stip = '';
 var destoon_member = ' 欢迎，';
 {if $_userid}
-destoon_member += '<span class="f_red f_b" title="{$MG[groupname]}">{$_truename}</span> (<a href="{$MODULE[2][linkurl]}line.php" title="{if $_online}点击隐身{else}点击上线{/if}">{if $_online}<span class="f_green">在线</span>{else}<span class="f_gray">隐身</span>{/if}</a>) | <a href="{$MODULE[2][linkurl]}">商务中心</a> | <a href="{$MODULE[2][linkurl]}record.php">{$DT[money_name]}(<span class="px11">{$_money}</span>)</a> | <a href="{$MODULE[2][linkurl]}credit.php">{$DT[credit_name]}(<span class="px11">{$_credit}</span>)</a> | <a href="{$MODULE[2][linkurl]}logout.php">退出</a>';
+destoon_member += '<span class="f_red f_b" title="{$MG[groupname]}">{$_truename}</span> (<a href="{$MODULE[2][linkurl]}line.php" title="{if $_online}点击隐身{else}点击上线{/if}">{if $_online}<span class="f_green">在线</span>{else}<span class="f_gray">隐身</span>{/if}</a>) | <a href="{$MODULE[2][linkurl]}">商务中心</a> | <a href="{$MODULE[2][linkurl]}logout.php">退出</a>';
 {else}
 destoon_member += '<span class="f_red">客人</span> | <a href="{$MODULE[2][linkurl]}{$DT[file_register]}">免费注册</a> | <a href="{$MODULE[2][linkurl]}{$DT[file_login]}">会员登录</a> | <a href="{$MODULE[2][linkurl]}send.php">忘记密码?</a>';
 {/if}
