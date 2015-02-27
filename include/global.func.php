@@ -340,7 +340,7 @@ function send_sms($mobile, $message, $word = 0, $time = 0) {
 	$code = '';
 	if($r) {
 
-		$data = json_decode($r);
+		$data = json_decode($r, true);
 
 		if($data['code'] === 0){
 			$code = $data['result']['sid'];
@@ -355,6 +355,7 @@ function send_sms($mobile, $message, $word = 0, $time = 0) {
 	} else {
 		$code = 'Can Not Connect SMS Server';
 	}
+
 	$db->query("INSERT INTO {$db->pre}sms (mobile,message,word,editor,sendtime,code) VALUES ('$mobile','$message','$word','$_username','$DT_TIME','$code')");
 	return $code;
 }

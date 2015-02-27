@@ -61,7 +61,7 @@ if($could_mobilecode) {
 		isset($_SESSION['mobile_send']) or $_SESSION['mobile_send'] = 0;
 		if($do->mobile_exists($mobile)) exit('3');
 		if($_SESSION['mobile_time'] && $DT_TIME - $_SESSION['mobile_time'] < 180) exit('5');
-		if($_SESSION['mobile_send'] > 4) exit('6');
+		//if($_SESSION['mobile_send'] > 4) exit('6');
 
 		$mobilecode = random(6, '0123456789');
 		$_SESSION['mobile'] = $mobile;
@@ -102,7 +102,7 @@ if($submit) {
 	}
 	$reload_captcha = $MOD['captcha_register'] ? reload_captcha() : '';
 	$reload_question = $MOD['question_register'] ? reload_question() : '';
-	in_array($post['regid'], $RG) or dalert($L['register_pass_groupid'], '', $reload_captcha.$reload_question);
+	// in_array($post['regid'], $RG) or dalert($L['register_pass_groupid'], '', $reload_captcha.$reload_question);
 	if($could_emailcode) {
 		if(!preg_match("/[0-9]{6}/", $post['emailcode']) || $_SESSION['email_code'] != md5($post['email'].'|'.$post['emailcode'])) dalert($L['register_pass_emailcode'], '', $reload_captcha.$reload_question);
 	}
@@ -110,8 +110,10 @@ if($submit) {
 		if(!preg_match("/[0-9]{6}/", $post['mobilecode']) || $_SESSION['mobile_code'] != md5($post['mobile'].'|'.$post['mobilecode'])) dalert($L['register_pass_mobilecode'], '', $reload_captcha.$reload_question);
 	}
 
+	$post['catid'] = empty($post['catid']) ? ','.implode(',', $post['catid']) : '';
+
 	$post['groupid'] = 4;
-	$post['content'] = $post['introduce'] = $post['thumb'] = $post['banner'] = $post['catid'] = $post['catids'] = '';
+	$post['content'] = $post['thumb'] = $post['banner'] = $post['catids'] = '';
 	$post['edittime'] = 0;
 	$inviter = get_cookie('inviter');
 	$post['inviter'] = $inviter ? decrypt($inviter) : '';
@@ -200,28 +202,7 @@ if($submit) {
 		if($email) $_SESSION['regemail'] = md5(md5($email.DT_KEY.$DT_IP));
 	}
 	$areaid = $cityid;
-	set_cookie('forward_url', $forward);
 	$head_title = '商家申请入驻';
-
-	//邀请用户注册
-	$is_invite_customer = false;
-	$ic_itemid = $ic_areaid = $ic_gender = $ic_email = $ic_mobile = $ic_qq = $ic_truename = $ic_weddate = '';
-	if(isset($activeauth)){
-		list($ic_itemid, $ic_mobile, $ic_active_code) = explode('|', decrypt($activeauth));
-
-		$r = $db->get_one("SELECT * FROM {$DT_PRE}invite_customer WHERE regtime=0 and `mobile`='{$ic_mobile}' and `password`='{$ic_active_code}'");
-		if($r){
-			$is_invite_customer = true;
-			$ic_areaid = $r['areaid'];
-			$ic_gender = $r['gender'];
-			$ic_email = $r['email'];
-			$ic_qq = $r['qq'];
-			$ic_truename = $r['truename'];
-			$ic_weddate = $r['weddate'];
-
-		}
-	}
-
 
 	include template('business', $module);
 }
