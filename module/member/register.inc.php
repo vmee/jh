@@ -60,8 +60,8 @@ if($could_mobilecode) {
 		if(!is_mobile($mobile)) exit('2');
 		isset($_SESSION['mobile_send']) or $_SESSION['mobile_send'] = 0;
 		if($do->mobile_exists($mobile)) exit('3');
-		if($_SESSION['mobile_time'] && $DT_TIME - $_SESSION['mobile_time'] < 180) exit('5');
-		if($_SESSION['mobile_send'] > 4) exit('6');
+		//if($_SESSION['mobile_time'] && $DT_TIME - $_SESSION['mobile_time'] < 180) exit('5');
+		//if($_SESSION['mobile_send'] > 4) exit('6');
 
 		$mobilecode = random(6, '0123456789');
 		$_SESSION['mobile'] = $mobile;
