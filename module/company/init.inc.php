@@ -203,6 +203,11 @@ $banner2 = isset($HOME['banner2']) ? $HOME['banner2'] : '';
 $banner3 = isset($HOME['banner3']) ? $HOME['banner3'] : '';
 $banner4 = isset($HOME['banner4']) ? $HOME['banner4'] : '';
 $banner5 = isset($HOME['banner5']) ? $HOME['banner5'] : '';
+$banner1_url = isset($HOME['banner1_url']) ? $HOME['banner1_url'] : '';
+$banner2_url = isset($HOME['banner2_url']) ? $HOME['banner2_url'] : '';
+$banner3_url = isset($HOME['banner3_url']) ? $HOME['banner3_url'] : '';
+$banner4_url = isset($HOME['banner4_url']) ? $HOME['banner4_url'] : '';
+$banner5_url = isset($HOME['banner5_url']) ? $HOME['banner5_url'] : '';
 if($bannert == 2) {
 	if($banner1) {
 		if(!$banner2) {

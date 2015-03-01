@@ -5,7 +5,8 @@
 <title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{$COM[company]}{/if}</title>
 {if $head_keywords}<meta name="keywords" content="{$head_keywords}"/>{/if}
 {if $head_description}<meta name="description" content="{$head_description}"/>{/if}
-<meta name="generator" content="Destoon B2B,www.destoon.com"/>
+    <link rel="shortcut icon" type="image/x-icon" href="{DT_STATIC}favicon.ico"/>
+    <link rel="bookmark" type="image/x-icon" href="{DT_STATIC}favicon.ico"/>
 <link rel="stylesheet" type="text/css" href="{$MODULE[4][linkurl]}skin/common.css"/>
 <link rel="stylesheet" type="text/css" href="{$HSPATH}style.css"/>
 {if !DT_DEBUG}<script type="text/javascript">window.onerror= function(){return true;}</script>{/if}
@@ -25,6 +26,7 @@ document.domain = '{DT_DOMAIN}';
 </script>
 <script type="text/javascript" src="{DT_PATH}file/script/homepage.js"></script>
 {if $css}<style type="text/css">{$css}</style>{/if}
+<style type="text/css">#destoon_member a{color:#fff;}</style>
 </head>
 <body{if $bgcolor || $background} style="background:{if $bgcolor}{$bgcolor} {/if}{if $background}url('{$background}') no-repeat center 0{/if};"{/if}>
 
@@ -32,7 +34,7 @@ document.domain = '{DT_DOMAIN}';
 <div class="top_nav">
     <div class="head">
     <p class="ai_title">{$DT['sitename']},让选择更多,让服务更全,让婚礼更美!</p>
-    <div id="destoon_member"></div>
+    <div id="destoon_member" style="float:right;color:#fff;"></div>
     </div>
 </div>
 
@@ -43,7 +45,7 @@ document.domain = '{DT_DOMAIN}';
         <script type="text/javascript">
             var config = '5|0xFFFFFF|0x333333|80|0xFAFAFA|0x333333|0x000000';
             var files = "{$banner1}|{$banner2}{if $banner3}|{$banner3}{/if}{if $banner4}|{$banner4}{/if}{if $banner5}|{$banner5}{/if}";
-            var links = '';
+            var links = '{$banner1_url}|{$banner2_url}{if $banner3_url}|{$banner3_url}{/if}{if $banner4_url}|{$banner4_url}{/if}{if $banner5_url}|{$banner5_url}{/if}';
             var texts = '';
             document.write('<embed src="{DT_PATH}file/flash/slide.swf" wmode="opaque" FlashVars="config='+config+'&bcastr_flie='+files+'&bcastr_link='+links+'&bcastr_title='+texts+'&menu="false" quality="high" width="{$bannerw}" height="{$bannerh}" type="application/x-shockwave-flash" extendspage="http://get.adobe.com/flashplayer/"></embed>');
         </script>
