@@ -114,7 +114,7 @@ if($submit) {
 
 	$post['catid'] = empty($post['catid']) ? ','.implode(',', $post['catid']) : '';
 
-	$post['groupid'] = 4;
+	$post['groupid'] = 5;
 	$post['content'] = $post['thumb'] = $post['banner'] = $post['catids'] = '';
 	$post['edittime'] = 0;
 	$inviter = get_cookie('inviter');
@@ -168,11 +168,20 @@ if($submit) {
 			send_sms($DT['sms_mobile'], $content);
 		}
 
-		echo '<html><head><title>Login...</title><meta http-equiv="Content-Type" content="text/html;charset='.DT_CHARSET.'"></head>';
+		/**echo '<html><head><title>Login...</title><meta http-equiv="Content-Type" content="text/html;charset='.DT_CHARSET.'"></head>';
 		echo '<body onload="document.getElementById(\'success\').submit();">';
 		echo '<form method="post" action="business.php" id="success" target="_top">';;
 		echo '<input type="hidden" name="username" value="'.$username.'"/>';
 		echo '<input type="hidden" name="business_register" value="success"/>';
+		echo '</form></body></html>';**/
+		echo '<html><head><title>Login...</title><meta http-equiv="Content-Type" content="text/html;charset='.DT_CHARSET.'"></head>';
+		echo '<body onload="document.getElementById(\'login\').submit();">';
+		echo '<form method="post" action="'.$MOD['linkurl'].$DT['file_login'].'" id="login" target="_top">';
+		echo '<input type="hidden" name="forward" value="'.($forward ? $forward : $MOD['linkurl']).'"/>';
+		echo '<input type="hidden" name="username" value="'.$username.'"/>';
+		echo '<input type="hidden" name="password" value="'.$post['password'].'"/>';
+		echo '<input type="hidden" name="auto" value="1"/>';
+		echo '<input type="hidden" name="captcha" value=""/>';
 		echo '</form></body></html>';
 		exit;
 

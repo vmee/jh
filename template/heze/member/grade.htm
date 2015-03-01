@@ -1,8 +1,19 @@
 {template 'header'}
 <div class="m b10">&nbsp;</div>
+
+<div class="m">
+
+	<div class="box_head"><div><strong>申请vip会员</strong><a name="up"></a></div></div>
+	<div class="box_body">
+		<div style="line-height:24px;font-size:18px;padding:5px;">
+			- 申请vip会员，请致电客户专员&nbsp;&nbsp;服务电话：{$DT[telephone]}<br/>
+		</div>
+
+	</div>
+	<div class="m b10">&nbsp;</div>
 <div class="m">
 	<h1 class="title">{$DT[sitename]}会员服务一览表</h1>
-	<table cellpadding="8" cellspacing="1" width="100%" bgcolor="#DDDDDD">
+	<table cellpadding="8" cellspacing="1" width="100%" bgcolor="#DDDDDD" style="line-height: 36px;">
 	<tr bgcolor="#F4F4F4" align="center">
 	<td class="f_b px14" width="{$percent}">服务范围\会员组</td>
 	{loop $GROUPS $k $v}{if $k > 4}
@@ -43,12 +54,19 @@
 	{/loop}
 	</tr>
 
-	<tr bgcolor="#FFFFFF" align="center">
-	<td>拥有{VIP}标识 <img src="{DT_SKIN}image/vip.gif" align="absmiddle" alt="{VIP}" title="{VIP}"/></td>
-	{loop $GROUPS $k $v}{if $k > 4}
-	<td><img src="{DT_SKIN}image/{if $v[vip]}yes{else}no{/if}.gif"/></td>
-	{/if}{/loop}
-	</tr>
+		<tr bgcolor="#FFFFFF" align="center">
+			<td>主动与客户在线沟通</td>
+			{loop $GROUPS $k $v}{if $k > 4}
+			<td><img src="{DT_SKIN}image/{if $v[chat]}yes{else}no{/if}.gif"/></td>
+			{/if}{/loop}
+		</tr>
+
+		<tr bgcolor="#FFFFFF" align="center">
+			<td>主动与客户在线沟通</td>
+			{loop $GROUPS $k $v}{if $k > 4}
+			<td><img src="{DT_SKIN}image/{if $v[chat]}yes{else}no{/if}.gif"/></td>
+			{/if}{/loop}
+		</tr>
 
 	<tr bgcolor="#FFFFFF" align="center">
 	<td>信息优先排序</td>
@@ -61,13 +79,6 @@
 	<td>产品首页推荐</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td><img src="{DT_SKIN}image/{if $v[vip]}yes{else}no{/if}.gif"/></td>
-	{/if}{/loop}
-	</tr>
-
-	<tr bgcolor="#FFFFFF" align="center">
-	<td>产品在线销售</td>
-	{loop $GROUPS $k $v}{if $k > 4}
-	<td><img src="{DT_SKIN}image/{if $v[trade_sell]}yes{else}no{/if}.gif"/></td>
 	{/if}{/loop}
 	</tr>
 
@@ -92,12 +103,12 @@
 	{/if}{/loop}
 	</tr>
 
-	<tr bgcolor="#FFFFFF" align="center">
+	<!--<tr bgcolor="#FFFFFF" align="center">
 	<td>自定义公司模板</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td><img src="{DT_SKIN}image/{if $v[style]}yes{else}no{/if}.gif"/></td>
 	{/if}{/loop}
-	</tr>
+	</tr>-->
 
 
 	<tr bgcolor="#FFFFFF" align="center">
@@ -107,6 +118,7 @@
 	{/if}{/loop}
 	</tr>
 
+	<!--
 	<tr bgcolor="#FFFFFF" align="center">
 	<td>商机订阅</td>
 	{loop $GROUPS $k $v}{if $k > 4}
@@ -119,7 +131,7 @@
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td><img src="{DT_SKIN}image/{if $v[sendmail]}yes{else}no{/if}.gif"/></td>
 	{/if}{/loop}
-	</tr>
+	</tr>-->
 
 	<tr bgcolor="#FFFFFF" align="center">
 	<td>收件箱容量</td>
@@ -151,7 +163,7 @@
 	{/if}{/loop}
 	</tr>
 	
-	<tr bgcolor="#FFFFFF" align="center">
+	<!--<tr bgcolor="#FFFFFF" align="center">
 	<td>每日询盘次数</td>
 	{loop $GROUPS $k $v}{if $k > 4}
 	<td>
@@ -225,7 +237,7 @@
 	</td>
 	{/if}{/loop}
 	</tr>
-
+	-->
 	{if $MODULE[16]}
 	<tr bgcolor="#FFFFFF" align="center">
 	<td>发布商品数量</td>
@@ -243,6 +255,7 @@
 	</tr>
 	{/if}
 
+		<!--
 	{if $MODULE[5]}
 	<tr bgcolor="#FFFFFF" align="center">
 	<td>供应信息数量</td>
@@ -442,7 +455,7 @@
 	{/if}{/loop}
 	</tr>
 	{/if}
-
+-->
 	{if $MODULE[15]}
 	<tr bgcolor="#FFFFFF" align="center">
 	<td>上传资料数量</td>
@@ -480,129 +493,7 @@
 
 <div class="m b10">&nbsp;</div>
 
-<div class="m">
-<div class="m_l f_l">
-	<div class="box_head"><div><strong>在线升级</strong><a name="up"></a></div></div>
-	<div class="box_body">
-		<form method="post" action="grade.php" onsubmit="return check();">
-		<input type="hidden" name="groupid" value="{$groupid}"/>
-		<table cellpadding="6" cellspacing="0" width="100%">
-		<tr>
-		<td align="right" width="100" height="25"><span class="f_red">*</span> 升级为：</td>
-		<td>
-		<span class="f_orange f_b">
-		{if $UP}
-			{if $groupid}
-			{$UP[$groupid][groupname]}
-			{else}
-			请选择升级会员组
-			{/if}
-		{else}
-			暂时没有供您升级的会员组
-		{/if}
-		</span>
-		&nbsp;&nbsp;
-		{if $_userid}
-		您的当前会员组为<strong>{$GROUP[$_groupid][groupname]}</strong>
-		{else}
-		您还没有登录，建议您先 <a href="{$DT[file_login]}" class="f_b">登录</a > 或 <a href="{$DT[file_register]}" class="f_b">注册会员</a>
-		{/if}
-		</td>
-		</tr>
-		{if $fee}
-		<tr>
-		<td align="right"><span class="f_red">*</span> 所需费用：</td>
-		<td><span class="f_red f_b">{$fee}{$DT[money_unit]}/年</span></td>
-		</tr>
-		<tr>
-		<td align="right">优惠码：</td>
-		<td><input name="promo_code" type="text" id="promo_code" size="20" value="" style="border:green 2px solid;padding:2px;font-size:14px;margin:0 0 5px;" onblur="pcode(this.value);"/><br/><span class="f_gray" id="code">使用优惠码可充抵部分费用或获赠一段有效期</span>
-		</td>
-		</tr>
-		{/if}
-		{if $need_fee}
-		<tr>
-		<td align="right">账户余额：</td>
-		<td><span class="f_blue f_b">{$_money} {$DT[money_unit]}</span> {if $fee>$_money}&nbsp;&nbsp;您的余额不足， <a href="charge.php?action=pay" target="_blank" class="f_b">请充值</a>{/if}</td>
-		</tr>
-		{/if}
-		<tr>
-		<td align="right"><span class="f_red">*</span> 公司全称：</td>
-		<td><input type="text" name="company" id="company" value="{$company}" size="50"/><br/><span id="dcompany" class="f_red"></span></td>
-		</tr>
-		<tr>
-		<td align="right"><span class="f_red">*</span> 联系人：</td>
-		<td><input name="truename" type="text" id="truename" size="20" value="{$truename}" /> <br/><span id="dtruename" class="f_red"></span></td>
-		</tr>
-		<tr>
-		<td align="right"><span class="f_red">*</span> 电话号码：</td>
-		<td><input name="telephone" id="telephone" type="text" size="30" value="{$telephone}"/> <span id="dtelephone" class="f_red"></span></td>
-		</tr>
-		<tr>
-		<td align="right">手机号码：</td>
-		<td><input name="mobile" id="mobile" type="text" size="30" value="{$mobile}"/> <span id="dmobile" class="f_red"></span></td>
-		</tr>
-		<tr>
-		<td align="right">电子邮件：</td>
-		<td><input name="email" id="email" type="text" size="30" value="{$email}" /></td>
-		</tr>
-		{if $DT[im_qq]}
-		<tr>
-		<td align="right">QQ：</td>
-		<td><input name="qq" type="text" size="20" value="{$qq}"/></td>
-		</tr>
-		{/if}
-		{if $DT[im_ali]}
-		<tr>
-		<td align="right">阿里旺旺：</td>
-		<td><input name="ali" type="text" size="20" value="{$ali}"/></td>
-		</tr>
-		{/if}
-		{if $DT[im_msn]}
-		<tr>
-		<td align="right">MSN：</td>
-		<td><input name="msn" type="text" size="30" value="{$msn}"/></td>
-		</tr>
-		{/if}
-		{if $DT[im_skype]}
-		<tr>
-		<td align="right">Skype：</td>
-		<td><input name="skype" type="text" size="20" value="{$skype}"/></td>
-		</tr>
-		{/if}
-		<tr>
-		<td align="right">附言：</td>
-		<td>
-		<textarea style="width:400px;height:60px;" name="content" id="content"></textarea><br/>
-		<span id="dcontent" class="f_red"></span>- 500字内
-		</td>
-		</tr>
-		<tr>
-		<td align="right"> </td>
-		<td><input type="submit" name="submit" value=" 提 交 "{if !$could_up} disabled{/if}/></td>
-		</tr>
-		</table>
-		</form>
-	</div>
-</div>
-<div class="m_n f_l">&nbsp;</div>
-<div class="m_r f_l">
-	<div class="box_head"><div><strong>相关说明</strong></div></div>
-	<div class="box_body">
-		<div style="line-height:24px;font-size:13px;padding:5px;">
-		- 如果升级有任何问题，请致电客户专员<br/>
-		&nbsp;&nbsp;服务电话：{$DT[telephone]}<br/>
-		</div>
-	</div>
-	<div class="b10"> </div>
-	<div class="box_head"><div><span class="f_r"><a href="{$MODULE[4][linkurl]}{rewrite('search.php?vip=1')}">更多&raquo;</a></span><strong>最新{VIP}</strong></div></div>
-	<div class="box_body li_dot f_gray">
-		<div id="vips" style="height:220px;overflow:hidden;">
-		<!--{tag("moduleid=4&condition=vip>0&areaid=$cityid&pagesize=20&order=fromtime desc&template=list-com")}-->
-		</div>
-	</div>
-</div>
-</div>
+
 
 <script type="text/javascript" src="{DT_STATIC}file/script/marquee.js"></script>
 <script type="text/javascript">

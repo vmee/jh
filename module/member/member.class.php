@@ -140,11 +140,13 @@ class member {
 			if($member['password'] && !$this->is_password($member['password'], $member['cpassword'])) return false;
 			if($member['payword'] && !$this->is_payword($member['payword'], $member['cpayword'])) return false;
 			if($member['groupid'] > 5) {
+				if(empty($member['thumb'])) return $this->_('请上传公司形象照片');
 				if(strlen($member['regyear']) != 4 || !is_numeric($member['regyear'])) return $this->_($L['member_regyear_null']);
 				if(empty($member['address'])) return $this->_($L['member_address_null']);
 				if(word_count($member['introduce']) < 5) return $this->_($L['member_introduce_null']);
 				if(!$member['business']) return $this->_($L['member_business_null']);
 				if(strlen($member['catid']) < 2) return $this->_($L['member_catid_null']);
+				if(empty($member['license_thumb'])) return $this->_('请上传营业执照照片');
 			}
 		} else {
 			if(!$this->is_username($member['username'])) return false;
@@ -299,7 +301,7 @@ class member {
 		$r = $this->get_one();
 		$member['linkurl'] = userurl($r['username'], '', $member['domain']);
 		$member_fields = array('company','passport','sound','email','msn','qq','ali','skype','gender','truename','mobile','department','career','groupid','areaid', 'edittime','black','bank','account','vemail','vmobile','vbank','vtruename','vcompany','vtrade','trade','support','inviter');
-		$company_fields = array('company','type','areaid', 'catid','catids','business','mode','regyear','regunit','capital','size','address','postcode','telephone','fax','mail','homepage','sell','buy','introduce','thumb','keyword','linkurl','groupid','domain','icp','validated','validator','validtime','skin','template');
+		$company_fields = array('company','type','areaid', 'catid','catids','business','mode','regyear','regunit','capital','size','address','postcode','telephone','fax','mail','homepage','sell','buy','introduce','thumb','keyword','linkurl','groupid','domain','icp','validated','validator','validtime','skin','template','license_thumb');
 		$member_sql = $company_sql = '';
 		foreach($member as $k=>$v) {
 			if(in_array($k, $member_fields)) $member_sql .= ",$k='$v'";

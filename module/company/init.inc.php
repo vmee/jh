@@ -136,7 +136,8 @@ $menu_show = explode(',', isset($HOME['menu_show']) ? $HOME['menu_show'] : $_men
 $menu_order = explode(',', isset($HOME['menu_order']) ? $HOME['menu_order'] : $_menu_order);
 $menu_num = explode(',', isset($HOME['menu_num']) ? $HOME['menu_num'] : $_menu_num);
 $menu_file = explode(',', isset($HOME['menu_file']) ? $HOME['menu_file'] : $_menu_file);
-$menu_name = explode(',', isset($HOME['menu_name']) ? $HOME['menu_name'] : $_menu_name);
+//$menu_name = explode(',', isset($HOME['menu_name']) ? $HOME['menu_name'] : $_menu_name);
+$menu_name = explode(',',  $_menu_name);
 $_HMENU = array();
 asort($menu_order);
 foreach($menu_order as $k=>$v) {
@@ -158,7 +159,8 @@ $side_show = explode(',', isset($HOME['side_show']) ? $HOME['side_show'] : $_sid
 $side_order = explode(',', isset($HOME['side_order']) ? $HOME['side_order'] : $_side_order);
 $side_num = explode(',', isset($HOME['side_num']) ? $HOME['side_num'] : $_side_num);
 $side_file = explode(',', isset($HOME['side_file']) ? $HOME['side_file'] : $_side_file);
-$side_name = explode(',', isset($HOME['side_name']) ? $HOME['side_name'] : $_side_name);
+//$side_name = explode(',', isset($HOME['side_name']) ? $HOME['side_name'] : $_side_name);
+$side_name = explode(',', $_side_name);
 $_HSIDE = array();
 asort($side_order);
 foreach($side_order as $k=>$v) {

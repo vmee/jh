@@ -1,6 +1,6 @@
 <?php 
 defined('IN_DESTOON') or exit('Access Denied');
-if(!$_userid) dheader($MODULE[2]['linkurl'].$DT['file_my']);
+if(!$_userid) dheader($MODULE[2]['linkurl'].$DT['file_login']);
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
 if($action == 'logout' && $admin_user) {
 	set_cookie('admin_user', '');

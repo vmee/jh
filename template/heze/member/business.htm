@@ -102,7 +102,7 @@ table tr td{padding:5px 0;}
 					</tr>
 					<tr>
 						<td class="tl">主营行业<span class="f_red">*</span></td>
-						<td class="tr">
+						<td class="tr" colspan="2">
 							{php $child = get_maincat(0, 4, 1);}
 							{loop $child $i $c}
 
@@ -124,8 +124,8 @@ table tr td{padding:5px 0;}
 					</tr>
 					<tr>
 						<td class="tl">公司介绍<span class="f_red">*</span></td>
-						<td class="tr"><textarea name="post[introduce]" id="introduce" rows="10" cols="100"></textarea>
-							<br/><span id="dintroduce" class="f_red"></span></td>
+						<td class="tr" colspan="2"><textarea name="post[introduce]" id="introduce" rows="10" cols="100"></textarea>
+							<br/><span id="dintroduce" class="f_red">需要100字以上</span></td>
 					</tr>
 				</table>
 			</div>
@@ -149,7 +149,7 @@ table tr td{padding:5px 0;}
 			</tr>
 			<tr>
 			<td class="tl">所在地区 <span class="f_red">*</span></td>
-			<td>{ajax_area_select('post[areaid]', '请选择', $ic_areaid ? $ic_areaid :$areaid, '', 2)}</td>
+			<td>{ajax_area_select('post[areaid]', '请选择', '', '', 2)}</td>
 			<td><span id="dareaid" class="f_red"></span>&nbsp;</td>
 			</tr>
 
@@ -382,28 +382,35 @@ function check() {
 			return false;
 		}
 	{/if}
-	if(Dd('g_5').checked == false) {
-		f = 'company';
-		if(Dd(f).value == '') {
-			err_msg('请填写公司名称', f);
-			Df(f);
-			return false;
-		}
-		if(Dd('d'+f).innerHTML.indexOf('error') != -1) {
-			Df(f);
-			return false;
-		}
-		if(Dd('type').value == '') {
-			Dmsg('请选择公司类型', 'type');
-			return false;
-		}
-		f = 'telephone';
-		if(Dd(f).value.length < 7) {
-			err_msg('请填写公司电话', f);
-			Df(f);
-			return false;
-		}
+
+	f = 'company';
+	if(Dd(f).value == '') {
+		err_msg('请填写公司名称', f);
+		Df(f);
+		return false;
 	}
+	if(Dd('d'+f).innerHTML.indexOf('error') != -1) {
+		Df(f);
+		return false;
+	}
+	if(Dd('type').value == '') {
+		Dmsg('请选择公司类型', 'type');
+		return false;
+	}
+	f = 'telephone';
+	if(Dd(f).value.length < 7) {
+		err_msg('请填写公司电话', f);
+		Df(f);
+		return false;
+	}
+
+	f = 'introduce';
+	if(Dd(f).value.length < 200) {
+		err_msg('请填写公司介绍，需要100字以上', f);
+		Df(f);
+		return false;
+	}
+
 	{if $MOD[question_register]}
 	f = 'answer';
 	if(Dd(f).value == '') {

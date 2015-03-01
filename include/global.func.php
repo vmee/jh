@@ -337,13 +337,14 @@ function send_sms($mobile, $message, $word = 0, $time = 0) {
 
 	$r = yp_send_sms($mobile, $sms_message);
 
-	$code = '';
+	$code = $sid = '';
 	if($r) {
 
 		$data = json_decode($r, true);
 
 		if($data['code'] === 0){
-			$code = $data['result']['sid'];
+			$code = $DT['sms_ok'];
+			$sid = $data['result']['sid'];
 		}elseif($data['code']>0){
 			$code = 'SMS api error';
 		}elseif($data['code']>-50 && $data['code']<=-1){
@@ -355,8 +356,8 @@ function send_sms($mobile, $message, $word = 0, $time = 0) {
 	} else {
 		$code = 'Can Not Connect SMS Server';
 	}
-
-	$db->query("INSERT INTO {$db->pre}sms (mobile,message,word,editor,sendtime,code) VALUES ('$mobile','$message','$word','$_username','$DT_TIME','$code')");
+	$sid = $sid ? $sid : $code;
+	$db->query("INSERT INTO {$db->pre}sms (mobile,message,word,editor,sendtime,code) VALUES ('$mobile','$message','$word','$_username','$DT_TIME','$sid')");
 	return $code;
 }
 

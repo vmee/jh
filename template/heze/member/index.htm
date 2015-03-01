@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="{DT_STATIC}{$MODULE[2][moduledir]}/image/index.css"/>
 <div id="warn">
 {if $_groupid == 4}
-	<div class="warn">尊敬的会员，您的帐号<span class="f_red f_b">正在审核中..</span>，本站部分功能和服务可能受到一定的使用限制，{if $MOD[checkuser]==2}<a href="send.php?action=check" class="l">请点这里验证您的邮箱</a>，系统将自动审核{else}请稍候，等待网站审核<br/>完善的商业信息有助于获得别人的信任，结交潜在的商业伙伴，获取商业机会，增加系统审核通过的概率&nbsp;&nbsp;<a href="edit.php?tab=2" class="t f_b">现在就去完善</a>{/if}</div>
+	<div class="warn">尊敬的会员，您的帐号<span class="f_red f_b">正在审核中..</span>，本站部分功能和服务可能受到一定的使用限制，{if $MOD[checkuser]==2}<a href="send.php?action=check" class="l">请点这里验证您的邮箱</a>，系统将自动审核{else}请稍候，等待网站审核<br/>{/if}</div>
 {/if}
 {if $_groupid > 5 && !$_edittime}
 	<div class="warn">贵公司尚未完善详细资料！完善的商业信息有助于获得别人的信任，结交潜在的商业伙伴，获取商业机会&nbsp;&nbsp;<a href="edit.php?tab=2" class="t f_b">现在就去完善</a></div>
@@ -14,7 +14,9 @@
 <table cellpadding="0" cellspacing="0" width="100%" height="100%">
 <tr>
 <td valign="top">
+	{if $_groupid != 4}
 	<div class="i_info">
+
 	<ul>
 	{if $MOD[vmember]}
 	<li>
@@ -36,12 +38,11 @@
 	{/if}
 	</li>
 	{/if}
+
 	<li>
 	<img src="{DT_STATIC}{$MODULE[2][moduledir]}/image/ico_message.gif" width="16" height="16" alt="" align="absmiddle"/> 信件：
 	<strong class="f_red">{$_message}</strong> 封 <a href="message.php" class="l">未读站内信</a>
 	&nbsp;&nbsp;
-	<a href="message.php?typeid=1" class="l">询价</a> | 
-	<a href="message.php?typeid=2" class="l">报价</a> | 
 	<a href="message.php?typeid=3" class="l">留言</a> | 
 	<a href="message.php?typeid=4" class="l">信使</a> | 
 	<a href="message.php?action=send" class="l">发信</a>
@@ -49,7 +50,9 @@
 
 	</ul>
 	</div>
+	{/if}
 	<div class="i_quick">
+		{if $_groupid != 4}
 		<div class="i_head">
 			<span class="f_r"><a href="message.php">[更多]</a></span>
 			<strong>系统消息</strong>
@@ -68,9 +71,9 @@
 			</div>
 			<div style="clear:both;"></div>
 		</div>
-
+		{/if}
 		<div class="i_head">
-			<span class="f_r"><a href="edit.php">[修改]</a></span>
+			{if $_groupid != 4}<span class="f_r"><a href="edit.php">[修改]</a></span>{/if}
 			<strong>我的资料</strong>
 		</div>
 		<div class="i_body">
@@ -134,10 +137,10 @@
 						<!--<td><strong>{$havedays}</strong> 天&nbsp;&nbsp;<a href="renew.php" class="l">续费</a></td>-->
 					</tr>
 					{elseif $groupid>4}
-					<tr>
+					<!--<tr>
 						<td class="i_user_l">会员升级</td>
 						<td>&nbsp;<a href="grade.php"><span class="f_red">立即升级</span></a></td>
-					</tr>
+					</tr>-->
 					{/if}
 				</table>
 			</div>

@@ -23,7 +23,7 @@
 </tr>
 </table>
 </div>
-<form method="post" action="edit.php" onsubmit="return Dcheck();" id="dform">
+<form method="post" action="edit.php"  id="dform">
 <input type="hidden" name="tab" id="tab" value="{$tab}"/>
 <table cellpadding="6" cellspacing="1" class="tb">
 <tbody id="Tabs0" style="display:;">
@@ -82,14 +82,7 @@
 <td class="tr"><input type="text" size="20" name="post[mobile]" id="mobile" value="{$mobile}"/></td>
 </tr>
 {/if}
-<tr>
-<td class="tl">部门</td>
-<td class="tr"><input type="text" size="20" name="post[department]" id="department" value="{$department}"/></td>
-</tr>
-<tr>
-<td class="tl">职位</td>
-<td class="tr"><input type="text" size="20" name="post[career]" id="career" value="{$career}"/></td>
-</tr>
+
 {if $DT[im_qq]}
 <tr>
 <td class="tl">QQ</td>
@@ -114,16 +107,6 @@
 <td class="tr"><input type="text" size="20" name="post[skype]" id="skype" value="{$skype}"/></td>
 </tr>
 {/if}
-<tr>
-<td class="tl">站内信提示音</td>
-<td class="tr">
-<div id="audition"></div>
-<input type="radio" name="post[sound]" value="0" {if $sound==0}checked="checked"{/if} id="sound_0"/><label for="sound_0"> 无</label>&nbsp;&nbsp;
-<input type="radio" name="post[sound]" value="1" {if $sound==1}checked="checked"{/if} id="sound_1"/> <a href="javascript:Inner('audition', sound('message_1'));Dd('sound_1').checked=true;void(0);" title="点击试听">提示音1</a>&nbsp;&nbsp;
-<input type="radio" name="post[sound]" value="2" {if $sound==2}checked="checked"{/if} id="sound_2"/> <a href="javascript:Inner('audition', sound('message_2'));Dd('sound_2').checked=true;void(0);" title="点击试听">提示音2</a>&nbsp;&nbsp;
-<input type="radio" name="post[sound]" value="3" {if $sound==3}checked="checked"{/if} id="sound_3"/> <a href="javascript:Inner('audition', sound('message_3'));Dd('sound_3').checked=true;void(0);" title="点击试听">提示音3</a>&nbsp;&nbsp;
-</td>
-</tr>
 {if $MFD}{fields_html('<td class="tl">', '<td class="tr">', $user, $MFD)}{/if}
 </tbody>
 <tbody id="Tabs1" style="display:none;">
@@ -140,18 +123,6 @@
 <td class="tr f_red"><input type="password" size="20" name="post[oldpassword]" id="oldpassword" autocomplete="off"/>&nbsp; 如要更改密码，需输入现有密码 <span id="doldpassword" class="f_red"></span></td>
 </tr>
 
-<tr>
-<td class="tl">新支付密码</td>
-<td class="tr"><input type="password" size="20" name="post[payword]" id="payword" onblur="validator('payword');" autocomplete="off"/>&nbsp;<span class="f_gray">如不更改支付密码，请留空</span> <span id="dpayword" class="f_red"></span></td>
-</tr>
-<tr>
-<td class="tl">重复新支付密码</td>
-<td class="tr"><input type="password" size="20" name="post[cpayword]" id="cpayword" autocomplete="off"/>&nbsp;<span id="dcpayword" class="f_red"></span></td>
-</tr>
-<tr>
-<td class="tl">现有支付密码</td>
-<td class="tr f_red"><input type="password" size="20" name="post[oldpayword]" id="oldpayword" autocomplete="off"/>&nbsp; 支付密码默认和注册设置密码相同&nbsp;&nbsp;<a href="send.php?action=payword"  class="t">找回支付密码</a><span id="doldpayword" class="f_red"></span></td>
-</tr>
 
 </tbody>
 {if $is_company}
@@ -165,9 +136,10 @@
 <td class="tr">{dselect($COM_TYPE, 'post[type]', '请选择', $type, 'id="type"', 0)}&nbsp;<span id="dtype" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl">形象图片</td>
+<td class="tl"><span class="f_red">*</span>形象图片</td>
 <td class="tr"><input name="post[thumb]" type="text" size="60" id="thumb" value="{$thumb}" readonly/>&nbsp;&nbsp;<span onclick="Dthumb({$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('thumb').value, true);" class="jt">[上传]</span>&nbsp;&nbsp;<span onclick="_preview(Dd('thumb').value);" class="jt">[预览]</span>&nbsp;&nbsp;<span onclick="Dd('thumb').value='';" class="jt">[删除]</span><br/>
-<span class="f_gray">建议使用LOGO、办公环境等标志性图片，最佳大小为{$MOD[thumb_width]}px*{$MOD[thumb_height]}px</span></td>
+<span class="f_gray">建议使用LOGO、办公环境等标志性图片，最佳大小为{$MOD[thumb_width]}px*{$MOD[thumb_height]}px</span>
+	<span id="dthumb" class="f_red"></span></td>
 </tr>
 <tr>
 <td class="tl"><span class="f_red">*</span>所在地区</td>
@@ -190,14 +162,6 @@
 <span id="dcatid" class="f_red"></span></td>
 </tr>
 <tr>
-	<td class="tl"><span class="f_red">*</span>法人姓名</td>
-	<td class="tr"><input type="text" size="80" name="post[legal]" id="legal" value="{$legal}" maxlength="250"/>&nbsp;<span id="dlegal" class="f_red"></span></td>
-</tr>
-<tr>
-	<td class="tl"><span class="f_red">*</span>法人手机</td>
-	<td class="tr"><input type="text" size="80" name="post[legal_mobile]" id="legal_mobile" value="{$legal_mobile}" maxlength="250"/>&nbsp;<span id="dlegal_mobile" class="f_red"></span></td>
-</tr>
-<tr>
 <tr>
 <td class="tl"><span class="f_red">*</span>主要经营范围</td>
 <td class="tr"><input type="text" size="80" name="post[business]" id="business" value="{$business}" maxlength="250"/>&nbsp;<span id="dbusiness" class="f_red"></span></td>
@@ -205,11 +169,6 @@
 <tr>
 <td class="tl"><span class="f_red">*</span>公司成立年份</td>
 <td class="tr"><input type="text" size="15" name="post[regyear]" id="regyear" value="{$regyear}" maxlength="4"/>&nbsp;<span id="dregyear" class="f_red"></span> <span class="f_gray">(年份，如：2004)</span></td>
-</tr>
-<tr>
-<td class="tl">经营模式</td>
-<td class="tr">
-<span id="com_mode">{$mode_check}</span> <span class="f_gray">(最多可选{$MOD[mode_max]}种)</span></td>
 </tr>
 <tr>
 <td class="tl">公司规模</td>
@@ -222,15 +181,8 @@
 <tr>
 	<td class="tl"><span class="f_red">*</span>营业执照</td>
 	<td class="tr"><input name="post[license_thumb]" type="text" size="60" id="license_thumb" value="{$license_thumb}" readonly/>&nbsp;&nbsp;<span onclick="Dthumb({$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('license_thumb').value, true);" class="jt">[上传]</span>&nbsp;&nbsp;<span onclick="_preview(Dd('license_thumb').value);" class="jt">[预览]</span>&nbsp;&nbsp;<span onclick="Dd('license_thumb').value='';" class="jt">[删除]</span><br/>
-		<span class="f_gray">*高×宽*大小：500K以下</span></td>
-</tr>
-<tr>
-	<td class="tl"><span class="f_red">*</span>执照过期时间</td>
-	<td class="tr"><input type="text" size="15" name="post[license_expire]" id="license_expire" value="{$license_expire}" maxlength="4"/>&nbsp;<span id="dlicense_expire" class="f_red"></span> <span class="f_gray">(年份，如：2004)</span></td>
-</tr>
-<tr>
-<td class="tl">销售的产品<br/>(提供的服务)</td>
-<td class="tr"><input type="text" size="50" name="post[sell]" id="sell" value="{$sell}" maxlength="200"/> <span class="f_gray">多个产品或服务请用'|'号隔开</span></td>
+		<span class="f_gray">*高×宽*大小：500K以下</span>
+		<span id="dlicense_thumb" class="f_red"></span></td>
 </tr>
 {if $CFD}{fields_html('<td class="tl">', '<td class="tr">', $user, $CFD)}{/if}
 </tbody>
@@ -313,25 +265,9 @@ function Dcheck() {
 			return false;
 		}
 	}
-	if(Dd('payword').value != '') {
-		if(Dd('cpayword').value == '') {
-			Tab(1);
-			Dmsg('请重复输入支付密码', 'cpayword');
-			return false;
-		}
-		if(Dd('payword').value != Dd('cpayword').value) {
-			Tab(1);
-			Dmsg('两次输入的支付密码不一致', 'payword');
-			return false;
-		}
-		if(Dd('oldpayword').value == '') {
-			Tab(1);
-			Dmsg('请输入支付密码', 'oldpayword');
-			return false;
-		}
-	}
 
-{if !$is_company}	
+
+{if !$is_company}
 	if(Dd('areaid_1').value == 0) {
 		Tab(0);
 		Dmsg('请选择所在地', 'areaid');
@@ -345,6 +281,11 @@ function Dcheck() {
 	if(Dd('type').value == '') {
 		Tab(2);
 		Dmsg('请选择公司类型', 'type');
+		return false;
+	}
+	if(Dd('thumb').value == '') {
+		Tab(2);
+		Dmsg('请上传形象照片', 'thumb');
 		return false;
 	}
 	if(Dd('areaid_1').value == 0) {
@@ -375,6 +316,11 @@ function Dcheck() {
 	if(Dd('telephone').value.length < 6) {
 		Tab(3);
 		Dmsg('请填写公司电话', 'telephone');
+		return false;
+	}
+	if(Dd('license_thumb').value == '') {
+		Tab(2);
+		Dmsg('请上传营业执照照片', 'license_thumb');
 		return false;
 	}
         /**

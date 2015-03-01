@@ -58,7 +58,7 @@
 			</div>
 			</li>
 			<li id="destoon_message"><a href="message.php">消息</a>{if $_message}<em>{$_message}</em>{/if}</li>
-			{if $DT[im_web]}<li id="destoon_chat"><a href="chat.php">对话</a>{if $_chat}<em>{$_chat}</em>{/if}</li>{/if}
+			{if $DT[im_web] && $DT[chat]}<li id="destoon_chat"><a href="chat.php">对话</a>{if $_chat}<em>{$_chat}</em>{/if}</li>{/if}
 			<li><a href="logout.php?forward=">退出</a></li>
 			{if $admin_user}<li><a href="index.php?action=logout">注销授权</a></li>{/if}
 			</ul>
@@ -75,7 +75,7 @@
 <table cellpadding="0" cellspacing="0" width="100%">
 <tr>
 <td valign="top" class="side" id="side">
-<div id="sub_0" style="display:{if $_userid}{else}none{/if}">
+<div id="sub_0" style="display:{if $_userid || $_groupid != 4}{else}none{/if}">
 {if $_userid || $show_menu}
 	<div class="side_head" id="h_0"><div>会员服务</div></div>
 	<div class="side_body" id="b_0">
@@ -85,7 +85,9 @@
 			{if $MG[homepage] || $show_menu}
 			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="homepage"><span class="f_r"><a href="{DT_PATH}index.php?homepage={$_username}&update=1" class="m" target="_blank">预览</a></span><a href="home.php" class="{if $MG[homepage]}n{else}f{/if}">商铺设置</a></li>
 			{/if}
+			{if $_groupid != 4}
 			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="edit"><span class="f_r"><a href="avatar.php" class="m">头像</a></span><a href="edit.php" class="{if $_userid}n{else}f{/if}">修改资料</a></li>
+			{/if}
 			<!--
 			{if $MG[spread] || $show_menu}
 			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="spread"><span class="f_r"><a href="spread.php?action=add" class="m">购买</a></span><a href="spread.php" class="{if $MG[spread]}n{else}f{/if}">排名推广</a></li>
@@ -95,9 +97,9 @@
 			{/if}
 			-->
 
-
+			{if $_groupid != 4}
             <li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="invite_customer"><span class="f_r"><a href="invite_customer.php?action=add" class="m">添加</a></span><a href="invite_customer.php" class="{if $_userid}n{else}f{/if}">邀请客户</a></li>
-
+			{/if}
 		</ul>
 	</div>
 {/if}
