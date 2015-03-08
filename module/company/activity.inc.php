@@ -4,7 +4,7 @@ $moduleid = 23;
 $module = 'activity';
 $MOD = cache_read('module-'.$moduleid.'.php');
 $table = $DT_PRE.'article_'.$moduleid;
-$table_data = $DT_PRE.'article__data_'.$moduleid;
+$table_data = $DT_PRE.'article_data_'.$moduleid;
 
 if($itemid) {
 	$item = $db->get_one("SELECT * FROM {$table} WHERE itemid=$itemid");
