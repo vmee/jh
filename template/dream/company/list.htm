@@ -1,0 +1,63 @@
+﻿{template 'header'}
+
+<div class="container">
+    <div class="sixteen columns">
+    <!-- Tabs Navigation -->
+    <ul class="tabs-nav">
+
+        <li class="active"><a href="{$MODULE[$mid][linkurl]}">所有行业</a></li>
+        {php $child = get_maincat(0, $moduleid, 1);}
+        {loop $child $i $c}
+        <li><a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}">{$c[catname]}</a></li>
+        {/loop}
+    </ul>
+
+    <ul class="tabs-nav">
+
+        <li class="active"><a href="{$MODULE[$mid][linkurl]}">所有地区</a></li>
+        {php $mainarea = get_mainarea(0)}
+        {loop $mainarea $k $v}
+        <li><a href="{$MODULE[$mid][linkurl]}list.php?areaid={$v[areaid]}">{$v[areaname]}</a></li>
+        {/loop}
+    </ul>
+        </div>
+
+</div>
+
+
+<div class="wrap pic_img">
+
+</div>
+<div class="wrap wrap_b mar_15">
+    <dl class="s_type"><dt>类型：</dt>
+        <dd> {php $mid = 4;}
+            {template 'catalog', 'chip'}
+        </dd><div class="clearfix"></div></dl>
+    <dl class="s_type"><dt>区域：</dt><dd>
+        {php $mainarea = get_mainarea(0)}
+        {loop $mainarea $k $v}
+        <a href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$v['areaid'])}">{$v[areaname]}</a>
+        {/loop}
+
+            </dd><div class="clearfix"></div></dl>
+</div>
+<div class="wrap">
+<div class="s_type_l">
+
+{if $page == 1}{load('ad_m'.$moduleid.'_c'.$catid.'.htm')}{/if}
+<!--{tag("moduleid=$moduleid&condition=groupid>5 and catids like '%,".$catid.",%'&catid=$catid&pagesize=".$MOD[pagesize]."&page=$page&showpage=1&update=1&datetype=5&order=".$MOD[order]."&fields=".$MOD[fields]."&template=list-company")}-->
+
+</div>
+
+
+
+    {template 'company/side_left'}
+
+
+
+
+
+
+<div class="clear15"></div>
+</div>
+{template 'footer'}

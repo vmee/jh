@@ -1,0 +1,53 @@
+{template 'header'}
+
+
+
+<div class="wrap pic_img">
+
+</div>
+<div class="wrap wrap_b mar_15">
+    <dl class="s_type"><dt>类型：</dt>
+        <dd> {php $mid = 4;}
+            {template 'catalog', 'chip'}
+        </dd><div class="clearfix"></div></dl>
+    <dl class="s_type"><dt>区域：</dt><dd>
+        {php $mainarea = get_mainarea(0)}
+        {loop $mainarea $k $v}
+        <a href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$v['areaid'])}">{$v[areaname]}</a>
+        {/loop}
+
+    </dd><div class="clearfix"></div></dl>
+</div>
+<div class="wrap">
+    <div class="s_type_l">
+
+        {if $page==1 && $kw}
+        {ad($moduleid,$catid,$kw,6)}
+        {load('m'.$moduleid.'_k'.urlencode($kw).'.htm')}
+        {/if}
+        {if $tags}
+        {template 'list-company', 'tag'}
+        {else}
+        {template 'noresult', 'message'}
+        {/if}
+    </div>
+
+
+
+    {template 'company/side_left'}
+
+
+
+
+
+    <div class="clear15"></div>
+</div>
+{template 'footer'}
+
+
+
+
+
+
+
+

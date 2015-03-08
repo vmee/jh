@@ -1,0 +1,3 @@
+{loop $tags $k $t}
+<dl><dt><a target="_blank" href="{$t[linkurl]}" title="{$t[title]}">{$t[title]}</a></dt><dd><a class="news_img" target="_blank" href="{$t[linkurl]}" title="{$t[title]}"><img width="93" height="70" src="{imgurl($t[thumb], 1)}" alt="{$t[title]}"></a><p>{$t[introduce]}<a title="查看结婚热点资讯" href="{$t[linkurl]}" target="_blank">[详细]</a></p></dd><div class="clearfix"></div></dl>
+{/loop}	

@@ -1,0 +1,26 @@
+{if !$DT[page_bigcat]}
+
+{php $child = get_maincat(0, $mid, 1);}
+{loop $child $i $c}
+{if $i%4==0}
+</ul><ul>
+{/if}
+<li><h3><a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}">{set_style($c[catname], $c[style])}</a></h3>
+	<div class="con_txt">
+	{if $c[child]}
+    {php $sub = get_maincat($c[catid], $mid, 1);}
+    {loop $sub $j $s}
+    <a href="{$MODULE[$mid][linkurl]}{$s[linkurl]}" target="_blank">{set_style($s[catname], $s[style])}</a>
+    {/loop}
+    {/if}
+    {/loop}
+    </div>
+</li>
+
+
+{else}
+{php $BIG = explode('|', $DT[page_bigcat]);}
+{loop $BIG $kkk $vvv}
+{if $kkk}<div class="b5 c_b"></div>{/if}
+{/loop}
+{/if}

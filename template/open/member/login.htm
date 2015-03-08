@@ -1,0 +1,134 @@
+{template 'header'}
+<style type="text/css">
+.tips {position:absolute;z-index:100;width:300px;background:url('image/tips_bg.gif') no-repeat 0 bottom;overflow:hidden;margin:-5px 0 0 -10px;}
+.tips div{background:url('image/tips_top.gif') no-repeat;line-height:22px;padding:8px 10px 8px 35px;}
+</style>
+<br/>
+<div class="m">
+	<table width="100%" cellpadding="0" cellspacing="0">
+	<tr>
+	<td width="20">&nbsp;</td>
+	<td width="300"><img src="{DT_SKIN}image/login_h.gif" alt="" width="300" height="35"/></td>
+	<td>&nbsp;</td>
+	</tr>
+	</table>
+</div>
+<div class="m">
+	<table width="100%" cellpadding="0" cellspacing="0">
+	<tr bgcolor="#2D92DA">
+	<td width="20"> </td>
+	<td width="300" bgcolor="#FFFFFF" background="{DT_SKIN}image/login_b.gif">
+
+		<form method="post" action="{$DT[file_login]}"  onsubmit="return Dcheck();">
+		<input name="forward" type="hidden" id="forward" value="{$forward}">
+		<table width="290" cellpadding="3" cellspacing="3" align="right">
+
+		<tr onmouseover="Ds('tusername');" onmouseout="Dh('tusername');">
+		<td align="right">
+		<select name="option">
+			<option value="username">用户名</option>
+            <option value="mobile">手机号</option>
+
+		</select>
+		</td>
+		<td><input name="username" type="text" id="username" style="width:140px"/></td>
+		<td>
+			<div class="tips" id="tusername" style="display:none;">
+				<div>. 如果忘记用户名，请在左侧切换使用手机号登陆</div>
+			</div>
+		</td>
+		</tr>
+		<tr onmouseover="Ds('tpassword');" onmouseout="Dh('tpassword');">
+		<td align="right">密 码：</td>
+		<td>{template 'password', 'chip'}</td>
+		<td>
+			<div class="tips" id="tpassword" style="display:none;">
+				<div>如果忘记了密码，请<a href="send.php" class="f_b">点击这里</a>自主找回或联系本站工作人员协助找回</div>
+			</div>
+		</td>
+		</tr>
+		{if $MOD[captcha_login]}
+		<tr>
+		<td align="right">验证码：</td>
+		<td>{template 'captcha', 'chip'}</td>
+		<td></td>
+		</tr>
+		{/if}
+		<tr>
+		<td align="right"></td>
+		<td><span title="选中后 一月内不用再次登录 网吧或公共计算机请勿选"><input type="checkbox" name="cookietime" value="1" id="cookietime"{if $MOD[login_remember]} checked{/if}/><label for="cookietime">记住我</label></span>
+		</td>
+		<td></td>
+		</tr>
+		<tr>
+		<td></td>
+		<td><input type="submit" name="submit" value=" 登 录 "/>&nbsp;&nbsp;<a href="send.php">忘记了密码？</a></td>
+		<td></td>
+		</tr>
+		{if $oa}
+		<tr>
+		<td align="right">其他登录：</td>
+		<td>
+		{loop $OAUTH $k $v}
+		{if $v[enable]}<a href="{DT_PATH}api/oauth/{$k}/connect.php" title="{$v[name]}"><img src="{DT_PATH}api/oauth/{$k}/ico.png" alt="{$v[name]}"/></a> &nbsp;{/if}
+		{/loop}
+		</td>
+		<td></td>
+		</tr>
+		{/if}
+		</table>
+		</form>
+	</td>
+	<td width="20">&nbsp;</td>
+	<td></td>
+	<td width="30">&nbsp;</td>
+	<td class="f_white" style="line-height:180%;">
+    <span class="f_b px16">个人用户需要联系当地本站合作商家申请注册邀请码方可注册，或联系本站客服人员</span><br />
+        <input type="button" value=" 查找合作商家 " class="pd3 px14 f_b ls1" style="background:#F8B003;" onclick="Go('{DT_PATH}company/');"/>
+        <br/>
+        <br/>
+
+	企业商家用户还没有会员账号?<br/>立即申请入驻...<br/>
+	<input type="button" value=" 企业商家申请入驻 " class="pd3 px14 f_b ls1" style="background:#F8B003;" onclick="Go('business.php');"/>
+	</td>
+	</tr>
+	</table>
+</div>
+<div class="m">
+	<table width="100%" cellpadding="0" cellspacing="0">
+	<tr>
+	<td width="20">&nbsp;</td>
+	<td width="300"><img src="{DT_SKIN}image/login_f.gif" alt="" width="300" height="25"/></td>
+	<td>&nbsp;</td>
+	</tr>
+	</table>
+</div>
+<br/>
+<br/>
+<script type="text/javascript">
+if(Dd('username').value == '') {
+	Dd('username').focus();
+} else {
+	Dd('password').focus();
+}
+function Dcheck() {
+	if(Dd('username').value == '') {
+		confirm('请输入登录名称');
+		Dd('username').focus();
+		return false;
+	}
+	if(Dd('password').value == '') {
+		confirm('请输入密码');
+		Dd('password').focus();
+		return false;
+	}
+{if $MOD[captcha_login]}
+	if(!is_captcha(Dd('captcha').value)) {
+		confirm('请填写验证码');
+		Dd('captcha').focus();
+		return false;
+	}
+{/if}
+}
+</script>
+{template 'footer'}

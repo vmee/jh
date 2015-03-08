@@ -1,0 +1,10 @@
+{loop $tags $k $t}
+{php $imgurl=imgurl($t[thumb], 0);$imgurl=str_replace(".thumb.jpg","",$imgurl);}
+<li>
+<a target="_blank" href="{$module}{$t[linkurl]}"><img src="{$imgurl}"></a>
+<p class="picname"><a target="_blank" href="{$module}{$t[linkurl]}">{$t[title]}</a></p>
+<p class="martprice">市场价：<span>{$t[price]}</span></p>
+<p class="pl-price">本站价：<span>{$t[price1j1]}</span></p>
+<a class="mall-more" target="_blank" href="{DT_PATH}index.php?homepage={$t[username]}">进入商铺</a>
+</li>
+{/loop}

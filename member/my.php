@@ -74,6 +74,7 @@ if($mid) {
 		dheader($MODULE[2]['linkurl']);
 	}
 } else {
+	echo $module;
 	require DT_ROOT.'/module/'.$module.'/my.inc.php';
 }
 ?>

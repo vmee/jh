@@ -1,0 +1,7 @@
+{loop $tags $k $t}
+<dl>
+<dt><a href="{$t[linkurl]}" target="_blank"><img alt="" src="{imgurl($t[thumb], 1)}"></a></dt>                        
+<dd class="name"><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></dd>
+<dd class="seller"><a target="_blank" href="{DT_PATH}index.php?homepage={$t[username]}">商家：{$t[company]}</a></dd>
+</dl>
+{/loop}

@@ -1,0 +1,5 @@
+<ul class="sj_photo">
+{loop $tags $i $t}
+<li><a title="{$t[title]}" href="{$t[linkurl]}" target="_blank"><img src="{$t[thumb]}" width="120" height="90" alt="{$t[title]}"/></a><br /><a href="{$t[linkurl]}"{if $target} target="{$target}"{/if}>{$t[title]}</a></li>
+{/loop}
+</ul><div style="clear:both;"></div>

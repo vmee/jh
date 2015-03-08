@@ -1,0 +1,92 @@
+{template 'header'}
+
+
+<div class="container">
+    <div class="sixteen columns">
+        <!-- Tabs Navigation -->
+        {php $child = get_maincat(0, $moduleid, 1);}
+        {if $child}
+        <ul class="tabs-nav">
+
+            <li{if !$catid} class="active"{/if}><a href="{$MOD[linkurl]}search.php">所有分类</a></li>
+
+            {loop $child $i $c}
+            <li {if $catid==$c[catid]} class="active"{/if}><a href="{$MODULE[$mid][linkurl]}search.php?catid={$c[catid]}">{$c[catname]}</a></li>
+            {/loop}
+        </ul>
+        {/if}
+
+    </div>
+
+</div>
+
+
+
+<div class="margin-top-50"></div>
+
+<!-- Content
+================================================== -->
+
+<!-- Container -->
+<div class="container">
+
+    {if !$tags}
+    <div class="notification error closeable">
+        <p><span>没有查询到相关信息</span></p>
+        <a class="close"></a>
+    </div>
+    <div class="clearfix"></div>
+    <div class="margin-top-50"></div>
+    {/if}
+
+    <!-- Masonry Wrapper-->
+    <div id="masonry-wrapper">
+
+        {loop $tags $k $t}
+
+        <!-- Portfolio Item -->
+        <div class="one-third column masonry-item">
+            <article class="from-the-blog">
+
+                <figure class="from-the-blog-image">
+                    <a href="{$t[linkurl]}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[title]}" /></a>
+                    <div class="hover-icon"></div>
+                </figure>
+
+                <section class="from-the-blog-content">
+                    <a href="{$t[linkurl]}"><h5>{$t[title]}</h5></a>
+                    <i>结束时间:{$t[endtime]}</i>
+                    <span>{$t[introduce]}</span>
+                </section>
+
+            </article>
+        </div>
+        {/loop}
+
+
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-container masonry">
+
+        {if $showpage && $pages}{$pages}{/if}
+        <!-- <nav class="pagination">
+                <ul>
+                    <li><a href="shop-full-width.html#" class="current-page">1</a></li>
+                    <li><a href="shop-full-width.html#">2</a></li>
+                    <li><a href="shop-full-width.html#">3</a></li>
+                </ul>
+            </nav>
+
+            <nav class="pagination-next-prev full-width">
+                <ul>
+                    <li><a href="shop-full-width.html#" class="prev"></a></li>
+                    <li><a href="shop-full-width.html#" class="next"></a></li>
+                </ul>
+            </nav>-->
+    </div>
+
+</div>
+<!-- Container / End -->
+
+{template 'footer'}

@@ -21,6 +21,7 @@ if($submit) {
 	$api_msg = $api_url = '';
 	$option = isset($option) ? trim($option) : 'username';
 	if(is_email($username) && $option == 'username') $option = 'email';
+	if(is_mobile($username) && $option == 'username') $option = 'mobile';
 	if(!check_name($username) && $option == 'username') $option = 'passport';
 	in_array($option, array('username', 'passport', 'email', 'mobile', 'company', 'userid')) or $option = 'username';
 	$r = $db->get_one("SELECT username,passport FROM {$DT_PRE}member WHERE `$option`='$username'");
@@ -51,8 +52,11 @@ if($submit) {
 		}
 		#if($MOD['sso']) include DT_ROOT.'/api/sso.inc.php';
 		if($DT['login_log'] == 2) $do->login_log($username, $password, 0);
-		if($api_msg) message($api_msg, $forward, -1);
-		message($api_msg, $forward);
+
+		exit(json_encode(array('status'=>'y', 'info'=>'登陆成功')));
+
+		//if($api_msg) message($api_msg, $forward, -1);
+		//message($api_msg, $forward);
 	} else {
 		if($DT['login_log'] == 2) $do->login_log($username, $password, 0, $do->errmsg);
 		message($do->errmsg);

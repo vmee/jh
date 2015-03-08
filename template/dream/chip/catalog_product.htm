@@ -1,0 +1,21 @@
+{php $mid=5;$CATEGORY = cache_read('category-'.$mid.'.php');}
+{php $child = get_maincat(0, $CATEGORY, 1);}
+
+{loop $child $i $c}
+{if $i%4==0}
+</ul><ul class="mall-sortlist clearfix">
+{/if}
+<li>
+	<h3><a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}" target="_blank">{set_style($c[catname], $c[style])}</a></h3>
+	<div class="con_txt">
+	{if $c[child]}
+	{php $sub = get_maincat($c[catid], $CATEGORY, 1);}
+	{loop $sub $j $s}
+	<a href="{$MODULE[$mid][linkurl]}{$s[linkurl]}" target="_blank">{set_style($s[catname], $s[style])}</a>   
+	{/loop}
+	{/if}
+		
+	</div>
+</li>
+{/loop}
+

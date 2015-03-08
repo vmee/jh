@@ -1,0 +1,60 @@
+{template 'header'}
+
+
+<!--
+<div class="wrap pos">当前位置: <a href="{$MODULE[1][linkurl]}">首页</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a></div>
+-->
+<div class="wrap pic_img"></div>
+<div class="wrap wrap_b mar_15">
+    <dl class="s_type"><dt>行业：</dt><dd>
+
+        {php $mid = 4;}
+        {template 'catalog', 'chip'}
+
+    </dd><div class="clearfix"></div></dl>
+    <dl class="s_type"><dt>区域：</dt><dd>
+
+
+            {php $mainarea = get_mainarea(0)}
+            {loop $mainarea $k $v}
+            <a href="{$MOD[linkurl]}search.php?areaid={$v[areaid]}" rel="nofollow">{$v[areaname]}</a>
+            {/loop}
+
+     </dd><div class="clearfix"></div></dl>
+</div>
+<div class="wrap wrap_b">
+    <div class="s_type_l">
+
+
+        {php $child = get_maincat(0, 4, 1);}
+        {loop $child $i $c}
+
+
+        <div class="list">
+            <h2>新人喜欢的 <strong>{set_style($c[catname], $c[style])}</strong></h2><a href="list.php?catid={$c[catid]}" class="more" title="{$c[catname]}">更多{$c[catname]}</a><div class="clearfix"></div>
+
+            {php $_tags=tag("moduleid=5&table=company&pagesize=3&condition=catid like '%,".$c[catid].",%'&template=null")}
+            {loop $_tags $k $t}
+            {php $com_logo=get_company_setting(get_user($t['username']),'logo', 'CACHE');}
+
+                <dl><dd><a href="{$t[linkurl]}" title="{$t[company]}" target="_blank"><img src="{$com_logo}" class="lazy" original="{imgurl($t[thumb], 0)}" alt="{$t[company]}"></a></dd><dt>{$t[company]}</dt></dl>
+
+            {/loop}
+
+            <div class="clearfix"></div>
+        </div>
+        {/loop}
+
+    </div>
+    {template 'company/side_left'}
+</div>
+
+
+{template 'footer'}
+
+<script type="text/javascript">
+    show_task('moduleid=4&html=index');
+    $(function(){$("img").lazyload();});$('#back2top').click(function() {
+        $("html, body").animate({scrollTop:0}, 200);
+    });
+</script>

@@ -1,0 +1,27 @@
+<div class="ai_footer">
+    <p>
+        {if $EXT[ad_enable]}<a href="{$EXT[ad_url]}">广告服务</a>{/if}
+        <!--{tag("table=webpage&condition=item=1&areaid=$cityid&order=listorder desc,itemid desc&template=list-webpage")}-->
+        | {if $EXT[guestbook_enable]}<a href="{$EXT[guestbook_url]}">网站留言</a>{/if}
+        | <a href="{$MODULE[1][linkurl]}member/grade.php" title="菏泽结婚网会员升级" target="_blank">升级会员</a></p>
+    <p>&copy; 2010-2013 {$DT['sitename']}</p>
+
+</div>
+
+
+<!--[系统关键代码，请勿删除]-->
+<div id="back2top" class="back2top"><a href="javascript:void(0);" title="返回顶部">&nbsp;</a></div>
+<script type="text/javascript">
+    {if $destoon_task}
+        show_task('{$destoon_task}');
+        {else}
+        {php include DT_ROOT.'/api/task.inc.php';}
+        {/if}
+            {if $lazy}$(function(){$("img").lazyload();});{/if}
+                $('#back2top').click(function() {
+                    $("html, body").animate({scrollTop:0}, 200);
+                });
+</script>
+</body>
+</html>
+

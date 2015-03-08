@@ -1,0 +1,8 @@
+{loop $tags $k $t}
+<dl class="wed_list_art">
+    <dt><a href="{$t[linkurl]}" target="_blank" title='{$t[title]}'>{$t[title]}</a></dt>
+    <dd>菏泽结婚网 浏览次数：{$t[hits]}</dd>
+    <dd>{$t[introduce]}<a href="{$t[linkurl]}" target="_blank" title='晚婚法定年龄 晚婚政策全面解析'>详情</a></dd>
+</dl>
+{/loop}
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

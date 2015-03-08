@@ -1,0 +1,5 @@
+<ul>
+{loop $tags $k $t}                                 
+<li{if $k==0} class="first"{/if}><span>热度：<font>{$t[hits]}</font></span><a href="{$t[linkurl]}" target="_blank" title="{$t[company]}" style="float:left;overflow:hidden;white-space:nowrap;width:96px;">{$t[company]}</a></li>
+{/loop}
+</ul>

@@ -1,0 +1,99 @@
+{template 'header'}
+
+<div class="container">
+    <div class="sixteen columns">
+        <!-- Tabs Navigation -->
+        <ul class="tabs-nav">
+
+            <li class="active"><a href="{$MOD[linkurl]}search.php?areaid={$areaid}">所有分类</a></li>
+            {php $child = get_maincat(0, $moduleid, 1);}
+            {loop $child $i $c}
+            <li><a href="{$MODULE[$mid][linkurl]}search.php?catid={$c[catid]}&areaid={$areaid}">{$c[catname]}</a></li>
+            {/loop}
+        </ul>
+
+        <ul class="tabs-nav">
+
+            <li class="active"><a href="{$MOD[linkurl]}search.php?catid={$catid}">所有地区</a></li>
+            {php $mainarea = get_mainarea(0)}
+            {loop $mainarea $k $v}
+            <li><a href="{$MOD[linkurl]}search.php?catid={$catid}&areaid={$v[areaid]}">{$v[areaname]}</a></li>
+            {/loop}
+        </ul>
+    </div>
+
+</div>
+
+
+<div class="margin-top-50"></div>
+
+{loop $child $i $c}
+
+<!-- New Arrivals
+================================================== -->
+<div class="container">
+
+    <!-- Headline -->
+    <div class="sixteen columns">
+        <h3 class="headline">{$c[catname]}</h3>
+        <span class="line margin-bottom-0"></span>
+    </div>
+
+    <!-- Carousel -->
+    <div id="new-arrivals" class="showbiz-container sixteen columns" >
+
+        <!-- Navigation -->
+        <div class="showbiz-navigation">
+            <div id="showbiz_left_1" class="sb-navigation-left"><i class="fa fa-angle-left"></i></div>
+            <div id="showbiz_right_1" class="sb-navigation-right"><i class="fa fa-angle-right"></i></div>
+        </div>
+        <div class="clearfix"></div>
+
+        <!-- Products -->
+        <div class="showbiz" data-left="#showbiz_left_1" data-right="#showbiz_right_1" data-play="#showbiz_play_1" >
+            <div class="overflowholder">
+
+                <ul>
+
+
+                    {php $_tags=tag("moduleid=5&table=company&pagesize=4&condition=catid like '%,".$c[catid].",%'&template=null")}
+                    {loop $_tags $k $t}
+                    {php $com_logo=get_company_setting(get_user($t['username']),'logo', 'CACHE');}
+
+                    <!-- Product #1 -->
+                    <li>
+                        <figure class="portfolio-item">
+                            <div class="portfolio-holder">
+                                <a href="{$t[linkurl]}">
+                                    <img alt="{$t[company]}" src="{$com_logo}"/>
+                                    <div class="hover-cover"></div>
+                                </a>
+                            </div>
+
+                            <a href="{$t[linkurl]}">
+                                <section class="item-description">
+                                    <h4>{$t[company]}</h4>
+                                    <span>{$t[business]}</span>
+                                </section>
+                            </a>
+                        </figure>
+                    </li>
+
+                    {/loop}
+
+
+                </ul>
+                <div class="clearfix"></div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+</div>
+
+{/loop}
+
+{template 'footer'}
+
+

@@ -1,0 +1,34 @@
+{template 'header', $module}
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}special_ny.css"/>
+
+{if $banner}
+<div class="banner"><a href="{$linkurl}"><img src="{$banner}" alt="{$title}"/></a></div>
+{/if}
+
+<div class="a-box area">
+    <div class="pic-box"><!--{tag("table=special_item&condition=specialid=$itemid and level=1 and thumb<>''&order=addtime desc&pagesize=3&width=320&height=200&target=_blank&template=slide_zt")}--></div>
+    <p>{$content} <a href="/news/" target="_blank">[查看更多]</a></p>
+</div>
+
+<div class="f-box area">
+    <p class="all">菏泽结婚网为新人提供结婚企业搜索服务,降低新人盲目奔走现状,以网络形式展示婚嫁企业,为新人提供更直观、更省时、更专业的婚庆信息服务,并提供结婚商城,结婚知道,婚礼百科,婚礼流程等综合性结婚信息平台... <a href="http://www.hezejiehun.com/" target="_blank">[查看详细]</a></p>
+    <div class="pic-box clear">
+    <!--{tag("table=special_item&condition=specialid=$itemid and level=2 and thumb<>''&pagesize=$cfg_photo&length=50&order=addtime desc&cols=5&target=_blank&template=2012", -2)}-->
+    </div>
+</div>
+<div class="ailen_ztinfo">
+    <!--{tag("table=special_item&condition=specialid=$itemid&order=addtime desc&template=2012_1")}-->
+</div>
+
+<div class="comment-box area">
+<h3><img src="/skin/default/img/t3.gif" alt="" border="0"></h3>
+<div class="looplist"><div class="b10"></div>
+<div class="box_body" style="padding:0;">
+{template 'comment', 'chip'}
+</div>
+<div class="b10"></div>
+</div>    
+</div>
+
+<div class="copyright"><div><a href="/">婚网首页 </a> | <a href="/news/">新人学堂</a> | <a href="/know/">结婚知道</a> | <a href="/special/">结婚专题</a> | <a href="/photo/">结婚图库</a> | <a href="/company/">商家展示</a> | <a href="/sell/">商家服务</a></div><div>菏泽结婚网-www.hezejiehun.com 版权所有</div></div>
+<script type="text/javascript">show_task('{$destoon_task}');</script>

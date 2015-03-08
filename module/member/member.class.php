@@ -141,10 +141,10 @@ class member {
 			if($member['payword'] && !$this->is_payword($member['payword'], $member['cpayword'])) return false;
 			if($member['groupid'] > 5) {
 				if(empty($member['thumb'])) return $this->_('请上传公司形象照片');
-				if(strlen($member['regyear']) != 4 || !is_numeric($member['regyear'])) return $this->_($L['member_regyear_null']);
+				//if(strlen($member['regyear']) != 4 || !is_numeric($member['regyear'])) return $this->_($L['member_regyear_null']);
 				if(empty($member['address'])) return $this->_($L['member_address_null']);
 				if(word_count($member['introduce']) < 5) return $this->_($L['member_introduce_null']);
-				if(!$member['business']) return $this->_($L['member_business_null']);
+				//if(!$member['business']) return $this->_($L['member_business_null']);
 				if(strlen($member['catid']) < 2) return $this->_($L['member_catid_null']);
 				if(empty($member['license_thumb'])) return $this->_('请上传营业执照照片');
 			}

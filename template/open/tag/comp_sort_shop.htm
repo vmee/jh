@@ -1,0 +1,21 @@
+
+{loop $tags $k $t}
+{if $t[catid]!=245 && $t[catid]!=251 && $t[catid]!=252}
+<li style="background-position: 175px -294px;"> <a class="icon4" href="{$t[linkurl]}" style="">{$t[catname]}</a>
+                        <div class="icon_j" style="display: none;"></div>
+                        <div class="pinla_shopindex_hotlistbox" style="display: none;">
+                            <!--商家-->
+                            <div class="bslist">
+                                <!-- 列表-->
+                                <h5>商家列表</h5>                               
+                                <div class="list">
+                                    <ul>
+     	
+		<!--{tag("moduleid=5&table=company&condition=catids like '%,".$t[catid].",%'&pagesize=30&template=list-company-shop")}-->                                                                                                                                                  </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--商家end-->
+                    </li>
+					{/if}
+{/loop}	

@@ -1,5 +1,13 @@
 /*global SelectBox, PureGrid */
 /* ----------------- Start Document ----------------- */
+
+var UA = navigator.userAgent.toLowerCase();
+var isIE = (document.all && window.ActiveXObject && !window.opera) ? true : false;
+var isGecko = UA.indexOf('webkit') != -1;
+var DMURL = document.location.protocol+'//'+location.hostname+(location.port ? ':'+location.port : '')+'/';
+var AJPath = (DTPath.indexOf('://') == -1 ? DTPath : (DTPath.indexOf(DMURL) == -1 ? DMURL : DTPath))+'ajax.php';
+if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(e) {}
+
 (function($){
 	"use strict";
 
@@ -380,7 +388,7 @@
 			$this.next().children('.tab-content').stop(true,true).hide()
 			.first().show();
 
-			$this.children('li').first().addClass('active').stop(true,true).show();
+			//$this.children('li').first().addClass('active').stop(true,true).show();
 		});
 
 		$tabsNavLis.on('click', function(e) {
@@ -671,13 +679,14 @@
 
 		var pixelRatio = !!window.devicePixelRatio ? window.devicePixelRatio : 1;
 
+		/**
 		$(window).on("load", function() {
 			if (pixelRatio > 1) {
 				$('#logo img').each(function() {
 					$(this).attr('src', $(this).attr('src').replace(".","@2x."));
 				});
 			}
-		});
+		});**/
 
 
 
@@ -837,6 +846,15 @@
 				$("#contactform input, #contactform textarea").removeClass('error');
 				$("#result").slideUp();
 			});
+
+
+		   //用户登陆
+			$(window).on("load", function() {
+				$.get(AJPath+'?moduleid=2&action=member&job=line', function(response){
+					$('#user-line').html(response);
+				});
+			});
+
 
 
 

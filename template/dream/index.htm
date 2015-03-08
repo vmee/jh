@@ -1,0 +1,261 @@
+{template 'header'}
+
+<!-- Slider
+================================================== -->
+<div class="container fullwidth-element home-slider">
+
+    <div class="tp-banner-container">
+        <div class="tp-banner">
+            <ul>
+                <!-- Slide 1  -->
+                <li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
+                    <img src="http://pic18.wed114.cn/20141231/2014123110415253878291.jpg"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                    <div class="caption sfb fadeout" data-x="145" data-y="170" data-speed="400" data-start="800"  data-easing="Power4.easeOut">
+                        <!--<h2>Dress Sharp</h2>
+                        <h3>Learn from the classics</h3>
+                        <a href="shop-with-sidebar.html" class="caption-btn">Shop The Collection</a>-->
+                    </div>
+                </li>
+
+                <!-- Slide 2  -->
+                <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000">
+                    <img src="http://pic18.wed114.cn/20141231/2014123110261595952743.jpg"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                    <div class="caption dark sfb fadeout" data-x="750" data-y="170" data-speed="400" data-start="800"  data-easing="Power4.easeOut">
+                        <!--<h2>Urban Style</h2>
+                        <h3>Every cut and colour</h3>
+                        <a href="shop-with-sidebar.html" class="caption-btn">Shop The Collection</a>-->
+                    </div>
+                </li>
+
+                <!-- Slide 3  -->
+                <li data-transition="fadetotopfadefrombottom" data-slotamount="7" data-masterspeed="1000">
+                    <img src="http://pic18.wed114.cn/20141003/2014100310281967646933.jpg"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                    <div class="caption dark sfb fadeout" data-x="850" data-y="170" data-speed="400" data-start="800"  data-easing="Power4.easeOut">
+                        <!--<h2>New In</h2>
+                        <h3>Pants and T-Shirts</h3>
+                        <a href="shop-with-sidebar.html" class="caption-btn">Shop The Collection</a>-->
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<!-- Featured
+================================================== -->
+<div class="container" >
+    {php $_tags=tag("moduleid=23&pagesize=3&order=addtime desc&template=null")}
+    {loop $_tags $k $t}
+    {if $k>-1}
+    <div class="one-third column">
+        <a href="{$t[linkurl]}" class="img-caption" >
+            <figure>
+                <img src="{imgurl($t[thumb], 0)}" alt="{$t[title]}" />
+                <figcaption>
+                    <h3>{$t[title]}</h3>
+                    <span>{$t[introduce]} {if $t[endtime]}结束时间：{$t[endtime]}{/if}</span>
+                </figcaption>
+            </figure>
+        </a>
+    </div>
+    {/if}
+    {/loop}
+
+</div>
+<div class="clearfix"></div>
+
+<!-- New Arrivals
+================================================== -->
+<div class="container">
+
+    <!-- Headline -->
+    <div class="sixteen columns">
+        <h3 class="headline">精品特价</h3>
+        <span class="line margin-bottom-0"></span>
+    </div>
+
+    <!-- Carousel -->
+    <div id="new-arrivals" class="showbiz-container sixteen columns" >
+
+        <!-- Navigation -->
+        <div class="showbiz-navigation">
+            <div id="showbiz_left_1" class="sb-navigation-left"><i class="fa fa-angle-left"></i></div>
+            <div id="showbiz_right_1" class="sb-navigation-right"><i class="fa fa-angle-right"></i></div>
+        </div>
+        <div class="clearfix"></div>
+
+        <!-- Products -->
+        <div class="showbiz" data-left="#showbiz_left_1" data-right="#showbiz_right_1" data-play="#showbiz_play_1" >
+            <div class="overflowholder">
+
+                <ul>
+
+                    {php $_tags=tag("moduleid=5&pagesize=10&template=null")}
+                    {loop $_tags $k $t}
+                    {if $k>-1}
+                    <a target="_blank" href="{userurl($t[username])}" title="{$t[company]}"><img width="224" height="149" src="{imgurl($t[thumb], 0)}" class="lazy" original="{imgurl($t[thumb], 1)}" alt="{$t[company]}"><br>{$t[title]}<br><font>{$t[company]}</font></a>
+
+                    <!-- Product #1 -->
+                    <li>
+                        <figure class="product">
+                            <div class="mediaholder">
+                                <a href="{$t[linkurl]}">
+                                    <img alt="" src="{imgurl($t[thumb], 1)}"/>
+                                </a>
+                                <a href="{userurl($t[username])}" class="product-button"><i class="fa fa-shopping-cart"></i> {$t[company]}</a>
+                            </div>
+
+                            <a href="{$t[linkurl]}">
+                                <section>
+                                    <span class="product-category">{$t[title]}</span>
+                                    <span class="product-price">${$t[price]}</span>
+                                </section>
+                            </a>
+                        </figure>
+                    </li>
+
+                    {/if}
+                    {/loop}
+
+
+                </ul>
+                <div class="clearfix"></div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Product Lists
+================================================== -->
+<div class="container margin-bottom-25">
+
+    <!-- Best Sellers -->
+    <div class="one-third column">
+
+        <!-- Headline -->
+        <h3 class="headline">婚纱摄影</h3>
+        <span class="line margin-bottom-0"></span>
+        <div class="clearfix"></div>
+
+
+        <ul class="product-list">
+
+            {php $_tags=tag("moduleid=4&pagesize=6&catid=27&template=null");}
+            {loop $_tags $k $t}
+            <li><a href="{$t[linkurl]}">
+                <img src="{imgurl($t[thumb], 0)}" alt="{$t[company]}" />
+                <div class="product-list-desc">{$t[company]}</div>
+            </a></li>
+            {/loop}
+
+
+            <li><div class="clearfix"></div></li>
+
+        </ul>
+
+    </div>
+
+
+    <!-- Top Rated -->
+    <div class="one-third column">
+
+        <!-- Headline -->
+        <h3 class="headline">婚庆公司</h3>
+        <span class="line margin-bottom-0"></span>
+        <div class="clearfix"></div>
+
+
+        <ul class="product-list top-rated">
+
+            {php $_tags=tag("moduleid=4&pagesize=6&catid=23&template=null");}
+            {loop $_tags $k $t}
+            <li><a href="{$t[linkurl]}">
+                <img src="{imgurl($t[thumb], 0)}" alt="{$t[company]}" />
+                <div class="product-list-desc">{$t[company]}</div>
+            </a></li>
+            {/loop}
+
+            <li><div class="clearfix"></div></li>
+
+        </ul>
+
+    </div>
+
+
+    <!-- Weekly Sales -->
+    <div class="one-third column">
+
+        <!-- Headline -->
+        <h3 class="headline">婚宴酒店</h3>
+        <span class="line margin-bottom-0"></span>
+        <div class="clearfix"></div>
+
+
+        <ul class="product-list discount">
+
+            {php $_tags=tag("moduleid=4&pagesize=6&catid=10&template=null");}
+            {loop $_tags $k $t}
+            <li><a href="{$t[linkurl]}">
+                <img src="{imgurl($t[thumb], 0)}" alt="{$t[company]}" />
+                <div class="product-list-desc">{$t[company]}</div>
+            </a></li>
+            {/loop}
+
+            <li><div class="clearfix"></div></li>
+
+        </ul>
+
+    </div>
+
+</div>
+<div class="clearfix"></div>
+
+
+<!-- Latest Articles
+================================================== -->
+<div class="container" >
+
+    <!-- Headline -->
+    <div class="sixteen columns" >
+        <h3 class="headline">作品案例</h3>
+        <span class="line margin-bottom-30"></span>
+    </div>
+
+    {php $_tags=tag("moduleid=12&table=photo&pagesize=5&template=null&order=addtime desc")}
+    {loop $_tags $k $t}
+    <li><a target="_blank" href="{$t[linkurl]}" title="爱的弥漫婚纱主题摄影"><img src="{imgurl($t[thumb], 0)}" class="lazy" original="{imgurl($t[thumb], 1)}" alt="{$t[title]}" /><br>{$t[title]}</a></li>
+
+    <!-- Post #1 -->
+    <div class="four columns">
+        <article class="from-the-blog">
+
+            <figure class="from-the-blog-image">
+                <a href="{$t[linkurl]}"><img src="{imgurl($t[thumb], 0)}" alt="{$t[title]}" /></a>
+                <div class="hover-icon"></div>
+            </figure>
+
+            <section class="from-the-blog-content">
+                <a href="blog-single-post.html"><h5>{$t[title]}</h5></a>
+            </section>
+
+        </article>
+    </div>
+
+    {/loop}
+
+</div>
+
+<div class="margin-top-50"></div>
+
+
+
+
+
+{template 'footer'}
+

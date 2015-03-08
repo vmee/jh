@@ -1,0 +1,232 @@
+{template 'header'}
+
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}calendario.css"/>
+<div class="wrap pic_img">
+    {ad(26)}
+</div>
+<!--第一屏-->
+<h3><span class="title">婚嫁企业</span><span class="info">去入驻，客户至上，成就美好姻缘……</span><span class="right">【<a href="{DT_PATH}member/business.php" target="_blank" title="菏泽结婚网商家入驻">商家申请入驻</a>】</span></h3>
+<div class="wrap wrap_b">
+
+    <dl class="wed_2a">
+        <dt><a href="company" target="_blank" title="菏泽婚嫁服务">婚嫁服务</a></dt>
+        <p>
+
+            {php $child = get_maincat(0, 4, 1);}
+            {loop $child $i $c}
+
+            <a href="company/list.php?catid={$c[catid]}" target="_blank" title="{$c[catname]}">{set_style($c[catname], $c[style])}</a>
+
+            {/loop}
+        </p>
+
+
+    </dl>
+
+    <div class="wed_2b">
+        <h4><span><a>新人入驻</a></span></h4>
+
+        <div>
+            <table class="t2" width="100%">
+                <thead>
+                    <th>新人</th>
+                    <th>区县</th>
+                    <th>婚期</th>
+                    <th>提供商家</th>
+                <thead>
+
+
+            </table>
+            <div style="height:220px;overflow:hidden;" id="new_member">
+                <table class="t2" width="100%">
+                    <!--{php $tags=tag("table=member&condition=groupid=5&pagesize=10&order=regtime desc&template=null");}-->
+                    {loop $tags $i $t}
+                    <tr>
+                        <td>{$t[truename]}</td>
+                        <td>{area_pos($t[areaid], '')}</td>
+                        <td>{$t[weddate]}</td>
+                        <td>{invite_company_name($t[userid])}</td>
+                    </tr>
+                    {/loop}
+
+
+                </table>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+        <div class="clearfix"></div>
+
+</div>
+<div class="wrap_pic">{ad(27)}</div>
+
+<h3><span class="title">结婚新人</span><span class="info">去筹办，省钱省力，结婚不必盲目奔走……</span><span class="right">【<a href="{DT_PATH}member/register.php" target="_blank" title="菏泽结婚网商家入驻">新人免费注册</a>】</span></h3>
+
+<div class="wrap wrap_b wedT20">
+
+    <dl class="wed_2a">
+        <dt><a title="选择婚庆常识">日历表</a></dt>
+        <p>
+        <div class="custom-calendar-wrap">
+            <div id="custom-inner" class="custom-inner">
+                <div class="custom-header clearfix">
+                    <nav>
+                        <span id="custom-prev" class="custom-prev"></span>
+                        <span id="custom-next" class="custom-next"></span>
+                    </nav>
+                    <h2 id="custom-month" class="custom-month"></h2>
+                    <h6 id="custom-year" class="custom-year"></h6>
+                </div>
+                <div id="calendar" class="fc-calendar-container"></div>
+            </div>
+        </div>
+
+
+
+        </p>
+
+
+    </dl>
+
+    <div class="wed_2b">
+        <h4><span><a title="菏泽婚嫁服务">新人需求</a></span></h4>
+        <div>
+            <table class="t2" width="100%">
+                <thead>
+                <th>新人</th>
+                <th>婚期</th>
+                <th>所需服务</th>
+                <thead>
+
+
+            </table>
+            <div style="height:262px;overflow:hidden;" id="member_wed">
+                <table class="t2" width="100%">
+                    <!--{php $tags = $db->query("SELECT * FROM {$db->pre}member_wed w left join {$db->pre}member m on w.userid=m.userid limit 0,10");}-->
+                    {loop $tags $i $t}
+                    <tr>
+                        <td>{$t[userid]}</td>
+                        <td>{$t[catid]}</td>
+                        <td>{$t[catid]}</td>
+
+                    </tr>
+                    {/loop}
+
+
+                </table>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+        <div class="clearfix"></div>
+
+</div>
+
+<div class="wrap_pic">
+
+</div>
+
+<script type="text/javascript" src="{DT_STATIC}file/script/marquee.js"></script>
+
+<script type="text/javascript">
+    new dmarquee(25, 10, 3000, 'new_member');
+    new dmarquee(25, 30, 3000, 'member_wed');
+    if(get_cookie('auth')) {
+        $('.iuser_l')[0].title = '商务中心';
+        $('.iuser_l')[0].href = '{$MODULE[2][linkurl]}';
+        $('.iuser_l')[0].className = 'iuser_u';
+        $('.iuser_r')[0].title = '完善我的会员资料';
+        $('.iuser_r')[0].href = '{$MODULE[2][linkurl]}edit.php';
+        $('.iuser_r')[0].className = 'iuser_e';
+    }
+</script>
+
+
+
+<script type="text/javascript" src="{DT_PATH}file/script/jquery.calendario.js"></script>
+
+<script type="text/javascript">
+    $(function() {
+        $(document).on('shown.calendar.calendario', function(e, instance){
+            if(!instance) instance = cal;
+            var $cell = instance.getCell(new Date().getDate());
+            if($cell.hasClass('fc-today')) $cell.trigger('click.calendario');
+        });
+
+        var transEndEventNames = {
+                    'WebkitTransition' : 'webkitTransitionEnd',
+                    'MozTransition' : 'transitionend',
+                    'OTransition' : 'oTransitionEnd',
+                    'msTransition' : 'MSTransitionEnd',
+                    'transition' : 'transitionend'
+                },
+                transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
+                $wrapper = $( '#custom-inner' ),
+                $calendar = $( '#calendar' ),
+                cal = $calendar.calendario({
+                    onDayClick : function( $el, data, dateProperties ) {
+                        showEvents(['start..'], dateProperties);
+                        //if(data.content.length > 0 ) {
+                        //   showEvents(data.content, dateProperties );
+                        //}
+
+                    },
+                    //caldata : codropsEvents,
+                    displayWeekAbbr : true,
+                    events: 'click'
+                } ),
+                $month = $( '#custom-month' ).html( cal.getMonthName() ),
+                $year = $( '#custom-year' ).html( cal.getYear() );
+
+        $( '#custom-next' ).on( 'click', function() {
+            cal.gotoNextMonth( updateMonthYear );
+        } );
+        $( '#custom-prev' ).on( 'click', function() {
+            cal.gotoPreviousMonth( updateMonthYear );
+        } );
+
+        function updateMonthYear() {
+            $month.html( cal.getMonthName() );
+            $year.html( cal.getYear() );
+        }
+
+        // just an example..
+        function showEvents( contentEl, dateProperties ) {
+
+            hideEvents();
+
+            var $events = $( '<div id="custom-content-reveal" class="custom-content-reveal"><h4>Events for ' + dateProperties.monthname + ' ' + dateProperties.day + ', ' + dateProperties.year + '</h4></div>' ),
+                    $close = $( '<span class="custom-content-close"></span>' ).on( 'click', hideEvents );
+
+            $events.append( contentEl.join('') , $close ).insertAfter( $wrapper );
+
+            setTimeout( function() {
+                $events.css( 'top', '0%' );
+            }, 25 );
+
+        }
+        function hideEvents() {
+
+            var $events = $( '#custom-content-reveal' );
+            if( $events.length > 0 ) {
+
+                $events.css( 'top', '100%' );
+                Modernizr.csstransitions ? $events.on( transEndEventName, function() { $( this ).remove(); } ) : $events.remove();
+
+            }
+
+        }
+
+    });
+</script>
+
+{template 'footer'}
+

@@ -1,0 +1,13 @@
+﻿
+{loop $tags $i $t}
+<dl class="wed_list_art">
+    <dt><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></dt>
+    <dd>{$t[author]}整编 浏览次数：{$t[hits]}</dd>
+    <dd>{$t[introduce]}<a href="{$t[linkurl]}" target="_blank" title='{$t[alt]}'>详情</a></dd>
+</dl>
+{/loop}
+
+
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}
+
+

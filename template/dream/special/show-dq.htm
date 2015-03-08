@@ -1,0 +1,35 @@
+﻿{template 'header', $module}
+<style type="text/css">
+<!--
+body {background:#7d0300 url(/skin/default/img/dq_bg.gif) top center no-repeat;}
+.m { width:950px; background:none;}
+.dq_add {background:url(/skin/default/img/dq_top.gif) no-repeat; height:37px; padding:0 25px; border-bottom:1px solid #e7cdb6;}
+.dq_add a {background:url(/skin/default/img/dq_top_btn.gif) no-repeat; width:103px; height:25px; line-height:25px; display:inline-block; color:#fef2c6; text-align:center;}
+.dq_info { clear:both;background:#fff8e7 url(/skin/default/img/dq_info.gif) bottom repeat-x; padding:0 50px; padding-bottom:20px;}
+.dq_info h1 { margin:0; font-size:14px; padding:25px 0;}
+.dq_info_bg { text-indent:2em; width:647px; padding-left:193px; margin:0 auto; background:url(/skin/default/img/dq_info_bg.gif) no-repeat; height:187px; line-height:26px; color:#58585a; font-size:14px; margin-bottom:20px;}
+.show_list { border:1px solid #eedfce; padding:10px; background-color:#fbeddd; margin-bottom:10px; line-height:25px;}
+.show_list h3 { background-color:#fa7b28; margin:0 0 5px 0;height:34px;line-height:34px;display:inline-block;color:#fff; padding:0 10px;}
+.show_list h3 a { color:#fff;}
+.show_list p { text-indent:2em; margin:0;}
+.looplist {background:url(/skin/default/img/dq_footer.gif) #fff bottom no-repeat; padding:10px 20px 40px 20px; margin-bottom:20px;}
+-->
+</style>
+<div class="m">
+	<div><img src="/skin/default/img/dq_top.png" alt="定亲" /></div>
+    <div class="dq_add"><a href="/news/list.php?catid=147" style="float:left">● 结婚礼金资讯</a> <a href="/news/list.php?catid=148" style="float:right">新人订婚资讯 ●</a></div>
+    <div class="dq_info">
+    	<h1>什么是定亲? 定亲送什么? 定亲是什么意思?</h1>
+        <div class="dq_info_bg">定亲通常是男方到女方家。去时需带上烟酒、猪肉、果馅以及给女方的衣物等。为图喜庆和吉利，所带的礼品均为双数，视情况不等。一般情况下，烟为两条，酒为两瓶，也有带4条烟4瓶酒的；猪肉为4斤，也有带6斤、8斤的；果馅一般带24个，也有带48个的。当然，带得多，则被众人称为有钱、大方；带得少了，自然就会被视为人穷、小气。但对女方来说，不成亲是两家人，成了亲就是一家人，也就不计较那么多了。而女方则送男方一双“稳跟鞋”和一条裤带，意喻着这桩婚姻将男女双方牢牢系在一起。定亲的仪式一般很简单，在媒人的主持下，参加定亲的有男女双方及双方的家长和一些亲人。</div>
+        <!--{tag("table=special_item&condition=specialid=$itemid and level=1&order=addtime desc&pagesize=25&datetype=2&target=_blank&template=list-dq2012")}-->
+    </div>
+    <div class="looplist">
+    <div class="b10"> </div>
+	<div class="box_body" style="padding:0;">
+	{template 'comment', 'chip'}
+	</div>
+    </div>    
+</div>
+
+
+<script type="text/javascript">show_task('{$destoon_task}');</script>

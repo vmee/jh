@@ -67,7 +67,7 @@ ul.top-bar-menu li i {
 
 #logo a img {
 	float: left;
-	height: 43px;
+	height: 60px;
 }
 
 
@@ -996,18 +996,10 @@ span.skill-title i {
 
 #cart ul li {
 	border-bottom: 1px solid #e5e5e5;
-	padding: 13px 0;
+	padding:  10px;
 	display: block;
 }
 
-#cart ul li:last-child {
-	border-bottom: none;
-	padding: 13px 0 0 0;
-}
-
-#cart ul li:first-child {
-	padding: 0 0 13px 0;
-}
 
 #cart ul li a {
 	display: block;
@@ -1436,6 +1428,7 @@ ul.delivery-options {
 }
 
 .form-row-wide input {width: 100%;}
+.form-row-hale input {width: 100%;}
 .required {color: #d11c1c;}
 
 .rememberme {
@@ -4454,7 +4447,7 @@ a.img-caption {
 	float: right;
 	margin: -27px 0 0 -2px;
 	background: #fff;
-	padding-left: 10px;
+	/**padding-left: 10px;**/
 }
 
 .sb-navigation-left,
@@ -5079,8 +5072,8 @@ ul.footer-links { margin: 0 0 15px 0; }
 ------------------------------------- */
 .selectricWrapper {
 	position: relative;
-	margin: 10px 0 0 20px;
-	width: 205px;
+	/*margin: 10px 0 0 20px;*/
+	/**width: 205px;**/
 	cursor: pointer;
 }
 

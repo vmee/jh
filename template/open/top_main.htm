@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{$DT[sitename]}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+<meta name="robots" content="index, follow, archive" />
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}style-index.css" media="screen" />
+<script type="text/javascript" src="{DT_PATH}file/webscript/script-0-a21828e9.js"></script>
+<script type="text/javascript" charset="utf-8" src="{DT_PATH}file/webscript/adsview.js"></script>
+{if !DT_DEBUG}<script type="text/javascript">window.onerror= function(){return true;}</script>{/if}
+<script type="text/javascript" src="{DT_PATH}lang/{DT_LANG}/lang.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/config.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/common.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/page.js"></script>
+
+<!--[if IE 6]>
+<script type="text/javascript" src="{DT_PATH}file/webscript/DD_belatedPNG_0.0.8a-min.js"></script>
+<script type="text/javascript">
+ DD_belatedPNG.fix('.pl_focus .imgbox li h3,.plImgList dt label.reduce,.plImgList dt label,.picStory .picStory00 li a span,.pl-honey .picbox h3,.pl-marryflash a');
+</script>
+<![endif]-->       
+<script type="text/javascript">
+    $(function(){
+        $(".login-after li").hover(function(){
+            $(this).find("div").slideDown(200);
+        },
+        function(){
+            $(this).find("div").slideUp(200);
+        })             
+    });  
+</script>
+</head>
+<body>
+<div id="header">
+    <div id="site-nav">
+        <div class="pl-title">结婚商家服务展示,降低新人盲目奔走,让选择更多,让服务更全,让婚礼更美!</div>
+        <div id="destoon_member" style="float:right;padding-top:5px;"></div>
+    </div>
+    
+    <div class="ailogo">
+    	<h1><a target="_blank" href="{DT_PATH}" title="{$DT[sitename]}">{$DT[sitename]}</a></h1>
+    	<ul class="ai_class"><li><a href="{DT_PATH}company/list-417.html" title="菏泽酒店">婚宴酒店</a></li><li><a href="{DT_PATH}company/list-413.html" class="this" title="菏泽影楼">婚纱影楼</a></li><li><a href="{DT_PATH}company/list-425.html" title="菏泽婚戒">婚戒首饰</a></li><li><a href="{DT_PATH}sell/list.php?catid=154" title="菏泽艺术摄影">艺术写真</a></li></ul>
+        <ul class="ai_class"><li><a href="{DT_PATH}company/list-418.html" title="菏泽婚庆">婚庆公司</a></li><li><a href="{DT_PATH}company/list-421.html" title="菏泽司仪">司仪督导</a></li><li><a href="{DT_PATH}company/list-415.html" title="菏泽乐队">亲子摄影</a></li><li><a href="{DT_PATH}company/list-420.html" title="菏泽婚礼跟拍">婚礼跟拍</a></li></ul>
+        <ul class="ai_class"><li><a href="{DT_PATH}company/list-424.html" title="菏泽礼服租赁">婚纱礼服</a></li><li><a href="{DT_PATH}company/list-419.html" title="菏泽新娘跟妆">新娘跟妆</a></li><li><a href="{DT_PATH}company/list-427.html" title="菏泽装修装饰">新房装修</a></li><li><a href="{DT_PATH}sell/list.php?catid=370" title="菏泽父母婚礼服装">爸妈礼服</a></li></ul>
+        <ul class="ai_class"><li><a href="{DT_PATH}company/list-422.html" title="菏泽租车">婚车租赁</a></li><li><a href="{DT_PATH}sell/" title="结婚用品">结婚百货</a></li><li><a href="{DT_PATH}company/list-428.html" title="菏泽旅游">蜜月旅游</a></li><li><a href="{DT_PATH}sell/list.php?catid=161" title="菏泽后期制作">相片加工</a></li></ul>
+        <ul class="ai_class class2"><li><a href="{DT_PATH}company/list-414.html" title="菏泽摄影工作室">摄影工作室</a></li><li><a href="{DT_PATH}sell/list.php?catid=162" title="烟、酒、糖、蛋糕">烟酒糖蛋糕</a></li></ul>
+    </div>
+    <div style="clear:both;"></div>
+    <div id="pl-nav">
+        
+        <div class="nav">
+            <span class="nleft"></span>
+            <div class="nmain">
+                <ul><li><a href="{DT_PATH}" {if $moduleid<4} class="select"{/if}><span>结婚首页</span></a></li>{loop $MODULE $m}{if $m[ismenu]}<li><a href="{$m[linkurl]}"{if $m[isblank]} target="_blank"{/if} {if $m[moduleid]==$moduleid} class="select"{/if}><span{if $m[style]} style="color:{$m[style]};"{/if}>{$m[name]}</span></a></li>{/if}{/loop}</ul>
+            </div>
+            <span class="nright"></span>
+        </div>
+        <div class="nav-ad"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $(".pl_focus").adfocus({
+            drection: "filter",
+            numbox: ".numBox",
+            imgbox: ".imgbox",
+            speed: 3000,
+            addClass: "pptOn",
+            imgboxWidth:274,
+            imgboxHeight:504,
+            imgLen:4,
+            pull:"",
+            usevent:"click"
+        });
+       
+    });
+$(function(){
+  var _flash=$(".pl-marryflash a");
+  _flash.each(function(i){
+var top=$(this).css("top");
+$(this).hover(function(){		
+                ntop=parseInt(top); 
+            var acttop=ntop-10;
+$(this).stop().animate({"top": acttop}, 300);
+   }, function(){
+   $(this).stop().animate({"top": ntop}, 300);
+   })
+   })
+
+   
+   $("#pl-navcity").hover(function(){
+$(".navcity-cont").stop().show(0);
+   },function(){
+$(".navcity-cont").stop().hide(0);
+   })
+   });
+    function setTab(name,cursel,n){
+        for(i=1;i<=n;i++){
+            var menu=document.getElementById(name+i);
+            var con=document.getElementById("con_"+name+"_"+i);
+            menu.className=i==cursel?"hover":"";
+            con.style.display=i==cursel?"block":"none";
+        }
+    }
+</script>

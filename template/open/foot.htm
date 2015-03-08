@@ -1,0 +1,64 @@
+<div class="m"></div>
+<div id="footer">
+<div class="plRegulations">
+<ul>
+    <li class="first">菏泽影楼/拍婚照</li>
+    {php $_tags=tag("moduleid=5&table=company&pagesize=5&condition=level=4&template=null")}
+    {loop $_tags $t}
+    <li><a title="{$t[company]}" target="_blank" href="{$t[linkurl]}">{$t[company]}</a></li>
+    {/loop}
+</ul>
+    <ul>
+        <li class="first">菏泽婚庆/选婚庆</li>
+        {php $_tags=tag("moduleid=5&table=company&pagesize=5&condition=level=5&template=null")}
+        {loop $_tags $t}
+        <li><a title="{$t[company]}" target="_blank" href="{$t[linkurl]}">{$t[company]}</a></li>
+        {/loop}
+    </ul>
+    <ul>
+        <li class="first">菏泽婚宴/定酒席</li>
+        {php $_tags=tag("moduleid=5&table=company&pagesize=5&condition=level=6&template=null")}
+        {loop $_tags $t}
+        <li><a title="{$t[company]}" target="_blank" href="{$t[linkurl]}">{$t[company]}</a></li>
+        {/loop}
+    </ul>
+    <ul>
+        <li class="first">菏泽装修公司</li>
+        {php $_tags=tag("moduleid=5&table=company&pagesize=5&condition=level=7&template=null")}
+        {loop $_tags $t}
+        <li><a title="{$t[company]}" target="_blank" href="{$t[linkurl]}">{$t[company]}</a></li>
+        {/loop}
+    </ul>
+    <ul class="last">
+        <li class="first">菏泽旅行社</li>
+        {php $_tags=tag("moduleid=5&table=company&pagesize=5&condition=level=8&template=null")}
+        {loop $_tags $t}
+        <li><a title="{$t[company]}" target="_blank" href="{$t[linkurl]}">{$t[company]}</a></li>
+        {/loop}
+
+{template 'stats', 'chip'}
+</ul>
+</div>
+<div class="company">
+<div class="companyInfo"><center><div style=margin-top:3px>
+    <div class="companyInfo">菏泽结婚网-www.hezejiehun.com 鲁ICP备11008011 <kbd style="font-family:Arial">&copy; 2013</kbd> 菏泽结婚网 一站式婚嫁平台</div>
+</div></center> </div>
+</div>
+</div>
+
+<!--[系统关键代码，请勿删除]-->
+<div id="back2top" class="back2top"><a href="javascript:void(0);" title="返回顶部">&nbsp;</a></div>
+<script type="text/javascript">
+    {if $destoon_task}
+        show_task('{$destoon_task}');
+        {else}
+        {php include DT_ROOT.'/api/task.inc.php';}
+        {/if}
+            {if $lazy}$(function(){$("img").lazyload();});{/if}
+                $('#back2top').click(function() {
+                    $("html, body").animate({scrollTop:0}, 200);
+                });
+</script>
+</body>
+</html>
+</html>

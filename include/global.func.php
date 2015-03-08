@@ -197,6 +197,7 @@ function message($dmessage = errmsg, $dforward = 'goback', $dtime = 1) {
 	exit(include template('message', 'message'));
 }
 
+
 function login() {
 	global $_userid, $MODULE, $DT_URL, $DT;
 	$_userid or dheader($MODULE[2]['linkurl'].$DT['file_login'].'?forward='.rawurlencode($DT_URL));

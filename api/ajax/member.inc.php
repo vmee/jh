@@ -68,6 +68,41 @@ switch($job) {
 			echo '1';
 		}
 		exit;
-	break;
+	case 'line':
+		include template('user_line', 'chip');
+		break;
+	case 'checkusername':
+		if(!$param) exit($L['member_username_match']);
+		if(!$do->is_username($param)) exit($do->errmsg);
+		exit(json_encode(array('status'=>'y')));
+		break;
+	case 'checkmobile':
+		$param = trim($param);
+		if(!is_mobile($param)) exit($L['member_mobile_null']);
+		if($do->mobile_exists($param)) exit($L['member_mobile_reg']);
+		exit(json_encode(array('status'=>'y')));
+		break;
+	case 'checkmobilecode':
+		$value = trim($param);
+		if(!preg_match("/[0-9]{6}/", $value)) exit('验证码错误');
+		$session = new dsession();
+		if($_SESSION['mobile_code'] != md5($_SESSION['mobile'].'|'.$value)) exit('验证码错误');
+		exit(json_encode(array('status'=>'y')));
+		break;
+	case 'checkinvitecode':
+		$value = trim($param);
+		if(strlen($value) != 6) exit('邀请码不正确');
+
+		if($value != 'hzjh88' && !$db->get_one("SELECT itemid,password FROM {$DT_PRE}invite_customer WHERE regtime=0 and password='$value'")){
+			exit('邀请码不存在');
+		}
+		exit(json_encode(array('status'=>'y')));
+		break;
+	case 'checkum':
+		$param = trim($param);
+		if(!$param) exit('请输入用户名或手机号');
+		if($do->username_exists($param) || $do->mobile_exists($param)) exit(json_encode(array('status'=>'y')));;
+		exit('用户名或手机号不存在');
+		break;
 }
 ?>

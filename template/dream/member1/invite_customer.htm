@@ -1,0 +1,327 @@
+{if $action == 'my'}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/>
+<title>{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{$DT[sitename]}</title>
+<link rel="stylesheet" type="text/css" href="{DT_STATIC}{$MODULE[2][moduledir]}/image/style.css" />
+<script type="text/javascript" src="{DT_STATIC}lang/{DT_LANG}/lang.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/jquery.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/admin.js"></script>
+</head>
+<body style="background:#EBF0F6;">
+<form action="invite_customer.php">
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="from" value="{$from}"/>
+<div class="tt" style="background:#EBF0F6;">
+{$fields_select}&nbsp;
+<input type="text" size="50" name="kw" value="{$kw}" title="关键词"/>&nbsp;
+<input type="submit" value=" 搜 索 " class="btn"/>
+<input type="button" value=" 重 搜 " class="btn" onclick="Go('invite_customer.php?action={$action}&from={$from}');"/>
+</div>
+</form>
+{if $lists}
+<div class="ls">
+<table cellpadding="0" cellspacing="0" class="tb">
+<tr>
+<th width="26"></th>
+<th>公司</th>
+<th>姓名</th>
+<th>{if $from=='sms'}手机{else}会员{/if}</th>
+{if $DT[im_web]}<th>在线</th>{/if}
+<th><input type="checkbox" id="c_0" onclick="_check();"/></th>
+</tr>
+{loop $lists $k $v}
+<tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center" title="{$v[note]}">
+<td><img src="{useravatar($v[username], 'small')}" width="20"/></td>
+<td align="left">&nbsp;<a href="{userurl($v[username])}" target="_blank" class="t">{$v[company]}</a></td>
+<td>{$v[truename]}</td>
+<td id="v_{$v[itemid]}">{if $from=='sms'}{$v[mobile]}{else}{$v[username]}{/if}</td>
+{if $DT[im_web]}<td>{im_web($v[username])}</td>{/if}
+<td><input type="checkbox" id="c_{$v[itemid]}" onclick="_send({$v[itemid]});"/></td>
+</tr>
+{/loop}
+</table>
+</div>
+{if $page}<div class="pages">{$pages}</div>{/if}
+<div style="text-align:center;">
+<input type="button" value=" 确 定 " class="btn" onclick="window.parent.cDialog();"/>&nbsp;&nbsp;
+<input type="button" value=" 关 闭 " class="btn" onclick="window.parent.cDialog();"/>
+</div>
+<script type="text/javascript">
+var itemids = [{loop $lists $i $t}{if $i},{/if}'{$t[itemid]}'{/loop}];
+{if $from == 'sms'}
+	function _send(id) {
+		var v = Dd('v_'+id).innerHTML;
+		if(parent.Dd('mob').value && parent.Dd('mob').value.indexOf("\n") == -1) parent.Dd('mob').value = parent.Dd('mob').value+"\n";
+		if(Dd('c_'+id).checked) {
+			if(parent.Dd('mob').value.indexOf(v) == -1) parent.Dd('mob').value = parent.Dd('mob').value+v+"\n";
+		} else {
+			if(parent.Dd('mob').value.indexOf(v) != -1) parent.Dd('mob').value = parent.Dd('mob').value.replace(v+"\n", '');
+		}
+	}
+	function _check() {
+		for(var i = 0; i < itemids.length; i++) {
+			itemid = itemids[i];
+			Dd('c_'+itemid).checked = Dd('c_0').checked ? true :false;
+			_send(itemid);
+		}
+	}
+	if(parent.Dd('mob').value) {
+		s = parent.Dd('mob').value+"\n";
+		for(var i = 0; i < itemids.length; i++) {
+			itemid = itemids[i];
+			f = Dd('v_'+itemid).innerHTML+"\n";
+			if(s.indexOf(f) != -1) Dd('c_'+itemid).checked = true;
+		}
+	}
+{else}
+	var max = {$MOD[maxtouser]};
+	function _send(id) {
+		var v = Dd('v_'+id).innerHTML;
+		if(parent.Dd('touser').value && parent.Dd('touser').value.indexOf(' ') == -1) parent.Dd('touser').value = parent.Dd('touser').value+' ';
+		if(Dd('c_'+id).checked) {
+			if(max && substr_count(parent.Dd('touser').value, ' ') >= max) {
+				Dd('c_'+id).checked = false;
+				return alert('最多可以选择'+max+'个收件人');
+			}
+			if(parent.Dd('touser').value.indexOf(v) == -1) parent.Dd('touser').value = parent.Dd('touser').value+v+' ';
+		} else {
+			if(parent.Dd('touser').value.indexOf(v) != -1) parent.Dd('touser').value = parent.Dd('touser').value.replace(v+' ', '');
+		}
+	}
+	function _check() {
+		for(var i = 0; i < itemids.length; i++) {
+			itemid = itemids[i];
+			if(Dd('c_0').checked) {
+				if(max && substr_count(parent.Dd('touser').value, ' ') >= max) {
+					break;
+				} else {
+					Dd('c_'+itemid).checked = true;
+					_send(itemid);
+				}
+			} else {
+				Dd('c_'+itemid).checked = false;
+				_send(itemid);
+			}
+		}
+	}
+	if(parent.Dd('touser').value) {
+		s = parent.Dd('touser').value+' ';
+		for(var i = 0; i < itemids.length; i++) {
+			itemid = itemids[i];
+			f = Dd('v_'+itemid).innerHTML+' ';
+			if(s.indexOf(f) != -1) Dd('c_'+itemid).checked = true;
+		}
+	}
+{/if}
+</script>
+{else}
+<center>{if $kw}未搜索到商友{else}暂无商友{/if}</center>
+{/if}
+</body>
+</html>
+{else}
+{template 'header', $module}
+<div class="menu">
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td class="tab" id="add"><a href="invite_customer.php?action=add"><span>引荐客户</span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="home"><a href="invite_customer.php"><span>我的引荐</span></a></td>
+<td class="tab_nav">&nbsp;</td>
+</tr>
+</table>
+</div>
+{if $action == 'add'}
+<form method="post" action="invite_customer.php" onsubmit="return check();">
+<input type="hidden" name="action" value="{$action}"/>
+<table cellpadding="5" cellspacing="1" class="tb">
+<tr>
+<td class="tl"><span class="f_red">*</span> 姓名</td>
+<td class="tr"><input type="text" size="20" name="post[truename]" id="truename" /> <span id="dtruename" class="f_red"></span></td>
+</tr>
+<tr>
+    <td class="tl"><span class="f_red">*</span> 性别</td>
+    <td class="tr"><input type="radio" name="post[gender]" value="1" checked id="gender_1"/><label for="gender_1"> 先生</label>
+        <input type="radio" name="post[gender]" value="2" id="gender_2"/><label for="gender_2"> 女士</label></td>
+</tr>
+
+    <tr>
+        <td class="tl"><span class="f_red">*</span> 地区</td>
+        <td class="tr">{ajax_area_select('post[areaid]', '请选择', $areaid, '', 2)} <span id="dareaid" class="f_red"></span></td>
+    </tr>
+
+<tr>
+    <tr>
+        <td class="tl">婚期</td>
+        <td class="tr">{dcalendar('post[weddate]')} </td>
+    </tr>
+<td class="tl"><span class="f_red">*</span> 手机</td>
+<td class="tr"><input type="text" size="20" name="post[mobile]" id="mobile"/> <span id="dmobile" class="f_red"></span></td>
+</tr>
+
+<tr>
+<td class="tl">Email</td>
+<td class="tr"><input type="text" size="30" name="post[email]" id="email"/> </td>
+</tr>
+{if $DT[im_qq]}
+<tr>
+<td class="tl">QQ</td>
+<td class="tr"><input type="text" size="20" name="post[qq]" id="qq" /></td>
+</tr>
+{/if}
+
+
+<tr>
+<td class="tl">备注</td>
+<td class="tr"><input type="text" size="40" name="post[note]" id="note"/></td>
+</tr>
+<tr>
+<td class="tl">&nbsp;</td>
+<td class="tr" height="50"><input type="submit" name="submit" value=" 确 定 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" 重 置 " class="btn"/></td>
+</tr>
+</table>
+</form>
+<script type="text/javascript">s('invite_customer');m('add');</script>
+{elseif $action == 'edit'}
+<form method="post" action="invite_customer.php" onsubmit="return check();">
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="itemid" value="{$itemid}"/>
+<input type="hidden" name="forward" value="{$forward}"/>
+<table cellpadding="5" cellspacing="1" class="tb">
+
+<tr>
+<td class="tl"><span class="f_red">*</span> 姓名</td>
+<td class="tr"><input type="text" size="20" name="post[truename]" id="truename" value="{$truename}"/> {dstyle('post[style]', $style)} <span id="dtruename" class="f_red"></span></td>
+</tr>
+<tr>
+<td class="tl">会员名</td>
+<td class="tr"><input type="text" size="20" name="post[username]" id="username" value="{$username}"/></td>
+</tr>
+<tr>
+<td class="tl">公司名称</td>
+<td class="tr"><input type="text" size="40" name="post[company]" id="company" value="{$company}"/></td>
+</tr>
+<tr>
+<td class="tl">职位</td>
+<td class="tr"><input type="text" size="20" name="post[career]" id="career" value="{$career}"/></td>
+</tr>
+<tr>
+<td class="tl">电话</td>
+<td class="tr"><input type="text" size="20" name="post[telephone]" id="telephone" value="{$telephone}"/></td>
+</tr>
+<tr>
+<td class="tl">手机</td>
+<td class="tr"><input type="text" size="20" name="post[mobile]" id="mobile" value="{$mobile}"/></td>
+</tr>
+<tr>
+<td class="tl">主页</td>
+<td class="tr"><input type="text" size="40" name="post[homepage]" id="homepage" value="{$homepage}"/></td>
+</tr>
+<tr>
+<td class="tl">Email</td>
+<td class="tr"><input type="text" size="30" name="post[email]" id="email" value="{$email}"/></td>
+</tr>
+{if $DT[im_qq]}
+<tr>
+<td class="tl">QQ</td>
+<td class="tr"><input type="text" size="20" name="post[qq]" id="qq" value="{$qq}"/></td>
+</tr>
+{/if}
+{if $DT[im_ali]}
+<tr>
+<td class="tl">阿里旺旺</td>
+<td class="tr"><input type="text" size="20" name="post[ali]" id="ali" value="{$ali}"/></td>
+</tr>
+{/if}
+{if $DT[im_msn]}
+<tr>
+<td class="tl">MSN</td>
+<td class="tr"><input type="text" size="30" name="post[msn]" id="msn" value="{$msn}"/></td>
+</tr>
+{/if}
+{if $DT[im_skype]}
+<tr>
+<td class="tl">Skype</td>
+<td class="tr"><input type="text" size="20" name="post[skype]" id="skype" value="{$skype}"/></td>
+</tr>
+{/if}
+<tr>
+<td class="tl">备注</td>
+<td class="tr"><input type="text" size="40" name="post[note]" id="note" value="{$note}"/></td>
+</tr>
+<tr>
+<td class="tl">&nbsp;</td>
+<td class="tr" height="50"><input type="submit" name="submit" value=" 修 改 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" 返 回 " class="btn" onclick="history.back(-1);"/></td>
+</tr>
+</table>
+</form>
+<script type="text/javascript">s('invite_customer');m('home');</script>
+{else}
+<form action="invite_customer.php">
+<div class="tt">
+&nbsp;{$fields_select}&nbsp;
+<input type="text" size="50" name="kw" value="{$kw}" title="关键词"/>&nbsp;
+<input type="submit" value=" 搜 索 " class="btn"/>
+<input type="button" value=" 重 搜 " class="btn" onclick="Go('invite_customer.php');"/>
+</div>
+</form>
+
+<div class="ls">
+    <table cellpadding="0" cellspacing="0" class="tb">
+        <tr>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>地区</th>
+            <th>婚期</th>
+            <th>手机号</th>
+            <th>qq</th>
+            <th>email</th>
+            <th>备注</th>
+            <th>注册状态</th>
+            <th>添加时间</th>
+        </tr>
+        {loop $lists $k $v}
+        <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
+            <td>{$v[truename]}</td>
+            <td>{gender($v[gender])}</td>
+            <td>{area_pos($v[areaid], '')}</td>
+            <td>{$v[weddate]}</td>
+            <td>{$v[mobile]}</td>
+            <td>{$v[qq]}</td>
+            <td>{$v[email]}</td>
+            <td>{$v[note]}</td>
+            <td>{if $v[regtime]}已注册{else}未注册{/if}</td>
+            <td>{timetodate($v[addtime])}</td>
+        </tr>
+        {/loop}
+    </table>
+</div>
+<div class="pages">{$pages}</div>
+
+<script type="text/javascript">s('invite_customer');m('home');</script>
+{/if}
+{if $action=='add' || $action=='edit'}
+<script type="text/javascript">
+function check() {
+	if(Dd('truename').value == '') {
+		Dmsg('请填写姓名', 'truename');
+		return false;
+	}
+    if(Dd('areaid_1').value == '0') {
+        Dmsg('请选择地区', 'areaid');
+        return false;
+    }
+    if(Dd('mobile').value == '') {
+        Dmsg('请填写手机号', 'mobile');
+        return false;
+    }
+	return true;
+}
+</script>
+{/if}
+{template 'footer', $module}
+{/if}
