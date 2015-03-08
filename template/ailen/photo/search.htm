@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="{DT_SKIN}photo.css" media="screen" />
 <div class="m">
 <div class="m_l_1 f_l">
-	<div class="left_box">		
+	<div class="left_box">
 		<div class="pos">当前位置: <a href="{$MODULE[1][linkurl]}">首页</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a> &raquo; <a href="{$MOD[linkurl]}search.php">搜索</a></div>
 		<div class="fsearch">
 			<form action="{$MOD[linkurl]}search.php" id="fsearch">
@@ -17,7 +17,7 @@
 			<td>
 			{loop $sfields $k $v}
 			<input type="radio" name="fields" value="{$k}" id="fd_{$k}"{if $fields==$k} checked{/if}/><label for="fd_{$k}"> {$v}</label>&nbsp;
-			{/loop}			
+			{/loop}
 			</td>
 			</tr>
 			<tr>
@@ -44,7 +44,7 @@
 			<td></td>
 			<td>
 			<input type="image" src="{DT_SKIN}image/btn_search.gif"/>&nbsp;&nbsp;
-			<a href="{$MOD[linkurl]}search.php"><img src="{DT_SKIN}image/btn_reset_search.gif"/></a>	
+			<a href="{$MOD[linkurl]}search.php"><img src="{DT_SKIN}image/btn_reset_search.gif"/></a>
 			</td>
 			</tr>
 			</table>
@@ -96,21 +96,21 @@
 	<div class="box_body">
 		<div class="rank_list">
 			<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and updatetime>$today_endtime-86400&pagesize=10&order=today_search desc&key=today_search&template=list-search_rank", -2)}-->
-		</div>		
+		</div>
 	</div>
 	<div class="b10">&nbsp;</div>
 	<div class="box_head_1"><div><strong>本周搜索排行</strong></div></div>
 	<div class="box_body">
 		<div class="rank_list">
 			<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and updatetime>$today_endtime-86400*7&pagesize=10&order=week_search desc&key=week_search&template=list-search_rank", -2)}-->
-		</div>		
+		</div>
 	</div>
 	<div class="b10">&nbsp;</div>
 	<div class="box_head_1"><div><strong>本月搜索排行</strong></div></div>
 	<div class="box_body">
 		<div class="rank_list">
 			<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and updatetime>$today_endtime-86400*30&pagesize=10&order=month_search desc&key=month_search&template=list-search_rank", -2)}-->
-		</div>		
+		</div>
 	</div>
 </div>
 </div>

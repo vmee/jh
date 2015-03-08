@@ -49,12 +49,12 @@
             <article class="from-the-blog">
 
                 <figure class="from-the-blog-image">
-                    <a href="{$t[linkurl]}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[title]}" /></a>
+                    <a href="{userurl($t[username], 'file=activity&itemid='.$t['itemid'], $domain)}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[title]}" /></a>
                     <div class="hover-icon"></div>
                 </figure>
 
                 <section class="from-the-blog-content">
-                    <a href="{$t[linkurl]}"><h5>{$t[title]}</h5></a>
+                    <a href="{userurl($t[username], 'file=activity&itemid='.$t['itemid'], $domain)}"><h5>{$t[title]}</h5></a>
                     <i>结束时间:{$t[endtime]}</i>
                     <span>{$t[introduce]}</span>
                 </section>

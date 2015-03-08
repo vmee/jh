@@ -39,7 +39,6 @@
 		<li class="menu_1" id="menu_0" onclick="c(0);">商铺管理</li>
 		<li class="menu_2" id="menu_1" onclick="c(1);">信息管理</li>
 		{/if}
-		<li class="menu_2" onclick="Go('{DT_PATH}');">网站首页</li>
 		</ul>
 		</div>
 		<div class="head_user">
@@ -61,10 +60,13 @@
 			{if $DT[im_web] && $DT[chat]}<li id="destoon_chat"><a href="chat.php">对话</a>{if $_chat}<em>{$_chat}</em>{/if}</li>{/if}
 			<li><a href="logout.php?forward=">退出</a></li>
 			{if $admin_user}<li><a href="index.php?action=logout">注销授权</a></li>{/if}
+				<li><a href="{userurl($_username)}=" target="_blank">商家主页</a></li>
+				<li><a href="{DT_PATH}" target="_blank">网站首页</a></li>
 			</ul>
 			{else}
-			<a href="{$DT[file_login]}">立即登录</a> | 
+			<a href="{$DT[file_login]}">立即登录</a> |
 			<a href="{$DT[file_register]}">注册会员</a>
+			<a href="{DT_PATH}">注册会员</a>
 			{/if}		
 		</div>
 		<div class="c_b"></div>

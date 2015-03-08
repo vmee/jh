@@ -124,8 +124,8 @@ class member {
 		if(!$this->is_passport($member['passport'])) return false;
 		if(!$member['groupid']) return $this->_($L['member_groupid_null']);
 		if(strlen($member['truename']) < 2 || !$this->is_clean($member['truename'])) return $this->_($L['member_truename_null']);
-		if(!$this->is_email(trim($member['email']))) return false;
-		if($this->email_exists(trim($member['email']))) return $this->_($L['member_email_reg']);
+		//if(!$this->is_email(trim($member['email']))) return false;
+		//if($this->email_exists(trim($member['email']))) return $this->_($L['member_email_reg']);
 		$areaid = intval($member['areaid']);
 		if(!$areaid || !$this->db->get_one("SELECT areaid FROM {$this->db->pre}area WHERE areaid=$areaid")) return $this->_($L['member_areaid_null']);
 		$groupid = $this->userid ? $member['groupid'] : $member['regid'];
@@ -328,8 +328,14 @@ class member {
 	}
 
 	function get_one($username = '') {
-		$condition = $username ? "m.username='$username'" : "m.userid='$this->userid'";
-        return $this->db->get_one("SELECT * FROM {$this->table_member} m,{$this->table_company} c WHERE m.userid=c.userid AND $condition");
+		$condition = $username ? "username='$username'" : "userid='$this->userid'";
+
+		$user = $this->db->get_one("SELECT * FROM {$this->table_member} m WHERE $condition");
+		$user_company = $this->db->get_one("SELECT * FROM {$this->table_company} WHERE $condition");
+		if($user && $user_company) $user += $user_company;
+
+        return $user;
+			//$this->db->get_one("SELECT * FROM {$this->table_member} m left join {$this->table_company} c on m.userid=c.userid where $condition");
 	}
 
 	function get_list($condition, $order = 'userid DESC') {

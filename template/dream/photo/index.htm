@@ -7,10 +7,10 @@
 		{if $child}
 		<ul class="tabs-nav">
 
-			<li class="active"><a href="{$MOD[linkurl]}search.php?areaid={$areaid}">所有分类</a></li>
+			<li class="active"><a href="{$MOD[linkurl]}search.php">所有分类</a></li>
 
 			{loop $child $i $c}
-			<li><a href="{$MODULE[$mid][linkurl]}search.php?catid={$c[catid]}&areaid={$areaid}">{$c[catname]}</a></li>
+			<li><a href="{$MODULE[$mid][linkurl]}search.php?catid={$c[catid]}">{$c[catname]}</a></li>
 			{/loop}
 		</ul>
 		{/if}
@@ -29,12 +29,12 @@
 
 	<ul id="og-grid" class="og-grid">
 
-		{php $_tags=tag("moduleid=12&pagesize=40&template=null")}
+		{php $_tags=tag("moduleid=$moduleid&pagesize=40&template=null")}
 		{loop $_tags $k $t}
 		<!-- Project -->
 		<li class="clothing others clickable">
 
-			<a href="{$t[linkurl]}" class="grid-item-image">
+			<a href="{userurl($t[username], 'file=photo&itemid='.$t['itemid'], $domain)}" class="grid-item-image">
 				<div class="dynamic-portfolio-holder">
 					<img src="{$t[thumb]}" alt="{$t[title]}"/>
 					<div class="hover-cover"></div>
@@ -44,32 +44,28 @@
 				</div>
 			</a>
 
-			<!--<div class="og-expander">
+			<div class="og-expander">
 				<div class="flexslider gridslider">
 					<ul class="slides">
-						<li><img src="http://vasterad.com/themes/trizzy/images/portfolio/portfolio-01a.jpg" alt=""></li>
+						<li><img src="{$t[thumb]}" alt=""></li>
 					</ul>
 				</div>
 
 				<span class="og-close"></span>
 				<div class="og-details">
-					<h3>Retro Shoes</h3>
-					<p>Nullam mollis sed purus id placerat. Aliquam non sem dui. Aenean ac consequat sem. Duis in interdum massa. Etiam sodales, est non luctus mollis, nisl nisi aliquam.</p>
-					<p>Donec sit amet luctus nulla. Etiam bibendum fringilla convallis. Integer porta mi lorem, ut malesuada lorem vehicula lorem dolor. Morbi vitae egestas dolor.</p>
+					<h3>{$t[title]}</h3>
+					<p>{$t[introduce]}</p>
 
-					<!-- Share Buttons --
+
 					<div class="share-buttons">
 						<ul>
-							<li><a href="portfolio-dynamic-grid.html#">Share</a></li>
-							<li class="share-facebook"><a href="portfolio-dynamic-grid.html#">Facebook</a></li>
-							<li class="share-twitter"><a href="portfolio-dynamic-grid.html#">Twitter</a></li>
-							<li class="share-gplus"><a href="portfolio-dynamic-grid.html#">Google Plus</a></li>
-							<li class="share-pinit"><a href="portfolio-dynamic-grid.html#">Pin It</a></li>
+							<li><a href="{userurl($t[username], 'file=photo&itemid='.$t['itemid'], $domain)}">查看详情</a></li>
+
 						</ul>
 					</div>
 
 				</div>
-			</div>-->
+			</div>
 		</li>
 		{/loop}
 

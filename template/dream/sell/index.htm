@@ -27,7 +27,7 @@
 
 	<!-- Headline -->
 	<div class="sixteen columns">
-		<h3 class="headline">{$c[catname]}</h3>
+		<a href="{$MOD[linkurl]}search.php?catid={$c[catid]}"><h3 class="headline">{$c[catname]}</h3></a>
 		<span class="line margin-bottom-0"></span>
 	</div>
 
@@ -48,20 +48,20 @@
 				<ul>
 
 
-					{php $_tags=tag("moduleid=$moduleid&table=sell&pagesize=4&condition=catid like '%,".$c[catid].",%'&template=null")}
-					{loop $_tags $k $t}
+					{php $tags=tag("moduleid=5&catid=".$c[catid]."&pagesize=10", -1)}
+					{loop $tags $k $t}
 
 					<!-- Product #1 -->
 					<li>
 						<figure class="portfolio-item">
 							<div class="portfolio-holder">
-								<a href="{$t[linkurl]}">
+								<a href="{userurl($t[username], 'file=sell&itemid='.$t['itemid'], $domain)}">
 									<img alt="{$t[title]}" src="{imgurl($t[thumb], 1)}"/>
 									<div class="hover-cover"></div>
 								</a>
 							</div>
 
-							<a href="{$t[linkurl]}">
+							<a href="{userurl($t[username], 'file=sell&itemid='.$t['itemid'], $domain)}">
 								<section class="item-description">
 									<h4>{$t[title]}</h4>
 									<span class="product-price-discount">原价{$t[marketprice]}<i>现价{$t[price]}</i></span>

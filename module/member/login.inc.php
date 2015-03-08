@@ -53,10 +53,13 @@ if($submit) {
 		#if($MOD['sso']) include DT_ROOT.'/api/sso.inc.php';
 		if($DT['login_log'] == 2) $do->login_log($username, $password, 0);
 
-		exit(json_encode(array('status'=>'y', 'info'=>'登陆成功')));
+		if(!isset($from_register)){
+			exit(json_encode(array('status'=>'y', 'info'=>'登陆成功')));
+		}else{
+			if($api_msg) message($api_msg, $forward, -1);
+			message($api_msg, $forward);
+		}
 
-		//if($api_msg) message($api_msg, $forward, -1);
-		//message($api_msg, $forward);
 	} else {
 		if($DT['login_log'] == 2) $do->login_log($username, $password, 0, $do->errmsg);
 		message($do->errmsg);

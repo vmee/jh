@@ -48,13 +48,13 @@
 		<div class="four columns portfolio-item clothing others">
 			<figure>
 				<div class="portfolio-holder">
-					<a href="{$t[linkurl]}">
+					<a href="{userurl($t[username], 'file=sell&itemid='.$t['itemid'], $domain)}">
 						<img alt="{$t[title]}" src="{imgurl($t[thumb], 1)}"/>
 						<div class="hover-cover"></div>
 					</a>
 				</div>
 
-				<a href="{$t[linkurl]}">
+				<a href="{userurl($t[username], 'file=sell&itemid='.$t['itemid'], $domain)}">
 					<section class="item-description">
 						<h5>{$t[tiltle]}</h5>
 						<span class="product-price-discount">原价{$t[marketprice]}<i>现价{$t[price]}</i></span>

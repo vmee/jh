@@ -43,7 +43,7 @@ $(function(){
 
 <div class="top_nav">
     <div class="head">
-    <p class="ai_title">{$DT['sitename']},让选择更多,让服务更全,让婚礼更美!</p>
+    <a href="{DT_PATH}" class="ai_title">{$DT['sitename']},让选择更多,让服务更全,让婚礼更美!</a>
     <div id="destoon_member" style="float:right;color:#fff;"></div>
     </div>
 </div>
@@ -80,10 +80,9 @@ $(function(){
 </div>-->
 <div class="head">
     <div class="logobox">
-{if $logo}<div class="logo"><a href="{$COM[linkurl]}"><img src="{$logo}" alt="{$COM[company]}" onload="if(this.width>165)this.width=165;"/></a></div>{else}
 
         <div class="logo"><a href="{$COM[linkurl]}"><img src="{$COM[thumb]}" alt="{$COM[company]}" onload="if(this.width>165)this.width=165;"/></a></div>
-        {/if}
+
         </div>
 
     <div class="basic f_l">

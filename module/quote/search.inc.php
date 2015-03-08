@@ -5,6 +5,7 @@ require DT_ROOT.'/module/'.$module.'/common.inc.php';
 if(!check_group($_groupid, $MOD['group_search'])) include load('403.inc');
 require DT_ROOT.'/include/post.func.php';
 include load('search.lang');
+$catid = isset($catid) ? $catid : 0;
 $CP = $MOD['cat_property'] && $catid && $CAT['property'];
 if(!$areaid && $cityid && strpos($DT_URL, 'areaid') === false) {
 	$areaid = $cityid;

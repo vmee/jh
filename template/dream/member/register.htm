@@ -43,6 +43,7 @@
 
 				<iframe src="" name="send" id="send" style="display:none;"></iframe>
 				<form method="post" class="register" target="send" action="{$DT[file_register]}">
+					<input name="action" type="hidden" id="action" value="{crypt_action('register')}"/>
 
 					<p class="form-row form-row-wide">
 						<label>用户名: <span class="required">*</span></label>
@@ -67,7 +68,7 @@
 
 					<p class="form-row form-row-wide">
 						<label >真实姓名: <span class="required">*</span></label>
-						<input type="text" class="input-text" name="post[truename]" value="" datatype="zh2-4" nullmsg="请输入真实姓名！" sucmsg=" " />
+						<input type="text" class="input-text" name="post[truename]" value="" datatype="s2-8" nullmsg="请输入真实姓名！" sucmsg=" " />
 					</p>
 
 					<p class="form-row form-row-wide">

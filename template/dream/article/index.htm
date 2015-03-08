@@ -58,13 +58,13 @@
                     <li>
                         <figure class="portfolio-item">
                             <div class="portfolio-holder">
-                                <a href="{$t[linkurl]}">
+                                <a href="{userurl($t[username], 'file=activity&itemid='.$t['itemid'], $domain)}">
                                     <img alt="{$t[title]}" src="{imgurl($t[thumb], 1)}"/>
                                     <div class="hover-cover"></div>
                                 </a>
                             </div>
 
-                            <a href="{$t[linkurl]}">
+                            <a href="{userurl($t[username], 'file=activity&itemid='.$t['itemid'], $domain)}">
                                 <section class="item-description">
                                     <h4>{$t[title]}</h4>
                                     <span>{$t[business]}</span>

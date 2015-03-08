@@ -1455,7 +1455,7 @@ ul.delivery-options {
 	float: left;
 	width: 100%;
 	max-height: 50px;
-	background-color: #606060;
+	background-color: #fa5b0f;
 	margin: 15px 0 25px 0;
 	z-index: 99;
 }
@@ -1483,7 +1483,7 @@ ul.delivery-options {
 
 
 /* Current Page */
-.menu > li .current { background-color: #505050;}
+.menu > li .current { background-color: #dd3737;}
 
 .menu > li:hover .current,
 .menu > li.sfHover .current {
@@ -4417,10 +4417,10 @@ a.img-caption {
 
 .showbiz li:hover .mediaholder img,
 .products figure:hover .mediaholder img {
-	-webkit-transform: translateX(-100%);
-	-moz-transform: translateX(-100%);
-	-ms-transform: translateX(-100%);
-	transform: translateX(-100%);
+	/*--webkit-transform: translateX(-100%);*/
+	/*-moz-transform: translateX(-100%);*/
+	/*--ms-transform: translateX(-100%);*/
+	/*-transform: translateX(-100%);*/
 }
 
 .showbiz .cover,

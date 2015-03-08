@@ -4,6 +4,7 @@ if($DT_BOT || $_POST) dhttp(403);
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
 if(!check_group($_groupid, $MOD['group_search'])) include load('403.inc');
 require DT_ROOT.'/include/post.func.php';
+
 include load('search.lang');
 $CP = $MOD['cat_property'] && $catid && $CAT['property'];
 $list = isset($list) ? intval($list) : 0;
@@ -41,7 +42,7 @@ isset($order) && isset($dorder[$order]) or $order = 0;
 $order_select  = dselect($sorder, 'order', '', $order);
 $type_select = dselect($TYPE, 'typeid', $L['all_type'], $typeid);
 $tags = $PPT = array();//PPT
-if($DT_QST) {
+//if($DT_QST) {
 	if($kw) {
 		if(strlen($kw) < $DT['min_kw'] || strlen($kw) > $DT['max_kw']) message(lang($L['word_limit'], array($DT['min_kw'], $DT['max_kw'])), $MOD['linkurl'].'search.php');
 		if($DT['search_limit'] && $page == 1) {
@@ -118,7 +119,7 @@ if($DT_QST) {
 		$db->free_result($result);
 		if($page == 1 && $kw) keyword($kw, $items, $moduleid);
 	}
-}
+//}
 $showpage = 1;
 $datetype = 5;
 $seo_file = 'search';

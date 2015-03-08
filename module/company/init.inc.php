@@ -108,7 +108,7 @@ if($COMGROUP['menu_d']) {
 } else {
 	$_menu_show = '1,1,1,1,1,1,1,1,0,0,0,0,0,0';
 }
-$_menu_order = '0,10,20,30,40,50,60,70,80,90,100,110,120,130';
+$_menu_order = '0,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,30';
 $_menu_num = '1,16,30,30,10,30,1,12,12,12,12,30,12,1';
 $_menu_file = implode(',' , $MFILE);
 $_menu_name = implode(',' , $HMENU);
@@ -132,12 +132,16 @@ $HOME = get_company_setting($COM['userid'], '', 'CACHE');
 //if(isset($HOME['menu_file'])) $HOME['menu_file'] = str_replace('credit', 'honor', $HOME['menu_file']);//For 3.x
 //if(isset($HOME['side_file'])) $HOME['side_file'] = str_replace('credit', 'honor', $HOME['side_file']);//For 3.x
 
-$menu_show = explode(',', isset($HOME['menu_show']) ? $HOME['menu_show'] : $_menu_show);
-$menu_order = explode(',', isset($HOME['menu_order']) ? $HOME['menu_order'] : $_menu_order);
+//$menu_show = explode(',', isset($HOME['menu_show']) ? $HOME['menu_show'] : $_menu_show);
+$menu_show = explode(',', $_menu_show);
+//$menu_order = explode(',', isset($HOME['menu_order']) ? $HOME['menu_order'] : $_menu_order);
+$menu_order = explode(',', $_menu_order);
 $menu_num = explode(',', isset($HOME['menu_num']) ? $HOME['menu_num'] : $_menu_num);
-$menu_file = explode(',', isset($HOME['menu_file']) ? $HOME['menu_file'] : $_menu_file);
+//$menu_file = explode(',', isset($HOME['menu_file']) ? $HOME['menu_file'] : $_menu_file);
+$menu_file = explode(',',  $_menu_file);
 //$menu_name = explode(',', isset($HOME['menu_name']) ? $HOME['menu_name'] : $_menu_name);
 $menu_name = explode(',',  $_menu_name);
+
 $_HMENU = array();
 asort($menu_order);
 foreach($menu_order as $k=>$v) {

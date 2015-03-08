@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+
+    <meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/>
+    <title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$DT[sitename]}{/if}{/if}</title>
+    {if $head_keywords}
+    <meta name="keywords" content="{$head_keywords}"/>
+    {/if}
+
+    <link rel="shortcut icon" type="image/x-icon" href="{DT_STATIC}favicon.ico"/>
+    <link rel="bookmark" type="image/x-icon" href="{DT_STATIC}favicon.ico"/>
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" type="text/css" href="{DT_SKIN}bootstrap.css"/>
+    <link rel="stylesheet" href="{DT_SKIN}css/style.css">
+    <link rel="stylesheet" href="{DT_SKIN}css/colors/red.css" id="colors">
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="{DT_SKIN}ie6.css"/>
+    <![endif]-->
+
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+        var DTPath = '{DT_PATH}';
+        var SKPath = '{DT_SKIN}';
+        var CKPrex = '{$CFG[cookie_pre]}';
+        var DTTour = '{$MODULE[4][linkurl]}tour.php';
+    </script>
+
+</head>
+<body class="wide">
+<div id="wrapper">
+
+    <!-- Top Bar
+================================================== -->
+    <div id="top-bar">
+        <div class="container">
+
+            <!-- Top Bar Menu -->
+            <div class="ten columns">
+                <ul class="top-bar-menu">
+                    <li>{$DT['sitename']},让选择更多,让服务更好,让婚礼更美!</li>
+                    <li><i class="fa fa-phone"></i> {$DT[telephone]}</li>
+                </ul>
+            </div>
+
+            <!-- Member menu -->
+            <div class="six columns">
+                <ul class="member-menu" id="user-line">
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+
+
+

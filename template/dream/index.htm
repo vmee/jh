@@ -4,7 +4,7 @@
 ================================================== -->
 <div class="container fullwidth-element home-slider">
 
-    <div class="tp-banner-container">
+    <div class="tp-banner-container" style="overflow:hidden">
         <div class="tp-banner">
             <ul>
                 <!-- Slide 1  -->
@@ -50,7 +50,7 @@
     {loop $_tags $k $t}
     {if $k>-1}
     <div class="one-third column">
-        <a href="{$t[linkurl]}" class="img-caption" >
+        <a href="{userurl($t[username], 'file=activity&itemid='.$t['itemid'], $domain)}" class="img-caption" >
             <figure>
                 <img src="{imgurl($t[thumb], 0)}" alt="{$t[title]}" />
                 <figcaption>
@@ -95,22 +95,20 @@
                     {php $_tags=tag("moduleid=5&pagesize=10&template=null")}
                     {loop $_tags $k $t}
                     {if $k>-1}
-                    <a target="_blank" href="{userurl($t[username])}" title="{$t[company]}"><img width="224" height="149" src="{imgurl($t[thumb], 0)}" class="lazy" original="{imgurl($t[thumb], 1)}" alt="{$t[company]}"><br>{$t[title]}<br><font>{$t[company]}</font></a>
-
                     <!-- Product #1 -->
                     <li>
                         <figure class="product">
                             <div class="mediaholder">
-                                <a href="{$t[linkurl]}">
+                                <a href="{userurl($t[username], 'file=sell&itemid='.$t['itemid'], $domain)}">
                                     <img alt="" src="{imgurl($t[thumb], 1)}"/>
                                 </a>
-                                <a href="{userurl($t[username])}" class="product-button"><i class="fa fa-shopping-cart"></i> {$t[company]}</a>
+                                <a href="{userurl($t[username])}" class="product-button">{$t[company]}</a>
                             </div>
 
-                            <a href="{$t[linkurl]}">
+                            <a href="{userurl($t[username], 'file=sell&itemid='.$t['itemid'], $domain)}">
                                 <section>
                                     <span class="product-category">{$t[title]}</span>
-                                    <span class="product-price">${$t[price]}</span>
+                                    <span class="product-price">现价{$t[price]}</span>
                                 </section>
                             </a>
                         </figure>
@@ -229,19 +227,19 @@
 
     {php $_tags=tag("moduleid=12&table=photo&pagesize=5&template=null&order=addtime desc")}
     {loop $_tags $k $t}
-    <li><a target="_blank" href="{$t[linkurl]}" title="爱的弥漫婚纱主题摄影"><img src="{imgurl($t[thumb], 0)}" class="lazy" original="{imgurl($t[thumb], 1)}" alt="{$t[title]}" /><br>{$t[title]}</a></li>
+    <li><a target="_blank" href="{userurl($t[username], 'file=photo&itemid='.$t['itemid'], $domain)}" title="{$t[title]}"><img src="{imgurl($t[thumb], 0)}" class="lazy" original="{imgurl($t[thumb], 1)}" alt="{$t[title]}" /><br>{$t[title]}</a></li>
 
     <!-- Post #1 -->
     <div class="four columns">
         <article class="from-the-blog">
 
             <figure class="from-the-blog-image">
-                <a href="{$t[linkurl]}"><img src="{imgurl($t[thumb], 0)}" alt="{$t[title]}" /></a>
+                <a href="{userurl($t[username], 'file=photo&itemid='.$t['itemid'], $domain)}"><img src="{imgurl($t[thumb], 0)}" alt="{$t[title]}" /></a>
                 <div class="hover-icon"></div>
             </figure>
 
             <section class="from-the-blog-content">
-                <a href="blog-single-post.html"><h5>{$t[title]}</h5></a>
+                <a href="{userurl($t[username], 'file=photo&itemid='.$t['itemid'], $domain)}"><h5>{$t[title]}</h5></a>
             </section>
 
         </article>

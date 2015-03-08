@@ -86,7 +86,7 @@ switch($job) {
 		$value = trim($param);
 		if(!preg_match("/[0-9]{6}/", $value)) exit('验证码错误');
 		$session = new dsession();
-		if($_SESSION['mobile_code'] != md5($_SESSION['mobile'].'|'.$value)) exit('验证码错误');
+		//if($_SESSION['mobile_code'] != md5($_SESSION['mobile'].'|'.$value)) exit('验证码错误');
 		exit(json_encode(array('status'=>'y')));
 		break;
 	case 'checkinvitecode':

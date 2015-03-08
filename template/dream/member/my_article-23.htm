@@ -200,8 +200,8 @@ function check() {
 	}
 	f = 'title';
 	l = Dd(f).value.length;
-	if(l < 5 || l > 30) {
-		Dmsg('标题应为5-30字，当前已输入'+l+'字', f);
+	if(l < 5 || l > 50) {
+		Dmsg('标题应为5-50，当前已输入'+l+'字', f);
 		return false;
 	}
 	f = 'content';

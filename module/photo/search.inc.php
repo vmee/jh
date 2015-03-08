@@ -21,7 +21,7 @@ $order_select  = dselect($sorder, 'order', '', $order);
 $category_select = category_select('catid', $L['all_category'], $catid, $moduleid);
 $area_select = $DT['city'] ? ajax_area_select('areaid', $L['all_area'], $areaid) : '';
 $tags = array();
-if($DT_QST) {
+//if($DT_QST) {
 	if($kw) {
 		if(strlen($kw) < $DT['min_kw'] || strlen($kw) > $DT['max_kw']) message(lang($L['word_limit'], array($DT['min_kw'], $DT['max_kw'])), $MOD['linkurl'].'search.php');
 		if($DT['search_limit'] && $page == 1) {
@@ -90,7 +90,7 @@ if($DT_QST) {
 		$db->free_result($result);
 		if($page == 1 && $kw) keyword($kw, $items, $moduleid);
 	}
-}
+//}
 $showpage = 1;
 $datetype = 3;
 $target = '_blank';

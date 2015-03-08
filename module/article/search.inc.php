@@ -5,6 +5,7 @@ require DT_ROOT.'/module/'.$module.'/common.inc.php';
 if(!check_group($_groupid, $MOD['group_search'])) include load('403.inc');
 require DT_ROOT.'/include/post.func.php';
 include load('search.lang');
+$catid = isset($catid) ? $catid : 0;
 $CP = $MOD['cat_property'] && $catid && $CAT['property'];
 if(!$areaid && $cityid && strpos($DT_URL, 'areaid') === false) {
 	$areaid = $cityid;
@@ -21,7 +22,7 @@ $category_select = category_select('catid', $L['all_category'], $catid, $modulei
 $area_select = $DT['city'] ? ajax_area_select('areaid', $L['all_area'], $areaid) : '';
 $order_select  = dselect($sorder, 'order', '', $order);
 $tags = array();
-if($DT_QST) {
+//if($DT_QST) {
 	if($kw) {
 		if(strlen($kw) < $DT['min_kw'] || strlen($kw) > $DT['max_kw']) message(lang($L['word_limit'], array($DT['min_kw'], $DT['max_kw'])), $MOD['linkurl'].'search.php');
 		if($DT['search_limit'] && $page == 1) {
@@ -88,7 +89,7 @@ if($DT_QST) {
 		$db->free_result($result);
 		if($page == 1 && $kw) keyword($kw, $items, $moduleid);
 	}
-}
+//}
 $showpage = 1;
 $datetype = 5;
 $target = '_blank';

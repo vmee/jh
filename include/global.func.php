@@ -944,7 +944,9 @@ function userinfo($username, $cache = 1) {
 		$user = $dc->get('user-'.$username);
 		if($user) return $user;
 	}
-	$user = $db->get_one("SELECT * FROM {$db->pre}member m, {$db->pre}company c WHERE m.userid=c.userid AND m.username='$username'");
+	$user = $db->get_one("SELECT * FROM {$db->pre}member m WHERE username='$username'");
+	$user_company = $db->get_one("SELECT * FROM {$db->pre}company WHERE username='$username'");
+	if($user && $user_company) $user += $user_company;
 	if($cache && $CFG['db_expires'] && $user) $dc->set('user-'.$username, $user, $CFG['db_expires']);
 	return $user;
 }
