@@ -60,7 +60,7 @@
 			{if $DT[im_web] && $DT[chat]}<li id="destoon_chat"><a href="chat.php">对话</a>{if $_chat}<em>{$_chat}</em>{/if}</li>{/if}
 			<li><a href="logout.php?forward=">退出</a></li>
 			{if $admin_user}<li><a href="index.php?action=logout">注销授权</a></li>{/if}
-				<li><a href="{userurl($_username)}=" target="_blank">商家主页</a></li>
+				{if $is_company}<li><a href="{userurl($_username)}" target="_blank">商家主页</a></li>{/if}
 				<li><a href="{DT_PATH}" target="_blank">网站首页</a></li>
 			</ul>
 			{else}
@@ -99,7 +99,7 @@
 			{/if}
 			-->
 
-			{if $_groupid != 4}
+			{if $_groupid != 4 && $is_company}
             <li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="invite_customer"><span class="f_r"><a href="invite_customer.php?action=add" class="m">添加</a></span><a href="invite_customer.php" class="{if $_userid}n{else}f{/if}">邀请客户</a></li>
 			{/if}
 		</ul>
@@ -108,7 +108,7 @@
 </div>
 
 <div id="sub_1" style="display:{if $_userid}none{else}{/if}">
-{if $MYMODS || $show_menu}
+
 	<div class="side_head" id="h_1"><div>信息管理</div></div>
 	<div class="side_body" id="b_1">
 		<ul>
@@ -124,7 +124,7 @@
 			{/if}
 
 
-			{if $MG[alert_limit]>-1 || $show_menu}
+			{if $is_company || $show_menu}
 			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="alert"><span class="f_r"><a href="alert.php?action=add" class="m">添加</a></span><a href="alert.php" class="{if $MG[alert_limit]>-1}n{else}f{/if}">用户预约</a></li>
 			{/if}
 		{loop $MENUMODS $k $v}
@@ -138,7 +138,7 @@
 		{/loop}
 		</ul>
 	</div>
-{/if}
+
 </div>
 
 </td>
