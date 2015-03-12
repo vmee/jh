@@ -10,10 +10,11 @@
             <div class="col-md-4">
                 <img class="img-responsive" src="http://www.blacktie.co/demo/victoria/assets/img/avatar.jpg " alt="">
                 <ul class="nav nav-tabs nav-stacked" id="myTab">
-                    <li class="active"><a href="#about">About</a></li>
-                    <li><a href="#profile">Profile</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li class="active"><a href="#about">首页</a></li>
+                    <li><a href="#contact">个人信息</a></li>
+                    <li><a href="#profile">我的日志</a></li>
+                    <li><a href="#portfolio">我的相册</a></li>
+
                 </ul>
             </div><!-- col-md-4 -->
 
@@ -23,12 +24,30 @@
 
                     <!-- ===== First Tab ===== -->
                     <div class="tab-pane active" id="about">
-                        <h3>Victoria Wallberg</h3>
-                        <h5>Web Designer</h5>
+                        <h3>{$member[truename]}</h3>
+                        <h5>{$member[username]}</h5>
                         <hr>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p class="sm">
+                                    所在地:{area_pos($member[areaid], '&nbsp;')}<br/>
+                                    结婚日期:2015-03-25<br/>
+                                    联系人:{$member[truename]}({gender($member[gender])})&nbsp;{$member[career]}&nbsp;
+                                    {if $member[username] && $DT[im_web]}{im_web($member[username])}&nbsp;{/if}
+                                    {if $member[qq] && $DT[im_qq]}{im_qq($member[qq])}&nbsp;{/if}
+                                    {if $member[ali] && $DT[im_ali]}{im_ali($member[ali])}&nbsp;{/if}
+                                    {if $member[msn] && $DT[im_msn]}{im_msn($member[msn])}&nbsp;{/if}
+                                    {if $member[skype] && $DT[im_skype]}{im_skype($member[skype])}&nbsp;{/if}<br />
+                                    <!--
+                                    <i class="icon-globe"></i> - BlackTie.co <br/>
+                                    <i class="icon-envelope"></i> - victoria@blacktie.co-->
+                                </p>
+                            </div><!-- col-xs-6 -->
+                        </div><!-- row -->
+
+                        <!--<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                         <p>Has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it.</p>
-                        <p class="pull-right red"><i class="icon-heart"></i></p>
+                        <p class="pull-right red"><i class="icon-heart"></i></p>-->
                     </div><!-- tab about -->
 
                     <!-- ===== Second Tab ===== -->
@@ -121,6 +140,9 @@
             </div><!-- col-md-8 -->
         </div><!-- row w -->
     </div><!-- col-lg-6 -->
+    <div class="margin-top-50"></div>
 </div><!-- /.container -->
 
+<br/>
+<br/><br/><br/><br/><br/><br/>
 {template 'footer', 'user'}

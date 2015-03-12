@@ -1,5 +1,5 @@
 <?php 
-require 'config.inc.php';
-require '../common.inc.php';
+//require 'config.inc.php';
+//require '../common.inc.php';
 require DT_ROOT.'/module/'.$module.'/user.inc.php';
 ?>

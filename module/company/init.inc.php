@@ -13,7 +13,7 @@ if(!$COM || ($COM['groupid'] < 5 && $COM['groupid'] > 1)) {
 	include template('com-notfound', 'message');
 	exit;
 }
-if(!$COM['edittime'] && !$MOD['openall']) {
+if($COM['groupid'] !=5 && !$COM['edittime'] && !$MOD['openall']) {
 	dhttp(404, $DT_BOT);
 	$head_title = $COM['company'];
 	include template('com-opening', 'message');
@@ -71,7 +71,9 @@ if(!isset($COMGROUP['homepage']) || !$COMGROUP['homepage']) {
 	$r = $db->get_one("SELECT content FROM {$content_table} WHERE userid=$userid", 'CACHE');
 	$content = $r['content'];
 	$member['thumb'] = $member['thumb'] ? $member['thumb'] : DT_SKIN.'image/company.jpg';
-	include template('show', $module);
+	//include template('show', $module);
+	//require DT_ROOT.'/user/index.php';
+	include template('index', 'user');
 	exit;
 }
 $api_map = ($MOD['map'] && $COMGROUP['map']) ? $MOD['map'] : '';
