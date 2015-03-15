@@ -52,7 +52,7 @@
     <div class="one-third column">
         <a href="{userurl($t[username], 'file=activity&itemid='.$t['itemid'], $domain)}" class="img-caption" >
             <figure>
-                <img src="{imgurl($t[thumb], 0)}" alt="{$t[title]}" />
+                <img src="{imgurl($t[thumb], 240)}" alt="{$t[title]}" />
                 <figcaption>
                     <h3>{$t[title]}</h3>
                     <span>{$t[introduce]} {if $t[endtime]}结束时间：{$t[endtime]}{/if}</span>
@@ -100,7 +100,7 @@
                         <figure class="product">
                             <div class="mediaholder">
                                 <a href="{userurl($t[username], 'file=sell&itemid='.$t['itemid'], $domain)}">
-                                    <img alt="" src="{imgurl($t[thumb], 1)}"/>
+                                    <img alt="" src="{imgurl($t[thumb],240)}"/>
                                 </a>
                                 <a href="{userurl($t[username])}" class="product-button">{$t[company]}</a>
                             </div>
@@ -147,7 +147,7 @@
             {php $_tags=tag("moduleid=4&pagesize=6&catid=27&template=null");}
             {loop $_tags $k $t}
             <li><a href="{$t[linkurl]}">
-                <img src="{imgurl($t[thumb], 0)}" alt="{$t[company]}" />
+                <img src="{imgurl($t[thumb], 240)}" alt="{$t[company]}" />
                 <div class="product-list-desc">{$t[company]}</div>
             </a></li>
             {/loop}
@@ -174,7 +174,7 @@
             {php $_tags=tag("moduleid=4&pagesize=6&catid=23&template=null");}
             {loop $_tags $k $t}
             <li><a href="{$t[linkurl]}">
-                <img src="{imgurl($t[thumb], 0)}" alt="{$t[company]}" />
+                <img src="{imgurl($t[thumb], 240)}" alt="{$t[company]}" />
                 <div class="product-list-desc">{$t[company]}</div>
             </a></li>
             {/loop}
@@ -200,7 +200,7 @@
             {php $_tags=tag("moduleid=4&pagesize=6&catid=10&template=null");}
             {loop $_tags $k $t}
             <li><a href="{$t[linkurl]}">
-                <img src="{imgurl($t[thumb], 0)}" alt="{$t[company]}" />
+                <img src="{imgurl($t[thumb], 240)}" alt="{$t[company]}" />
                 <div class="product-list-desc">{$t[company]}</div>
             </a></li>
             {/loop}
@@ -227,14 +227,14 @@
 
     {php $_tags=tag("moduleid=12&table=photo&pagesize=5&template=null&order=addtime desc")}
     {loop $_tags $k $t}
-    <li><a target="_blank" href="{userurl($t[username], 'file=photo&itemid='.$t['itemid'], $domain)}" title="{$t[title]}"><img src="{imgurl($t[thumb], 0)}" class="lazy" original="{imgurl($t[thumb], 1)}" alt="{$t[title]}" /><br>{$t[title]}</a></li>
+    <li><a target="_blank" href="{userurl($t[username], 'file=photo&itemid='.$t['itemid'], $domain)}" title="{$t[title]}"><img src="{imgurl($t[thumb], 240)}" class="lazy" original="{imgurl($t[thumb], 240)}" alt="{$t[title]}" /><br>{$t[title]}</a></li>
 
     <!-- Post #1 -->
     <div class="four columns">
         <article class="from-the-blog">
 
             <figure class="from-the-blog-image">
-                <a href="{userurl($t[username], 'file=photo&itemid='.$t['itemid'], $domain)}"><img src="{imgurl($t[thumb], 0)}" alt="{$t[title]}" /></a>
+                <a href="{userurl($t[username], 'file=photo&itemid='.$t['itemid'], $domain)}"><img src="{imgurl($t[thumb], 240)}" alt="{$t[title]}" /></a>
                 <div class="hover-icon"></div>
             </figure>
 

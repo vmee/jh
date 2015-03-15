@@ -46,4 +46,9 @@ isset($admin_user) or $admin_user = false;
 //$AREA = cache_read('area.php');
 $table = $DT_PRE.'member';
 $table_company = $DT_PRE.'company';
+$session = new dsession();
+if($user_frame || isset($_SESSION['user_frame'])){
+	$_SESSION['user_frame'] = $user_frame = $user_frame ? $user_frame : $_SESSION['user_frame'];
+}
+
 ?>

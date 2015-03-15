@@ -1,11 +1,11 @@
 {template 'header', 'member'}
 <script type="text/javascript">c(0);</script>
 
-<form method="post" action="home.php" id="dform">
+<form method="post" action="home.php{if $gift}?gift=true{/if}" id="dform">
 <input type="hidden" name="tab" id="tab" value="{$tab}"/>
 	<input type="hidden" size="5" name="setting[bannerw]" value="960" id="bannerw"/>
 	<input type="hidden" size="5" name="setting[bannerh]" value="480" id="bannerh"/>
-<div id="Tabs0">
+<div id="Tabs0" {if $gift}style="display:none;"{/if}>
 <table cellspacing="1" cellpadding="6" class="tb">
 
 </tr>
@@ -90,16 +90,25 @@ function UpdateURL() {
 </table>
 </div>
 
+	<div id="tabs1" {if !$gift}style="display:none;"{/if}>
+		<table>
+			<tr>
+				<td class="tl">预约有礼</td>
+				<td class="tr f_gray"><textarea name="setting[announce]" id="announce" style="width:500px;height:60px;">{$announce}</textarea><br/>内容不能超过20个字</td>
+			</tr>
+			</table>
+		</div>
+
 <table cellspacing="1" cellpadding="6" class="tb">
 <tr>
 <td class="tl">&nbsp;</td>
-<td class="tr" height="30"><input type="submit" name="submit" value=" 保 存 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="submit" value=" 恢复默认 " class="btn" onclick="if(confirm('确定要恢复默认设置吗？商铺所有设置将被清空')){this.form.action='home.php?reset=1';}else{return false;}"/></td>
+<td class="tr" height="30"><input type="submit" name="submit" value=" 保 存 " class="btn"/><!--&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="submit" value=" 恢复默认 " class="btn" onclick="if(confirm('确定要恢复默认设置吗？商铺所有设置将被清空')){this.form.action='home.php?reset=1';}else{return false;}"/></td>-->
 </tr>
 </table>
 </form>
 {load('clear.js')}
 <script type="text/javascript">
-s('homepage');
+	{if $gift}s('gift');{else}s('homepage');{/if}
 {if $tab}
 Tab({$tab});
 {else}

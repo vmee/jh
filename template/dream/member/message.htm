@@ -10,12 +10,13 @@
 <td class="tab_nav">&nbsp;</td>
 <td class="tab" id="outbox"><a href="?action=outbox"><span>已发送</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="draft"><a href="?action=draft"><span>草稿箱</span></a></td>
+
+<!--<td class="tab" id="draft"><a href="?action=draft"><span>草稿箱</span></a></td>
 <td class="tab_nav">&nbsp;</td>
 <td class="tab" id="recycle"><a href="?action=recycle"><span>回收站</span></a></td>
 <td class="tab_nav">&nbsp;</td>
 <td class="tab" id="export"><a href="?action=export"><span>信件导出</span></a></td>
-<td class="tab_nav">&nbsp;</td>
+<td class="tab_nav">&nbsp;</td>-->
 <td class="tab" id="empty"><a href="?action=empty"><span>信件清理</span></a></td>
 <td class="tab_nav">&nbsp;</td>
 <td class="tab" id="setting"><a href="?action=setting"><span>信件设置</span></a></td>
@@ -26,10 +27,11 @@
 <form method="post" action="message.php" id="dform" onsubmit="return check();">
 <input type="hidden" name="action" value="{$action}"/> 
 <input type="hidden" name="typeid" value="{$typeid}"/> 
+<input type="hidden" name="message[copy]" value="1"/>
 <table cellspacing="1" cellpadding="6" class="tb">
 <tr>
 <td class="tl"><span class="f_red">*</span> 收件人</td>
-<td class="tr f_gray"><input type="text" size="45" name="message[touser]" id="touser" value="{$touser}"/>&nbsp;&nbsp;<a href="javascript:Dwidget('friend.php?action=my', '[我的商友]', 600, 300);" class="t">[我的商友]</a> <span id="dtouser" class="f_red"></span>
+<td class="tr f_gray"><input type="text" size="45" name="message[touser]" id="touser" value="{$touser}"/>&nbsp;&nbsp;<!--<a href="javascript:Dwidget('friend.php?action=my', '[我的商友]', 600, 300);" class="t">[我的商友]</a> --><span id="dtouser" class="f_red"></span>
 <br/>多个收件人请按空格键隔开 最多同时发送给{$MOD[maxtouser]}个收件人</td>
 </tr>
 <tr>
@@ -42,14 +44,6 @@
 {deditor($moduleid, 'content', 'Simple', '98%', 200)}<span id="dcontent" class="f_red"></span>
 </td>
 </tr>
-<tr>
-<td class="tl">选项</td>
-<td class="tr">
-<input type="checkbox" name="message[save]" id="save" value="1" onclick="if(this.checked){Dd('copy').checked=Dd('feedback').checked=false;}"/> 不发送，保存为草稿
-<input type="checkbox" name="message[copy]" id="copy" value="1" onclick="if(this.checked){Dd('save').checked=false;}"/> 保存到已发送
-<input type="checkbox" name="message[feedback]" id="feedback" value="1" onclick="if(this.checked){Dd('save').checked=false;}"/> 已读回执
-</td>
-</tr>
 {if $need_captcha}
 <tr>
 <td class="tl"><span class="f_red">*</span> 验证码</td>
@@ -60,11 +54,11 @@
 <td class="tl"> </td>
 <td class="tr" height="50">
 <input type="submit" name="submit" value=" 确 定 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" 重 置 " class="btn"/>
-{if $MG[message_limit]}
+<!--{if $MG[message_limit]}
 &nbsp;&nbsp;&nbsp;今日可发 <span class="f_b f_red">{$MG[message_limit]}</span> 次
 &nbsp;&nbsp;&nbsp;当前已发 <span class="f_b">{$limit_used}</span> 次
 &nbsp;&nbsp;&nbsp;还可以发 <span class="f_b f_blue">{$limit_free}</span> 次
-{/if}
+{/if}-->
 </td>
 </tr>
 </table>
@@ -121,11 +115,12 @@ function check() {
 {elseif $action == 'edit'}
 <form method="post" action="message.php" id="dform" onsubmit="return check();">
 <input type="hidden" name="action" value="{$action}"/> 
-<input type="hidden" name="itemid" value="{$itemid}"/> 
+<input type="hidden" name="itemid" value="{$itemid}"/>
+	<input type="hidden" name="message[copy]" value="1"/>
 <table cellspacing="1" cellpadding="6" class="tb">
 <tr>
 <td class="tl"><span class="f_red">*</span> 收件人</td>
-<td class="tr f_gray"><input type="text" size="45" name="message[touser]" id="touser" value="{$touser}"/>&nbsp;&nbsp;<a href="javascript:Dwidget('friend.php?action=my', '[我的商友]', 600, 300);" class="t">[我的商友]</a> <span id="dtouser" class="f_red"></span><br/>多个收件人请按空格键隔开 最多同时发送给{$MOD[maxtouser]}个收件人</td>
+<td class="tr f_gray"><input type="text" size="45" name="message[touser]" id="touser" value="{$touser}"/>&nbsp;&nbsp;<!--<a href="javascript:Dwidget('friend.php?action=my', '[我的商友]', 600, 300);" class="t">[我的商友]</a>--> <span id="dtouser" class="f_red"></span><br/>多个收件人请按空格键隔开 最多同时发送给{$MOD[maxtouser]}个收件人</td>
 </tr>
 <tr>
 <td class="tl"><span class="f_red">*</span> 标题</td>
@@ -137,14 +132,7 @@ function check() {
 {deditor($moduleid, 'content', 'Simple', '98%', 200)}<span id="dcontent" class="f_red"></span>
 </td>
 </tr>
-<tr>
-<td class="tl">选项</td>
-<td class="tr">
-<input type="checkbox" name="message[send]" id="sendmsg" value="1" onclick="if(!this.checked){Dd('copy').checked=Dd('feedback').checked=false;}"/> 发送信件
-<input type="checkbox" name="message[copy]" id="copy" value="1" onclick="if(this.checked){Dd('sendmsg').checked=true;}"/> 保存到已发送
-<input type="checkbox" name="message[feedback]" id="feedback" value="1" onclick="if(this.checked){Dd('sendmsg').checked=true;}"/> 已读回执
-</td>
-</tr>
+
 <tr>
 <td class="tl">&nbsp;</td>
 <td class="tr" height="50"><input type="submit" name="submit" value=" 修 改 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" 返 回 " class="btn" onclick="history.back(-1);"/></td>

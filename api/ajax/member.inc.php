@@ -69,6 +69,9 @@ switch($job) {
 		}
 		exit;
 	case 'line':
+		$user = $do->get_one();
+		extract($user);
+		$is_company = $_groupid > 5 || ($_groupid == 4 && $regid > 5);
 		include template('user_line', 'chip');
 		break;
 	case 'checkusername':
@@ -103,6 +106,58 @@ switch($job) {
 		if(!$param) exit('请输入用户名或手机号');
 		if($do->username_exists($param) || $do->mobile_exists($param)) exit(json_encode(array('status'=>'y')));;
 		exit('用户名或手机号不存在');
+		break;
+	case 'album':
+
+		$table = $DT_PRE.'photo_'.$mid;
+		$table_item = $DT_PRE.'photo_item_'.$mid;
+		$item = $db->get_one("SELECT * FROM {$table} WHERE itemid=$itemid");
+		$result = $db->query("SELECT itemid,thumb,introduce FROM {$table_item} WHERE item=$itemid ORDER BY listorder ASC,itemid ASC");
+
+		$T = array();
+		while($r = $db->fetch_array($result)) {
+			//$r['middle'] = str_replace('.thumb.', '.middle.', $r['thumb']);
+			$r['src'] = str_replace('.thumb.'.file_ext($r['thumb']), '', $r['thumb']);
+			$T[] = $r;
+		}
+
+		$return = array(
+			'status' => 1,
+			'msg' => '',
+			'title' => $item['title'],
+			'start' => 0,
+			'id'=>$itemid,
+			'data' => $T
+		);
+
+		echo json_encode($return);
+		break;
+
+	case 'appointment':
+
+		$actsend = crypt_action('sendscode');
+		include template('appointment', 'chip');
+		break;
+
+	case 'sendcode':
+		if($actsend == crypt_action('sendscode')) {
+			$mobile = isset($value) ? trim($value) : '';
+			if(!is_mobile($mobile)) exit('2');
+			isset($_SESSION['mobile_send']) or $_SESSION['mobile_send'] = 0;
+			if($do->mobile_exists($mobile)) exit('3');
+			//if($_SESSION['mobile_time'] && $DT_TIME - $_SESSION['mobile_time'] < 180) exit('5');
+			//if($_SESSION['mobile_send'] > 4) exit('6');
+
+			$mobilecode = random(6, '0123456789');
+			$_SESSION['mobile'] = $mobile;
+			$_SESSION['mobile_code'] = md5($mobile.'|'.$mobilecode);
+			$_SESSION['mobile_time'] = $DT_TIME;
+			$_SESSION['mobile_send'] = $_SESSION['mobile_send'] + 1;
+
+			$content = lang('sms->sms_code', array($mobilecode, $MOD['auth_days'])).$DT['sms_sign'];
+			send_sms($mobile, $content);
+			exit('1');
+		}
 		break;
 }
 ?>

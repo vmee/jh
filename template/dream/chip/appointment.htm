@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+
+    <meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/>
+    <title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$DT[sitename]}{/if}{/if}</title>
+    {if $head_keywords}
+    <meta name="keywords" content="{$head_keywords}"/>
+    {/if}
+
+    <link rel="shortcut icon" type="image/x-icon" href="{DT_STATIC}favicon.ico"/>
+    <link rel="bookmark" type="image/x-icon" href="{DT_STATIC}favicon.ico"/>
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" type="text/css" href="{DT_SKIN}bootstrap.css"/>
+    <link rel="stylesheet" href="{DT_SKIN}css/style.css">
+    <link rel="stylesheet" href="{DT_SKIN}css/colors/red.css" id="colors">
+    <link rel="stylesheet" type="text/css" href="{DT_SKIN}validator.css"/>
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="{DT_SKIN}ie6.css"/>
+    <![endif]-->
+
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+        var DTPath = '{DT_PATH}';
+        var SKPath = '{DT_SKIN}';
+        var CKPrex = '{$CFG[cookie_pre]}';
+        var DTTour = '{$MODULE[4][linkurl]}tour.php';
+    </script>
+
+</head>
+<body class="boxed">
+<div id="wrapper">
+    <div class="container">
+
+        <div class="six columns centered">
+
+
+            <div class="tabs-container">
+                <!-- Login -->
+                <div class="tab-content" id="tab1" style="">
+
+                    <h3 class="headline">请填写联系方式</h3><span class="line" style="margin-bottom:20px;"></span><div class="clearfix"></div>
+
+                    <form method="post" action="{$MODULE[2][linkurl]}/appointment.php?action=add" class="login" id="appointment">
+
+                    <input type="hidden" name="post[invite_username]" value="{$username}">
+                    <input type="hidden" name="post[invite_moduleid]" value="{$mid}">
+                    <input type="hidden" name="post[invite_title]" value="{$title}">
+                    <input type="hidden" name="post[invite_itemid]" value="{$itemid}">
+                        <p class="form-row form-row-wide">
+                            <label for="sendmobile">手机号: </label>
+                            <input type="text" class="input-text" name="post[mobile]" id="sendmobile" datatype="m"
+                                   nullmsg="请输入手机号" sucmsg="<a id='sendbtn' href='javascript:;' onclick='sendCode();'>获取验证码</a>" errormsg="请输入正确的手机号！" value="">
+                        </p>
+
+                        <p class="form-row form-row-wide">
+                            <label for="mobilecode">验证码: </label>
+                            <input class="input-text" type="text" name="mobilecode" id="mobilecode" datatype="*" nullmsg="请输入验证码" sucmsg=" ">
+                        </p>
+
+                        <p class="form-row">
+                            <input type="submit" class="button" name="login" value="立即免费预约">
+                        </p>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+<script src="{DT_SKIN}scripts/jquery-1.11.0.min.js"></script>
+<script src="{DT_SKIN}scripts/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript">
+
+    $(function(){
+        //获取当前窗口索引
+        var index = parent.layer.getFrameIndex(window.name);
+        $("#appointment").Validform({
+            tiptype:4,
+            ajaxPost:true,
+            callback:function(data){
+                if(data.status == 'y'){
+                    parent.layer.alert('预约成功，商家稍后会跟您联系' , 6);
+                    parent.layer.close(index);
+                }
+
+            }
+        });
+
+
+    });
+
+    //发送验证码
+    function sendCode(){
+
+        var btnText = $('#sendbtn').text();
+
+        if(btnText == '获取验证码' || btnText=='重新发送'){
+
+            var mobile = $("#sendmobile").val();
+            $.get('{$MODULE[0][linkurl]}ajax.php?moduleid=2&action=member&job=sendcode&actsend={$actsend}&value='+mobile, function(response){
+                        if(response == 1){
+                            //$('#sendbtn').text('发送成功');
+
+                            var i = 90;
+                            var interval=window.setInterval(
+                                    function(){
+                                        if(i == 0) {
+                                            $('#sendbtn').text('重新发送')
+                                            clearInterval(interval);
+                                        } else {
+                                            $('#sendbtn').text('发送成功('+i+')');
+                                            i--;
+                                        }
+                                    },
+                                    1000);
+
+                        }else if(response == 2){
+                            $('#sendbtn').text('手机号码格式错误，请检查');
+                        }else if(response == 3){
+                            $('#sendbtn').text('手机号码已存在，请更换');
+                        }else if(response == 5){
+                            $('#sendbtn').text('短信发送过快，请稍后再试');
+                        }else if(response == 6){
+                            $('#sendbtn').text('尝试发送次数太多，请稍后再试');
+                        }else{
+                            $('#sendbtn').text('未知错误');
+                        }
+                    }
+            );
+        }
+
+
+
+    }
+</script>

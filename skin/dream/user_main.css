@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Paragraph & Typographic */
 p {
     line-height: 28px;
-    margin-bottom: 25px;
+    margin-bottom: 5px;
 }
 
 .centered {
@@ -82,12 +82,12 @@ hr {
 }
 
 
-.col-md-4 {
+.col-md-3 {
     padding-left: 0px;
     padding-right: 0px;
 }
 
-.col-md-8 {
+.col-md-9 {
     padding-left: 0px;
     padding-right: 0px;
 }
@@ -155,3 +155,7 @@ grey {
     color: #bdc3c7;
     font-weight: 700;
 }
+
+#about img{display: inline;}
+
+.col-xs-6{text-align: center}

@@ -300,7 +300,7 @@ class member {
 		$member = $this->set_member($member);
 		$r = $this->get_one();
 		$member['linkurl'] = userurl($r['username'], '', $member['domain']);
-		$member_fields = array('company','passport','sound','email','msn','qq','ali','skype','gender','truename','mobile','department','career','groupid','areaid', 'edittime','black','bank','account','vemail','vmobile','vbank','vtruename','vcompany','vtrade','trade','support','inviter');
+		$member_fields = array('company','passport','sound','email','msn','qq','ali','skype','gender','truename','mobile','department','career','groupid','areaid', 'edittime','black','bank','account','vemail','vmobile','vbank','vtruename','vcompany','vtrade','trade','support','inviter','weddate');
 		$company_fields = array('company','type','areaid', 'catid','catids','business','mode','regyear','regunit','capital','size','address','postcode','telephone','fax','mail','homepage','sell','buy','introduce','thumb','keyword','linkurl','groupid','domain','icp','validated','validator','validtime','skin','template','license_thumb');
 		$member_sql = $company_sql = '';
 		foreach($member as $k=>$v) {

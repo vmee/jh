@@ -7,34 +7,39 @@
 
         <!-- ===== vCard Navigation ===== -->
         <div class="row w">
-            <div class="col-md-4">
-                <img class="img-responsive" src="http://www.blacktie.co/demo/victoria/assets/img/avatar.jpg " alt="">
+            <div class="col-md-3">
+                {if $_userid==$userid}
+                <img class="img-responsive" src="{useravatar($username, 'large')}" id="update_avatar" width="150px" alt="更改头像">
+                {else}
+                <img class="img-responsive" src="{useravatar($username, 'large')}" width="150px" alt="{$username}">
+                {/if}
                 <ul class="nav nav-tabs nav-stacked" id="myTab">
-                    <li class="active"><a href="#about">首页</a></li>
-                    <li><a href="#contact">个人信息</a></li>
-                    <li><a href="#profile">我的日志</a></li>
-                    <li><a href="#portfolio">我的相册</a></li>
+                    <li{if !$um} class="active"{/if}><a href="{userurl($username, '', $domain)}">首页</a></li>
+                   <!-- <li{if $um=='profile'} class="active"{/if}><a href="{userurl($username, 'um=profile', $domain)}">个人信息</a></li>-->
+                    <li{if $um=='blog'} class="active"{/if}><a href="{userurl($username, 'um=blog', $domain)}">我的日志</a></li>
+                    <li{if $um=='album'} class="active"{/if}><a href="{userurl($username, 'um=album', $domain)}">我的相册</a></li>
 
                 </ul>
             </div><!-- col-md-4 -->
 
             <!-- ===== vCard Content ===== -->
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <div class="tab-content">
 
+                    {if !$um}
                     <!-- ===== First Tab ===== -->
                     <div class="tab-pane active" id="about">
                         <h3>{$member[truename]}</h3>
-                        <h5>{$member[username]}</h5>
+                        <h5>{$member[username]} {if $_userid==$userid}<a href="javascript:;" class="update_profile small">修改信息</a>{/if}</h5>
                         <hr>
                         <div class="row">
                             <div class="col-xs-12">
                                 <p class="sm">
-                                    所在地:{area_pos($member[areaid], '&nbsp;')}<br/>
-                                    结婚日期:2015-03-25<br/>
-                                    联系人:{$member[truename]}({gender($member[gender])})&nbsp;{$member[career]}&nbsp;
-                                    {if $member[username] && $DT[im_web]}{im_web($member[username])}&nbsp;{/if}
-                                    {if $member[qq] && $DT[im_qq]}{im_qq($member[qq])}&nbsp;{/if}
+                                    <strong>所在地</strong>:{area_pos($member[areaid], '&nbsp;')}<br/>
+                                    <strong>结婚日期</strong>:<a>{$member[weddate]}</a><br/>
+                                    <strong>联系方式</strong>:{$member[career]}&nbsp;
+                                    {if $member[username] && $DT[im_web]}{im_web($member[username],1)}&nbsp;{/if}
+                                    {if $member[qq] && $DT[im_qq]}{im_qq($member[qq], 1)}&nbsp;{/if}
                                     {if $member[ali] && $DT[im_ali]}{im_ali($member[ali])}&nbsp;{/if}
                                     {if $member[msn] && $DT[im_msn]}{im_msn($member[msn])}&nbsp;{/if}
                                     {if $member[skype] && $DT[im_skype]}{im_skype($member[skype])}&nbsp;{/if}<br />
@@ -45,96 +50,74 @@
                             </div><!-- col-xs-6 -->
                         </div><!-- row -->
 
-                        <!--<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                        <p>Has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it.</p>
-                        <p class="pull-right red"><i class="icon-heart"></i></p>-->
+
                     </div><!-- tab about -->
+                    {/if}
 
-                    <!-- ===== Second Tab ===== -->
-                    <div class="tab-pane" id="profile">
-                        <h4><i class="icon-briefcase"></i> Job Experience</h4>
-                        <p class="sm">
-                            <grey>Black Tie Corp.</grey> | June 2013 - Actual.<br/>
-                            <grey>Other Corp.</grey> | January 2011 - May 2013.<br/>
-                        </p>
-
-                        <h4><i class="icon-file-text-alt"></i> Education</h4>
-                        <p class="sm">
-                            <grey>Web Designer</grey> | Greenville University.<br/>
-                            <grey>Business Master</grey> | Loyal Univesrity.<br/>
-                        </p>
-
-                        <h4><i class="icon-trophy"></i> Awards</h4>
-                        <p class="sm">
-                            <grey>Best Web Design</grey> | Black Tie Site.<br/>
-                            <grey>Designer of the Year</grey> | 2012.<br/>
-                        </p>
-                    </div><!-- Tab Profile -->
 
                     <!-- ===== Third Tab ===== -->
-                    <div class="tab-pane" id="portfolio">
-                        <div class="row">
-                            <div class="col-xs-6 centered">
-                                <img class="img-responsive" src="assets/img/p01.png" alt="">
-                                <a href="#"><h6><i class="icon-link"></i> Project Name</h6></a>
-                            </div><!-- col-xs-6 -->
-                            <div class="col-xs-6 centered">
-                                <img class="img-responsive" src="assets/img/p02.png" alt="">
-                                <a href="#"><h6><i class="icon-link"></i> Project Name</h6></a>
-                            </div><!-- col-xs-6 -->
-                        </div><!-- row -->
+                    {if $um=='blog'}
+                    <div class="tab-pane active" id="blog">
+
+                        {if !$itemid}
+
+                        <h3>日志 {if $_userid==$userid}<a href="javascript:;" class="update_blog small">添加日志</a>{/if}</h3>
+                        <hr>
+
 
                         <div class="row">
-                            <br>
-                            <div class="col-xs-6 centered">
-                                <img class="img-responsive" src="assets/img/p03.png" alt="">
-                                <a href="#"><h6><i class="icon-link"></i> Project Name</h6></a>
-                            </div><!-- col-xs-6 -->
-                            <div class="col-xs-6 centered">
-                                <img class="img-responsive" src="assets/img/p04.png" alt="">
-                                <a href="#"><h6><i class="icon-link"></i> Project Name</h6></a>
-                            </div><!-- col-xs-6 -->
+                            {php $_tags=tag("moduleid=24&condition=username='".$username."'&pagesize=1000&template=null");}
+                            {loop $_tags $k $t}
+
+                            <div class="col-xs-12">
+                            <div class="centered"><h4><a href="{userurl($t[username], 'um=blog&itemid='.$t['itemid'], $domain)}">{$t[title]}</a></h4></div>
+
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;{$t[introduce]}<p>
+                            <blockquote class="pull-right"><em>发表于{timetodate($t[edittime], 5)}</em></blockquote>
+
+                            <div style="clear:both;margin-bottom:30px;border-bottom: 1px dashed #e6e6e6;"></div>
+                                </div>
+                            {/loop}
+
+
                         </div><!-- row -->
+                        {else}
+                        {php $table = $DT_PRE.'article_24';}
+                        {php $table_data = $DT_PRE.'article_data_24';}
+                        {php $item = $db->get_one("SELECT * FROM ".$table." WHERE itemid=".$itemid);}
+                        {php $content_table = content_table(24, $itemid, 0, $table_data);}
+                        {php $t = $db->get_one("SELECT content FROM ".$content_table." WHERE itemid=$itemid");}
+                        <h3>{$item[title]} <a href="{userurl($username, 'um=blog', $domain)}" class="small">日志列表</a></h3>
+                        <p>
+                            {$t[content]}
+                        </p>
+                        <blockquote class="pull-right"><em>发表于{timetodate($t[edittime], 5)}</em></blockquote>
+                        {/if}
+
                     </div><!-- /Tab Portfolio -->
+                    {/if}
 
+                    {if $um=='album'}
                     <!-- ===== Fourth Tab ===== -->
-                    <div class="tab-pane" id="contact">
-                        <h4>Contact Information</h4>
+                    <div class="tab-pane active" id="album">
+                        <h4>我的相册 {if $_userid==$userid}<a href="javascript:;" class="update_album small">添加照片</a>{/if}</h4>
                         <hr>
                         <div class="row">
-                            <div class="col-xs-6">
-                                <p class="sm">
-                                    <i class="icon-globe"></i> - BlackTie.co <br/>
-                                    <i class="icon-envelope"></i> - victoria@blacktie.co
-                                </p>
-                            </div><!-- col-xs-6 -->
 
-                            <div class="col-xs-6">
-                                <p class="sm">
-                                    <i class="icon-phone"></i> - +44 2009-4839 <br/>
-                                    <i class="icon-apple"></i> - 902 3940-4439
-                                </p>
+                            {php $_tags=tag("moduleid=25&condition=username='".$username."'&pagesize=1000&template=null");}
+                            {loop $_tags $k $t}
+
+                           <a href="javascript:;" name="{$t[itemid]}"> <div class="col-xs-6">
+                                <img class="img-responsive" src="{$t[thumb]}" alt="{$t[title]}">
+                                <h6><i class="icon-link"></i> {$t[title]}</h6>
                             </div><!-- col-xs-6 -->
+                               </a>
+                            {/loop}
+
                         </div><!-- row -->
 
-                        <h4>Social Links</h4>
-                        <hr>
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <p class="sm">
-                                    <i class="icon-facebook"></i> - Vicky.Wallberg <br/>
-                                    <i class="icon-tumblr"></i> - Love-Vicky-Site
-                                </p>
-                            </div><!-- col-xs-6 -->
-
-                            <div class="col-xs-6">
-                                <p class="sm">
-                                    <i class="icon-dribbble"></i> - Vicoooria <br/>
-                                    <i class="icon-twitter"></i> - @BlackTie_co
-                                </p>
-                            </div><!-- col-xs-6 -->
-                        </div><!-- row -->
                     </div><!-- Tab Contact -->
+                    {/if}
 
                 </div><!-- Tab Content -->
             </div><!-- col-md-8 -->
@@ -146,3 +129,20 @@
 <br/>
 <br/><br/><br/><br/><br/><br/>
 {template 'footer', 'user'}
+<script>
+    $(function(){
+        {if $_userid==$userid && !$member['avatar'] }
+
+            layer.alert('请先完善个人信息',9,function(index){
+                $("#update_avatar").click();
+            });
+         {/if}
+
+         {if $_userid==$userid && (!$member['weddate'] || !$member['qq'])}
+             layer.alert('请先完善个人信息,填写结婚日期与QQ号', 9,function(index){
+                 $(".update_profile").click();
+             });
+          {/if}
+    });
+
+</script>

@@ -71,6 +71,7 @@ if(!isset($COMGROUP['homepage']) || !$COMGROUP['homepage']) {
 	$r = $db->get_one("SELECT content FROM {$content_table} WHERE userid=$userid", 'CACHE');
 	$content = $r['content'];
 	$member['thumb'] = $member['thumb'] ? $member['thumb'] : DT_SKIN.'image/company.jpg';
+
 	//include template('show', $module);
 	//require DT_ROOT.'/user/index.php';
 	include template('index', 'user');

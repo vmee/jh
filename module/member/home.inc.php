@@ -27,7 +27,7 @@ if($submit) {
 		delete_upload($setting['banner4'], $_userid);
 		delete_upload($setting['banner5'], $_userid);
 		$db->query("DELETE FROM {$DT_PRE}company_setting WHERE userid=$_userid");
-		dmsg($L['home_msg_reset'], 'home.php?tab='.$tab);
+		dmsg($L['home_msg_reset'], 'home.php?tab='.$tab.'&gift='.$gift);
 	} else {
 		$HOME = get_company_setting($_userid);
 		if($HOME['background'] != $setting['background']) delete_upload($HOME['background'], $_userid);
@@ -46,7 +46,7 @@ if($submit) {
 		$setting = dhtmlspecialchars($setting);
 		$setting['announce'] = dsafe($announce);
 		update_company_setting($_userid, $setting);
-		dmsg($L['home_msg_save'], 'home.php?tab='.$tab);
+		dmsg($L['home_msg_save'], 'home.php?tab='.$tab.'&gift='.$gift);
 	}
 } else {
 	$CS = cache_read('module-4.php');

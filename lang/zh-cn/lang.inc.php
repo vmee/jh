@@ -32,6 +32,7 @@ $L['home_page'] = '首页';
 $L['last_page'] = '尾页';
 $L['curr_page'] = '<label title="共{V0}条">第<em>{V1}</em>页/共<span>{V2}</span>页</label>';
 $L['info_page'] = '<cite>共{V0}条/{V1}页</cite>';
-$L['message_type'] = array('普通', '询价', '报价', '留言', '信使');
+$L['message_type'] = array('普通','留言', '信使');
+//$L['message_type'] = array('普通', '询价', '报价', '留言', '信使');
 $L['star_type'] = array('评分', '差评', '中评', '好评');
 ?>

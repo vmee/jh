@@ -2774,3 +2774,20 @@ CREATE TABLE `destoon_member_wed` (
   KEY `userid` (`userid`)
 ) TYPE=MyISAM COMMENT='注册用户所需服务列表';
 
+
+DROP TABLE IF EXISTS `hj_appointment`;
+CREATE TABLE `hj_appointment` (
+  `itemid` bigint(20) unsigned NOT NULL auto_increment,
+  `username` varchar(30) NOT NULL default '',
+  `truename` varchar(30) NOT NULL default '',
+  `areaid` int(10) unsigned NOT NULL default '0',
+  `mobile` varchar(20) NOT NULL default '',
+  `invite_username` varchar(30) NOT NULL default '',
+  `invite_moduleid` smallint(6) unsigned NOT NULL default '0',
+  `invite_itemid` bigint(20) unsigned NOT NULL default '0',
+  `invite_title` varchar(100) NOT NULL default '',
+  `status` tinyint(1) unsigned NOT NULL default '0',
+  `addtime` int(10) unsigned NOT NULL default '0',
+  PRIMARY KEY  (`itemid`),
+  KEY `invite_username` (`invite_username`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户免费预约';

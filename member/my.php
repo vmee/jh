@@ -2,6 +2,12 @@
 require 'config.inc.php';
 require '../common.inc.php';
 if($DT_BOT) dhttp(403);
+
+$session = new dsession();
+if($user_frame || isset($_SESSION['user_frame'])){
+	$_SESSION['user_frame'] = $user_frame = $user_frame ? $user_frame : $_SESSION['user_frame'];
+}
+
 if($mid) {
 	$group_editor = $MG['editor'];
 	in_array($group_editor, array('Default', 'Destoon', 'Simple', 'Basic')) or $group_editor = 'Destoon';
@@ -74,7 +80,6 @@ if($mid) {
 		dheader($MODULE[2]['linkurl']);
 	}
 } else {
-	echo $module;
 	require DT_ROOT.'/module/'.$module.'/my.inc.php';
 }
 ?>

@@ -12,7 +12,6 @@
 <link rel="stylesheet" type="text/css" href="{$HSPATH}style.css"/>
 {if !DT_DEBUG}<script type="text/javascript">window.onerror= function(){return true;}</script>{/if}
 <script type="text/javascript" src="{DT_PATH}lang/{DT_LANG}/lang.js"></script>
-    <script type="text/javascript" src="{DT_STATIC}file/script/jquery.1.9.0.js"></script>
 <script type="text/javascript">
 var DTPath = '{DT_PATH}';
 var SKPath = '{DT_SKIN}';
@@ -26,15 +25,8 @@ document.onselectstart=function(e){return false;};
 document.domain = '{DT_DOMAIN}';
 {/if}
 
-$(function(){
-    $('#free_order').click(function(){
-        layer.msg('test');
-    });
-});
 </script>
 
-<script type="text/javascript" src="{DT_PATH}file/script/homepage.js"></script>
-    <script type="text/javascript" src="{DT_SKIN}layer/layer.min.js"></script>
 {if $css}<style type="text/css">{$css}</style>{/if}
 <style type="text/css">#destoon_member a{color:#fff;}</style>
 </head>
@@ -151,13 +143,14 @@ $(function(){
             <div class="rankscore f_l">{if online($COM[userid])==1}<span class="f_red">当前在线</span>{else}<span class="f_gray">当前离线</span>{/if}</div>
 
         </div>
+        {if $announce}
         <div class="yuyueyoulihybox">
             <div class="youlisanjiao"></div>
-            <div class="youlibox" title="凡网上订购客户可享受价值3688大礼包！">
-                凡网上订购客户可享受价值3688大礼包！                              </div>
+            <div class="youlibox" title="{$announce}">{$announce}</div>
         </div>
+        {/if}
         <div class="btnBox clearfix">
-            <input class="rankBtn mdialog" data-url="" id="free_order" type="button" value="立即免费预约">
+            <input class="rankBtn mdialog" data-username="{$COM[username]}" data-moduleid="2" data-itemid="{$COM[userid]}" data-title="{$COM[company]}" type="button" value="立即免费预约">
         </div>
     </div>
 </div>

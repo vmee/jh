@@ -1,16 +1,23 @@
 {if $_userid}
 
 <li><a>{if $_truename}{$_truename}{else}{$_username}{/if}</a></li>
-<li>|</li>
-<li><a href="{$MODULE[2][linkurl]}">个人中心</a></li>
+
 {if $is_company}
 <li>|</li>
 <li><a href="{$MODULE[2][linkurl]}">商务中心</a></li>
-{/if}
 <li>|</li>
 <li><a href="{$MODULE[2][linkurl]}message.php">站内信{if $_message}(<span class="head_t" >{$_message}</span>){/if}</a></li>
 
 {if $DT[im_web]} <li>|</li> <li><a href="{$MODULE[2][linkurl]}chat.php">新对话{if $_chat}(<span class="head_t">{$_chat}</span>){/if}</a></li>{/if}
+{else}
+<li>|</li>
+<li><a href="{userurl($_username, '', $domain)}">个人中心</a></li>
+<li>|</li>
+<li><a href="javascript:;" onclick="window.open ('{$MODULE[2][linkurl]}message.php?user_frame=true', 'newwindow', 'height=500, width=800, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=n o, status=no');">站内信{if $_message}(<span class="head_t" >{$_message}</span>){/if}</a></li>
+
+{if $DT[im_web]} <li>|</li> <li><a href="javascript:;" onclick="window.open ('{$MODULE[2][linkurl]}chat.php?user_frame=true', 'newwindow', 'height=600, width=800, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=n o, status=no');">新对话{if $_chat}(<span class="head_t">{$_chat}</span>){/if}</a></li>{/if}
+{/if}
+
 <li>|</li>
 <li><a href="{$MODULE[2][linkurl]}logout.php">退出</a></li>
 
