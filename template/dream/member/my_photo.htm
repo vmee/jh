@@ -34,10 +34,23 @@
 <td class="tr f_blue">{$note}</td>
 </tr>
 {/if}
-<tr>
-<td class="tl"><span class="f_red">*</span> 所属分类</td>
-<td class="tr">{category_select('post[catid]', '选择分类', $catid, $moduleid)} <span id="dcatid" class="f_red"></span></td>
-</tr>
+	{if count($cates)>1}
+	<tr>
+		<td class="tl"><span class="f_red">*</span> 所属分类</td>
+		<td class="tr"><div id="catesch"></div>
+			{php $child = get_maincat(0, 4, 1);}
+			<select name="post[catid]" id="catid_1">
+				{loop $child $i $c}
+				{if in_array($c[catid], $cates)}
+				<option value="{$c[catid]}">{$c[catname]}</option>
+				{/if}
+				{/loop}
+			</select>
+			<br/></td>
+	</tr>
+	{else}
+	<input type="hidden" name="post[catid]" value="{$cates[0]}">
+	{/if}
 <tr>
 <td class="tl"><span class="f_red">*</span> {$MOD[name]}名称</td>
 <td class="tr"><input name="post[title]" type="text" id="title" size="50" value="{$title}"/> <span id="dtitle" class="f_red"></span></td>
@@ -266,7 +279,21 @@ var property_admin = 0;
 <form action="{$DT[file_my]}">
 <input type="hidden" name="mid" value="{$mid}"/>
 <input type="hidden" name="status" value="{$status}"/>
-&nbsp;{category_select('catid', '不限分类', $catid, $moduleid)}&nbsp;
+&nbsp;
+
+	{if count($cates)>1}
+	{php $child = get_maincat(0, 4, 1);}
+	<select name="catid">
+		<option value="">不限分类</option>
+		{loop $child $i $c}
+		{if in_array($c[catid], $cates)}
+		<option value="{$c[catid]}">{$c[catname]}</option>
+		{/if}
+		{/loop}
+	</select>
+	&nbsp;
+	{/if}
+
 <input type="text" size="50" name="kw" value="{$kw}" title="关键词"/>&nbsp;
 <input type="submit" value=" 搜 索 " class="btn"/>
 <input type="button" value=" 重 置 " class="btn" onclick="Go('{$DT[file_my]}?mid={$mid}&status={$status}');"/>

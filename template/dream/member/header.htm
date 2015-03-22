@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/>
-<title>{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}商务中心{$DT[seo_delimiter]}{if $city_sitename}{$city_sitename}{else}{$DT[sitename]}{/if}{$DT[seo_delimiter]}Powered By DESTOON B2B</title>
+<title>{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}商务中心{$DT[seo_delimiter]}{if $city_sitename}{$city_sitename}{else}{$DT[sitename]}{/if}{$DT[seo_delimiter]}</title>
 <meta name="robots" content="nofollow"/>
 
 <meta http-equiv="x-ua-compatible" content="IE=7"/>
@@ -130,6 +130,9 @@
 			{/if}
 			{/if}
 
+			{if $_groupid > 5 }
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="guestbook"><a href="guestbook.php" class="{if $_userid}n{else}f{/if}">留言咨询</a></li>
+			{/if}
 
 
 			{loop $MENUMODS $k $v}

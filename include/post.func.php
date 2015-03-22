@@ -214,8 +214,11 @@ function product_select($name = 'pid', $title = '', $pid = 0, $extend = '') {
 	return $select;
 }
 
-function category_select($name = 'catid', $title = '', $catid = 0, $moduleid = 1, $extend = '') {
+function category_select($name = 'catid', $title = '', $catid = 0, $moduleid = 1, $extend = '', $cates=array()) {
 	$option = cache_read('catetree-'.$moduleid.'.php', '', true);
+	if(!empty($cates)){
+
+	}
 	if($option) {
 		if($catid) $option = str_replace('value="'.$catid.'"', 'value="'.$catid.'" selected', $option);
 		$select = '<select name="'.$name.'" '.$extend.' id="catid_1">';

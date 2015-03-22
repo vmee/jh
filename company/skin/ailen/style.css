@@ -6,7 +6,7 @@
 body {margin:0px;font-size:12px;color:#000000;background:#F9F9F9;}
 /* common */
 .m {width:960px;margin:auto;margin-top:15px;}
-.box{width: 920px;padding:20px;background:#fff;border:1px solid #e1e1e1}
+.box{padding:20px;background:#fff;border:1px solid #e1e1e1}
 .top {height:26px;line-height:26px;background:#F7CEF9;padding:0 10px 0 10px;}
 #top a {text-decoration:none;}
 

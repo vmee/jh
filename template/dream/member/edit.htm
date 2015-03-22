@@ -59,7 +59,7 @@
 <td class="tr">{ajax_area_select('post[areaid]', '请选择', $areaid)}&nbsp;<span id="dareaid" class="f_red"></span></td>
 </tr>
 <td class="tl">结婚日期</td>
-<td class="tr">{dcalendar('post[weddate]', $weddate)}</td>
+<td class="tr">{dcalendar('post[weddate]', intval($weddate)>0 ? $weddate : date('Y-m-d'))}</td>
 </tr>
 <!--<tr>
 <td class="tl">联系地址</td>
@@ -76,19 +76,19 @@
 {/if}
 {if $vmobile}
 <tr>
-<td class="tl">手机号码</td>
+<td class="tl"><span class="f_red">*</span>手机号码</td>
 <td class="tr"><input type="hidden" name="post[mobile]" id="mobile" value="{$mobile}"/>{$mobile}&nbsp;&nbsp;<img src="{DT_STATIC}{$MODULE[2][moduledir]}/image/v_mobile.gif" title="已认证" align="absmiddle"/>{if $DT[sms]}&nbsp;&nbsp;<a href="send.php?action=mobile" class="t">[修改]</a>{/if}</td>
 </tr>
 {else}
 <tr>
-<td class="tl">手机号码</td>
+<td class="tl"><span class="f_red">*</span>手机号码</td>
 <td class="tr"><input type="text" size="20" name="post[mobile]" id="mobile" value="{$mobile}"/></td>
 </tr>
 {/if}
 
 {if $DT[im_qq]}
 <tr>
-<td class="tl">QQ</td>
+<td class="tl"><span class="f_red">*</span>QQ</td>
 <td class="tr"><input type="text" size="20" name="post[qq]" id="qq" value="{$qq}"/></td>
 </tr>
 {/if}

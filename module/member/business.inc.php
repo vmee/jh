@@ -112,7 +112,7 @@ if($submit) {
 		if(!preg_match("/[0-9]{6}/", $post['mobilecode']) || $_SESSION['mobile_code'] != md5($post['mobile'].'|'.$post['mobilecode'])) dalert($L['register_pass_mobilecode'], '', $reload_captcha.$reload_question);
 	}
 
-	$post['catid'] = empty($post['catid']) ? ','.implode(',', $post['catid']) : '';
+	$post['catid'] = !empty($post['catid']) ? ','.implode(',', $post['catid']) : '';
 
 	$post['groupid'] = 5;
 	$post['content'] = $post['thumb'] = $post['banner'] = $post['catids'] = '';
@@ -182,6 +182,7 @@ if($submit) {
 		echo '<input type="hidden" name="password" value="'.$post['password'].'"/>';
 		echo '<input type="hidden" name="auto" value="1"/>';
 		echo '<input type="hidden" name="captcha" value=""/>';
+		echo '<input type="hidden" name="from_register" value="1"/>';
 		echo '</form></body></html>';
 		exit;
 

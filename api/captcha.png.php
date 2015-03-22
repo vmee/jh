@@ -7,6 +7,11 @@ define('DT_NONUSER', true);
 require '../common.inc.php';
 //check_referer() or exit;
 if($DT_BOT) dhttp(403);
+
+error_reporting(E_ALL);
+ini_set( 'display_errors', 'On' );
+
+
 $session = new dsession();
 require DT_ROOT.'/include/captcha.class.php';
 $do = new captcha;

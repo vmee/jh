@@ -78,11 +78,18 @@ switch($action) {
 			if($user_status != 3) dalert($L['comment_msg_permission']);
 			if($username && $username == $_username) dalert($L['comment_msg_self']);
 			$sql = $_userid ? "username='$_username'" : "ip='$DT_IP'";
+			$r = $db->get_one("SELECT COUNT(*) AS num FROM {$DT_PRE}comment WHERE username='$_username' AND item_username='$username'");
+			if($r['num']>0) dalert('你已经对此商家做过评价');
+
+			$r = $db->get_one("SELECT COUNT(*) AS num FROM {$DT_PRE}appointment WHERE invite_username='".$username."' and username='$_username' and status>0");
+			if($r['num']==0) dalert('预约此商家服务后，才可对此商家评价');
+
+			/**
 			if($MOD['comment_limit']) {
 				$today = $today_endtime - 86400;
 				$r = $db->get_one("SELECT COUNT(*) AS num FROM {$DT_PRE}comment WHERE $sql AND addtime>$today");
 				$r['num'] < $MOD['comment_limit'] or dalert(lang($L['comment_msg_limit'], array($MOD['comment_limit'], $r['num'])));
-			}
+			}**/
 			if($MOD['comment_time']) {
 				$r = $db->get_one("SELECT addtime FROM {$DT_PRE}comment WHERE $sql ORDER BY addtime DESC");
 				if($r && $DT_TIME - $r['addtime'] < $MOD['comment_time']) dalert(lang($L['comment_msg_time'], array($MOD['comment_time'])));

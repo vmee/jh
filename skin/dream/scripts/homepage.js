@@ -23,7 +23,7 @@ $(function(){
             title: '预约看店',
             maxmin: true,
             iframe: {src : AJPath+'?moduleid=2&action=member&job=appointment&itemid='+itemid+'&username='+username+"&mid="+moduleid+"&title="+title},
-            area: ['800px' , '440px'],
+            area: ['800px' , '310px'],
             close: function(index){
                 //layer.msg('您获得了子窗口标记：' + layer.getChildFrame('#name', index).val(),3,1);
                 return;

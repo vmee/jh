@@ -8,6 +8,9 @@ if($user_frame || isset($_SESSION['user_frame'])){
 	$_SESSION['user_frame'] = $user_frame = $user_frame ? $user_frame : $_SESSION['user_frame'];
 }
 
+$user = userinfo($_username);
+$cates = $user['catid'] ? explode(',', substr($user['catid'], 1, -1)) : array();
+
 if($mid) {
 	$group_editor = $MG['editor'];
 	in_array($group_editor, array('Default', 'Destoon', 'Simple', 'Basic')) or $group_editor = 'Destoon';

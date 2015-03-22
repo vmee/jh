@@ -40,6 +40,7 @@ document.domain = '{DT_DOMAIN}';
     </div>
 </div>
 
+{if $file=='homepage'}
 {if $bannert || $banner}
 <div class="m">
     <div class="banner">
@@ -58,6 +59,7 @@ document.domain = '{DT_DOMAIN}';
         {/if}
     </div>
 </div>
+{/if}
 {/if}
 
 <div class="m box">
@@ -159,7 +161,7 @@ document.domain = '{DT_DOMAIN}';
 <div class="m">
 <div class="menu" id="menu"{if count($MENU)>8} style="height:80px;"{/if}>
 	<ul>
-	<li class="{if $file=='homepage'}menu_on{else}menu_li{/if}"><a href="{$COM[linkurl]}"><span>网站首页</span></a></li>
+	<li class="{if $file=='homepage'}menu_on{else}menu_li{/if}"><a href="{$COM[linkurl]}"><span>商家首页</span></a></li>
 	{loop $MENU $k $v}
 	<li class="{if $file==$menu_file[$k]}menu_on{else}menu_li{/if}"><a href="{$v[linkurl]}"><span>{$v[name]}</span></a></li>
 	{/loop}
@@ -168,18 +170,6 @@ document.domain = '{DT_DOMAIN}';
 </div>
 
 <div class="m">
-<div class="pos" id="pos">
-<span class="f_r">
-<script type="text/javascript">show_date();</script>
-</span>
-<span id="position"></span>
-</div>
-</div>
-<div class="m">
 <table cellpadding="0" cellspacing="0" width="100%">
 <tr>
-{if $side_pos==0}
-<td width="{$side_width}" valign="top" id="side">{template 'side', $template}</td>
-<td width="10" id="split"></td>
-{/if}
 <td valign="top" id="main">

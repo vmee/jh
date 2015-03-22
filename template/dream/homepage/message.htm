@@ -19,6 +19,8 @@ if(parent.location == window.location) window.location='{userurl($username)}';
 <input type="hidden" name="job" value="{$job}"/>
 <input type="hidden" name="username" value="{$username}"/>
 <input type="hidden" name="action" value="send"/>
+	<input type="hidden" name="truename" size="30" value="{$truename}"/>
+	<input type="hidden" name="telephone" size="30"  value="{$telephone}"/>
 <table cellpadding="3" cellspacing="3" width="100%">
 <tr>
 <td width="100">主题 <span class="f_red">*</span></td>
@@ -46,46 +48,7 @@ if(parent.location == window.location) window.location='{userurl($username)}';
 {/if}
 </textarea></td>
 </tr>
-<tr>
-<td>公司名 </td>
-<td><input type="text" name="company" size="30" id="company" value="{$company}"/></td>
-</tr>
-<tr>
-<td>联系人 <span class="f_red">*</span></td>
-<td><input type="text" name="truename" size="30" id="truename" value="{$truename}"/></td>
-</tr>
-<tr>
-<td>联系电话 <span class="f_red">*</span></td>
-<td><input type="text" name="telephone" size="30" id="telephone" value="{$telephone}"/></td>
-</tr>
-<tr>
-<td>电子邮箱</td>
-<td><input type="text" name="email" size="30" id="email" value="{$email}"/></td>
-</tr>
-{if $DT[im_qq]}
-<tr>
-<td>QQ </td>
-<td><input type="text" size="20" name="qq" id="qq" value="{$qq}"/></td>
-</tr>
-{/if}
-{if $DT[im_ali]}
-<tr>
-<td>阿里旺旺 </td>
-<td><input type="text" size="20" name="ali" id="ali" value="{$ali}"/></td>
-</tr>
-{/if}
-{if $DT[im_msn]}
-<tr>
-<td>MSN </td>
-<td><input type="text" size="30" name="msn" id="msn" value="{$msn}"/></td>
-</tr>
-{/if}
-{if $DT[im_skype]}
-<tr>
-<td>Skype </td>
-<td><input type="text" size="20" name="skype" id="skype" value="{$skype}"/></td>
-</tr>
-{/if}
+
 <tr>
 <td>验证码 </td>
 <td>{template 'captcha', 'chip'} <span id="dcaptcha" class="f_red"></span></td>

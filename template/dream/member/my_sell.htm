@@ -14,9 +14,9 @@
 <td class="tab" id="s1"><a href="{$DT[file_my]}?mid={$mid}&status=1"><span>未通过<span class="px10">({$nums[1]})</span></span></a></td>
 <td class="tab_nav">&nbsp;</td><td class="tab_nav">&nbsp;</td>
 <td class="tab" id="type"><a href="javascript:Dwidget('type.php?item=product', '[{$MODULE[5][name]}分类]', 600, 300);"><span>{$MODULE[5][name]}分类<span class="px10">({$nums[0]})</span></span></a></td>
--->
-<td class="tab" id="s4"><a href="{$DT[file_my]}?mid={$mid}&status=4"><span>已过期<span class="px10">({$nums[4]})</span></span></a></td>
 
+<td class="tab" id="s4"><a href="{$DT[file_my]}?mid={$mid}&status=4"><span>已过期<span class="px10">({$nums[4]})</span></span></a></td>
+	-->
 {/if}
 </tr>
 </table>
@@ -42,10 +42,23 @@
 <td class="tl"><span class="f_red">*</span> 信息标题</td>
 <td class="tr f_gray"><input name="post[title]" type="text" id="title" size="50" value="{$title}"/> （2-30个字）<span id="dtitle" class="f_red"></span></td>
 </tr>
+	{if count($cates)>1}
 <tr>
 <td class="tl"><span class="f_red">*</span> 行业分类</td>
-<td class="tr"><div id="catesch"></div>{category_select('post[catid]', '', $catid, $moduleid)}<br/></td>
+<td class="tr"><div id="catesch"></div>
+	{php $child = get_maincat(0, 4, 1);}
+	<select name="post[catid]" id="catid_1">
+		{loop $child $i $c}
+		{if in_array($c[catid], $cates)}
+		<option value="{$c[catid]}">{$c[catname]}</option>
+		{/if}
+		{/loop}
+	</select>
+	<br/></td>
 </tr>
+	{else}
+	<input type="hidden" name="post[catid]" value="{$cates[0]}">
+	{/if}
 	<tr>
 		<td class="tl">标题图片</td>
 		<td class="tr"><input name="post[thumb]" id="thumb" type="text" size="60" value="{$thumb}" readonly/>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dthumb({$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('thumb').value, true);" class="t">[上传]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="_preview(Dd('thumb').value);" class="t">[预览]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dd('thumb').value='';" class="t">[删除]</a></td>
@@ -144,7 +157,19 @@ var property_admin = 0;
 <form action="{$DT[file_my]}">
 <input type="hidden" name="mid" value="{$mid}"/>
 <input type="hidden" name="status" value="{$status}"/>
-&nbsp;{category_select('catid', '行业分类', $catid, $moduleid)}&nbsp;
+&nbsp;
+{if count($cates)>1}
+	{php $child = get_maincat(0, 4, 1);}
+	<select name="catid">
+		<option value="">行业分类</option>
+		{loop $child $i $c}
+		{if in_array($c[catid], $cates)}
+		<option value="{$c[catid]}">{$c[catname]}</option>
+		{/if}
+		{/loop}
+	</select>
+	&nbsp;
+	{/if}
 
 <input type="text" size="30" name="kw" value="{$kw}" title="关键词"/>&nbsp;
 

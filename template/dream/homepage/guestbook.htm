@@ -1,10 +1,81 @@
 {template 'header', $template}
-<div class="dsn" id="pos_show">您当前的位置：<a href="{$COM[linkurl]}">首页</a> &raquo; <a href="{$MENU[$menuid][linkurl]}">{$MENU[$menuid][name]}</a></div>
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}validator.css"/>
 
 {if $could_message}
 <div class="main_head"><div><strong>{$MENU[$menuid][name]}</strong><a name="guestbook"></a></div></div>
 <div class="main_body">
-	<iframe src="{$MODULE[4][linkurl]}home.php?action=message&job=guestbook&template={$template}&skin={$skin}&username={$username}&sign={crypt_sign($template.$skin.$username)}" name="fra" id="fra" style="width:98%;height:488px;" scrolling="no" frameborder="0"></iframe>
+		<table cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td valign="top">
+					<div class="left_box">
+						<div class="pd20">
+							{if $lists}
+							{loop $lists $k $v}
+
+
+							<table width="100%" cellpadding="8" cellspacing="1">
+								<tr>
+									<td width="30"> </td>
+
+									<td><p class="text-primary">咨询内容：{$v[content]} <i>{$v[adddate]}</i></p>
+										{if $v[reply]}
+										<p class="text-muted">商家回复：{$v[reply]} <i>{$v[editdate]}</i></p>
+										{/if}
+										<hr>
+									</td>
+								</tr>
+
+							</table>
+							<div class="b10">&nbsp;</div><div class="b10">&nbsp;</div>
+							{/loop}
+							{if $pages}<div class="pages">{$pages}</div>{/if}
+							{/if}
+
+							<form id="form" method="post">
+								<input type="hidden" name="post[type]" value="商家留言">
+								<table width="100%" cellpadding="8" cellspacing="1" >
+									<tr>
+										<td align="right"><span class="f_red">*</span> 咨询内容&nbsp;&nbsp;</td>
+										<td title="留言内容不支持任何语法，仅限文字"><textarea name="post[content]" rows="5" cols="70" datatype="*5-500"  nullmsg="留言内容不支持任何语法，仅限文字" errormsg="密码范围在5~500个字符之间！" sucmsg=" ">{$content}</textarea>
+										</td>
+									</tr>
+									<tr>
+
+									{if $EXT[guestbook_captcha]}
+									<tr>
+										<td align="right"><span class="f_red">*</span> 验证码&nbsp;&nbsp;</td>
+										<td>
+											{template 'captcha', 'chip'}
+											<span id="dcaptcha" class="f_red"></span>
+										</td>
+									</tr>
+									{/if}
+									<tr>
+										<td> </td>
+										<td>
+											<br />
+											<input type="submit" name="submit" class="btn" value=" 提交 "/>&nbsp;
+										</td>
+									</tr>
+								</table>
+							</form>
+
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+
+
 </div>
 {/if}
 {template 'footer', $template}
+<script src="{DT_SKIN}scripts/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#form").Validform({
+			tiptype:3
+		});
+	});
+</script>

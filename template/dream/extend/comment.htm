@@ -52,7 +52,7 @@
 	{loop $lists $k $v}
 	<div class="comment{if $k%2==0} comment_sp{/if}">
 		<div class="comment_title">
-			<span class="comment_floor">第 <strong>{$v[floor]}</strong> 楼</span>
+			<span class="comment_floor"><img src="{DT_PATH}file/image/star{$v[star]}.gif" width="36" height="12" alt="" align="absmiddle"/></span>
 			<span id="i_{$v[itemid]}">{$v[name]} 于 <span class="comment_time">{$v[addtime]}</span> 评论道：</span>
 		</div>
 		<div class="comment_content" id="c_{$v[itemid]}">{if $v[quotation]}{$v[quotation]}{else}{$v[content]}{/if}</div>
@@ -61,20 +61,7 @@
 		{if $v[editor]}<span style="color:red;">管理员</span>{else}<span style="color:blue;">{$v[replyer]}</span>{/if} <span style="font-size:11px;">{$v['replytime']}</span> 回复： {nl2br($v[reply])}
 		</div>
 		{/if}
-		<div class="comment_info">
-			<span class="comment_vote">
-			{if $could_del}
-			<a href="?mid={$mid}&itemid={$itemid}&page={$page}&action=delete&cid={$v[itemid]}" target="send" onclick="return confirm('确定要删除此评论吗？')">删除</a>&nbsp; | &nbsp;
-			{/if}
-			{if $MOD[comment_vote]}
-			<a href="javascript:" onclick="R({$v[itemid]});">举报</a>&nbsp; | &nbsp;
-			<a href="javascript:" onclick="V({$v[itemid]}, 1, {$v[agree]});">支持</a>(<span id="v_{$v[itemid]}_1">{$v[agree]}</span>)&nbsp; | &nbsp;
-			<a href="javascript:" onclick="V({$v[itemid]}, 0, {$v[against]});">反对</a>(<span id="v_{$v[itemid]}_0">{$v[against]}</span>)&nbsp; | &nbsp;
-			{/if}
-			<a href="javascript:" onclick="Q({$v[itemid]});">引用</a>({$v[quote]})
-			</span>
-			<img src="{DT_PATH}file/image/star{$v[star]}.gif" width="36" height="12" alt="" align="absmiddle"/>
-		</div>
+
 	</div>
 	{/loop}
 	<a name="last"></a>
@@ -111,7 +98,6 @@
 	<tr>
 	<td>
 	&nbsp;<input type="image" src="{DT_SKIN}image/btn_comment.gif" align="absmiddle"/>
-	&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="hidden" value="1"/> 匿名发表
 	&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666666;">(内容限{$MOD[comment_min]}至{$MOD[comment_max]}字)
 	&nbsp;&nbsp;&nbsp;&nbsp;当前已经输入 <span style="color:red;" id="chars">0</span> 字
 	</span>

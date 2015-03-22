@@ -41,6 +41,10 @@
         var SKPath = '{DT_SKIN}';
         var CKPrex = '{$CFG[cookie_pre]}';
         var DTTour = '{$MODULE[4][linkurl]}tour.php';
+
+        {if !$domain && DT_DOMAIN}
+            document.domain = '{DT_DOMAIN}';
+            {/if}
     </script>
 
 </head>
