@@ -16,6 +16,7 @@ switch($action) {
 			if($do->pass($post)) {
 				if($post['mobile'] && $member->mobile_exists($post['mobile'])) message('此手机号已经注册');
 				$post['userid'] = $_userid;
+				$post['username'] = $_username;
 				$post['addtime'] = $DT_TIME;
                 $post['password'] = strtolower(random(6));
 				$do->add($post);

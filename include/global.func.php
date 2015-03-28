@@ -951,6 +951,23 @@ function userinfo($username, $cache = 1) {
 	return $user;
 }
 
+function userwed($username,  $del=0){
+	global $db, $dc, $CFG;
+
+	$wed_cats = array();
+	$result = $db->query("SELECT * FROM {$db->pre}member_wed WHERE username='{$username}' and del=$del");
+	if($result){
+		while($r = $db->fetch_array($result)) {
+			$cate = get_cat($r['catid']);
+			$wed_cats[$r['catid']] = $cate['catname'];
+		}
+	}
+
+	return $wed_cats;
+
+
+}
+
 function userclean($username) {
 	global $dc, $CFG;
 	$user = array();
@@ -1020,7 +1037,7 @@ function rewrite($url, $encode = 0) {
 
 function timetodate($time = 0, $type = 6) {
 	if(!$time) $time = $GLOBALS['DT_TIME'];
-	$types = array('Y-m-d', 'Y', 'm-d', 'Y-m-d', 'm-d H:i', 'Y-m-d H:i', 'Y-m-d H:i:s');
+	$types = array('Y-m-d', 'Y', 'm-d', 'Y-m-d', 'm-d H:i', 'Y-m-d H:i', 'Y-m-d H:i:s','Y年m月d日');
 	if(isset($types[$type])) $type = $types[$type];
 	$date = '';
 	if($time > 2147212800) {		

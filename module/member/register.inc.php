@@ -126,6 +126,7 @@ if($submit) {
 		$post['email'] = $post['email'] ? $post['email'] :$inviter_items['email'];
 		$post['qq'] = $post['qq'] ? $post['qq'] :$inviter_items['qq'];
 		$post['weddate'] = $post['weddate'] ? $post['weddate'] :$inviter_items['weddate'];
+		$post['inviter_company'] = $inviter_items['username'];
 	}
 
 	if($do->add($post, false)) {

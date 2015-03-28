@@ -72,6 +72,9 @@ if(!isset($COMGROUP['homepage']) || !$COMGROUP['homepage']) {
 	$content = $r['content'];
 	$member['thumb'] = $member['thumb'] ? $member['thumb'] : DT_SKIN.'image/company.jpg';
 
+	//取得所需要服务器
+	$wed_cats = userwed($username);
+
 	//include template('show', $module);
 	//require DT_ROOT.'/user/index.php';
 	include template('index', 'user');
@@ -262,6 +265,14 @@ if(!$DT_BOT) {
 	if($DT['cache_hits']) {
 		 cache_hits($moduleid, $userid);
 	} else {
+
+		$session = new dsession();
+
+		if(!isset($_SESSION['uv_ip'])){
+			$_SESSION['uv_ip'] = $DT_IP;
+			$db->query("UPDATE LOW_PRIORITY {$table} SET uv=uv+1 WHERE userid=$userid", 'UNBUFFERED');
+		}
+
 		$db->query("UPDATE LOW_PRIORITY {$table} SET hits=hits+1 WHERE userid=$userid", 'UNBUFFERED');
 	}
 }

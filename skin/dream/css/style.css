@@ -4205,7 +4205,7 @@ a.img-caption {
 	background: rgba(0, 0, 0, 0.4);
 	position: absolute;
 	box-sizing: content-box;
-	padding: 12px 25px 14px 25px;
+	padding: 12px 10px 14px 10px;
 	bottom: 0;
 	display: block;
 	width: 100%;
@@ -4244,7 +4244,7 @@ a.img-caption {
 
 .img-caption figcaption span {
 	color: #fff;
-	font-size: 16px;
+	font-size: 12px;
 	font-weight: 300;
 	line-height: 16px;
 	display: block;
@@ -4252,6 +4252,7 @@ a.img-caption {
 	opacity: 0;
 	max-height: 0;
 	padding: 0;
+	margin-right: 20px;
 	-webkit-transition: max-height 0.2s ease-in-out, opacity 0.2s ease-in-out, padding 0.2s ease-in-out;
 	-moz-transition: max-height 0.2s ease-in-out, opacity 0.2s ease-in-out, padding 0.2s ease-in-out;
 	-ms-transition: max-height 0.2s ease-in-out, opacity 0.2s ease-in-out, padding 0.2s ease-in-out;
@@ -4285,7 +4286,7 @@ a.img-caption {
 .product-categories .img-caption figcaption h3 {
 	color: #fff;
 	text-transform: none;
-	font-size: 18px;
+	font-size: 14px;
 	font-weight: 600;
 	line-height: 22px;
 }
@@ -4293,9 +4294,10 @@ a.img-caption {
 .product-categories .img-caption figcaption span {
 	color: #fff;
 	text-transform: none;
-	font-size: 16px;
+	font-size: 12px;
 	font-weight: 300;
 	line-height: 14px;
+	margin:0;
 }
 
 

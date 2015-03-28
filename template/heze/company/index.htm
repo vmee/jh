@@ -35,9 +35,9 @@
 
             {php $_tags=tag("moduleid=5&table=company&pagesize=3&condition=catid like '%,".$c[catid].",%'&template=null")}
             {loop $_tags $k $t}
-            {php $com_logo=get_company_setting(get_user($t['username']),'logo', 'CACHE');}
+            {php $com_logo=get_company_setting(get_user($t['username']),'thumb', 'CACHE');}
 
-                <dl><dd><a href="{$t[linkurl]}" title="{$t[company]}" target="_blank"><img src="{$com_logo}" class="lazy" original="{imgurl($t[thumb], 0)}" alt="{$t[company]}"></a></dd><dt>{$t[company]}</dt></dl>
+                <dl><dd><a href="{$t[linkurl]}" title="{$t[company]}" target="_blank"><img src="{$t[thumb]}" alt="{$t[company]}"></a></dd><dt>{$t[company]}</dt></dl>
 
             {/loop}
 

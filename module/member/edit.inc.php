@@ -48,6 +48,25 @@ if($submit) {
 	if($MFD) fields_check($post_fields, $MFD);
 	if($CFD) fields_check($post_fields, $CFD);
 	if($do->edit($post)) {
+		if($wed_catids){
+
+			//取得所需要服务器
+			$wed_cats = userwed($_username);
+			$wed_cats += userwed($_username, 1);
+
+			$db->query("update {$DT_PRE}member_wed set del=1 where username='{$_username}' and del=0");
+
+			foreach($wed_catids as $w_catid){
+				if(!array_key_exists($w_catid, $wed_cats)){
+					$db->query("INSERT INTO {$DT_PRE}member_wed (username,catid,addtime)  VALUES ('$_username', $w_catid, $DT_TIME)");
+				}else{
+					$db->query("update {$DT_PRE}member_wed set del=0 where username='{$_username}' and catid={$w_catid}");
+				}
+			}
+
+		}
+
+
 		if($MFD) fields_update($post_fields, $do->table_member, $do->userid, 'userid', $MFD);
 		if($CFD) fields_update($post_fields, $do->table_company, $do->userid, 'userid', $CFD);
 		if($user['edittime'] == 0 && $user['inviter'] && $MOD['credit_user']) {
@@ -85,6 +104,10 @@ if($submit) {
 	}
 	$cates = $catid ? explode(',', substr($catid, 1, -1)) : array();
 	$is_company = $_groupid > 5 || ($_groupid == 4 && $regid > 5);
+	if(!$is_company){
+		//取得所需要服务器
+		$wed_cats = userwed($username);
+	}
 	$tab = isset($tab) ? intval($tab) : -1;
 	if($tab == 2 && !$is_company) $tab = 0;
 	include template('edit', $module);

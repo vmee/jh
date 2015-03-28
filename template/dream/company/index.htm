@@ -58,14 +58,12 @@
 
                     {php $_tags=tag("moduleid=5&table=company&pagesize=4&condition=catid like '%,".$c[catid].",%'&template=null")}
                     {loop $_tags $k $t}
-                    {php $com_logo=get_company_setting(get_user($t['username']),'logo', 'CACHE');}
-
                     <!-- Product #1 -->
                     <li>
                         <figure class="portfolio-item">
                             <div class="portfolio-holder">
                                 <a href="{$t[linkurl]}">
-                                    <img alt="{$t[company]}" src="{$com_logo}"/>
+                                    <img alt="{$t[company]}" src="{$t[thumb]}"/>
                                     <div class="hover-cover"></div>
                                 </a>
                             </div>

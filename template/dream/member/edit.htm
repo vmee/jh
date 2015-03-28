@@ -58,9 +58,22 @@
 <td class="tl"><span class="f_red">*</span>所在地区</td>
 <td class="tr">{ajax_area_select('post[areaid]', '请选择', $areaid)}&nbsp;<span id="dareaid" class="f_red"></span></td>
 </tr>
-<td class="tl">结婚日期</td>
+<tr>
+<td class="tl"><span class="f_red">*</span>结婚日期</td>
 <td class="tr">{dcalendar('post[weddate]', intval($weddate)>0 ? $weddate : date('Y-m-d'))}</td>
 </tr>
+
+<tr>
+	<td class="tl"><span class="f_red">*</span>所需服务</td>
+	<td class="tr">{php $child = get_maincat(0, 4, 1);}
+		{loop $child $i $c}
+
+		<input type="checkbox" name="wed_catids[]" id="wed{$i}" value="{$c[catid]}" {if array_key_exists($c[catid], $wed_cats)}checked{/if} /> {set_style($c[catname], $c[style])}
+
+		{/loop}</td>
+</tr>
+
+
 <!--<tr>
 <td class="tl">联系地址</td>
 <td class="tr"><input type="text" size="40" name="post[address]" id="daddress" value="{$address}"/>&nbsp;<span id="ddaddress" class="f_red"></span></td>

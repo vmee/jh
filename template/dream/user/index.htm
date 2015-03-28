@@ -37,6 +37,7 @@
                                 <p class="sm">
                                     <strong>所在地</strong>:{area_pos($member[areaid], '&nbsp;')}<br/>
                                     <strong>结婚日期</strong>:<a>{$member[weddate]}</a><br/>
+                                    <strong>所需服务</strong>:<a>{implode(',', $wed_cats)}</a><br/>
                                     <strong>联系方式</strong>:{$member[career]}&nbsp;
                                     {if $member[username] && $DT[im_web]}{im_web($member[username],1)}&nbsp;{/if}
                                     {if $member[qq] && $DT[im_qq]}{im_qq($member[qq], 1)}&nbsp;{/if}
@@ -133,13 +134,13 @@
     $(function(){
         {if $_userid==$userid && !$member['avatar'] }
 
-            layer.alert('请先完善个人信息',9,function(index){
+            layer.alert('请完善个人信息, 上传头像',9,function(index){
                 $("#update_avatar").click();
             });
          {/if}
 
-         {if $_userid==$userid && (!$member['weddate'] || !$member['qq'])}
-             layer.alert('请先完善个人信息,填写结婚日期与QQ号', 9,function(index){
+         {if $_userid==$userid && (!$member['weddate'] || !$member['qq'] || empty($wed_cats))}
+             layer.alert('请完善个人信息,填写结婚日期、所需服务与QQ号', 9,function(index){
                  $(".update_profile").click();
              });
           {/if}

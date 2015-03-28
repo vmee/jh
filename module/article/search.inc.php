@@ -71,7 +71,7 @@ $tags = array();
 	$pages = pages($items, $page, $pagesize);
 	if($items) {
 		$order = $dorder[$order] ? " ORDER BY $dorder[$order]" : '';
-		$result = $db->query("SELECT $fds FROM {$table} WHERE {$condition}{$order} LIMIT {$offset},{$pagesize}", $DT['cache_search'] && $page == 1 ? 'CACHE' : '', $DT['cache_search']);
+		$result = $db->query("SELECT $fds,thumb,endtime FROM {$table} WHERE {$condition}{$order} LIMIT {$offset},{$pagesize}", $DT['cache_search'] && $page == 1 ? 'CACHE' : '', $DT['cache_search']);
 		if($kw) {
 			$replacef = explode(' ', $kw);
 			$replacet = array_map('highlight', $replacef);
@@ -79,7 +79,7 @@ $tags = array();
 		while($r = $db->fetch_array($result)) {
 			$r['adddate'] = timetodate($r['addtime'], 5);
 			$r['editdate'] = timetodate($r['edittime'], 5);
-			if($lazy && isset($r['thumb']) && $r['thumb']) $r['thumb'] = DT_SKIN.'image/lazy.gif" original="'.$r['thumb'];
+			//if($lazy && isset($r['thumb']) && $r['thumb']) $r['thumb'] = DT_SKIN.'image/lazy.gif" original="'.$r['thumb'];
 			$r['alt'] = $r['title'];
 			$r['title'] = set_style($r['title'], $r['style']);
 			if($kw) $r['title'] = str_replace($replacef, $replacet, $r['title']);

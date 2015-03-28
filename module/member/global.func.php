@@ -22,6 +22,11 @@ function update_company_setting($userid, $setting) {
 
 function get_company_setting($userid, $key = '', $cache = '') {
 	global $db;
+
+	if(is_array($userid) && isset($userid['userid'])){
+		$userid = $userid['userid'];
+	}
+
 	if($key) {
 		$r = $db->get_one("SELECT * FROM {$db->pre}company_setting WHERE userid=$userid AND item_key='$key'", $cache);
 		return $r ? $r['item_value'] : '';

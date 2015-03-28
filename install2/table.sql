@@ -1711,6 +1711,7 @@ CREATE TABLE `destoon_member` (
   `trade` varchar(50) NOT NULL default '',
   `support` varchar(50) NOT NULL default '',
   `inviter` varchar(30) NOT NULL default '',
+  `inviter_company` varchar(30) NOT NULL default '',
   `weddate` date NOT NULL default '0000-00-00',
   PRIMARY KEY  (`userid`),
   UNIQUE KEY `username` (`username`),
@@ -2745,6 +2746,7 @@ DROP TABLE IF EXISTS `destoon_invite_customer`;
 CREATE TABLE `destoon_invite_customer` (
   `itemid` bigint(20) unsigned NOT NULL auto_increment,
   `userid` bigint(20) unsigned NOT NULL default '0',
+  `username` varchar(30) NOT NULL default '',
   `truename` varchar(20) NOT NULL default '',
   `password` varchar(32) NOT NULL default '',
   `areaid` int(10) unsigned NOT NULL default '0',
@@ -2763,16 +2765,18 @@ CREATE TABLE `destoon_invite_customer` (
 ) TYPE=MyISAM COMMENT='商家邀请客户加入';
 
 
-DROP TABLE IF EXISTS `destoon_member_wed`;
-CREATE TABLE `destoon_member_wed` (
+DROP TABLE IF EXISTS `hj_member_wed`;
+CREATE TABLE `hj_member_wed` (
   `itemid` bigint(20) unsigned NOT NULL auto_increment,
-  `userid` bigint(20) unsigned NOT NULL default '0',
+  `username` varchar(30) NOT NULL default '',
   `catid` int(10) unsigned NOT NULL default '0',
   `status` tinyint(1) unsigned NOT NULL default '0',
-  `addtime` int(10) unsigned NOT NULL default '0',
+  `updatetime` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `addtime` int(10) unsigned NOT NULL DEFAULT '0',
+  `del` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`itemid`),
-  KEY `userid` (`userid`)
-) TYPE=MyISAM COMMENT='注册用户所需服务列表';
+  KEY `username` (`username`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='注册用户所需服务列表';
 
 
 DROP TABLE IF EXISTS `hj_appointment`;
@@ -2791,3 +2795,8 @@ CREATE TABLE `hj_appointment` (
   PRIMARY KEY  (`itemid`),
   KEY `invite_username` (`invite_username`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户免费预约';
+
+
+alter table `hj_member_wed` change `userid` `username` varchar(30) NOT NULL default '';
+alter table `hj_invite_customer`  add `username` varchar(30) NOT NULL default '';
+alter table `hj_member`  add  `inviter_company` varchar(30) NOT NULL default '';

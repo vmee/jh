@@ -58,13 +58,13 @@ $tags = array();
 	$pages = pages($items, $page, $pagesize);
 	if($items) {
 		$order = $MOD['order'] ? " ORDER BY ".$MOD['order'] : '';
-		$result = $db->query("SELECT $fds FROM {$table} WHERE {$condition}{$order} LIMIT {$offset},{$pagesize}", $DT['cache_search'] && $page == 1 ? 'CACHE' : '', $DT['cache_search']);
+		$result = $db->query("SELECT $fds,thumb FROM {$table} WHERE {$condition}{$order} LIMIT {$offset},{$pagesize}", $DT['cache_search'] && $page == 1 ? 'CACHE' : '', $DT['cache_search']);
 		if($kw) {
 			$replacef = explode(' ', $kw);
 			$replacet = array_map('highlight', $replacef);
 		}
 		while($r = $db->fetch_array($result)) {
-			if($lazy && isset($r['thumb']) && $r['thumb']) $r['thumb'] = DT_SKIN.'image/lazy.gif" original="'.$r['thumb'];
+			//if($lazy && isset($r['thumb']) && $r['thumb']) $r['thumb'] = DT_SKIN.'image/lazy.gif" original="'.$r['thumb'];
 			if($kw) $r['company'] = str_replace($replacef, $replacet, $r['company']);
 			$tags[] = $r;
 		}
