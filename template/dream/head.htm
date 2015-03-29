@@ -26,7 +26,6 @@
     <link rel="stylesheet" type="text/css" href="{DT_SKIN}bootstrap.css"/>
     <link rel="stylesheet" href="{DT_SKIN}css/style.css">
     <link rel="stylesheet" href="{DT_SKIN}css/colors/red.css" id="colors">
-    <link rel="stylesheet" href="{DT_SKIN}user_main.css">
     <!--[if lte IE 6]>
     <link rel="stylesheet" type="text/css" href="{DT_SKIN}ie6.css"/>
     <![endif]-->
@@ -41,11 +40,15 @@
         var SKPath = '{DT_SKIN}';
         var CKPrex = '{$CFG[cookie_pre]}';
         var DTTour = '{$MODULE[4][linkurl]}tour.php';
+
+        {if !$domain && DT_DOMAIN}
+            document.domain = '{DT_DOMAIN}';
+            {/if}
     </script>
 
 </head>
-<body class="Wide">
-<div id="">
+<body class="boxed">
+<div id="wrapper">
 
     <!-- Top Bar
 ================================================== -->
@@ -59,7 +62,7 @@
                     <li>{$DT['sitename']},让选择更多,让服务更好,让婚礼更美!</li>
                     <li><i class="fa fa-phone"></i> {$DT[telephone]}</li>
                 </ul>
-                </a>
+                    </a>
             </div>
 
             <!-- Member menu -->

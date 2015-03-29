@@ -1,5 +1,5 @@
-{template 'header', 'user'}
-
+{template 'head'}
+<link rel="stylesheet" href="{DT_SKIN}user_main.css">
 
 <div class="container">
     <div class="margin-top-50"></div>
@@ -129,7 +129,8 @@
 
 <br/>
 <br/><br/><br/><br/><br/><br/>
-{template 'footer', 'user'}
+{template 'foot'}
+<script src="{DT_SKIN}scripts/user.js"></script>
 <script>
     $(function(){
         {if $_userid==$userid && !$member['avatar'] }

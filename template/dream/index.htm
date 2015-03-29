@@ -32,7 +32,7 @@
     <h3 class="headline">会员需求</h3><span class="line margin-bottom-3-"></span><div class="clearfix"></div>
 
     <!-- Tabs Navigation -->
-    <ul class="tabs-nav">
+    <ul class="tabs-nav columns">
         <li class="active"><a href="#all">全部</a></li>
         {php $child = get_maincat(0, 4, 1);}
         {loop $child $i $c}
@@ -138,7 +138,7 @@
         <h3 class="headline">会员婚期</h3><span class="line margin-bottom-3-"></span><div class="clearfix"></div>
 
         <!-- Tabs Navigation -->
-        <ul class="tabs-nav">
+        <ul class="tabs-nav columns">
             <li class="active"><a href="#wdall">全部</a></li>
             {php $_months = range(0,12);}
             {php $month = date('n');}

@@ -880,12 +880,14 @@ span.skill-title i {
 	margin: 0;
 }
 
+
+
 .top-search select,
 .top-search input,
 .apply-coupon input {
-	font-size: 13px;
+	/*font-size: 13px;
 	width: 192px;
-	padding: 10px 13px 10px 13px;
+	padding: 10px 13px 10px 13px;*/
 	float: left;
 }
 
@@ -915,6 +917,20 @@ span.skill-title i {
 	padding: 0;
 	border: none;
 	position: relative;
+	-webkit-transition: background-color 0.2s ease-in-out;
+	-moz-transition: background-color 0.2s ease-in-out;
+	-ms-transition: background-color 0.2s ease-in-out;
+	-o-transition: background-color 0.2s ease-in-out;
+	transition: background-color 0.2s ease-in-out;
+}
+
+.top-search select{
+	background: #f5f5f5;
+	width: 56px;
+	height: 39px;
+	border: none;
+	position: relative;
+	margin-right: 2px;
 	-webkit-transition: background-color 0.2s ease-in-out;
 	-moz-transition: background-color 0.2s ease-in-out;
 	-ms-transition: background-color 0.2s ease-in-out;

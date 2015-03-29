@@ -1,64 +1,51 @@
-<div class="m"></div>
-<div id="footer">
-<div class="plRegulations">
-<ul>
-    <li class="first">菏泽影楼/拍婚照</li>
-    {php $_tags=tag("moduleid=5&table=company&pagesize=5&condition=level=4&template=null")}
-    {loop $_tags $t}
-    <li><a title="{$t[company]}" target="_blank" href="{$t[linkurl]}">{$t[company]}</a></li>
-    {/loop}
-</ul>
-    <ul>
-        <li class="first">菏泽婚庆/选婚庆</li>
-        {php $_tags=tag("moduleid=5&table=company&pagesize=5&condition=level=5&template=null")}
-        {loop $_tags $t}
-        <li><a title="{$t[company]}" target="_blank" href="{$t[linkurl]}">{$t[company]}</a></li>
-        {/loop}
-    </ul>
-    <ul>
-        <li class="first">菏泽婚宴/定酒席</li>
-        {php $_tags=tag("moduleid=5&table=company&pagesize=5&condition=level=6&template=null")}
-        {loop $_tags $t}
-        <li><a title="{$t[company]}" target="_blank" href="{$t[linkurl]}">{$t[company]}</a></li>
-        {/loop}
-    </ul>
-    <ul>
-        <li class="first">菏泽装修公司</li>
-        {php $_tags=tag("moduleid=5&table=company&pagesize=5&condition=level=7&template=null")}
-        {loop $_tags $t}
-        <li><a title="{$t[company]}" target="_blank" href="{$t[linkurl]}">{$t[company]}</a></li>
-        {/loop}
-    </ul>
-    <ul class="last">
-        <li class="first">菏泽旅行社</li>
-        {php $_tags=tag("moduleid=5&table=company&pagesize=5&condition=level=8&template=null")}
-        {loop $_tags $t}
-        <li><a title="{$t[company]}" target="_blank" href="{$t[linkurl]}">{$t[company]}</a></li>
-        {/loop}
 
-{template 'stats', 'chip'}
-</ul>
+
+<!-- Footer Bottom / Start -->
+<div id="footer-bottom">
+
+    <!-- Container -->
+    <div class="container">
+
+        <div class="eight columns">© Copyright 2014 by <a href="{$MODULE[1][linkurl]}">hezejiehun.com</a>. All Rights Reserved.</div>
+
+    </div>
+    <!-- Container / End -->
+
 </div>
-<div class="company">
-<div class="companyInfo"><center><div style=margin-top:3px>
-    <div class="companyInfo">菏泽结婚网-www.hezejiehun.com 鲁ICP备11008011 <kbd style="font-family:Arial">&copy; 2013</kbd> 菏泽结婚网 一站式婚嫁平台</div>
-</div></center> </div>
-</div>
+<!-- Footer Bottom / End -->
+
+<!-- Back To Top Button -->
+<div id="backtotop"><a href="#"></a></div>
+
 </div>
 
-<!--[系统关键代码，请勿删除]-->
-<div id="back2top" class="back2top"><a href="javascript:void(0);" title="返回顶部">&nbsp;</a></div>
-<script type="text/javascript">
-    {if $destoon_task}
-        show_task('{$destoon_task}');
-        {else}
-        {php include DT_ROOT.'/api/task.inc.php';}
-        {/if}
-            {if $lazy}$(function(){$("img").lazyload();});{/if}
-                $('#back2top').click(function() {
-                    $("html, body").animate({scrollTop:0}, 200);
-                });
-</script>
+<!-- Java Script
+================================================== -->
+<script src="{DT_SKIN}scripts/jquery-1.11.0.min.js"></script>
+<script src="{DT_SKIN}scripts/jquery-migrate-1.2.1.min.js"></script>
+<script src="{DT_SKIN}scripts/jquery.jpanelmenu.js"></script>
+<script src="{DT_SKIN}scripts/jquery.themepunch.plugins.min.js"></script>
+<script src="{DT_SKIN}scripts/jquery.themepunch.revolution.min.js"></script>
+<script src="{DT_SKIN}scripts/jquery.themepunch.showbizpro.min.js"></script>
+<script src="{DT_SKIN}scripts/jquery.magnific-popup.min.js"></script>
+<script src="{DT_SKIN}scripts/hoverIntent.js"></script>
+<script src="{DT_SKIN}scripts/superfish.js"></script>
+<script src="{DT_SKIN}scripts/jquery.pureparallax.js"></script>
+<script src="{DT_SKIN}scripts/jquery.pricefilter.js"></script>
+<script src="{DT_SKIN}scripts/jquery.selectric.min.js"></script>
+<script src="{DT_SKIN}scripts/jquery.royalslider.min.js"></script>
+<script src="{DT_SKIN}scripts/SelectBox.js"></script>
+<script src="{DT_SKIN}scripts/modernizr.custom.js"></script>
+<script src="{DT_SKIN}scripts/waypoints.min.js"></script>
+<script src="{DT_SKIN}scripts/jquery.flexslider-min.js"></script>
+<script src="{DT_SKIN}scripts/jquery.counterup.min.js"></script>
+<script src="{DT_SKIN}scripts/jquery.tooltips.min.js"></script>
+<script src="{DT_SKIN}scripts/jquery.isotope.min.js"></script>
+<script src="{DT_SKIN}layer/layer.min.js"></script>
+<script src="{DT_SKIN}scripts/puregrid.js"></script>
+<script src="{DT_SKIN}scripts/stacktable.js"></script>
+<script src="{DT_SKIN}scripts/custom.js"></script>
+
 </body>
 </html>
-</html>
+
