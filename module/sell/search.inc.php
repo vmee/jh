@@ -100,7 +100,7 @@ $tags = $PPT = array();//PPT
 	$pages = pages($items, $page, $pagesize);
 	if($items) {
 		$order = $dorder[$order] ? " ORDER BY $dorder[$order]" : '';
-		$result = $db->query("SELECT $fds,thumb,enddate FROM {$table} WHERE {$condition}{$order} LIMIT {$offset},{$pagesize}", ($DT['cache_search'] && $page == 1) ? 'CACHE' : '', $DT['cache_search']);
+		$result = $db->query("SELECT $fds FROM {$table} WHERE {$condition}{$order} LIMIT {$offset},{$pagesize}", ($DT['cache_search'] && $page == 1) ? 'CACHE' : '', $DT['cache_search']);
 		if($kw) {
 			$replacef = explode(' ', $kw);
 			$replacet = array_map('highlight', $replacef);

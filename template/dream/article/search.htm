@@ -4,18 +4,23 @@
 <div class="container">
     <div class="sixteen columns">
         <!-- Tabs Navigation -->
-        {php $child = get_maincat(0, $moduleid, 1);}
-        {if $child}
         <ul class="tabs-nav">
 
-            <li{if !$catid} class="active"{/if}><a href="{$MOD[linkurl]}search.php">所有分类</a></li>
-
+            <li{if !$catid} class="active"{/if}><a href="{$MOD[linkurl]}search.php?areaid={$areaid}">所有分类</a></li>
+            {php $child = get_maincat(0, 4, 1);}
             {loop $child $i $c}
-            <li {if $catid==$c[catid]} class="active"{/if}><a href="{$MODULE[$mid][linkurl]}search.php?catid={$c[catid]}">{$c[catname]}</a></li>
+            <li {if $catid==$c[catid]} class="active"{/if}><a href="{$MODULE[$mid][linkurl]}search.php?catid={$c[catid]}&areaid={$areaid}">{$c[catname]}</a></li>
             {/loop}
         </ul>
-        {/if}
 
+        <ul class="tabs-nav">
+
+            <li{if !$areaid} class="active"{/if}><a href="{$MOD[linkurl]}search.php?catid={$catid}">所有地区</a></li>
+            {php $mainarea = get_mainarea(0)}
+            {loop $mainarea $k $v}
+            <li {if $areaid==$v[areaid]} class="active"{/if}><a href="{$MOD[linkurl]}search.php?catid={$catid}&areaid={$v[areaid]}">{$v[areaname]}</a></li>
+            {/loop}
+        </ul>
     </div>
 
 </div>

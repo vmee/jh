@@ -402,17 +402,14 @@
         <span class="line margin-bottom-30"></span>
     </div>
 
-    {php $_tags=tag("moduleid=12&table=photo&pagesize=5&template=null&order=addtime desc")}
+    {php $_tags=tag("moduleid=12&condition=status=3 AND items>0&pagesize=5&template=null&order=addtime desc")}
     {loop $_tags $k $t}
-    <li><a target="_blank" href="{userurl($t[username], 'file=photo&itemid='.$t['itemid'], $domain)}" title="{$t[title]}"><img src="{imgurl($t[thumb], 240)}" class="lazy" original="{imgurl($t[thumb], 240)}" alt="{$t[title]}" /><br>{$t[title]}</a></li>
-
     <!-- Post #1 -->
     <div class="four columns">
         <article class="from-the-blog">
 
             <figure class="from-the-blog-image">
-                <a href="{userurl($t[username], 'file=photo&itemid='.$t['itemid'], $domain)}"><img src="{imgurl($t[thumb], 240)}" alt="{$t[title]}" /></a>
-                <div class="hover-icon"></div>
+                <a href="{userurl($t[username], 'file=photo&itemid='.$t['itemid'], $domain)}"><img src="{$t[thumb]}" alt="{$t[title]}" /></a>
             </figure>
 
             <section class="from-the-blog-content">

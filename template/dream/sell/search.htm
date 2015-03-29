@@ -1,23 +1,28 @@
 {template 'header'}
 
-
-
 <div class="container">
 	<div class="sixteen columns">
 		<!-- Tabs Navigation -->
 		<ul class="tabs-nav">
 
-			<li{if !$catid} class="active"{/if}><a href="{$MOD[linkurl]}search.php">所有分类</a></li>
-			{php $child = get_maincat(0, $moduleid, 1);}
+			<li{if !$catid} class="active"{/if}><a href="{$MOD[linkurl]}search.php?areaid={$areaid}">所有分类</a></li>
+			{php $child = get_maincat(0, 4, 1);}
 			{loop $child $i $c}
-			<li {if $catid==$c[catid]} class="active"{/if}><a href="{$MODULE[$mid][linkurl]}search.php?catid={$c[catid]}">{$c[catname]}</a></li>
+			<li {if $catid==$c[catid]} class="active"{/if}><a href="{$MODULE[$mid][linkurl]}search.php?catid={$c[catid]}&areaid={$areaid}">{$c[catname]}</a></li>
 			{/loop}
 		</ul>
 
+		<ul class="tabs-nav">
+
+			<li{if !$areaid} class="active"{/if}><a href="{$MOD[linkurl]}search.php?catid={$catid}">所有地区</a></li>
+			{php $mainarea = get_mainarea(0)}
+			{loop $mainarea $k $v}
+			<li {if $areaid==$v[areaid]} class="active"{/if}><a href="{$MOD[linkurl]}search.php?catid={$catid}&areaid={$v[areaid]}">{$v[areaname]}</a></li>
+			{/loop}
+		</ul>
 	</div>
 
 </div>
-
 
 
 <div class="margin-top-50"></div>
@@ -54,12 +59,11 @@
 					</a>
 				</div>
 
-				<a href="{userurl($t[username], 'file=sell&itemid='.$t['itemid'], $domain)}">
 					<section class="item-description">
-						<h5>{$t[tiltle]}</h5>
+						<h5><a href="{userurl($t[username], 'file=sell&itemid='.$t['itemid'], $domain)}">{$t[title]}</a></h5>
 						<span class="product-price-discount">原价{$t[marketprice]}<i>现价{$t[price]}</i></span>
 					</section>
-				</a>
+
 
 			</figure>
 		</div>

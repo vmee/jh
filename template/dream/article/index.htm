@@ -3,17 +3,23 @@
 <div class="container">
     <div class="sixteen columns">
         <!-- Tabs Navigation -->
-        {php $child = get_maincat(0, $moduleid, 1);}
-        {if $child}
         <ul class="tabs-nav">
 
-            <li class="active"><a href="{$MOD[linkurl]}search.php">所有分类</a></li>
-
+            <li class="active"><a href="{$MOD[linkurl]}search.php?areaid={$areaid}">所有分类</a></li>
+            {php $child = get_maincat(0, 4, 1);}
             {loop $child $i $c}
-            <li><a href="{$MODULE[$mid][linkurl]}search.php?catid={$c[catid]}">{$c[catname]}</a></li>
+            <li><a href="{$MODULE[$mid][linkurl]}search.php?catid={$c[catid]}&areaid={$areaid}">{$c[catname]}</a></li>
             {/loop}
         </ul>
-        {/if}
+
+        <ul class="tabs-nav">
+
+            <li class="active"><a href="{$MOD[linkurl]}search.php?catid={$catid}">所有地区</a></li>
+            {php $mainarea = get_mainarea(0)}
+            {loop $mainarea $k $v}
+            <li><a href="{$MOD[linkurl]}search.php?catid={$catid}&areaid={$v[areaid]}">{$v[areaname]}</a></li>
+            {/loop}
+        </ul>
     </div>
 
 </div>
@@ -51,7 +57,7 @@
                 <ul>
 
 
-                    {php $_tags=tag("moduleid=$moduleid&pagesize=10&condition=catid like '%,".$c[catid].",%'&template=null")}
+                    {php $_tags=tag("moduleid=$moduleid&catid=".$c[catid]."&pagesize=10&template=null")}
                     {loop $_tags $k $t}
 
                     <!-- Product #1 -->
@@ -59,18 +65,18 @@
                         <figure class="portfolio-item">
                             <div class="portfolio-holder">
                                 <a href="{userurl($t[username], 'file=activity&itemid='.$t['itemid'], $domain)}">
-                                    <img alt="{$t[title]}" src="{imgurl($t[thumb], 1)}"/>
+                                    <img alt="{$t[title]}" src="{$t[thumb]}"/>
                                     <div class="hover-cover"></div>
                                 </a>
                             </div>
 
-                            <a href="{userurl($t[username], 'file=activity&itemid='.$t['itemid'], $domain)}">
+
                                 <section class="item-description">
-                                    <h4>{$t[title]}</h4>
+                                    <h4><a href="{userurl($t[username], 'file=activity&itemid='.$t['itemid'], $domain)}">{$t[title]}</a></h4>
                                     <span>{$t[business]}</span>
                                     <span>结束时间：{$t[endtime]}</span>
                                 </section>
-                            </a>
+
                         </figure>
                     </li>
 

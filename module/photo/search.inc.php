@@ -63,7 +63,7 @@ $tags = array();
 	} else {
 		if($keyword) $condition .= " AND $dfields[$fields] LIKE '%$keyword%'";
 		if($pptsql) $condition .= $pptsql;//PPT
-		$condition = "status=3".$condition;
+		$condition = "status=3 AND items>0".$condition;
 	}
 	$pagesize = $MOD['pagesize'];
 	$offset = ($page-1)*$pagesize;
@@ -79,7 +79,7 @@ $tags = array();
 		while($r = $db->fetch_array($result)) {
 			$r['adddate'] = timetodate($r['addtime'], 5);
 			$r['editdate'] = timetodate($r['edittime'], 5);
-			if($lazy && isset($r['thumb']) && $r['thumb']) $r['thumb'] = DT_SKIN.'image/lazy.gif" original="'.$r['thumb'];
+			//if($lazy && isset($r['thumb']) && $r['thumb']) $r['thumb'] = DT_SKIN.'image/lazy.gif" original="'.$r['thumb'];
 			$r['alt'] = $r['title'];
 			$r['title'] = dsubstr($r['title'], 20);
 			$r['title'] = set_style($r['title'], $r['style']);

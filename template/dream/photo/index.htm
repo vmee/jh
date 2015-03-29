@@ -3,7 +3,7 @@
 <div class="container">
 	<div class="sixteen columns">
 		<!-- Tabs Navigation -->
-		{php $child = get_maincat(0, $moduleid, 1);}
+		{php $child = get_maincat(0, 4, 1);}
 		{if $child}
 		<ul class="tabs-nav">
 
@@ -29,7 +29,7 @@
 
 	<ul id="og-grid" class="og-grid">
 
-		{php $_tags=tag("moduleid=$moduleid&pagesize=40&template=null")}
+		{php $_tags=tag("moduleid=$moduleid&condition=status=3 AND items>0&pagesize=40&template=null")}
 		{loop $_tags $k $t}
 		<!-- Project -->
 		<li class="clothing others clickable">

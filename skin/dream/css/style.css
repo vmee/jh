@@ -943,9 +943,9 @@ span.skill-title i {
 #cart {
 	float: right;
 	display: block;
-	margin: 0 0 0 15px;
+	/*margin: 0 0 0 15px;
 	position: relative;
-	z-index: 100;
+	z-index: 100;*/
 }
 
 #cart a { color: #fff; }
@@ -6007,7 +6007,7 @@ table.cart-table th {
 }
 
 table.cart-table td {
-	padding: 20px;
+	padding: 10px;
 	border-bottom: #eee 1px solid;
 	border-top: none;
 	border-right: none;

@@ -5,6 +5,29 @@
 		<!-- Tabs Navigation -->
 		<ul class="tabs-nav">
 
+			<li class="active"><a href="{$MOD[linkurl]}search.php?areaid={$areaid}">所有分类</a></li>
+			{php $child = get_maincat(0, 4, 1);}
+			{loop $child $i $c}
+			<li><a href="{$MODULE[$mid][linkurl]}search.php?catid={$c[catid]}&areaid={$areaid}">{$c[catname]}</a></li>
+			{/loop}
+		</ul>
+
+		<ul class="tabs-nav">
+
+			<li class="active"><a href="{$MOD[linkurl]}search.php?catid={$catid}">所有地区</a></li>
+			{php $mainarea = get_mainarea(0)}
+			{loop $mainarea $k $v}
+			<li><a href="{$MOD[linkurl]}search.php?catid={$catid}&areaid={$v[areaid]}">{$v[areaname]}</a></li>
+			{/loop}
+		</ul>
+	</div>
+
+</div>
+<!--<div class="container">
+	<div class="sixteen columns">
+		&lt;!&ndash; Tabs Navigation &ndash;&gt;
+		<ul class="tabs-nav">
+
 			<li class="active"><a href="{$MOD[linkurl]}search.php">所有分类</a></li>
 			{php $child = get_maincat(0, $moduleid, 1);}
 			{loop $child $i $c}
@@ -13,12 +36,12 @@
 		</ul>
 
 
-</div>
+</div>-->
 
 
 <div class="margin-top-50"></div>
 
-{php $child = get_maincat(0, $moduleid, 1);}
+{php $child = get_maincat(0, 4, 1);}
 {loop $child $i $c}
 
 <!-- New Arrivals
@@ -48,7 +71,7 @@
 				<ul>
 
 
-					{php $tags=tag("moduleid=5&catid=".$c[catid]."&pagesize=10", -1)}
+					{php $tags=tag("moduleid=5&catid=".$c[catid]."&pagesize=10&template=null", -1)}
 					{loop $tags $k $t}
 
 					<!-- Product #1 -->
@@ -56,17 +79,17 @@
 						<figure class="portfolio-item">
 							<div class="portfolio-holder">
 								<a href="{userurl($t[username], 'file=sell&itemid='.$t['itemid'], $domain)}">
-									<img alt="{$t[title]}" src="{imgurl($t[thumb], 1)}"/>
+									<img alt="{$t[title]}" src="{$t[thumb]}"/>
 									<div class="hover-cover"></div>
 								</a>
 							</div>
 
-							<a href="{userurl($t[username], 'file=sell&itemid='.$t['itemid'], $domain)}">
+
 								<section class="item-description">
-									<h4>{$t[title]}</h4>
+									<h4><a href="{userurl($t[username], 'file=sell&itemid='.$t['itemid'], $domain)}">{$t[title]}</a></h4>
 									<span class="product-price-discount">原价{$t[marketprice]}<i>现价{$t[price]}</i></span>
 								</section>
-							</a>
+
 						</figure>
 					</li>
 
