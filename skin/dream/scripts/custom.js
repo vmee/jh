@@ -15,6 +15,7 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 
 		// Top Bar Dropdown
 		//----------------------------------------//
+/*
 
 		$('.top-bar-dropdown').click(function(event) {
 			$('.top-bar-dropdown').not(this).removeClass('active');
@@ -42,11 +43,13 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 		function hideDD(){
 			$('.top-bar-dropdown').removeClass('active');
 		}
+*/
 
 
 
 		// Cart
 		//----------------------------------------//
+/*
 
 		$("#cart").hoverIntent({
 			sensitivity: 3,
@@ -61,13 +64,14 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 				$('.cart-btn a.button', this).removeClass('hovered');
 			}
 		});
+*/
 
 
 
 		// Initialise Superfish
 		//----------------------------------------//
 
-		$('ul.menu').superfish({
+		/*$('ul.menu').superfish({
 				delay:       400,                    // delay on mouseout
 				speed:       200,                    // faster animation speed
 				speedOut:    100,                    // speed of the closing animation
@@ -75,7 +79,7 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 			});
 
 
-
+*/
 		// Mobile Navigation
 		//----------------------------------------//
 
@@ -117,7 +121,7 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 		// Revolution Slider
 		//----------------------------------------//
 
-		$('.tp-banner').revolution({
+		/*$('.tp-banner').revolution({
 			delay:9000,
 			startwidth:1290,
 			startheight:480,
@@ -129,7 +133,7 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 			soloArrowLeftVOffset:0,
 			soloArrowRightHOffset:0,
 			soloArrowRightVOffset:0
-		});
+		});*/
 
 
 		// ShowBiz Carousel
@@ -147,7 +151,7 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 			easing:'Back.easeOut'
 		});
 
-		$('#happy-clients').showbizpro({
+		/*$('#happy-clients').showbizpro({
 			dragAndScroll:"off",
 			visibleElementsArray:[1,1,1,1],
 			carousel:"off",
@@ -161,13 +165,13 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 			carousel:"off",
 			entrySizeOffset:0,
 			allEntryAtOnce:"off"
-		});
+		});*/
 
 
 
 		// Parallax Banner
 		//----------------------------------------//
-		$(".parallax-banner").pureparallax({
+		/*$(".parallax-banner").pureparallax({
 			overlayBackgroundColor: '#000',
 			overlayOpacity : '0.45',
 			timeout: 200
@@ -175,12 +179,12 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 
 		$(".parallax-titlebar").pureparallax({
 			timeout: 100
-		});
+		});*/
 
 
 		// Categories
 
-		function addLevelClass($parent, level) {
+		/*function addLevelClass($parent, level) {
 		    $parent.addClass('parent-'+level);
 		    var $children = $parent.children('li');
 		    $children.addClass('child-'+level).data('level',level);
@@ -193,10 +197,10 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 		    });
 		}
 
-		addLevelClass($('#categories'), 1);
+		addLevelClass($('#categories'), 1);*/
 
 		//----------------------------------------//
-		$('#categories > li a').click(function(e){
+		/*$('#categories > li a').click(function(e){
 			if($(this).parent().hasClass('has-sublist')) {
 				e.preventDefault();
 			}
@@ -224,14 +228,14 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 					$('#categories li.child-'+curlvl+' a').removeClass('active');
 				}
 			}
-		});
+		});*/
 
 
 
 		// Filter by Price
 		//----------------------------------------//
 
-		$( "#slider-range" ).slider({
+		/*$( "#slider-range" ).slider({
 			range: true,
 			min: 0,
 			max: 500,
@@ -242,7 +246,7 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 			}
 		});
 		$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-			" - $" + $( "#slider-range" ).slider( "values", 1 ) );
+			" - $" + $( "#slider-range" ).slider( "values", 1 ) );*/
 
 
 
@@ -250,7 +254,7 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 		// Product Slider
 		//----------------------------------------//
 
-		$('#product-slider').royalSlider({
+		/*$('#product-slider').royalSlider({
 
 			autoScaleSlider: true,
 			autoScaleSliderWidth: 560,
@@ -265,14 +269,14 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 			navigateByClick: false,
 			numImagesToPreload:2,
 
-			/* Arrow Navigation */
+			*//* Arrow Navigation *//*
 			arrowsNav:true,
 			arrowsNavAutoHide: false,
 			arrowsNavHideOnTouch: true,
 			keyboardNavEnabled: true,
 			fadeinLoadedSlide: true,
 
-			/* Thumbnail Navigation */
+			*//* Thumbnail Navigation *//*
 			controlNavigation: 'thumbnails',
 			thumbs: {
 				orientation: 'horizontal',
@@ -283,10 +287,10 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 				paddingTop: 10,
 			}
 
-		});
+		});*/
 
 
-		$('#product-slider-vertical').royalSlider({
+		/*$('#product-slider-vertical').royalSlider({
 
 			autoScaleSlider: true,
 			autoScaleSliderWidth: 560,
@@ -301,14 +305,14 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 			navigateByClick: false,
 			numImagesToPreload:2,
 
-			/* Arrow Navigation */
+			*//* Arrow Navigation *//*
 			arrowsNav:true,
 			arrowsNavAutoHide: false,
 			arrowsNavHideOnTouch: true,
 			keyboardNavEnabled: true,
 			fadeinLoadedSlide: true,
 
-			/* Thumbnail Navigation */
+			*//* Thumbnail Navigation *//*
 			controlNavigation: 'thumbnails',
 			thumbs: {
 				orientation: 'vertical',
@@ -337,20 +341,20 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 			navigateByClick: false,
 			numImagesToPreload:2,
 
-			/* Arrow Navigation */
+			*//* Arrow Navigation *//*
 			arrowsNav:true,
 			arrowsNavAutoHide: false,
 			arrowsNavHideOnTouch: true,
 			keyboardNavEnabled: true,
 			fadeinLoadedSlide: true,
 
-		});
+		});*/
 
 
 
 		// Product Quantity
 		//----------------------------------------//
-		var thisrowfield;
+		/*var thisrowfield;
 		$('.qtyplus').click(function(e){
 			e.preventDefault();
 			thisrowfield = $(this).parent().parent().parent().find('.qty');
@@ -372,7 +376,7 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 			} else {
 				thisrowfield.val(0);
 			}
-		});
+		});*/
 
 
 
@@ -408,7 +412,7 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 		// Accordion
 		//----------------------------------------//
 
-		var $accor = $('.accordion');
+		/*var $accor = $('.accordion');
 
 		$accor.each(function() {
 			$(this).addClass('ui-accordion ui-widget ui-helper-reset');
@@ -433,11 +437,11 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 			}
 			e.preventDefault();
 		});
-
+*/
 
 		// Toggles
 		//----------------------------------------//
-		$(".toggle-container").hide();
+		/*$(".toggle-container").hide();
 		$(".trigger").toggle(function(){
 			$(this).addClass("active");
 		}, function () {
@@ -453,13 +457,13 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 			$(this).addClass("active");
 		});
 
-		$(".trigger.opened").addClass("active").next(".toggle-container").show();
+		$(".trigger.opened").addClass("active").next(".toggle-container").show();*/
 
 
 		// Notification Boxes
 		//----------------------------------------//
 
-		$('.counter').counterUp({
+		/*$('.counter').counterUp({
 			delay: 10,
 			time: 2000
 		});
@@ -471,14 +475,14 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 
 		$("a.close").removeAttr("href").click(function(){
 			$(this).parent().fadeOut(200);
-		});
+		});*/
 
 
 
 		// Tooltips
 		//----------------------------------------//
 
-		$(".tooltip.top").tipTip({
+		/*$(".tooltip.top").tipTip({
 			defaultPosition: "top"
 		});
 
@@ -493,149 +497,19 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 		$(".tooltip.right").tipTip({
 			defaultPosition: "right"
 		});
+*/
 
 
 
-		// Magnific Popup
-		//----------------------------------------//
-
-		$(document).ready(function(){
-
-			$('body').magnificPopup({
-				type: 'image',
-				delegate: 'a.mfp-gallery',
-
-				fixedContentPos: true,
-				fixedBgPos: true,
-
-				overflowY: 'auto',
-
-				closeBtnInside: true,
-				preloader: true,
-
-				removalDelay: 0,
-				mainClass: 'mfp-fade',
-
-				gallery:{enabled:true},
-
-				callbacks: {
-					buildControls: function() {
-						console.log('inside'); this.contentContainer.append(this.arrowLeft.add(this.arrowRight));
-					}
-
-				}
-			});
 
 
-			$('.popup-with-zoom-anim').magnificPopup({
-				type: 'inline',
-
-				fixedContentPos: false,
-				fixedBgPos: true,
-
-				overflowY: 'auto',
-
-				closeBtnInside: true,
-				preloader: false,
-
-				midClick: true,
-				removalDelay: 300,
-				mainClass: 'my-mfp-zoom-in'
-			});
-
-
-			$('.mfp-image').magnificPopup({
-				type: 'image',
-				closeOnContentClick: true,
-				mainClass: 'mfp-fade',
-				image: {
-					verticalFit: true
-				}
-			});
-
-
-			$('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
-				disableOn: 700,
-				type: 'iframe',
-				mainClass: 'mfp-fade',
-				removalDelay: 160,
-				preloader: false,
-
-				fixedContentPos: false
-			});
-
-		});
-
-
-		// Skill Bars Animation
-		//----------------------------------------//
-
-		if($('#skillzz').length !==0){
-			var skillbar_active = false;
-			$('.skill-bar-value').hide();
-
-			if($(window).scrollTop() === 0 && isScrolledIntoView($('#skillzz')) === true){
-				skillbarActive();
-				skillbar_active = true;
-			}
-			else if(isScrolledIntoView($('#skillzz')) === true){
-				skillbarActive();
-				skillbar_active = true;
-			}
-			$(window).bind('scroll', function(){
-				if(skillbar_active === false && isScrolledIntoView($('#skillzz')) === true ){
-					skillbarActive();
-					skillbar_active = true;
-				}
-			});
-		}
-
-		function isScrolledIntoView(elem) {
-			var docViewTop = $(window).scrollTop();
-			var docViewBottom = docViewTop + $(window).height();
-
-			var elemTop = $(elem).offset().top;
-			var elemBottom = elemTop + $(elem).height();
-
-			return ((elemBottom <= (docViewBottom + $(elem).height())) && (elemTop >= (docViewTop - $(elem).height())));
-		}
-
-		function skillbarActive(){
-			setTimeout(function(){
-
-				$('.skill-bar-value').each(function() {
-					$(this)
-					.data("origWidth", $(this)[0].style.width)
-					.css('width','1%').show();
-					$(this)
-					.animate({
-						width: $(this).data("origWidth")
-					}, 1200);
-				});
-
-				$('.skill-bar-value .dot').each(function() {
-					var me = $(this);
-					var perc = me.attr("data-percentage");
-
-					var current_perc = 0;
-
-					var progress = setInterval(function() {
-						if (current_perc>=perc) {
-							clearInterval(progress);
-						} else {
-							current_perc +=1;
-							me.text((current_perc)+'%');
-						}
-					}, 10);
-				});
-			}, 10);}
 
 
 
 		// Custom Select Boxes
 		//----------------------------------------//
 
-		$('.orderby').selectric();
+		//$('.orderby').selectric();
 
 
 		var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? true : false;
@@ -655,22 +529,9 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 		}
 
 
-		// Dynamic Grid Filters
-		//----------------------------------------//
 
-		$('.option-set li').click(function(event) {
-			event.preventDefault();
-			var item = $(".og-grid li"),
-			image = item.find('a.grid-item-image img');
-			item.removeClass('clickable unclickable');
-			image.stop().animate({opacity: 1});
-			var filter = $(this).children('a').data('filter');
-			item.filter(filter).addClass('clickable');
-			item.filter(':not('+filter+')').addClass('unclickable');
-			item.filter(':not('+filter+')').find('a.grid-item-image im').stop().animate({opacity: 0.2});
-		});
 
-		PureGrid.init();
+		//PureGrid.init();
 
 
 
@@ -679,68 +540,16 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 
 		var pixelRatio = !!window.devicePixelRatio ? window.devicePixelRatio : 1;
 
-		/**
-		$(window).on("load", function() {
-			if (pixelRatio > 1) {
-				$('#logo img').each(function() {
-					$(this).attr('src', $(this).attr('src').replace(".","@2x."));
-				});
-			}
-		});**/
 
 
 
 		// Portfolio Isotope
 		//----------------------------------------//
 
-		$(window).load(function(){
-			var $container = $('#portfolio-wrapper, #masonry-wrapper');
-			$container.isotope({ itemSelector: '.portfolio-item, .masonry-item', layoutMode: 'masonry' });
-		});
-
-		$('#filters a').click(function(e){
-			e.preventDefault();
-
-			var selector = $(this).attr('data-filter');
-			$('#portfolio-wrapper').isotope({ filter: selector });
-
-			$(this).parents('ul').find('a').removeClass('selected');
-			$(this).addClass('selected');
-		});
 
 
 
-		// Share Buttons
-		//----------------------------------------//
-
-		var $Filter = $('.share-buttons');
-		var FilterTimeOut;
-		$Filter.find('ul li:first').addClass('active');
-		$Filter.find('ul li:not(.active)').hide();
-		$Filter.hover(function(){
-			clearTimeout(FilterTimeOut);
-			if( $(window).width() < 959 )
-			{
-				return;
-			}
-			FilterTimeOut=setTimeout(function(){
-				$Filter.find('ul li:not(.active)').stop(true, true).animate({width: 'show' }, 250, 'swing');
-				$Filter.find('ul li:first-child a').addClass('share-hovered');
-			}, 100);
-
-		},function(){
-			if( $(window).width() < 960 )
-			{
-				return;
-			}
-			clearTimeout(FilterTimeOut);
-			FilterTimeOut=setTimeout(function(){
-				$Filter.find('ul li:not(.active)').stop(true, true).animate({width: 'hide'}, 250, 'swing');
-				$Filter.find('ul li:first-child a').removeClass('share-hovered');
-
-			}, 250);
-		});
-		$(window).resize(function() {
+		/*$(window).resize(function() {
 			if( $(window).width() < 960 )
 			{
 				$Filter.find('ul li:not(.active)').show();
@@ -750,7 +559,7 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 				$Filter.find('ul li:not(.active)').hide();
 			}
 		});
-		$(window).resize();
+		$(window).resize();*/
 
 
 
@@ -786,66 +595,8 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 		// Contact Form
 		//----------------------------------------//
 
-		$("#contactform .submit").click(function(e) {
 
 
-			e.preventDefault();
-			var user_name       = $('input[name=name]').val();
-      var user_email      = $('input[name=email]').val();
-      var user_comment    = $('textarea[name=comment]').val();
-
-      //simple validation at client's end
-      //we simply change border color to red if empty field using .css()
-      var proceed = true;
-      if(user_name===""){
-					$('input[name=name]').addClass('error');
-						proceed = false;
-					}
-					if(user_email===""){
-						$('input[name=email]').addClass('error');
-						proceed = false;
-					}
-					if(user_comment==="") {
-						$('textarea[name=comment]').addClass('error');
-						proceed = false;
-					}
-
-					//everything looks good! proceed...
-					if(proceed) {
-						$('.hide').fadeIn();
-						$("#contactform .submit").fadeOut();
-							//data to be sent to server
-							var post_data = {'userName':user_name, 'userEmail':user_email, 'userComment':user_comment};
-
-							//Ajax post data to server
-							$.post('contact.php', post_data, function(response){
-								var output;
-								//load json data from server and output comment
-								if(response.type == 'error')
-									{
-										output = '<div class="error">'+response.text+'</div>';
-										$('.hide').fadeOut();
-										$("#contactform .submit").fadeIn();
-									} else {
-
-										output = '<div class="success">'+response.text+'</div>';
-										//reset values in all input fields
-										$('#contact div input').val('');
-										$('#contact textarea').val('');
-										$('.hide').fadeOut();
-										$("#contactform .submit").fadeIn().attr("disabled", "disabled").css({'backgroundColor':'#c0c0c0', 'cursor': 'default' });
-									}
-
-									$("#result").hide().html(output).slideDown();
-								}, 'json');
-						}
-			});
-
-			//reset previously set border colors and hide all comment on .keyup()
-			$("#contactform input, #contactform textarea").keyup(function() {
-				$("#contactform input, #contactform textarea").removeClass('error');
-				$("#result").slideUp();
-			});
 
 
 		   //用户登陆
