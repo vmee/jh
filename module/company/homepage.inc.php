@@ -4,7 +4,8 @@ $content_table = content_table(4, $userid, is_file(DT_CACHE.'/4.part'), $DT_PRE.
 $r = $db->get_one("SELECT content FROM {$content_table} WHERE userid=$userid");
 $COM['content'] = $r['content'];
 $intro_length = isset($HOME['intro_length']) && $HOME['intro_length'] ? intval($HOME['intro_length']) : 1000;
-$COM['intro'] = nl2br(dsubstr(trim(strip_tags($r['content'])), $intro_length, '...'));
+//$COM['intro'] = nl2br(dsubstr(trim(strip_tags($r['content'])), $intro_length, '...'));
+$COM['intro'] = $r['content'];
 $COM['thumb'] = $COM['thumb'] ? $COM['thumb'] : DT_SKIN.'image/company.jpg';
 if($COMGROUP['main_d']) {
 	$_main_show = array();

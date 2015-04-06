@@ -10,7 +10,7 @@ body {margin:0px;font-size:12px;color:#000000;background:#F9F9F9;}
 .top {height:26px;line-height:26px;background:#F7CEF9;padding:0 10px 0 10px;}
 #top a {text-decoration:none;}
 
-.head {height:220px;overflow:hidden;}
+.head {height:200px;overflow:hidden;}
 .head .logobox{float:left;width:165px;border:1px solid #f4f4f4;vertical-align:middle;padding:10px
 10px 10px 10px;background:#fff}
 .head .logo {width:165px;height:165px;overflow:hidden}
@@ -20,11 +20,12 @@ body {margin:0px;font-size:12px;color:#000000;background:#F9F9F9;}
 .head .basic .leftname {color: #999;height: 20px;
     line-height: 20px;}
 .head .basic .leftname span{color: #666;}
+.head .basic .sharebox .fl a{height: 37px;}
 .head .rankBox .clearfix{margin-top:10px;}
 .head .rankBox .leftname {color:#666}
 .head .rankBox .leftname i{color:#999}
 .yuyueyoulihybox{margin-top:20px;position:relative}.youlibox{border:1px
-solid #ffe0e0;background:#fffdfe;width:215px;height:30px;line-height:30px;color:#444;box-shadow:0px 1px 2px #E9E0E1;border-radius:2px;padding:0px
+solid #ffe0e0;background:#fffdfe;width:215px;color:#444;box-shadow:0px 1px 2px #E9E0E1;border-radius:2px;padding:0px
 10px 0 10px;overflow:hidden;word-break:break-all}.youlisanjiao{display:block;width:15px;height:9px;position:absolute;top:31px;left:30px;z-index:99;overflow:hidden}
 .rankBtn{width:240px;height:37px;line-height:30px;text-align:center;background:#ef0d4d repeat-x;border:none;margin-right:10px;color:#fff;cursor:pointer;font-weight:bold;font-size:16px;box-shadow:0px  4px 2px -3px #a79797}.rankBtn:hover{opacity:0.8}
 
@@ -35,12 +36,25 @@ solid #ffe0e0;background:#fffdfe;width:215px;height:30px;line-height:30px;color:
 .menu li a{display:block;font-weight:bold;color:#fff;width:96px}
 .menu_li a:hover{background:#cb1032;}
 .menu_on a{background:#cb1032;}
+.menu.affix{
+	width:960px;
+	top: 0px; /* Set the top position of pinned element */
+	z-index: 9999;
+}
 
 .side_head {border:#e1e1e1 1px solid;border-bottom:none;}
 .side_head div {padding:0 10px 0 10px;font-size:14px;height:28px;line-height:30px;overflow:hidden;letter-spacing:1px;}
 .side_body {border:#e1e1e1 1px solid;border-top:none;background:#FFFFFF;padding:10px;margin:0 0 10px;}
 .side_body li {background:url('../../image/ico_arrow.gif') no-repeat 5px 7px;padding:0 0 0 20px;height:26px;line-height:26px;overflow:hidden;}
 
-.main_head {border:#e1e1e1 1px solid;border-bottom:none;}
-.main_head div {padding:0 10px 0 10px;font-size:14px;height:28px;line-height:30px;overflow:hidden;letter-spacing:1px;}
+.main_head {border:#e1e1e1 1px solid;border-bottom:none;background:#FFFFFF;}
+.main_head div {padding:10px 10px 0 10px;font-size:14px;line-height:30px;overflow:hidden;letter-spacing:1px;}
+.main_head strong {font-size:18px}
 .main_body {border:#e1e1e1 1px solid;border-top:none;background:#FFFFFF;padding:10px;margin:0 0 10px;}
+.main_body .item{background:#f3f3f3;border:#FFFFFF 1px solid;margin-bottom: 15px;}
+.main_body .item:hover{border:#ef0d4d 1px solid;}
+.main_body .item img{width:100%}
+.main_body .item div{line-height: 32px; padding:10px 20px;}
+.main_body .item div{line-height: 32px}
+.main_body .item div a{font-size:14px;}
+.main_body .item div b{font-size:20px;color:#ef0d4d}

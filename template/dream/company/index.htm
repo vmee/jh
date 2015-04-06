@@ -56,7 +56,7 @@
                 <ul>
 
 
-                    {php $_tags=tag("moduleid=5&table=company&pagesize=4&condition=catid like '%,".$c[catid].",%'&template=null")}
+                    {php $_tags=tag("moduleid=5&table=company&pagesize=8&condition=catid like '%,".$c[catid].",%'&order=vip desc,uv desc&template=null")}
                     {loop $_tags $k $t}
                     <!-- Product #1 -->
                     <li>

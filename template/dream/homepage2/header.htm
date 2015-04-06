@@ -1,0 +1,129 @@
+{template 'head'}
+<link rel="stylesheet" href="{DT_SKIN}homepage.css">
+
+{if $file=='homepage'}
+{if $bannert || $banner}
+<div class="container fullwidth-element">
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        {if $banner3}<li data-target="#carousel-example-generic" data-slide-to="2"></li>{/if}
+        {if $banner3}<li data-target="#carousel-example-generic" data-slide-to="3"></li>{/if}
+        {if $banner3}<li data-target="#carousel-example-generic" data-slide-to="4"></li>{/if}
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active"><a href="{$banner1_url}"><img src="{$banner1}" /></a></div>
+        <div class="item"><a href="{$banner2_url}"><img src="{$banner2}" /></a></div>
+        {if $banner3}<div class="item"><a href="{$banner3_url}"><img src="{$banner3}" /></a></div>{/if}
+        {if $banner4}<div class="item"><a href="{$banner4_url}"><img src="{$banner4}" /></a></div>{/if}
+        {if $banner5}<div class="item"><a href="{$banner5_url}"><img src="{$banner5}" /></a></div>{/if}
+    </div>
+
+</div>
+    </div>
+{/if}
+{/if}
+
+<div class="container">
+    </div>
+
+<div class="m box">
+    <!--
+    <div class="sig    <!--
+    {if $COM[vip]}
+    <div><strong>{$COM[year]}</strong><span title="指数满分为10">{$COM[vip]}</span></div>
+    {else}
+    <img src="{$MODULE[4][linkurl]}image/free_bg.gif" alt="普通会员"/>
+    {/if}
+
+</div>-->
+    <div class="head">
+        <div class="logobox">
+
+            <div class="logo"><a href="{$COM[linkurl]}"><img src="{$COM[thumb]}" alt="{$COM[company]}" onload="if(this.width>165)this.width=165;"/></a></div>
+
+        </div>
+
+        <div class="basic f_l">
+
+            <div class="topname">
+                <h1>{$COM[company]}</h1>
+            </div>
+
+
+            <!--        <div class="clearfix">
+                        <div class="leftname">营业时间：<span>周一到周日上午8：30-下午18:00 </span></div>
+                    </div>-->
+
+            <div class="clearfix">
+                <div class="addTxt "><div class="f_l leftname">商家地址：<span>{$COM[address]}</span></div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <p class="topphone f_l leftname">联系电话：<span>{if $domain}{$COM[telephone]}{else}{anti_spam($COM[telephone])}{/if}</span>
+                </p>
+            </div>
+
+            <div class="clearfix">
+                <p class="leftname">官方网站：{if $COM[homepage]}<a href="{$COM[homepage]}" target="_blank" rel="nofollow">{$COM[homepage]}</a><br/>{/if}
+                    <a href="{$COM[linkurl]}" target="_blank" rel="nofollow">{$COM[linkurl]}</a></p>
+            </div>
+
+            <div class="serol clearfix"><div class="f_l leftname">商铺流量：</div>
+                {$COM[uv]}&nbsp;&nbsp;</b><i>位新人关注过</i>
+            </div>
+
+            <div class="clearfix sharebox">
+                <div class="sharetxt f_l">请分享到：</div>
+                <div class="f_l">
+                    <!-- Baidu Button BEGIN -->
+                    <div id="bdshare" class="bdshare_t bds_tools get-co des-bdshare">
+                        <a class="bds_tsina"></a>
+                        <a class="bds_qzone"></a>
+                        <a class="bds_tqq"></a>
+                        <a class="bds_renren"></a>
+                        <a class="bds_bdhome"></a>
+                        <span class="bds_more"></span>
+                    </div>
+                    <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=2   502690" ></script>
+                    <script type="text/javascript" id="bdshell_js"></script>
+                    <script type="text/javascript">
+                        document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+                    </script>
+                    <!-- Baidu Button END -->
+                </div>
+            </div>
+        </div>
+
+        <div class="rankBox f_r">
+
+            <div class="clearfix shopRank">
+                <div class="f_l ranksctxt leftname">在线咨询：</div>
+                <div class="rankscore f_l">{if $COM[username] && $DT[im_web]}{im_web($COM[username])}&nbsp;{/if}
+                    {if $COM[qq] && $DT[im_qq]}{im_qq($COM[qq])}&nbsp;{/if}
+                    {if $COM[ali] && $DT[im_ali]}{im_ali($COM[ali])}&nbsp;{/if}
+                    {if $COM[msn] && $DT[im_msn]}{im_msn($COM[msn])}&nbsp;{/if}
+                    {if $COM[skype] && $DT[im_skype]}{im_skype($COM[skype])}&nbsp;{/if}</div>
+            </div>
+            <div class="clearfix shopRank mt5">
+                <div class="f_l ranksctxt leftname">在线状态：：</div>
+                <div class="rankscore f_l">{if online($COM[userid])==1}<span class="f_red">当前在线</span>{else}<span class="f_gray">当前离线</span>{/if}</div>
+
+            </div>
+            {if $announce}
+            <div class="yuyueyoulihybox">
+                <div class="youlisanjiao"></div>
+                <div class="youlibox" title="{$announce}">{$announce}</div>
+            </div>
+            {/if}
+            <div class="btnBox clearfix">
+                <input class="rankBtn mdialog" data-username="{$COM[username]}" data-moduleid="2" data-itemid="{$COM[userid]}" data-title="{$COM[company]}" type="button" value="立即免费预约">
+            </div>
+        </div>
+    </div>
+
+</div>

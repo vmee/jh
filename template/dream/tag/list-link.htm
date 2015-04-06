@@ -1,6 +1,6 @@
 {loop $tags $i $t}
 {if $i%$cols==0}{/if}
-<a href="{$t[linkurl]}" target="_blank" title="{$t[introduce]}">{if $t[thumb]}<img src="{$t[thumb]}" width="88" height="31" alt="{$t[alt]}"/>{else}{$t[title]}{/if}</a>
+<a href="{$t[linkurl]}" class="text-muted" target="_blank" title="{$t[introduce]}">{$t[title]}</a>
 {if $i%$cols==($cols-1)}{/if}
 {/loop}
 
