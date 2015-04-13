@@ -1,5 +1,5 @@
 {template 'head'}
-<link rel="stylesheet" href="{DT_SKIN}homepage.css">
+<link rel="stylesheet" href="{DT_SKIN}homepage2.css">
 
 {if $file=='homepage'}
 {if $bannert || $banner}
@@ -28,19 +28,24 @@
 {/if}
 {/if}
 
-<div class="container">
+<div class="container box fullwidth-element margin-top-15">
+    <div class="row">
+        <div class="col-md-4"><a href="{$COM[linkurl]}"><img src="{$COM[thumb]}" alt="{$COM[company]}" class="img-thumbnail" /></a></div>
+        <div class="col-md-4">
+            <p><h3>{$COM[company]}</h3></p>
+            <p>商家地址：<span>{$COM[address]}</span></p>
+            <p>联系电话：<span>{if $domain}{$COM[telephone]}{else}{anti_spam($COM[telephone])}{/if}</span></p>
+            <p>商铺流量：<b>{$COM[uv]}</b><i>位新人关注过</i></p>
+            <p>官方网站：{if $COM[homepage]}<a href="{$COM[homepage]}" target="_blank" rel="nofollow">{$COM[homepage]}</a><br/>{/if}
+                <a href="{$COM[linkurl]}" target="_blank" rel="nofollow">{$COM[linkurl]}</a></p>
+
+        </div>
+        <div class="col-md-4">.col-md-4</div>
+    </div>
     </div>
 
 <div class="m box">
-    <!--
-    <div class="sig    <!--
-    {if $COM[vip]}
-    <div><strong>{$COM[year]}</strong><span title="指数满分为10">{$COM[vip]}</span></div>
-    {else}
-    <img src="{$MODULE[4][linkurl]}image/free_bg.gif" alt="普通会员"/>
-    {/if}
 
-</div>-->
     <div class="head">
         <div class="logobox">
 

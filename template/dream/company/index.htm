@@ -56,7 +56,7 @@
                 <ul>
 
 
-                    {php $_tags=tag("moduleid=5&table=company&pagesize=8&condition=catid like '%,".$c[catid].",%'&order=vip desc,uv desc&template=null")}
+                    {php $_tags=tag("moduleid=5&table=company&pagesize=8&condition=catid like '%,".$c[catid].",%'&order=vip desc,userid desc&template=null")}
                     {loop $_tags $k $t}
                     <!-- Product #1 -->
                     <li>
@@ -71,7 +71,7 @@
                             <a href="{$t[linkurl]}">
                                 <section class="item-description">
                                     <h4>{$t[company]}</h4>
-                                    <span>{$t[business]}</span>
+                                    <span>{if $t[business]}主营：{$t[business]}{/if}</span>
                                 </section>
                             </a>
                         </figure>
