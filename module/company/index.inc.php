@@ -53,6 +53,8 @@ if($username) {
 	if($page == 1) $head_canonical = $MOD['linkurl'];
 	if($EXT['wap_enable']) $head_mobile = $EXT['wap_url'].'index.php?moduleid='.$moduleid.($page > 1 ? '&page='.$page : '');
 	$destoon_task = "moduleid=$moduleid&html=index";
+
+	dheader('search.php');
 	include template('index', $module);
 }
 ?>

@@ -1092,7 +1092,7 @@ a {
 a:hover,
 a:focus {
     color: #165ba8;
-    text-decoration: underline;
+    /*text-decoration: underline;*/
 }
 a:focus {
     outline: thin dotted;

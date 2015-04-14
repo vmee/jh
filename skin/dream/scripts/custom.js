@@ -138,7 +138,7 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 
 		// ShowBiz Carousel
 		//----------------------------------------//
-		$('#new-arrivals').showbizpro({
+		$('.showbiz-container').showbizpro({
 			dragAndScroll:"off",
 			visibleElementsArray:[4,4,3,1],
 			carousel:"off",

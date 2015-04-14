@@ -48,7 +48,7 @@ $tags = array();
 	if($size) $condition .= " AND size='$sizes[$size]'";
 	if($catid) $condition .= " AND catids LIKE '%,".$catid.",%'";
 	if($areaid) $condition .= ($ARE['child']) ? " AND areaid IN (".$ARE['arrchildid'].")" : " AND areaid=$areaid";
-	if($thumb) $condition .= " AND thumb<>''";
+	$condition .= " AND thumb<>''";
 	if($vip) $condition .= $vip == 1 ? " AND vip>0" : " AND vip=$vip-1";
 	if($mincapital)  $condition .= " AND capital>$mincapital";
 	if($maxcapital)  $condition .= " AND capital<$maxcapital";
