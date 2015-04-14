@@ -8,7 +8,7 @@
 
     <div class="col-md-4">
         <div class="item">
-            <a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=sell&itemid='.$t['itemid'], $domain)}{/if}"><img src="{imgurl($t[thumb], 1)}" width="300" height="200" alt="{$t[alt]}"/></a>
+            <a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=sell&itemid='.$t['itemid'], $domain)}{/if}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[alt]}"/></a>
             <div><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=sell&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[alt]}">{$t[title]}</a>
                 <p>优惠价:<b>{$t[price]}</b> <del>门店价:{$t[marketprice]}</del></p>
             </div>
@@ -27,7 +27,7 @@
 
     <div class="col-md-4">
         <div class="item">
-            <a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=activity&itemid='.$t['itemid'], $domain)}{/if}"><img src="{imgurl($t[thumb], 1)}" width="300" height="200" alt="{$t[alt]}"/></a>
+            <a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=activity&itemid='.$t['itemid'], $domain)}{/if}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[alt]}"/></a>
             <div><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=activity&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[alt]}">{$t[title]}</a>
                 <p>活动结束时间:{$t[endtime]}</p>
             </div>
@@ -42,12 +42,12 @@
 
 <div class="main_head"><div><span class="f_r"><a href="{userurl($username, 'file=photo ', $domain)}">更多</a></span><strong>作品案例</strong></div></div>
 <div class="main_body row">
-    <!--{php $tags=tag("moduleid=12&condition=status>2 and username='$username'&pagesize=9&order=addtime desc&fields=itemid,title,linkurl,thumb,addtime,items,open&template=null");}-->
+    <!--{php $tags=tag("moduleid=12&condition=status>2 and username='$username' and items>0&pagesize=9&order=addtime desc&fields=itemid,title,linkurl,thumb,addtime,items,open&template=null");}-->
     {loop $tags $i $t}
 
     <div class="col-md-4">
         <div class="item">
-            <a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=photo&itemid='.$t['itemid'], $domain)}{/if}"><img src="{$t[thumb]}" width="120" height="90" alt="{$t[alt]}" title="{$t[alt]}"/></a>
+            <a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=photo&itemid='.$t['itemid'], $domain)}{/if}"><img src="{$t[thumb]}" alt="{$t[alt]}" title="{$t[alt]}"/></a>
             <div><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=photo&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[alt]}">{$t[title]}</a></div>
         </div>
     </div>
@@ -64,7 +64,7 @@
     </div>
 </div>
 
-<div class="main_head"><div><span class="f_r"><a href="{userurl($username, 'file=guestbook ', $domain)}">我要咨询</a></span><strong>留言咨询</strong></div></div>
+<div class="main_head"><div><span class="f_r"><a href="{userurl($username, 'file=guestbook', $domain)}">我要咨询</a></span><strong>留言咨询</strong></div></div>
 <div class="main_body">
     <table cellpadding="0" cellspacing="0" width="100%">
         <tr>
