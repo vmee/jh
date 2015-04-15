@@ -1,4 +1,24 @@
 .carousel-inner img{width:100%}
-.boxed{ width: 960px;}
+body.boxed{ width: 100%;}
 #wrapper{background-color:#e9e9e9}
 .box{padding:20px;background:#fff;border:1px solid #e1e1e1}
+.dl-horizontal {margin-top:20px;}
+.dl-horizontal dt{width:60px;color:#999;line-height: 30px;margin-right: 5px;}
+@media (min-width: 768px) {
+    .dl-horizontal dt {
+        width: 60px;
+    }
+
+    .dl-horizontal dd {
+        margin-left: 70px;
+    }
+}
+
+.youlibox{border:1px solid #ffe0e0;margin:10px 0;background:#fffdfe;color:#444;box-shadow:0px 1px 2px #E9E0E1;border-radius:2px;padding:0px 10px 0 10px;overflow:hidden;word-break:break-all}
+
+.rankBtn{font-size:18px;}.rankBtn:hover{opacity:0.8}
+input.rankBtn[type="button"]{
+    font-size: 18px;
+    background: #ef0d4d repeat-x;
+    padding: 10px 30px;
+}

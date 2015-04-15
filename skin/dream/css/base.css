@@ -83,7 +83,7 @@
 	body, h1, h2, h3, h4, h5, h6,
 	input[type="button"], input[type="submit"],
 	input[type="text"], input[type="password"], input[type="email"], textarea, select, button {
-		font-family: "Open Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-family: Microsoft YaHei,"Source Sans Pro", Calibri, Candara, Arial, "宋体", "sans-serif";
 	}
 
 

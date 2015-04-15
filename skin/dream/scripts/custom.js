@@ -546,7 +546,10 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 		// Portfolio Isotope
 		//----------------------------------------//
 
-
+		$(window).load(function(){
+			var $container = $('#portfolio-wrapper, #masonry-wrapper');
+			$container.isotope({ itemSelector: '.portfolio-item, .masonry-item', layoutMode: 'masonry' });
+		});
 
 
 		/*$(window).resize(function() {
