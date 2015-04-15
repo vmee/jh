@@ -71,12 +71,12 @@
                                 </a>
                             </div>
 
-                            <a href="{$t[linkurl]}">
+
                                 <section class="item-description">
-                                    <h4>{$t[company]}</h4>
+                                    <h5><a href="{$t[linkurl]}">{$t[company]}</a></h5>
                                     <span>{if $t[business]}主营：{$t[business]}{/if}</span>
                                 </section>
-                            </a>
+
                         </figure>
                     </li>
 
@@ -132,7 +132,7 @@
                     <!-- Item #{$k} -->
                     <tr>
                         <td><a href="{userurl($t[username])}"><img src="{useravatar($t[username])}" alt="" class="img-circle"/></a></td>
-                        <td class="cart-title"><a href="{userurl($t[username])}">{$t[truename]}</a></td>
+                        <td class="cart-title"><a href="{userurl($t[username])}">{$t[truename]}</a> </td>
                         <td  class="cart-title"><a href="{userurl($c[username])}">{$c[company]}</a></td>
                         <td>{area_pos($t[areaid], '&nbsp;')}</td>
                         <td>{timetodate(strtotime($t[weddate]), 7)}</td>

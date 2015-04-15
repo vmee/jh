@@ -60,12 +60,10 @@
                     </a>
                 </div>
 
-                <a href="{$t[linkurl]}">
-                    <section class="item-description">
-                        <h5>{$t[company]}</h5>
-                        <span>主营：{if $t[business]}{$t[business]}{else}{$c[catname]}{/if}</span>
-                    </section>
-                </a>
+                <section class="item-description">
+                    <h5><a href="{$t[linkurl]}">{$t[company]}</a></h5>
+                    <span>主营：{if $t[business]}{$t[business]}{else}{$c[catname]}{/if}</span>
+                </section>
 
             </figure>
         </div>

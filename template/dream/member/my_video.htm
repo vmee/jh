@@ -263,8 +263,8 @@ var property_admin = 0;
 <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
 <td><input type="checkbox" name="itemid[]" value="{$v[itemid]}"/></td>
 <td><a href="javascript:_preview('{$v[thumb]}');"><img src="{$v[thumb]}" width="60" class="thumb"/></a></td>
-<td align="left" title="{$v[alt]}">&nbsp;{if $v[status]==3}<a href="{$v[linkurl]}" target="_blank" class="t">{else}<a href="{$DT[file_my]}?mid={$mid}&action=edit&itemid={$v[itemid]}" class="t">{/if}{$v[title]}</a>{if $v[status]==1 && $v[note]} <a href="javascript:" onclick="alert('{$v[note]}');"><img src="{DT_STATIC}{$MODULE[2][moduledir]}/image/why.gif" title="未通过原因"/></a>{/if}</td>
-<td>&nbsp;&nbsp;<a href="{$v[caturl]}" target="_blank">{$v[catname]}</a>&nbsp;&nbsp;</td>
+<td align="left" title="{$v[alt]}">&nbsp;{if $v[status]==3}<a href="{userurl($_username, 'file=video&itemid='.$v['itemid'], $domain)}" target="_blank" class="t">{else}<a href="{$DT[file_my]}?mid={$mid}&action=edit&itemid={$v[itemid]}" class="t">{/if}{$v[title]}</a>{if $v[status]==1 && $v[note]} <a href="javascript:" onclick="alert('{$v[note]}');"><img src="{DT_STATIC}{$MODULE[2][moduledir]}/image/why.gif" title="未通过原因"/></a>{/if}</td>
+<td>&nbsp;&nbsp;<a>{$v[catname]}</a>&nbsp;&nbsp;</td>
 {if $timetype=='add'}
 <td class="f_gray px11" title="更新时间 {$v[editdate]}">{$v[adddate]}</td>
 {else}

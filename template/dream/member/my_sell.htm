@@ -193,8 +193,8 @@ var property_admin = 0;
 <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
 <td><input type="checkbox" name="itemid[]" value="{$v[itemid]}"/></td>
 <td><a href="javascript:_preview('{$v[thumb]}');"><img src="{if $v[thumb]}{$v[thumb]}{else}{DT_SKIN}image/nopic50.gif{/if}" width="50" class="thumb"/></a></td>
-<td align="left" title="{$v[alt]}"><ul><li>&nbsp;{if $v[level]==1}<img src="{DT_STATIC}{$MODULE[2][moduledir]}/image/ico_home.gif" title="网站首页推广"/> {/if}{if $v[elite]}<span class="f_red" title="公司主页推荐">[荐]</span> {/if}{if $v[status]==3}<a href="{$v[linkurl]}" target="_blank" class="t">{else}<a href="{$DT[file_my]}?mid={$mid}&action=edit&itemid={$v[itemid]}" class="t">{/if}{$v[title]}</a>{if $v[status]==1 && $v[note]} <a href="javascript:" onclick="alert('{$v[note]}');"><img src="{DT_STATIC}{$MODULE[2][moduledir]}/image/why.gif" title="未通过原因"/></a>{/if}</li></ul></td>
-<td><a href="{$v[caturl]}" target="_blank">{$v[catname]}</a></td>
+<td align="left" title="{$v[alt]}"><ul><li>&nbsp;{if $v[level]==1}<img src="{DT_STATIC}{$MODULE[2][moduledir]}/image/ico_home.gif" title="网站首页推广"/> {/if}{if $v[elite]}<span class="f_red" title="公司主页推荐">[荐]</span> {/if}{if $v[status]==3}<a href="{userurl($_username, 'file=sell&itemid='.$v['itemid'], $domain)}" target="_blank" class="t">{else}<a href="{$DT[file_my]}?mid={$mid}&action=edit&itemid={$v[itemid]}" class="t">{/if}{$v[title]}</a>{if $v[status]==1 && $v[note]} <a href="javascript:" onclick="alert('{$v[note]}');"><img src="{DT_STATIC}{$MODULE[2][moduledir]}/image/why.gif" title="未通过原因"/></a>{/if}</li></ul></td>
+<td><a href="{$MODULE[$mid][linkurl]}search.php?catid={$v[catid]}" target="_blank">{$v[catname]}</a></td>
 {if $timetype=='add'}
 <td class="f_gray px11" title="更新时间 {timetodate($v[edittime], 5)}">{timetodate($v[addtime], 5)}</td>
 {else}
