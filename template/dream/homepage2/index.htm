@@ -1,3 +1,117 @@
 {template 'header', $template}
 
+<div class="container box margin-top-15">
+<div class="head"><div><span class="text-right"><a href="{userurl($username, 'file=sell', $domain)}">更多</a></span><strong>精品特价</strong></div></div>
+<div class="row">
+    <!--{php $tags=tag("moduleid=5&condition=status>2 and username='$username'&pagesize=9&order=edittime desc&fields=itemid,title,linkurl,thumb,edittime,price,marketprice&template=null");}-->
+    {loop $tags $i $t}
+
+    <div class="col-md-4">
+        <div class="item">
+            <a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=sell&itemid='.$t['itemid'], $domain)}{/if}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[alt]}"/></a>
+            <div><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=sell&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[alt]}">{$t[title]}</a>
+                <p>优惠价:<b>{$t[price]}</b> <del>门店价:{$t[marketprice]}</del></p>
+            </div>
+        </div>
+    </div>
+
+    {/loop}
+
+</div>
+</div>
+
+<!--{php $tags=tag("moduleid=23&condition=status>2 and username='$username'&pagesize=9&order=edittime desc&fields=itemid,title,linkurl,thumb,edittime,endtime&template=null");}-->
+{if count($tags)>0}
+<div class="container box margin-top-15">
+<div class="head"><div><span class="f_r"><a href="{userurl($username, 'file=activity ', $domain)}">更多</a></span><strong>优惠活动</strong></div></div>
+<div class="row">
+    {loop $tags $i $t}
+
+    <div class="col-md-4">
+        <div class="item">
+            <a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=activity&itemid='.$t['itemid'], $domain)}{/if}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[alt]}"/></a>
+            <div><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=activity&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[alt]}">{$t[title]}</a>
+                <p>活动结束时间:{$t[endtime]}</p>
+            </div>
+        </div>
+    </div>
+
+    {/loop}
+
+</div>
+</div>
+{/if}
+
+<div class="container box margin-top-15">
+<div class="head"><div><span class="f_r"><a href="{userurl($username, 'file=photo ', $domain)}">更多</a></span><strong>作品案例</strong></div></div>
+<div class="row">
+    <!--{php $tags=tag("moduleid=12&condition=status>2 and username='$username' and items>0&pagesize=9&order=addtime desc&fields=itemid,title,linkurl,thumb,addtime,items,open&template=null");}-->
+    {loop $tags $i $t}
+
+    <div class="col-md-4">
+        <div class="item">
+            <a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=photo&itemid='.$t['itemid'], $domain)}{/if}"><img src="{$t[thumb]}" alt="{$t[alt]}" title="{$t[alt]}"/></a>
+            <div><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=photo&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[alt]}">{$t[title]}</a></div>
+        </div>
+    </div>
+
+    {/loop}
+
+</div>
+    </div>
+
+<div class="container box margin-top-15">
+<div class="head"><div><span class="f_r"><a href="{userurl($username, 'file=introduce', $domain)}">更多</a></span><strong>公司介绍</strong></div></div>
+<div class="row">
+        {$COM[intro]}
+</div>
+    </div>
+
+<div class="container box margin-top-15">
+<div class="head"><div><span class="f_r"><a href="{userurl($username, 'file=guestbook', $domain)}">我要咨询</a></span><strong>留言咨询</strong></div></div>
+<div class="row">
+    <table cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td valign="top">
+                <div class="left_box">
+                    <div class="pd20">
+                        <!--{php $tags=tag("table=guestbook&condition=msn='$username' and reply<>''&pagesize=50&order=itemid desc&template=null");}-->
+                        {if $tags}
+                        {loop $tags $k $v}
+
+
+                        <table width="100%" cellpadding="8" cellspacing="1">
+                            <tr>
+                                <td width="30"> </td>
+
+                                <td><p class="text-primary">咨询内容：{$v[content]} <i>{$v[adddate]}</i></p>
+                                    {if $v[reply]}
+                                    <p class="text-muted">商家回复：{$v[reply]} <i>{$v[editdate]}</i></p>
+                                    {/if}
+                                    <hr>
+                                </td>
+                            </tr>
+
+                        </table>
+                        {/loop}
+                        {/if}
+
+
+
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+</div>
+
+{if $could_comment && in_array($moduleid, explode(',', get_module_setting(3, 'comment_module')))}
+<div id="comment_div" class="container box margin-top-15">
+    <div class="head"><div><span class="f_r px12">共<span id="comment_count">0</span>条&nbsp;&nbsp;</span><span id="message_title"><strong>用户点评</strong></span></div></div>
+    <div class="row"><iframe src="{$MODULE[3][linkurl]}comment.php?mid={$moduleid}&itemid={$COM[userid]}" id="destoon_comment" style="width:100%;" scrolling="no" frameborder="0"></iframe>
+    </div>
+</div>
+{/if}
+
 {template 'footer', $template}

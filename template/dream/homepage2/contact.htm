@@ -1,8 +1,8 @@
 {template 'header', $template}
-<div class="dsn" id="pos_show">您当前的位置：<a href="{$COM[linkurl]}">首页</a> &raquo; <a href="{$MENU[$menuid][linkurl]}">{$MENU[$menuid][name]}</a></div>
 
-<div class="main_head"><div><strong>{$MENU[$menuid][name]}</strong></div></div>
-<div class="main_body">
+<div class="container box margin-top-15">
+<div class="head"><div><strong>{$MENU[$menuid][name]}</strong></div></div>
+<div class="row">
 	<div class="px13 lh18">
 	<table width="98%" cellpadding="3" cellspacing="3" align="center">
 	<tr>
@@ -75,12 +75,16 @@
 	</table>
 	</div>
 </div>
+	</div>
+
 {if $api_map && $map}
-<div class="main_head"><div><strong>公司地图</strong><a name="map"></a></div></div>
-<div class="main_body">
+	<div class="container box margin-top-15">
+<div class="head"><div><strong>公司地图</strong><a name="map"></a></div></div>
+<div class="row">
 	{php $map_height = 300;}
 	{php @include DT_ROOT.'/api/map/'.$api_map.'/show.inc.php';}
 </div>
+		</div>
 {/if}
 
 {template 'footer', $template}
