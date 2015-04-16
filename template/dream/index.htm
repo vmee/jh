@@ -172,6 +172,7 @@
                     {loop $_tags $k $t}
                     {if $k>-1}
                     {php $u = userinfo($t[username]);}
+                    {if $u[groupid]==5}
                     {php $cp = userinfo($u[inviter_company]);}
                     <!-- Item #{$k} -->
                     <tr>
@@ -182,6 +183,7 @@
                         <td>{timetodate(strtotime($u[weddate]), 7)}</td>
                         <td>{implode(',',userwed($t[username]))}</td>
                     </tr>
+                    {/if}
                     {/if}
                     {/loop}
 
