@@ -1,174 +1,93 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/>
-<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{$COM[company]}{/if}</title>
-{if $head_keywords}<meta name="keywords" content="{$head_keywords}"/>{/if}
-{if $head_description}<meta name="description" content="{$head_description}"/>{/if}
-    <link rel="shortcut icon" type="image/x-icon" href="{DT_STATIC}favicon.ico"/>
-    <link rel="bookmark" type="image/x-icon" href="{DT_STATIC}favicon.ico"/>
-    <link rel="stylesheet" type="text/css" href="{DT_SKIN}bootstrap.css"/>
-<link rel="stylesheet" type="text/css" href="{$MODULE[4][linkurl]}skin/common.css"/>
-<link rel="stylesheet" type="text/css" href="{$HSPATH}style.css"/>
-{if !DT_DEBUG}<script type="text/javascript">window.onerror= function(){return true;}</script>{/if}
-<script type="text/javascript" src="{DT_PATH}lang/{DT_LANG}/lang.js"></script>
-<script type="text/javascript">
-var DTPath = '{DT_PATH}';
-var SKPath = '{DT_SKIN}';
-var CKPrex = '{$CFG[cookie_pre]}';
-var DTTour = '{$MODULE[4][linkurl]}tour.php';
-{if $itemid && $DT[anticopy]}
-document.oncontextmenu=function(e){return false;};
-document.onselectstart=function(e){return false;};
-{/if}
-{if !$domain && DT_DOMAIN}
-document.domain = '{DT_DOMAIN}';
-{/if}
-
-</script>
-    <script>
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?a25641d310b3a42d3bbed29edd0ba173";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
-
-
-    {if $css}<style type="text/css">{$css}</style>{/if}
-<style type="text/css">#destoon_member a{color:#fff;}</style>
-</head>
-<body{if $bgcolor || $background} style="background:{if $bgcolor}{$bgcolor} {/if}{if $background}url('{$background}') no-repeat center 0{/if};"{/if}>
-
-
-<div class="top_nav">
-    <div class="head">
-    <a href="{DT_PATH}" class="ai_title">{$DT['sitename']},让选择更多,让服务更全,让婚礼更美!</a>
-    <div id="destoon_member" style="float:right;color:#fff;"></div>
-    </div>
-</div>
+{template 'head'}
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}homepage2.css">
 
 {if $file=='homepage'}
 {if $bannert || $banner}
-<div class="m">
-    <div class="banner">
-        {if $bannert == 2}
-        <script type="text/javascript">
-            var config = '5|0xFFFFFF|0x333333|80|0xFAFAFA|0x333333|0x000000';
-            var files = "{$banner1}|{$banner2}{if $banner3}|{$banner3}{/if}{if $banner4}|{$banner4}{/if}{if $banner5}|{$banner5}{/if}";
-            var links = '{$banner1_url}|{$banner2_url}{if $banner3_url}|{$banner3_url}{/if}{if $banner4_url}|{$banner4_url}{/if}{if $banner5_url}|{$banner5_url}{/if}';
-            var texts = '';
-            document.write('<embed src="{DT_PATH}file/flash/slide.swf" wmode="opaque" FlashVars="config='+config+'&bcastr_flie='+files+'&bcastr_link='+links+'&bcastr_title='+texts+'&menu="false" quality="high" width="{$bannerw}" height="{$bannerh}" type="application/x-shockwave-flash" extendspage="http://get.adobe.com/flashplayer/"></embed>');
-        </script>
-        {elseif $bannert == 1}
-        <embed src="{$bannerf}" quality="high" loop="true" extendspage="http://get.adobe.com/flashplayer/" type="application/x-shockwave-flash" wmode="transparent" width="{$bannerw}" height="{$bannerh}"></embed>
-        {elseif $banner}
-        <img src="{$banner}" width="100%"/>
-        {/if}
+<div class="container margin-top-15">
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        {if $banner2}<li data-target="#carousel-example-generic" data-slide-to="1"></li>{/if}
+        {if $banner3}<li data-target="#carousel-example-generic" data-slide-to="2"></li>{/if}
+        {if $banner4}<li data-target="#carousel-example-generic" data-slide-to="3"></li>{/if}
+        {if $banner5}<li data-target="#carousel-example-generic" data-slide-to="4"></li>{/if}
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active"><a href="{$banner1_url}"><img src="{$banner1}" /></a></div>
+        {if $banner2}<div class="item"><a href="{$banner2_url}"><img src="{$banner2}" /></a></div>{/if}
+        {if $banner3}<div class="item"><a href="{$banner3_url}"><img src="{$banner3}" /></a></div>{/if}
+        {if $banner4}<div class="item"><a href="{$banner4_url}"><img src="{$banner4}" /></a></div>{/if}
+        {if $banner5}<div class="item"><a href="{$banner5_url}"><img src="{$banner5}" /></a></div>{/if}
     </div>
+
 </div>
+    </div>
 {/if}
 {/if}
 
-<div class="m box">
-    <!--
-    <div class="sig    <!--
-    {if $COM[vip]}
-    <div><strong>{$COM[year]}</strong><span title="指数满分为10">{$COM[vip]}</span></div>
-    {else}
-    <img src="{$MODULE[4][linkurl]}image/free_bg.gif" alt="普通会员"/>
-    {/if}
+<div class="container box margin-top-15">
+    <div class="row">
+        <div class="col-md-3 text-center">
+            <a href="{$COM[linkurl]}"><img src="{$COM[thumb]}" alt="{$COM[company]}" class="img-thumbnail" /></a></div>
+        <div class="col-md-6">
+            <h2>{$COM[company]}</h2>
 
-</div>-->
-<div class="head">
-    <div class="logobox">
-
-        <div class="logo"><a href="{$COM[linkurl]}"><img src="{$COM[thumb]}" alt="{$COM[company]}" onload="if(this.width>165)this.width=165;"/></a></div>
+            <dl class="dl-horizontal">
+                <dt>商家地址:</dt>
+                <dd><strong>{$COM[address]}</strong></dd>
+                <dt>联系电话:</dt>
+                <dd>{if $domain}{$COM[telephone]}{else}{anti_spam($COM[telephone])}{/if}</dd>
+                <dt>商铺流量:</dt>
+                <dd><b>{$COM[uv]}</b><em>位新人关注过</em></dd>
+                <dt>官方网站:</dt>
+                <dd>{if $COM[homepage]}<a href="{$COM[homepage]}" target="_blank" rel="nofollow">{$COM[homepage]}</a><br/>{/if}
+                    <a href="{$COM[linkurl]}" target="_blank" rel="nofollow">{$COM[linkurl]}</a></dd>
+                <dt>请分享到:</dt>
+                <dd><div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+                    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></dd>
+            </dl>
 
         </div>
+        <div class="col-md-3">
 
-    <div class="basic f_l">
+            <dl class="dl-horizontal">
+                <dt>在线咨询:</dt>
+                <dd>{if $COM[username] && $DT[im_web]}{im_web($COM[username])}{/if}
+                    {if $COM[qq] && $DT[im_qq]}{im_qq($COM[qq])}{/if}
+                    {if $COM[ali] && $DT[im_ali]}{im_ali($COM[ali])}{/if}
+                    {if $COM[msn] && $DT[im_msn]}{im_msn($COM[msn])}{/if}
+                    {if $COM[skype] && $DT[im_skype]}{im_skype($COM[skype]){/if}</dd>
+                <dt>在线状态:</dt>
+                <dd>{if online($COM[userid])==1}<span class="danger">当前在线</span>{else}<span>当前离线</span>{/if}</dd>
+            </dl>
 
-            <div class="topname">
-                <h1>{$COM[company]}</h1>
-            </div>
-
-
-<!--        <div class="clearfix">
-            <div class="leftname">营业时间：<span>周一到周日上午8：30-下午18:00 </span></div>
-        </div>-->
-
-        <div class="clearfix">
-            <div class="addTxt "><div class="f_l leftname">商家地址：<span>{$COM[address]}</span></div>
-            </div>
-        </div>
-        <div class="clearfix">
-            <p class="topphone f_l leftname">联系电话：<span>{if $domain}{$COM[telephone]}{else}{anti_spam($COM[telephone])}{/if}</span>
-            </p>
-        </div>
-
-        <div class="clearfix">
-            <p class="leftname">官方网站：{if $COM[homepage]}<a href="{$COM[homepage]}" target="_blank" rel="nofollow">{$COM[homepage]}</a><br/>{/if}
-                <a href="{$COM[linkurl]}" target="_blank" rel="nofollow">{$COM[linkurl]}</a></p>
-            </div>
-
-        <div class="serol clearfix"><div class="f_l leftname">商铺流量：</div>
-            {$COM[uv]}&nbsp;&nbsp;</b><i>位新人关注过</i>
-        </div>
-
-        <div class="clearfix sharebox">
-            <div class="sharetxt f_l">请分享到：</div>
-            <div class="f_l">
-
-                <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
-                <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-
+            {if $announce}
+            <div class="youlibox">{$announce}</div>
+            {/if}
+            <div>
+                <input class="rankBtn mdialog" data-username="{$COM[username]}" data-moduleid="2" data-itemid="{$COM[userid]}" data-title="{$COM[company]}" type="button" value="立即免费预约">
             </div>
         </div>
     </div>
+</div>
 
-    <div class="rankBox f_r">
+<div class="container margin-top-15">
+    <div class="sixteen">
 
-        <div class="clearfix shopRank">
-            <div class="f_l ranksctxt leftname">在线咨询：</div>
-            <div class="rankscore f_l">{if $COM[username] && $DT[im_web]}{im_web($COM[username])}&nbsp;{/if}
-                {if $COM[qq] && $DT[im_qq]}{im_qq($COM[qq])}&nbsp;{/if}
-                {if $COM[ali] && $DT[im_ali]}{im_ali($COM[ali])}&nbsp;{/if}
-                {if $COM[msn] && $DT[im_msn]}{im_msn($COM[msn])}&nbsp;{/if}
-                {if $COM[skype] && $DT[im_skype]}{im_skype($COM[skype])}&nbsp;{/if}</div>
-        </div>
-        <div class="clearfix shopRank mt5">
-            <div class="f_l ranksctxt leftname">在线状态：：</div>
-            <div class="rankscore f_l">{if online($COM[userid])==1}<span class="f_red">当前在线</span>{else}<span class="f_gray">当前离线</span>{/if}</div>
+        <a href="{DT_PATH}index.php" class="menu-trigger"><i class="fa fa-bars"></i>商家导航</a>
 
-        </div>
-        {if $announce}
-        <div class="yuyueyoulihybox">
-            <div class="youlisanjiao"></div>
-            <div class="youlibox" title="{$announce}">{$announce}</div>
-        </div>
-        {/if}
-        <div class="btnBox clearfix">
-            <input class="rankBtn mdialog" data-username="{$COM[username]}" data-moduleid="2" data-itemid="{$COM[userid]}" data-title="{$COM[company]}" type="button" value="立即免费预约">
-        </div>
+        <nav id="navigation">
+            <ul class="menu" id="responsive">
+
+
+                <li class="{if $file=='homepage'}current{else}{/if}"><a href="{$COM[linkurl]}">商家首页</a></li>
+                {loop $MENU $k $v}
+                <li class="{if $file==$menu_file[$k]}current{else}{/if}"><a href="{$v[linkurl]}">{$v[name]}</a></li>
+                {/loop}
+            </ul>
+        </nav>
     </div>
 </div>
-
-</div>
-<div class="m">
-<div class="menu"{if $file=='homepage'} data-spy="affix" data-offset-top="775" {/if}id="menu"{if count($MENU)>8} style="height:80px;"{/if}>
-	<ul>
-	<li class="{if $file=='homepage'}menu_on{else}menu_li{/if}"><a href="{$COM[linkurl]}"><span>商家首页</span></a></li>
-	{loop $MENU $k $v}
-	<li class="{if $file==$menu_file[$k]}menu_on{else}menu_li{/if}"><a href="{$v[linkurl]}"><span>{$v[name]}</span></a></li>
-	{/loop}
-	</ul>
-</div>
-</div>
-
-<div class="m">
-<table cellpadding="0" cellspacing="0" width="100%">
-<tr>
-<td valign="top" id="main">

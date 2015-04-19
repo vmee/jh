@@ -1,8 +1,8 @@
 {template 'header', $template}
 
-<div class="container box margin-top-15">
-<div class="head"><div><span class="text-right"><a href="{userurl($username, 'file=sell', $domain)}">更多</a></span><strong>精品特价</strong></div></div>
-<div class="row">
+
+<div class="main_head"><div><span class="f_r"><a href="{userurl($username, 'file=sell', $domain)}">更多</a></span><strong>精品特价</strong></div></div>
+<div class="main_body row">
     <!--{php $tags=tag("moduleid=5&condition=status>2 and username='$username'&pagesize=9&order=edittime desc&fields=itemid,title,linkurl,thumb,edittime,price,marketprice&template=null");}-->
     {loop $tags $i $t}
 
@@ -18,13 +18,11 @@
     {/loop}
 
 </div>
-</div>
 
 <!--{php $tags=tag("moduleid=23&condition=status>2 and username='$username'&pagesize=9&order=edittime desc&fields=itemid,title,linkurl,thumb,edittime,endtime&template=null");}-->
 {if count($tags)>0}
-<div class="container box margin-top-15">
-<div class="head"><div><span class="f_r"><a href="{userurl($username, 'file=activity ', $domain)}">更多</a></span><strong>优惠活动</strong></div></div>
-<div class="row">
+<div class="main_head"><div><span class="f_r"><a href="{userurl($username, 'file=activity ', $domain)}">更多</a></span><strong>优惠活动</strong></div></div>
+<div class="main_body row">
     {loop $tags $i $t}
 
     <div class="col-md-4">
@@ -39,12 +37,11 @@
     {/loop}
 
 </div>
-</div>
 {/if}
 
-<div class="container box margin-top-15">
-<div class="head"><div><span class="f_r"><a href="{userurl($username, 'file=photo ', $domain)}">更多</a></span><strong>作品案例</strong></div></div>
-<div class="row">
+
+<div class="main_head"><div><span class="f_r"><a href="{userurl($username, 'file=photo ', $domain)}">更多</a></span><strong>作品案例</strong></div></div>
+<div class="main_body row">
     <!--{php $tags=tag("moduleid=12&condition=status>2 and username='$username' and items>0&pagesize=9&order=addtime desc&fields=itemid,title,linkurl,thumb,addtime,items,open&template=null");}-->
     {loop $tags $i $t}
 
@@ -58,18 +55,17 @@
     {/loop}
 
 </div>
-    </div>
 
-<div class="container box margin-top-15">
-<div class="head"><div><span class="f_r"><a href="{userurl($username, 'file=introduce', $domain)}">更多</a></span><strong>公司介绍</strong></div></div>
-<div class="row">
+<div class="main_head"><div><span class="f_r"><a href="{userurl($username, 'file=introduce', $domain)}">更多</a></span><strong>公司介绍</strong></div></div>
+<div class="main_body">
+    <div class="lh18 px13 pd10">
         {$COM[intro]}
-</div>
+        <div class="c_b"></div>
     </div>
+</div>
 
-<div class="container box margin-top-15">
-<div class="head"><div><span class="f_r"><a href="{userurl($username, 'file=guestbook', $domain)}">我要咨询</a></span><strong>留言咨询</strong></div></div>
-<div class="row">
+<div class="main_head"><div><span class="f_r"><a href="{userurl($username, 'file=guestbook', $domain)}">我要咨询</a></span><strong>留言咨询</strong></div></div>
+<div class="main_body">
     <table cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <td valign="top">
@@ -103,15 +99,20 @@
             </td>
         </tr>
     </table>
-</div>
+
+
+
 </div>
 
+
 {if $could_comment && in_array($moduleid, explode(',', get_module_setting(3, 'comment_module')))}
-<div id="comment_div" class="container box margin-top-15">
-    <div class="head"><div><span class="f_r px12">共<span id="comment_count">0</span>条&nbsp;&nbsp;</span><span id="message_title"><strong>用户点评</strong></span></div></div>
-    <div class="row"><iframe src="{$MODULE[3][linkurl]}comment.php?mid={$moduleid}&itemid={$COM[userid]}" id="destoon_comment" style="width:100%;" scrolling="no" frameborder="0"></iframe>
+<div id="comment_div" style="display:;">
+    <div class="main_head"><div><span class="f_r px12">共<span id="comment_count">0</span>条&nbsp;&nbsp;</span><span id="message_title"><strong>用户点评</strong></span></div></div>
+    <div class="main_body"><iframe src="{$MODULE[3][linkurl]}comment.php?mid={$moduleid}&itemid={$COM[userid]}" id="destoon_comment" style="width:100%;" scrolling="no" frameborder="0"></iframe>
     </div>
 </div>
 {/if}
+
+
 
 {template 'footer', $template}

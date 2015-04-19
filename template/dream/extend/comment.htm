@@ -207,7 +207,7 @@ function F() {
 try{parent.Dd('comment_count').innerHTML = {$items};}catch(e){}
 {/if}
 function H() {
-	try{parent.Dd('destoon_comment').style.height = Dd('destoon_comment').scrollHeight+'px';}
+	try{parent.document.getElementById('destoon_comment').style.height = Dd('destoon_comment').scrollHeight+'px';}
 	catch(e){}
 }
 H();

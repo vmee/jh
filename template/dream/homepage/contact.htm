@@ -1,9 +1,8 @@
 {template 'header', $template}
-<div class="dsn" id="pos_show">您当前的位置：<a href="{$COM[linkurl]}">首页</a> &raquo; <a href="{$MENU[$menuid][linkurl]}">{$MENU[$menuid][name]}</a></div>
 
-<div class="main_head"><div><strong>{$MENU[$menuid][name]}</strong></div></div>
-<div class="main_body">
-	<div class="px13 lh18">
+<div class="container box margin-top-15">
+<div class="head"><div><strong>{$MENU[$menuid][name]}</strong></div></div>
+<div class="row content">
 	<table width="98%" cellpadding="3" cellspacing="3" align="center">
 	<tr>
 	<td width="100">公司名称：</td>
@@ -55,7 +54,7 @@
 	{if $COM[mobile]}
 	<tr>
 	<td>手机号码：</td>
-	<td>{if $domain}{$COM[mobile]}{else}{anti_spam($COM[mobile])}{/if}{if $DT[sms] && $COM[vmobile]}&nbsp;&nbsp;<a href="{$MODULE[2][linkurl]}sms.php?action=add&auth={encrypt($COM[mobile])}" target="_blank"><img src="{DT_SKIN}image/sendsms.gif" align="absmiddle" title="发送短信" alt=""/></a>{/if}</td>
+	<td>{if $domain}{$COM[mobile]}{else}{anti_spam($COM[mobile])}{/if}</td>
 	</tr>
 	{/if}
 	<tr>
@@ -73,14 +72,17 @@
 	<td>{if online($COM[userid])==1}<span class="f_red">当前在线</span>{else}<span class="f_gray">当前离线</span>{/if}</td>
 	</tr>
 	</table>
-	</div>
 </div>
+	</div>
+
 {if $api_map && $map}
-<div class="main_head"><div><strong>公司地图</strong><a name="map"></a></div></div>
-<div class="main_body">
+	<div class="container box margin-top-15">
+<div class="head"><div><strong>公司地图</strong><a name="map"></a></div></div>
+<div class="row">
 	{php $map_height = 300;}
 	{php @include DT_ROOT.'/api/map/'.$api_map.'/show.inc.php';}
 </div>
+		</div>
 {/if}
 
 {template 'footer', $template}

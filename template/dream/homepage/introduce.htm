@@ -1,26 +1,25 @@
 {template 'header', $template}
 {if $itemid}
-<div class="main_head"><div><strong>{$title}</strong></div></div>
-<div class="main_body">
+<div class="container box margin-top-15">
+<div class="head"><div><strong>{$title}</strong></div></div>
+<div class="row">
 	<div class="lh18 px13">{$content}</div>
 </div>
-{else}
-<div class="main_head"><div><strong>{$MENU[$menuid][name]}</strong></div></div>
-<div class="main_body">
-	<div class="lh18 px13">
-	<table width="98%" cellpadding="3" cellspacing="3" align="center">
-	<tr>
-	<td>{$content}</td>
-	</tr>
-	</table>
 	</div>
-</div>
+{else}
+<div class="container box margin-top-15">
+<div class="head"><div><strong>{$MENU[$menuid][name]}</strong></div></div>
+<div class="row content">
+	{$content}
+</div></div>
 {if $video}
-<div class="main_head"><div><strong>形象视频</strong></div></div>
-<div class="main_body">
+<div class="container box margin-top-15">
+<div class="head"><div><strong>形象视频</strong></div></div>
+<div class="row">
 	{load('player.js')}
 	<center><script type="text/javascript">document.write(player('{$video}',480,400,'',0));</script></center>
 </div>
+	</div>
 {/if}
 
 

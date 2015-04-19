@@ -1,9 +1,10 @@
 {template 'header', $template}
-<div class="dsn" id="pos_show">您当前的位置：<a href="{$COM[linkurl]}">首页</a> &raquo; <a href="{$MENU[$menuid][linkurl]}">{$MENU[$menuid][name]}</a>{if $itemid} &raquo; {$title}{/if}</div>
+
+<div class="container box margin-top-15">
 {if $itemid}
 
-<div class="main_head"><div><strong>优惠活动</strong></div></div>
-<div class="main_body">
+<div class="head"><div><strong>优惠活动</strong></div></div>
+<div class="row">
 
 
 
@@ -18,14 +19,14 @@
 {else}
 
 
-<div class="main_head">
+<div class="head">
 	<div>
 <span class="f_r f_n px12">
 </span>
 		<strong>{$MENU[$menuid][name]}</strong>
 	</div>
 </div>
-<div class="main_body row">
+<div class="row">
 
 	{loop $lists $k $t}
 	<div class="col-md-4">
@@ -38,9 +39,28 @@
 	</div>
 	{/loop}
 
-	<div class="clearfix"></div>
-	<div class="pages">{$pages}</div>
 </div>
+
+	<!-- Pagination -->
+	<div class="pagination-container masonry">
+		<nav class="pagination">
+			{if $showpage && $pages}{$pages}{/if}
+		</nav>
+		<!-- <nav class="pagination">
+                <ul>
+                    <li><a href="shop-full-width.html#" class="current-page">1</a></li>
+                    <li><a href="shop-full-width.html#">2</a></li>
+                    <li><a href="shop-full-width.html#">3</a></li>
+                </ul>
+            </nav>
+
+            <nav class="pagination-next-prev full-width">
+                <ul>
+                    <li><a href="shop-full-width.html#" class="prev"></a></li>
+                    <li><a href="shop-full-width.html#" class="next"></a></li>
+                </ul>
+            </nav>-->
+	</div>
 {/if}
 </div>
 {template 'footer', $template}

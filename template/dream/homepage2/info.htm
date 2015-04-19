@@ -1,11 +1,9 @@
 {template 'header', $template}
 <div class="dsn" id="pos_show">您当前的位置：<a href="{$COM[linkurl]}">首页</a> &raquo; <a href="{$MENU[$menuid][linkurl]}">{$MENU[$menuid][name]}</a>{if $itemid} &raquo; {$title}{/if}</div>
-
-<div class="container box margin-top-15">
 {if $itemid}
 
-<div class="head"><div><strong>优惠活动</strong></div></div>
-<div class="row">
+<div class="main_head"><div><strong>优惠活动</strong></div></div>
+<div class="main_body">
 
 
 
@@ -20,14 +18,14 @@
 {else}
 
 
-<div class="head">
+<div class="main_head">
 	<div>
 <span class="f_r f_n px12">
 </span>
 		<strong>{$MENU[$menuid][name]}</strong>
 	</div>
 </div>
-<div class="row">
+<div class="main_body row">
 
 	{loop $lists $k $t}
 	<div class="col-md-4">

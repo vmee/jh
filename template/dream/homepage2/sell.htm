@@ -1,9 +1,7 @@
 {template 'header', $template}
-<div class="container box margin-top-15">
 {if $itemid}
-
-<div class="head"><div><strong>精品特价</strong></div></div>
-<div class="row">
+<div class="main_head"><div><strong>精品特价</strong></div></div>
+<div class="main_body">
 
 
 
@@ -12,16 +10,16 @@
 	<div class="content" id="content">{$content}</div>
 
 
-</div>
+	</div>
 {else}
-<div class="head">
-	<div>
+<div class="main_head">
+<div>
 <span class="f_r f_n px12">
 </span>
-		<strong>{$MENU[$menuid][name]}</strong>
-	</div>
+<strong>{$MENU[$menuid][name]}</strong>
 </div>
-<div class="row">
+</div>
+<div class="main_body row">
 
 	{loop $lists $k $t}
 	<div class="col-md-4">
@@ -34,13 +32,12 @@
 	</div>
 	{/loop}
 
-	<div class="clearfix"></div>
+<div class="clearfix"></div>
 	<div class="pages">{$pages}</div>
 </div>
 
 <script type="text/javascript">
-	try {Dd('type_{$typeid}').innerHTML = '<strong>'+Dd('name_{$typeid}').innerHTML+'</strong>';}catch (e){}
+try {Dd('type_{$typeid}').innerHTML = '<strong>'+Dd('name_{$typeid}').innerHTML+'</strong>';}catch (e){}
 </script>
 {/if}
-</div>
 {template 'footer', $template}

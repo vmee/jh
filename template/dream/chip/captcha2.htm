@@ -1,0 +1,54 @@
+<input name="captcha" id="captcha" type="text" size="6" onfocus="showcaptcha();" value="点击显示" onkeyup="checkcaptcha(this.value);" onblur="checkcaptcha(this.value);" class="f_gray" style="margin:10px 0 10px 0;"/>&nbsp;<img src="{DT_SKIN}image/loading.gif" title="验证码,看不清楚?请点击刷新&#10;字母不区分大小写" alt="" align="absmiddle" id="captchapng" onclick="reloadcaptcha();" style="display:none;cursor:pointer;"/><span id="ccaptcha"></span>
+<script type="text/javascript">
+function showcaptcha() {
+	if($('#captchapng').css("display")=='none') {
+		$('#captchapng').css("display", "");
+	}
+	if($('#captchapng').attr("src").indexOf('loading.gif') != -1) {
+		$('#captchapng').attr("src", '{DT_PATH}api/captcha.png.php?action=image');
+	}
+	if($('#captcha').val()=='点击显示') {
+		$('#captcha').val('');
+	}
+	$('#captcha').className = '';
+}
+function reloadcaptcha() {
+	$('#captchapng').src = '{DT_PATH}api/captcha.png.php?action=image&refresh='+Math.random();
+	$('#ccaptcha').innerHTML = '';
+	$('#captcha').value = '';
+}
+function checkcaptcha(s) {
+	if(!is_captcha(s)) return;
+	makeRequest('action=captcha&captcha='+s, AJPath, '_checkcaptcha');
+}
+function _checkcaptcha() {    
+	if(xmlHttp.readyState==4 && xmlHttp.status==200) {
+		if(xmlHttp.responseText == '0') {
+			$('#ccaptcha').innerHTML = '&nbsp;&nbsp;<img src="{DT_SKIN}image/check_right.gif" align="absmiddle"/>';
+		} else {
+			$('#captcha').focus;
+			$('#ccaptcha').innerHTML = '&nbsp;&nbsp;<img src="{DT_SKIN}image/check_error.gif" align="absmiddle"/>';
+		}
+	}
+}
+function is_captcha(v) {
+	if(v == L['str_captcha']) return false;
+	if(v.match(/^[a-z0-9A-Z]{1,}$/)) {
+		return v.match(/^[a-z0-9A-Z]{4,}$/);
+	} else {
+		return v.length > 1;
+	}
+}
+function makeRequest(queryString, php, func, method) {
+	xmlHttp = Try.these(
+			function() {return new XMLHttpRequest()},
+			function() {return new ActiveXObject('Msxml2.XMLHTTP')},
+			function() {return new ActiveXObject('Microsoft.XMLHTTP')}
+	);
+	method = (typeof method == 'undefined') ? 'post' : 'get';
+	if(func) xmlHttp.onreadystatechange = eval(func);
+	xmlHttp.open(method, method == 'post' ? php : php+'?'+queryString, true);
+	xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xmlHttp.send(method == 'post' ? queryString : null);
+}
+</script>
