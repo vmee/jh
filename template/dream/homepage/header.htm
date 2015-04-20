@@ -55,7 +55,7 @@
 
             <dl class="dl-horizontal">
                 <dt>在线咨询:</dt>
-                <dd>{if $COM[username] && $DT[im_web]}{im_web($COM[username])}{/if}
+                <dd class="chat-img">{if $COM[username] && $DT[im_web]}{im_web($COM[username])}{/if}
                     {if $COM[qq] && $DT[im_qq]}{im_qq($COM[qq])}{/if}
                     {if $COM[ali] && $DT[im_ali]}{im_ali($COM[ali])}{/if}
                     {if $COM[msn] && $DT[im_msn]}{im_msn($COM[msn])}{/if}

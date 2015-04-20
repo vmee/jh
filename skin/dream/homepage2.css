@@ -7,6 +7,7 @@ body.boxed{ width: 100%;}
 .box .content{padding:20px}
 .dl-horizontal {margin-top:20px;}
 .dl-horizontal dt{width:60px;color:#999;line-height: 30px;margin-right: 5px;}
+.dl-horizontal dd.chat-img img{display:inline;}
 @media (min-width: 768px) {
     .dl-horizontal dt {
         width: 60px;

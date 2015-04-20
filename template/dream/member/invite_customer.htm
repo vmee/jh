@@ -119,7 +119,7 @@ var itemids = [{loop $lists $i $t}{if $i},{/if}'{$t[itemid]}'{/loop}];
 {/if}
 </script>
 {else}
-<center>{if $kw}未搜索到邀请客户{else}暂无客户{/if}</center>
+<center>{if $kw}未搜索到推荐的新人{else}暂无客户{/if}</center>
 {/if}
 </body>
 </html>
@@ -128,9 +128,9 @@ var itemids = [{loop $lists $i $t}{if $i},{/if}'{$t[itemid]}'{/loop}];
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab" id="add"><a href="invite_customer.php?action=add"><span>邀请客户</span></a></td>
+<td class="tab" id="add"><a href="invite_customer.php?action=add"><span>推荐新人</span></a></td>
 <td class="tab_nav">&nbsp;</td>
-<td class="tab" id="home"><a href="invite_customer.php"><span>我的邀请</span></a></td>
+<td class="tab" id="home"><a href="invite_customer.php"><span>我的推荐</span></a></td>
 <td class="tab_nav">&nbsp;</td>
 </tr>
 </table>

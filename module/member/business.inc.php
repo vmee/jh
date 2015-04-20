@@ -114,7 +114,7 @@ if($submit) {
 
 	$post['catid'] = !empty($post['catid']) ? ','.implode(',', $post['catid']) : '';
 
-	$post['groupid'] = 5;
+	$post['groupid'] = 6;
 	$post['content'] = $post['thumb'] = $post['banner'] = $post['catids'] = '';
 	$post['edittime'] = 0;
 	$inviter = get_cookie('inviter');
