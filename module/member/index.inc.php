@@ -21,7 +21,8 @@ if($submit) {
 	extract($user);
 	$logintime = timetodate($logintime, 5);
 	$regtime = timetodate($regtime, 5);
-	$userurl = userurl($_username, '', $domain);	
+	$userurl = userurl($_username, '', $domain);
+	if($_groupid == 5) dheader($userurl);
 	$sys = array();
 	$i = 0;
 	$result = $db->query("SELECT itemid,title,addtime,groupids FROM {$DT_PRE}message WHERE groupids<>'' ORDER BY itemid DESC", 'CACHE');
