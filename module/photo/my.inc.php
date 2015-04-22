@@ -72,7 +72,9 @@ switch($action) {
 			if(isset($post['islink'])) unset($post['islink']);
 			if($do->pass($post)) {
 				$CAT = get_cat($post['catid']);
-				if(!$CAT || !check_group($_groupid, $CAT['group_add'])) dalert(lang($L['group_add'], array($CAT['catname'])));
+				if($moduleid != 25){
+					if(!$CAT || !check_group($_groupid, $CAT['group_add'])) dalert(lang($L['group_add'], array($CAT['catname'])));
+				}
 				$post['addtime'] = $post['level'] = $post['fee'] = 0;
 				$post['style'] = $post['template'] = $post['note'] = $post['filepath'] = '';
 				$need_check =  $MOD['check_add'] == 2 ? $MG['check'] : $MOD['check_add'];

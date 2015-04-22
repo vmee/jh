@@ -53,7 +53,7 @@
                 type: 2,
                 shade: [0],
                 fix: false,
-                title: '上传日志',
+                title: '上传相册',
                 maxmin: true,
                 iframe: {src : DTPath+'member/my.php?mid=25&action=add&user_frame=true'},
                 area: ['800px' , '600px '],
