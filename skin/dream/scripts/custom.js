@@ -601,12 +601,11 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 
 
 
-
-		   //用户登陆
+		   //user login
 			$(window).on("load", function() {
-				$.get(AJPath+'?moduleid=2&action=member&job=line', function(response){
+				/*$.get(AJPath+'?moduleid=2&action=member&job=line&'+Math.random(), function(response){
 					$('#user-line').html(response);
-				});
+				});*/
 			});
 
 

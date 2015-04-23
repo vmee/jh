@@ -6,7 +6,7 @@
 defined('IN_DESTOON') or exit('Access Denied');
 function deditor($moduleid = 1, $textareaid = 'content', $toolbarset = 'Default', $width = 500, $height = 400) {
 	global $DT, $MODULE, $_userid;
-	$moddir = defined('DT_ADMIN') ? $MODULE[2]['moduledir'].'/' : '';
+	$moddir = defined('DT_ADMIN') ? $MODULE[2]['moduledir'].'/' : $MODULE[2]['linkurl'];
 	$editor = '';
 	$editor .= '<script type="text/javascript">var ModuleID = '.$moduleid.';';
 	$editor .= 'var DTAdmin = '.(defined('DT_ADMIN') ? 1 : 0).';';

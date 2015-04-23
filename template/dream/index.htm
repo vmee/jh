@@ -34,68 +34,38 @@
 {if count($_tags)>0}
 <!-- New Arrivals
 ================================================== -->
-<div class="container">
+<div class="container margin-top-15">
 
-    <!-- Headline -->
-    <div class="sixteen columns">
+
+    <div class="sixteen columns" >
         <h3 class="headline">{$c[catname]}</h3>
-        <span class="line margin-bottom-0"></span>
+        <span class="line margin-bottom-30"></span>
     </div>
 
-    <!-- Carousel -->
-    <div class="showbiz-container sixteen columns" >
+    {loop $_tags $k $t}
+    <div class="four columns portfolio-item margin-bottom-15">
+        <article class="from-the-blog">
 
-        <!-- Navigation -->
-        <div class="showbiz-navigation">
-            <div id="showbiz_left_{$i}" class="sb-navigation-left"><i class="fa fa-angle-left"></i></div>
-            <div id="showbiz_right_{$i}" class="sb-navigation-right"><i class="fa fa-angle-right"></i></div>
-        </div>
-        <div class="clearfix"></div>
+            <figure class="from-the-blog-image">
+                <a href="{$t[linkurl]}"><img src="{$t[thumb]}" alt="{$t[company]}" /></a>
+            </figure>
 
-        <!-- Products -->
-        <div class="showbiz" data-left="#showbiz_left_{$i}" data-right="#showbiz_right_{$i}" data-play="#showbiz_play_{$i}" >
-            <div class="overflowholder">
+            <section class="from-the-blog-content">
+                <h5><a href="{$t[linkurl]}">{$t[company]}</a></h5>
+                <span>主营：{if $t[business]}{$t[business]}{else}{$c[catname]}{/if}</span>
+            </section>
 
-                <ul>
-
-
-
-                    {loop $_tags $k $t}
-                    <!-- Product #1 -->
-                    <li>
-                        <figure class="portfolio-item">
-                            <div class="portfolio-holder">
-                                <a href="{$t[linkurl]}">
-                                    <img alt="{$t[company]}" src="{$t[thumb]}"/>
-                                    <div class="hover-cover"></div>
-                                </a>
-                            </div>
-
-
-                                <section class="item-description">
-                                    <h5><a href="{$t[linkurl]}">{$t[company]}</a></h5>
-                                    <span>{if $t[business]}主营：{$t[business]}{/if}</span>
-                                </section>
-
-                        </figure>
-                    </li>
-
-                    {/loop}
-
-
-                </ul>
-                <div class="clearfix"></div>
-
-            </div>
-            <div class="clearfix"></div>
-        </div>
+        </article>
     </div>
+    {/loop}
+
 
 </div>
+<div class="clearfix"></div>
 {/if}
 {/loop}
 
-<div class="container" >
+<div class="container margin-top-15" >
 <div class="columns">
     <h3 class="headline">会员需求</h3><span class="line margin-bottom-3-"></span><div class="clearfix"></div>
 
@@ -122,7 +92,7 @@
                         <th>推荐商家</th>
                         <th>所在地区</th>
                         <th>结婚日期</th>
-                        <th>所需服务</th>
+                        <th width="30%">所需服务</th>
                     </tr>
 
                     {php $_tags=tag("table=member&condition=avatar=1 and weddate>'0000-00-00'&pagesize=20&order=userid desc&template=null")}
@@ -202,7 +172,7 @@
 </div>
     </div>
 
-<div class="container" >
+<div class="container margin-top-15" >
     <div class="columns">
         <h3 class="headline">会员婚期</h3><span class="line margin-bottom-3-"></span><div class="clearfix"></div>
 
@@ -278,13 +248,11 @@
             {php $month = $month>12 ? 1 : $month }
             {/loop}
         </div>
-
-        <br>
     </div>
 </div>
 <!-- Featured
 ================================================== -->
-<div class="container" >
+<div class="container margin-top-15" >
 
     <!-- Headline -->
     <div class="sixteen columns">
@@ -518,6 +486,18 @@
 </div>
 <!-- Container / End -->
 
+<div id="service">
+    <div class="box">
+        <i class="fa fa-qq"></i>
+        <span>客服QQ</span>
+        <p><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=81239001&site=qq&menu=yes" class="a-qq"><img src="http://pub.idqqimg.com/wpa/images/counseling_style_51.png">咨询</a></p>
+    </div>
+<div class="box">
+    <i class="fa fa-fax"></i>
+    <span>客服电话</span>
+    <p><a>0530-5562017</a></p>
+</div>
+</div>
 
 {template 'footer'}
 
