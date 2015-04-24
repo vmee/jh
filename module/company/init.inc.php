@@ -63,17 +63,18 @@ if($clean) userclean($username);
 $COM['year'] = vip_year($COM['fromtime']);
 $COMGROUP = cache_read('group-'.$COM['groupid'].'.php');
 if(!isset($COMGROUP['homepage']) || !$COMGROUP['homepage']) {
-	$head_title = $COM['company'];
-	$head_keywords = $COM['keyword'];
-	$head_description = $COM['introduce'];
+
+	//取得所需要服务
+	$wed_cats = userwed($username);
+
+	$head_title = '会员中心';
+	$head_keywords = implode(',', $wed_cats);
+	$head_description = '所需服务：'.implode(',', $wed_cats);
 	$member = $COM;
-	$content_table = content_table(4, $userid, is_file(DT_CACHE.'/4.part'), $DT_PRE.'company_data');
+	/*$content_table = content_table(4, $userid, is_file(DT_CACHE.'/4.part'), $DT_PRE.'company_data');
 	$r = $db->get_one("SELECT content FROM {$content_table} WHERE userid=$userid", 'CACHE');
 	$content = $r['content'];
-	$member['thumb'] = $member['thumb'] ? $member['thumb'] : DT_SKIN.'image/company.jpg';
-
-	//取得所需要服务器
-	$wed_cats = userwed($username);
+	$member['thumb'] = $member['thumb'] ? $member['thumb'] : DT_SKIN.'image/company.jpg';*/
 
 	//include template('show', $module);
 	//require DT_ROOT.'/user/index.php';
@@ -256,7 +257,7 @@ $map = isset($HOME['map']) ? $HOME['map'] : '';
 $stats = isset($HOME['stats']) ? $HOME['stats'] : '';
 $kf = isset($HOME['kf']) ? $HOME['kf'] : '';
 $album_js = 0;
-$head_title = $MENU[$menuid]['name'];
+$head_title = $COM['company'].'_'.($MENU[$menuid]['name'] ? $MENU[$menuid]['name'] : '首页');
 $seo_keywords = isset($HOME['seo_keywords']) ? $HOME['seo_keywords'] : '';
 $seo_description = isset($HOME['seo_description']) ? $HOME['seo_description'] : '';
 $head_keywords = strip_tags($seo_keywords ? $seo_keywords : $COM['company'].','.str_replace('|', ',', $COM['business']));

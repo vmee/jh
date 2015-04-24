@@ -38,7 +38,7 @@ foreach($main_order as $k=>$v) {
 $HMAIN = $_HMAIN;
 if($EXT['wap_enable']) $head_mobile = $EXT['wap_url'].'index.php?moduleid=4&username='.$username;
 $seo_title = isset($HOME['seo_title']) && $HOME['seo_title'] ? $HOME['seo_title'] : '';
-$head_title = '';
+$head_title = $COM['company'];
 //$template = $template.'2';
 include template('index', $template);
 if(isset($update) && $db->cache_ids && ($username == $_username || $_groupid == 1 || $domain)) {
