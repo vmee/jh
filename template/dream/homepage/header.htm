@@ -28,7 +28,7 @@
 {/if}
 {/if}
 
-<div class="container box margin-top-15">
+<div class="container box margin-top-15 {if $file!='homepage'}hidden-xs{/if}">
     <div class="row">
         <div class="col-md-3 text-center">
             <a href="{$COM[linkurl]}"><img src="{$COM[thumb]}" alt="{$COM[company]}" class="img-thumbnail" /></a></div>
@@ -74,7 +74,7 @@
     </div>
 </div>
 
-<div class="container margin-top-15">
+<div class="container margin-top-15 hidden-xs">
     <div class="sixteen">
 
         <a href="{DT_PATH}index.php" class="menu-trigger"><i class="fa fa-bars"></i>商家导航</a>

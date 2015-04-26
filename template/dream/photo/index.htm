@@ -1,6 +1,6 @@
 {template 'header'}
 
-<div class="container">
+<div class="container margin-top-15">
 	<div class="sixteen columns">
 		<!-- Tabs Navigation -->
 		{php $child = get_maincat(0, 4, 1);}
@@ -20,7 +20,7 @@
 </div>
 
 
-<div class="margin-top-50"></div>
+<div class="margin-top-30"></div>
 <!-- Content
 ================================================== -->
 
@@ -30,7 +30,7 @@
 
 	<ul id="og-grid" class="og-grid">
 
-		{php $_tags=tag("moduleid=$moduleid&condition=status=3 AND items>0&pagesize=40&template=null")}
+		{php $_tags=tag("moduleid=$moduleid&condition=status=3 AND items>0&order=itemid desc&pagesize=40&template=null")}
 		{loop $_tags $k $t}
 		<!-- Project -->
 		<li class="clothing others clickable">

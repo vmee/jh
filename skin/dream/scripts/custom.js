@@ -602,12 +602,16 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 
 
 		   //user login
-			$(window).on("load", function() {
+			//$(window).on("load", function() {
 				/*$.get(AJPath+'?moduleid=2&action=member&job=line&'+Math.random(), function(response){
 					$('#user-line').html(response);
 				});*/
-			});
+			//});
 
+
+		jQuery('#top-search').click(function(){
+			jQuery("#top-search-content").removeClass('hide');
+		});
 
 
 

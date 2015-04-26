@@ -13,13 +13,13 @@
     <!-- CSS
     ================================================== -->
     <link rel="stylesheet" type="text/css" href="http://dt.cn/skin/dream/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="http://dt.cn/skin/dream/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="http://dt.cn/skin/dream/css/responsive.css"/>
+    <link rel="stylesheet" type="text/css" href="http://dt.cn/skin/dream/css/font-awesome.css"/>
     <link rel="stylesheet" href="http://dt.cn/skin/dream/css/style.css">
     <link rel="stylesheet" href="http://dt.cn/skin/dream/css/colors/red.css" id="colors">
-    <!--[if lte IE 6]>
-    <link rel="stylesheet" type="text/css" href="http://dt.cn/skin/dream/ie6.css"/>
-    <![endif]-->
     <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://dt.cn/skin/dream/scripts/html5.js"></script>
     <![endif]-->
     <script type="text/javascript">
         var DTPath = 'http://dt.cn/';
@@ -27,33 +27,84 @@
         var CKPrex = 'cte_';
         var DTTour = 'http://dt.cn/company/tour.php';
             </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?a25641d310b3a42d3bbed29edd0ba173";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </head>
 <body class="boxed">
 <div id="wrapper">
     <!-- Top Bar
 ================================================== -->
-    <div id="top-bar">
+    <div id="top-bar" class="hidden-xs">
         <div class="container">
             <!-- Top Bar Menu -->
             <div class="ten columns">
-                <a href="http://dt.cn/">
                 <ul class="top-bar-menu">
-                    <li>菏泽结婚网,让选择更多,让服务更好,让婚礼更美!</li>
-                    <li><i class="fa fa-phone"></i> 0530-323334444</li>
+                    <li><a href="http://dt.cn/">菏泽结婚网</a>,让选择更多,让服务更好,让婚礼更美!</li>
                 </ul>
-                    </a>
             </div>
             <!-- Member menu -->
             <div class="six columns">
-                <ul class="member-menu" id="user-line">
+                <ul class="member-menu">
+                                        <li><a>嘉客</a></li>
+                                        <li>|</li>
+                    <li><a href="http://dt.cn/index.php?homepage=kingkong">个人中心</a></li>
+                    <li>|</li>
+                    <li><a href="javascript:;" onclick="window.open ('http://dt.cn/member/message.php?user_frame=true', 'newwindow', 'height=500, width=800, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=n o, status=no');">站内信</a></li>
+                     <li>|</li> <li><a href="javascript:;" onclick="window.open ('http://dt.cn/member/chat.php?user_frame=true', 'newwindow', 'height=600, width=800, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=n o, status=no');">新对话</a></li>                                        <li>|</li>
+                    <li><a href="http://dt.cn/member/logout.php">退出</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+    <div class="visible-xs-block margin-top-50"></div>
+    <div id="top-bar-xs">
+        <div class="container visible-xs-block" >
+            <!-- Logo -->
+            <div class="">
+                <div id="logo">
+                                        <h1><a href="http://dt.cn/"><img src="http://dt.cn/skin/dream/images/site-logo-xs.png" alt="菏泽结婚网" class="logo-xs" /></a></h1>
+                                    </div>
+            </div>
+            <!-- Member menu -->
+            <div class="pull-right">
+                <ul class="member-menu">
+                    <li><a href="http://dt.cn/index.php"><i class="fa fa-home"></i></a></li>
+                    <li>|</li>
+                    <li><a href="http://dt.cn/index.php?homepage=kingkong"><i class="fa fa-user"></i></a></li>
+                    <li>|</li>
+                    <li><i class="fa fa-search" id="top-search"></i></li>
+                    <li>|</li>
+                    <li><i class="fa fa-bars menu-trigger"></i></li>
                 </ul>
             </div>
         </div>
     </div>
+    <div class="container hide" id="top-search-content">
+            <!-- Search -->
+            <form action="/search.php" method="get">
+                <nav class="top-search">
+                    <button><i class="fa fa-search"></i></button>
+                                                            <!-- Ordering -->
+                    <select name="moduleid">
+                                                <option value="4">商家</option>
+                                                <option value="5">优惠</option>
+                                                <option value="12">作品</option>
+                                            </select>
+                    <input class="search-field" name="kw" type="text" placeholder="Search" value=""/>
+                </nav>
+            </form>
+    </div>
     <div class="clearfix"></div>
     <!-- Header
 ================================================== -->
-    <div class="container">
+    <div class="container hidden-xs">
         <!-- Logo -->
         <div class="four columns">
             <div id="logo">
@@ -90,7 +141,7 @@
     </div>
     <!-- Navigation
     ================================================== -->
-    <div class="container">
+    <div class="container hidden-xs">
         <div class="sixteen columns">
             <a href="http://dt.cn/index.php" class="menu-trigger"><i class="fa fa-bars"></i> 网站导航</a>
             <nav id="navigation">
@@ -113,7 +164,7 @@
     </div>
 <!-- Titlebar
 ================================================== -->
-<section class="titlebar">
+<section class="titlebar hidden-xs">
 <div class="container">
 <div class="sixteen columns">
 <h2>使用协议</h2>
@@ -129,7 +180,7 @@
 <div class="container">
 <!-- Sidebar
     ================================================== -->
-<div class="four columns">
+<div class="four columns hidden-xs">
 <!-- Categories -->
 <div class="widget margin-top-0">
 <h3 class="headline"></h3><div class="clearfix"></div>
@@ -148,9 +199,10 @@
 <div class="content">使用协议</div>
 </div>
 </div>
+<div class="margin-top-50"></div>
 <!-- Footer
 ================================================== -->
-<div id="footer">
+<div id="footer" class="hidden-xs">
     <!-- Container -->
     <div class="container">
         <div class="six columns">
@@ -163,10 +215,10 @@
             <span class="line"></span>
             <div class="clearfix"></div>
             <ul class="footer-links">
-                <li><a href="about/index.html">关于我们</a></li>
-<li><a href="about/contact.html">联系方式</a></li>
-<li><a href="about/agreement.html">使用协议</a></li>
-<li><a href="about/copyright.html">版权隐私</a></li>
+                <li><a href="http://dt.cn/about/index.html">关于我们</a></li>
+<li><a href="http://dt.cn/about/contact.html">联系方式</a></li>
+<li><a href="http://dt.cn/about/agreement.html">使用协议</a></li>
+<li><a href="http://dt.cn/about/copyright.html">版权隐私</a></li>
             </ul>
         </div>
         <div class="five columns">
@@ -175,7 +227,7 @@
             <span class="line"></span>
             <div class="clearfix"></div>
             <ul class="footer-links">
-                <li><a href="http://dt.cn/ad/">广告服务</a></li>                <li><a href="http://dt.cn/member/register.php">会员加入</a></li>
+                <li><a href="http://dt.cn/member/register.php">会员加入</a></li>
                 <li><a href="http://dt.cn/member/business.php">商家入驻</a></li>
             </ul>
         </div>
@@ -187,7 +239,11 @@
 <div id="footer-bottom">
     <!-- Container -->
     <div class="container">
-        <div class="eight columns">© Copyright 2014 by <a href="http://dt.cn/">hezejiehun.com</a>. All Rights Reserved.</div>
+        <div class="eight columns hidden-xs">© Copyright 2015 by <a href="http://dt.cn/">hezejiehun.com</a>. All Rights Reserved.</div>
+        <div class="eight columns visible-xs-inline">© Copyright 2015 by <a href="http://dt.cn/">hezejiehun.com</a>.</div>
+        <div class="eight columns hidden-xs">
+            <ul class="payment-icons"><li><a href="http://www.miitbeian.gov.cn/" target="_blank">鲁ICP备15009859号</a></li></ul>
+        </div>
     </div>
     <!-- Container / End -->
 </div>
@@ -203,6 +259,7 @@
 <script src="http://dt.cn/skin/dream/scripts/jquery.themepunch.plugins.min.js"></script>
 <script src="http://dt.cn/skin/dream/scripts/jquery.themepunch.revolution.min.js"></script>
 <script src="http://dt.cn/skin/dream/scripts/jquery.themepunch.showbizpro.min.js"></script>
+<script src="http://dt.cn/skin/dream/scripts/jquery.isotope.min.js"></script>
 <!--<script src="http://dt.cn/skin/dream/scripts/jquery.magnific-popup.min.js"></script>
 <script src="http://dt.cn/skin/dream/scripts/hoverIntent.js"></script>
 <script src="http://dt.cn/skin/dream/scripts/superfish.js"></script>
@@ -216,7 +273,6 @@
 <script src="http://dt.cn/skin/dream/scripts/jquery.flexslider-min.js"></script>
 <script src="http://dt.cn/skin/dream/scripts/jquery.counterup.min.js"></script>
 <script src="http://dt.cn/skin/dream/scripts/jquery.tooltips.min.js"></script>
-<script src="http://dt.cn/skin/dream/scripts/jquery.isotope.min.js"></script>
 <script src="http://dt.cn/skin/dream/scripts/puregrid.js"></script>-->
 <script src="http://dt.cn/skin/dream/scripts/stacktable.js"></script>
 <script src="http://dt.cn/skin/dream/layer/layer.min.js"></script>

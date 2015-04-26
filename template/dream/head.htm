@@ -63,8 +63,8 @@
 
     <!-- Top Bar
 ================================================== -->
-    <div id="top-bar">
-        <div class="container hidden-xs">
+    <div id="top-bar" class="hidden-xs">
+        <div class="container">
 
             <!-- Top Bar Menu -->
             <div class="ten columns">
@@ -105,7 +105,7 @@
 
                     <li><a href="{$MODULE[2][linkurl]}{$DT[file_login]}">请登录</a></li>
                     <li>|</li>
-                    <li><a href="{$MODULE[2][linkurl]}{$DT[file_register]}">免费注册</a></li>
+                    <li><a href="{$MODULE[2][linkurl]}{$DT[file_register]}">新人注册</a></li>
                     <li>|</li>
                     <li><a href="{$MODULE[2][linkurl]}send.php">忘记密码?</a></li>
                     {/if}
@@ -114,6 +114,61 @@
             </div>
 
         </div>
+    </div>
+
+    <div class="visible-xs-block margin-top-50"></div>
+    <div id="top-bar-xs">
+        <div class="container visible-xs-block" >
+
+            <!-- Logo -->
+            <div class="">
+                <div id="logo">
+                    {if !$DT_REF || strpos($DT_REF,'dt.php')}
+                    <h1><a href="{$MODULE[1][linkurl]}"><img src="{DT_SKIN}images/site-logo-xs.png" alt="菏泽结婚网" class="logo-xs" /></a></h1>
+                    {else}
+                    <h1 class="logo-return"><a href="javascript:history.back();"><i class="fa fa-chevron-left"></i>返回</a></h1>
+                    {/if}
+                </div>
+            </div>
+
+            <!-- Member menu -->
+            <div class="pull-right">
+                <ul class="member-menu">
+                    <li><a href="{DT_PATH}index.php"><i class="fa fa-home"></i></a></li>
+                    <li>|</li>
+                    <li><a href="{if $_userid}{userurl($_username, '', $domain)}{else}{$MODULE[2][linkurl]}{$DT[file_login]}{/if}"><i class="fa fa-user"></i></a></li>
+                    <li>|</li>
+                    <li><i class="fa fa-search" id="top-search"></i></li>
+                    <li>|</li>
+                    <li><i class="fa fa-bars menu-trigger"></i></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container hide" id="top-search-content">
+
+            <!-- Search -->
+            <form action="{$MODULE[$searchid][linkurl]}/search.php" method="get">
+                <nav class="top-search">
+
+                    <button><i class="fa fa-search"></i></button>
+                    {php $search_module = array(4=>'商家',5=>'优惠',12=>'作品');}
+                    {php $search_moduleid = $moduleid==1 ? 5 : $moduleid;}
+                    <!-- Ordering -->
+                    <select name="moduleid">
+                        {loop $search_module $k $t}
+                        <option value="{$k}">{$t}</option>
+                        {/loop}
+                    </select>
+                    <input class="search-field" name="kw" type="text" placeholder="Search" value=""/>
+
+
+                </nav>
+
+            </form>
+
     </div>
 
     <div class="clearfix"></div>
