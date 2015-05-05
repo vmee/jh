@@ -59,6 +59,9 @@ if($username) {
 	$seo_title = $DT['seo_title'];
 	$head_keywords = $DT['seo_keywords'];
 	$head_description = $DT['seo_description'];
+
+	$is_home = true;
+
 	if($city_template) {
 		include template($city_template, 'city');
 	} else {		

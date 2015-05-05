@@ -121,7 +121,7 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 		// Revolution Slider
 		//----------------------------------------//
 
-		/*$('.tp-banner').revolution({
+		$('.tp-banner').revolution({
 			delay:9000,
 			startwidth:1290,
 			startheight:480,
@@ -133,7 +133,7 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 			soloArrowLeftVOffset:0,
 			soloArrowRightHOffset:0,
 			soloArrowRightVOffset:0
-		});*/
+		});
 
 
 		// ShowBiz Carousel

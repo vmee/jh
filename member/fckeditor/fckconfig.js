@@ -65,7 +65,7 @@ FCKConfig.ToolbarSets["Default"] = [
 if(!IsAdmin) FCKConfig.ToolbarSets["Default"][0].splice(0,2);
 
 FCKConfig.ToolbarSets["Destoon"] = [
-	['Source','-','PasteWord','PasteText','-','Bold','TextColor','FontSize','Link','Unlink','Image','Flash','Rule','SpecialChar','JustifyLeft','JustifyCenter','JustifyRight','Attach','FitWindow']
+	['Source','-','PasteWord','PasteText','-','Bold', 'Italic','TextColor','FontSize','Link','Unlink','Image','Flash','Rule','SpecialChar','JustifyLeft','JustifyCenter','JustifyRight','Attach','FitWindow']
 ];
 if(!IsAdmin) FCKConfig.ToolbarSets["Destoon"][0].splice(0,2);
 

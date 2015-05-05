@@ -78,8 +78,10 @@
             <div class="six columns">
                 <ul class="member-menu">
 
+                    {if !$is_home}
                     <li><a href="{$MODULE[1][linkurl]}">返回首页</a></li>
                     <li>|</li>
+                    {/if}
                     {if $_userid}
 
                     <li><a>{if $_truename}{$_truename}{else}{$_username}{/if}</a></li>
