@@ -28,6 +28,35 @@
 </div>-->
 
 
+<!-- Featured
+================================================== -->
+<div class="container margin-top-15" >
+
+    <!-- Headline -->
+    <div class="sixteen columns">
+        <h3 class="headline">优惠活动</h3>
+        <span class="line margin-bottom-0"></span>
+    </div>
+
+    {php $_tags=tag("moduleid=23&pagesize=3&order=addtime desc&template=null")}
+    {loop $_tags $k $t}
+    {if $k>-1}
+    <div class="one-third column">
+        <a href="{userurl($t[username], 'file=activity&itemid='.$t['itemid'], $domain)}" class="img-caption" >
+            <figure>
+                <img src="{$t[thumb]}" alt="{$t[title]}" />
+                <figcaption>
+                    <h3>{$t[title]}</h3>
+                    <span>{$t[introduce]} {if $t[endtime]}结束时间：{$t[endtime]}{/if}</span>
+                </figcaption>
+            </figure>
+        </a>
+    </div>
+    {/if}
+    {/loop}
+
+</div>
+
 {php $child = get_maincat(0, 4, 1);}
 {loop $child $i $c}
 {php $_tags=tag("moduleid=5&table=company&pagesize=8&condition=catid like '%,".$c[catid].",%' and thumb<>''&order=vip desc,userid desc&template=null")}
@@ -51,7 +80,7 @@
             </figure>
 
             <section class="from-the-blog-content">
-                <h5><a href="{$t[linkurl]}">{$t[company]}</a></h5>
+                <h5><a href="{$t[linkurl]}">{$t[company]}</a><span class="pull-right">{area_pos($t[areaid], '&nbsp;')}</span></h5>
                 <span>主营：{if $t[business]}{$t[business]}{else}{$c[catname]}{/if}</span>
             </section>
 
@@ -250,34 +279,7 @@
         </div>
     </div>
 </div>
-<!-- Featured
-================================================== -->
-<div class="container margin-top-15" >
 
-    <!-- Headline -->
-    <div class="sixteen columns">
-        <h3 class="headline">优惠活动</h3>
-        <span class="line margin-bottom-0"></span>
-    </div>
-
-    {php $_tags=tag("moduleid=23&pagesize=3&order=addtime desc&template=null")}
-    {loop $_tags $k $t}
-    {if $k>-1}
-    <div class="one-third column">
-        <a href="{userurl($t[username], 'file=activity&itemid='.$t['itemid'], $domain)}" class="img-caption" >
-            <figure>
-                <img src="{imgurl($t[thumb], 240)}" alt="{$t[title]}" />
-                <figcaption>
-                    <h3>{$t[title]}</h3>
-                    <span>{$t[introduce]} {if $t[endtime]}结束时间：{$t[endtime]}{/if}</span>
-                </figcaption>
-            </figure>
-        </a>
-    </div>
-    {/if}
-    {/loop}
-
-</div>
 <div class="clearfix"></div>
 
 <!-- New Arrivals
