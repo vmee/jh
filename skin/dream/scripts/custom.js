@@ -122,9 +122,9 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 		//----------------------------------------//
 
 		$('.tp-banner').revolution({
-			delay:9000,
+			delay:5000,
 			startwidth:1290,
-			startheight:480,
+			startheight:600,
 			hideThumbs:10,
 			hideTimerBar:"on",
 			onHoverStop: "on",

@@ -3420,8 +3420,7 @@ blockquote {
 /* Revolution Slider
 ---------------------------------------------------------------------- */
 .tp-banner-container {
-	margin: 0 0 50px 0;
-	max-height: 480px;
+	max-height: 600px;
 }
 
 /* SMOOTHER ANIMATION ON ANDROID */
