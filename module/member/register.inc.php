@@ -170,7 +170,7 @@ if($submit) {
 		if($could_emailcode) $db->query("UPDATE {$DT_PRE}member SET vemail=1 WHERE username='$username'");
 		if($could_mobilecode) $db->query("UPDATE {$DT_PRE}member SET vmobile=1 WHERE username='$username'");
         if($post['invitecode'] != 'hzjh88' && $inviter_items){
-            $db->query("UPDATE {$DT_PRE}invite_customer SET regtime='$DT_TIME',reg_userid='$userid',reg_useranme='$username'  WHERE itemid='{$inviter_items['itemid']}'");
+            $db->query("UPDATE {$DT_PRE}invite_customer SET regtime='$DT_TIME',reg_userid='$userid',reg_username='$username'  WHERE itemid='{$inviter_items['itemid']}'");
         }
 		if(!get_cookie('bind')) session_destroy();
 		echo '<html><head><title>Login...</title><meta http-equiv="Content-Type" content="text/html;charset='.DT_CHARSET.'"></head>';
