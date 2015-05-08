@@ -259,7 +259,7 @@ class member {
 		$member['linkurl'] = userurl($member['username']);
 		$member['password'] = $member['payword'] = md5(md5($member['password']));
 		$member['sound'] = 1;
-		$member_fields = array('username','company','passport', 'password','payword','email','sound','gender','truename','mobile','msn','qq','ali','skype','department','career','groupid','regid','areaid','edittime','inviter');
+		$member_fields = array('username','company','passport', 'password','payword','email','sound','gender','truename','mobile','msn','qq','ali','skype','department','career','groupid','regid','areaid','edittime','inviter','inviter_company');
 		$company_fields = array('username','groupid','company','type','catid','catids','areaid', 'mode','capital','regunit','size','regyear','sell','buy','business','telephone','fax','mail','address','postcode','homepage','introduce','thumb','keyword','linkurl');
 		$member_sqlk = $member_sqlv = $company_sqlk = $company_sqlv = '';
 		foreach($member as $k=>$v) {

@@ -11,7 +11,7 @@ class invite_customer {
 		global $db;
 		$this->table = $db->pre.'invite_customer';
 		$this->db = &$db;
-		$this->fields = array( 'userid','truename','password', 'areaid', 'weddate', 'gender','mobile','email','qq','note','addtime','regtime');
+		$this->fields = array( 'userid','truename','password', 'areaid', 'weddate', 'gender','mobile','email','qq','note','addtime','regtime','username');
     }
 
 	function pass($post) {
