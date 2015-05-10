@@ -1,0 +1,118 @@
+{template 'header', $template}
+<div class="container box margin-top-15">
+{if $itemid}
+
+<div class="head"><div><strong>{$MENU[$menuid][name]}</strong></div></div>
+<div class="row">
+
+
+
+	<h1 class="text-center">{$title}</h1>
+	<p class="text-center">  此信息已被浏览{$hits}次<p>
+	<div class="content" id="content">
+
+			<p><strong>价格:</strong> {$price}</p>
+			<p><strong>桌数:</strong> {$zhuoshu}桌
+				<strong>面积:</strong> {$mianji}㎡</p>
+			<p><strong>最低消费:</strong> {$xiaofei}</p>
+			<p></p>
+
+	{$content}</div>
+
+
+</div>
+{else}
+<div class="head">
+	<div>
+<span class="f_r f_n px12">
+</span>
+		<strong>{$MENU[$menuid][name]}</strong>
+	</div>
+</div>
+<div class="row">
+
+	{loop $lists $k $t}
+
+
+	<!-- Container -->
+	<div class="container">
+
+		<!-- Slider -->
+		<div class="eight columns" >
+			<div class="slider-padding">
+				<div>
+
+					<a class="mfp-gallery" title="{$t[title]}"><img class="rsImg" src="{$t[thumb]}" alt="" /></a>
+
+
+
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+
+		<!-- Content -->
+		<div class="eight columns">
+			<div class="product-page">
+
+
+				<!-- Accordion -->
+				<div class="accordion">
+
+					<!-- Section 1 -->
+					<h3><i class="fa fa-flag"></i> {$t[title]}</h3>
+					<br >
+					<div>
+						<p><strong>价格:</strong> {$t[price]}</p>
+						<p><strong>桌数:</strong> {$t[zhuoshu]}桌
+						<strong>面积:</strong> {$t[mianji]}㎡</p>
+						<p><strong>最低消费:</strong> {$t[xiaofei]}</p>
+						<p><strong>其他:</strong>{$t[introduce]}</p>
+						<a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=yanhuiting&itemid='.$t['itemid'], $domain)}{/if}" class="button gray">更多信息</a>
+					</div>
+
+				</div>
+				<!-- Accordion / End -->
+				<br>
+			</div>
+		</div>
+
+		<br>
+
+
+	</div>
+
+	<hr>
+	<!-- Container / End -->
+
+	{/loop}
+
+</div>
+
+	<!-- Pagination -->
+	<div class="pagination-container masonry">
+		<nav class="pagination">
+			{if $showpage && $pages}{$pages}{/if}
+		</nav>
+		<!-- <nav class="pagination">
+                <ul>
+                    <li><a href="shop-full-width.html#" class="current-page">1</a></li>
+                    <li><a href="shop-full-width.html#">2</a></li>
+                    <li><a href="shop-full-width.html#">3</a></li>
+                </ul>
+            </nav>
+
+            <nav class="pagination-next-prev full-width">
+                <ul>
+                    <li><a href="shop-full-width.html#" class="prev"></a></li>
+                    <li><a href="shop-full-width.html#" class="next"></a></li>
+                </ul>
+            </nav>-->
+	</div>
+
+<script type="text/javascript">
+	try {Dd('type_{$typeid}').innerHTML = '<strong>'+Dd('name_{$typeid}').innerHTML+'</strong>';}catch (e){}
+</script>
+{/if}
+</div>
+{template 'footer', $template}

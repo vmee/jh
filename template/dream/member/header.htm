@@ -134,16 +134,21 @@
 			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" id="guestbook"><a href="guestbook.php" class="{if $_userid}n{else}f{/if}">留言咨询</a></li>
 			{/if}
 
+			{php $user_info = userinfo($_username);}
+			{php $ishotel = $user_info[ishotel];}
+			{if $ishotel>0}
+				{loop $MENUMODS $k $v}
 
-			{loop $MENUMODS $k $v}
-			{if $v==9}
+					{if $v==26 || $v==27}
+					{if $ishotel>1}
+					<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);"  id="mid_{$v}"><span class="f_r"><a href="{$DT[file_my]}?mid={$v}&action=add" class="m">发布</a></span><a href="{$DT[file_my]}?mid={$v}" class="{if in_array($v, $MYMODS)}n{else}f{/if}">{$MODULE[$v][name]}管理</a></li>
+					{/if}
+					{elseif $v==23 || $ishotel<3}
+					<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);"  id="mid_{$v}"><span class="f_r"><a href="{$DT[file_my]}?mid={$v}&action=add" class="m">发布</a></span><a href="{$DT[file_my]}?mid={$v}" class="{if in_array($v, $MYMODS)}n{else}f{/if}">{$MODULE[$v][name]}管理</a></li>
+					{/if}
 
-			{elseif $v==-9}
-
-			{else}
-				<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);"  id="mid_{$v}"><span class="f_r"><a href="{$DT[file_my]}?mid={$v}&action=add" class="m">发布</a></span><a href="{$DT[file_my]}?mid={$v}" class="{if in_array($v, $MYMODS)}n{else}f{/if}">{$MODULE[$v][name]}管理</a></li>
+				{/loop}
 			{/if}
-		{/loop}
 		</ul>
 	</div>
 

@@ -82,10 +82,19 @@
         <nav id="navigation">
             <ul class="menu" id="responsive">
 
-
                 <li class="{if $file=='homepage'}current{else}{/if}"><a href="{$COM[linkurl]}">商家首页</a></li>
                 {loop $MENU $k $v}
+                {if $COM[ishotel]==3}
+                    {if $v[name]!= '精品特价' &&  $v[name]!= '作品精选'}
+                        <li class="{if $file==$menu_file[$k]}current{else}{/if}"><a href="{$v[linkurl]}">{$v[name]}</a></li>
+                    {/if}
+                {elseif $COM[ishotel]==1}
+                     {if $v[name]!= '宴会厅' &&  $v[name]!= '婚宴菜单'}
+                    <li class="{if $file==$menu_file[$k]}current{else}{/if}"><a href="{$v[linkurl]}">{$v[name]}</a></li>
+                     {/if}
+                {else}
                 <li class="{if $file==$menu_file[$k]}current{else}{/if}"><a href="{$v[linkurl]}">{$v[name]}</a></li>
+                {/if}
                 {/loop}
             </ul>
         </nav>

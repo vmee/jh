@@ -1,0 +1,72 @@
+{template 'header', $template}
+<div class="container box margin-top-15">
+{if $itemid}
+
+<div class="head"><div><strong>{$MENU[$menuid][name]}</strong></div></div>
+<div class="row">
+
+
+
+	<h1 class="text-center">{$title}</h1>
+	<p class="text-center">价格:<b class="text-warning">{$price}</b>   此信息已被浏览{$hits}次<p>
+	<div class="content" id="content">{$content}</div>
+
+
+</div>
+{else}
+<div class="head">
+	<div>
+<span class="f_r f_n px12">
+</span>
+		<strong>{$MENU[$menuid][name]}</strong>
+	</div>
+</div>
+<div class="row">
+
+	{loop $lists $k $t}
+	<div class="col-md-4">
+
+		<article class="from-the-blog item">
+
+
+			<section class="from-the-blog-content">
+				<h3><a>{$t[title]}</a></h3>
+				<p>优惠价:<b>{$t[price]}</b> </p>
+				<span>{$t[introduce]}</span>
+				<a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=caidan&itemid='.$t['itemid'], $domain)}{/if}" class="button gray">更多信息</a>
+			</section>
+
+		</article>
+
+	</div>
+	{/loop}
+
+</div>
+
+	<!-- Pagination -->
+	<div class="pagination-container masonry">
+		<nav class="pagination">
+			{if $showpage && $pages}{$pages}{/if}
+		</nav>
+		<!-- <nav class="pagination">
+                <ul>
+                    <li><a href="shop-full-width.html#" class="current-page">1</a></li>
+                    <li><a href="shop-full-width.html#">2</a></li>
+                    <li><a href="shop-full-width.html#">3</a></li>
+                </ul>
+            </nav>
+
+            <nav class="pagination-next-prev full-width">
+                <ul>
+                    <li><a href="shop-full-width.html#" class="prev"></a></li>
+                    <li><a href="shop-full-width.html#" class="next"></a></li>
+                </ul>
+            </nav>-->
+	</div>
+
+<script type="text/javascript">
+	try {Dd('type_{$typeid}').innerHTML = '<strong>'+Dd('name_{$typeid}').innerHTML+'</strong>';}catch (e){}
+</script>
+{/if}
+</div>
+{template 'footer', $template}

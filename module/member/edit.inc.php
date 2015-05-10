@@ -44,6 +44,16 @@ if($submit) {
 	$post['inviter'] = $user['inviter'];
 	if($post['vmobile']) $post['mobile'] = $user['mobile'];
 	if($post['vtruename']) $post['truename'] = $user['truename'];
+	$menucates = explode(',', trim(str_replace(',0,',',',$post['catid']), ','));
+	if(empty($menucates)){
+		$post['ishotel'] = 0;
+	}elseif(!in_array(10, $menucates)){
+		$post['ishotel'] = 1;
+	}elseif(in_array(10, $menucates) && count($menucates)>1){
+		$post['ishotel'] = 2;
+	}elseif(in_array(10, $menucates) && count($menucates)==1){
+		$post['ishotel'] = 3;
+	}
 	$post = daddslashes(dstripslashes($post));
 	if($MFD) fields_check($post_fields, $MFD);
 	if($CFD) fields_check($post_fields, $CFD);
