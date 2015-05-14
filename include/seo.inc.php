@@ -36,9 +36,10 @@ switch($seo_file) {
 		if($MOD['title_index']) {
 			eval("\$seo_title = \"$MOD[title_index]\";");
 		} else {
-			$seo_title = $seo_modulename.$seo_delimiter.$seo_sitename;
+			$seo_title = DT_AREA.$seo_modulename.$seo_delimiter.$seo_sitename;
 		}
 		if($MOD['keywords_index']) eval("\$head_keywords = \"$MOD[keywords_index]\";");
+		$head_keywords = str_replace(',', $seo_modulename.',', $head_keywords).$seo_modulename;
 		if($MOD['description_index']) eval("\$head_description = \"$MOD[description_index]\";");
 	break;
 	case 'list':
@@ -88,10 +89,36 @@ switch($seo_file) {
 		}
 	break;
 	case 'search':
-		$seo_title = $seo_modulename.$seo_delimiter.$seo_page.$seo_sitename;
-		if($catid) $seo_title = $seo_catname.$seo_title;
-		if($areaid) $seo_title = $seo_areaname.$seo_title;
+		$head_keywords = '';
+		$seo_areaname = trim($seo_areaname,$seo_delimiter);
+		$seo_title = DT_AREA.$seo_modulename.$seo_delimiter.$seo_page.$seo_sitename;
+		if($catid){
+			$seo_title = DT_AREA.$seo_catname.$seo_title;
+			$head_keywords = DT_AREA.$seo_catname;
+		}
+		if($areaid){
+			$seo_title = $seo_areaname.$seo_catname.$seo_title;
+			if($catid){
+				$head_keywords = $head_keywords.$seo_areaname.$seo_catname;
+			}
+		}
 		if($kw) $seo_title = $kw.$seo_delimiter.$seo_title;
+
+		if($head_keywords){
+			$head_keywords = $head_keywords.str_replace('_', '哪家好_', $head_keywords);
+			$head_keywords = str_replace('_', ',',$head_keywords);
+			$head_keywords = trim($head_keywords, ',');
+		}
+
+		if($MOD['keywords_index'] && !$head_keywords){
+			eval("\$head_keywords = \"$MOD[keywords_index]\";");
+			$head_keywords = str_replace(',', $seo_modulename.',', $head_keywords).$seo_modulename;
+
+			if($areaid){
+				$head_keywords = $seo_areaname.str_replace(',', ','.$seo_areaname, $head_keywords);
+			}
+		}
+		if($MOD['description_index']) eval("\$head_description = \"$MOD[description_index]\";");
 	break;
 	default:
 	break;
