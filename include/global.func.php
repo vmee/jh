@@ -1287,3 +1287,10 @@ function yp_send_sms($mobile, $text){
 	$post_string="apikey=$apikey&text=$encoded_text&mobile=$mobile";
 	return yp_sock_post($url, $post_string);
 }
+
+function generateQRfromLiantu($url,$widthHeight ='150',$logo='',$m=5,$el='l')
+{
+	$text = urlencode($url);
+	$logo = urlencode($logo);
+	return "http://qr.liantu.com/api.php?text={$text}&logo={$logo}&w={$widthHeight}&el={$el}&m={$m}";
+}
