@@ -39,6 +39,10 @@ if($itemid) {
 	$head_title = $title.$DT['seo_delimiter'].$head_title;
 	$head_keywords = $keyword;
 	$head_description = $introduce ? $introduce : $title;
+
+	$item_area = get_area($areaid);
+	$head_keywords .= ','.DT_AREA.$CAT['catname'];
+	$head_keywords .= ','.$item_area['areaname'].$CAT['catname'];
 } else {
 	$typeid = isset($typeid) ? intval($typeid) : 0;
 	$view = isset($view) ? 1 : 0;

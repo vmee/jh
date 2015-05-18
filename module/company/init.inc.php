@@ -259,10 +259,24 @@ $map = isset($HOME['map']) ? $HOME['map'] : '';
 $stats = isset($HOME['stats']) ? $HOME['stats'] : '';
 $kf = isset($HOME['kf']) ? $HOME['kf'] : '';
 $album_js = 0;
+
+
 $head_title = $COM['company'].'_'.($MENU[$menuid]['name'] ? $MENU[$menuid]['name'] : '首页');
 $seo_keywords = isset($HOME['seo_keywords']) ? $HOME['seo_keywords'] : '';
-$seo_description = isset($HOME['seo_description']) ? $HOME['seo_description'] : '';
+//$seo_description = isset($HOME['seo_description']) ? $HOME['seo_description'] : '';
+$seo_description = $COM['company'].'是'.$DT['sitename'].'精选推荐商家,主要经营'.str_replace('|', ',', $COM['business']);
 $head_keywords = strip_tags($seo_keywords ? $seo_keywords : $COM['company'].','.str_replace('|', ',', $COM['business']));
+
+$head_keywords = rtrim($head_keywords, ',');
+$com_area = get_area($COM['areaid']);
+foreach($cates as $catesid){
+	$com_cat = get_cat($catesid);
+	$seo_description .= ';'.DT_AREA.$com_cat['catname'].'推荐商家';
+	$seo_description .= ';'.$com_area['areaname'].$com_cat['catname'].'推荐商家';
+	$head_keywords .= ','.DT_AREA.$com_cat['catname'];
+	$head_keywords .= ','.$com_area['areaname'].$com_cat['catname'];
+}
+
 $head_description = strip_tags($seo_description ? $seo_description : $COM['introduce']);
 if(!$DT_BOT) {
 	if($DT['cache_hits']) {

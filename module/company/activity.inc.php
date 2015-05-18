@@ -34,6 +34,11 @@ if($itemid) {
 	$head_canonical = $linkurl;
 	$head_title = $title.$DT['seo_delimiter'].$head_title;
 	$head_keywords = $keyword;
+
+	$item_area = get_area($areaid);
+	$head_keywords .= ','.DT_AREA.$CAT['catname'];
+	$head_keywords .= ','.$item_area['areaname'].$CAT['catname'];
+
 	$head_description = $introduce ? $introduce : $title;
 } else {
 	$url = "file=$file";

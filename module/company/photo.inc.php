@@ -89,6 +89,8 @@ if($itemid) {
 	$head_title = $title.$DT['seo_delimiter'].$head_title;
 	$head_keywords = $keyword;
 	$head_description = $introduce ? $introduce : $title;
+
+	$head_keywords .= ','.DT_AREA.$CAT['catname'];
 } else {
 	$url = "file=$file";
 	$condition = "username='$username' AND status=3 AND items>0";

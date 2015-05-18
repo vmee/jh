@@ -1,0 +1,66 @@
+{template 'header'}
+
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}validator.css"/>
+
+
+<!-- Content
+================================================== -->
+
+<!-- Container -->
+<div class="container">
+
+	<div class="six columns centered">
+
+
+
+		<div class="tabs-container">
+
+			<div class="notification error closeable" style="display: none">
+				<p></p>
+				<a class="close"></a>
+			</div>
+			<!-- Login -->
+			<div class="tab-content" id="tab1" >
+
+				<div class="plan color-4 one-third column">
+					<div class="plan-price">
+						<h3>您的注册邀请码是</h3>
+						<span class="value">“{$invite_code}”</span>
+						<a href="{$DT[file_register]}?invite_code={$invite_code}"><span class="period">直接注册</span></a>
+					</div>
+					<div class="plan-features">
+						<ul>
+							<li>感谢并欢迎您注册菏泽结婚网</li>
+							<li>更多婚嫁优惠信息，期待你的关注</li>
+						</ul>
+						<a class="button" href="weixin://profile/gh_8e9fa822bd14">一键关注菏泽结婚网</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{template 'footer'}
+
+<script src="{DT_SKIN}scripts/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".login").Validform({
+			tiptype:4,
+			ajaxPost:true,
+			callback:function(data){
+				if(data.status=="y"){
+					location.href="{$forward}";
+					return;
+				}else{
+					$('.notification p').text('用户名或密码错误');
+					$('.notification').show();
+				}
+			}
+		});
+
+
+	});
+</script>

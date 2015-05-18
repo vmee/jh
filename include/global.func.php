@@ -1290,6 +1290,8 @@ function yp_send_sms($mobile, $text){
 
 function generateQRfromLiantu($url,$widthHeight ='150',$logo='',$m=5,$el='l')
 {
+	$url = 'http://www.hezejiehun.com/member/invite.php?company='.$url;
+
 	$text = urlencode($url);
 	$logo = urlencode($logo);
 	return "http://qr.liantu.com/api.php?text={$text}&logo={$logo}&w={$widthHeight}&el={$el}&m={$m}";

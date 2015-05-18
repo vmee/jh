@@ -26,9 +26,33 @@ if(isset($user) && check_name($user)) {
 	} else {
 		dheader(DT_PATH);
 	}
+}elseif(isset($company) && check_name($company)){
+
+	$c = $db->get_one("SELECT userid,username FROM {$DT_PRE}company WHERE username='$company'");
+	if($c) {
+
+		require MD_ROOT.'/invite_customer.class.php';
+		$do = new invite_customer();
+
+		$post['userid'] = $c['userid'];
+		$post['username'] = $company;
+		$post['addtime'] = $DT_TIME;
+		$post['password'] = $invite_code = strtolower(random(6));
+		$do->add($post);
+
+		include template('inviter', $module);
+		exit;
+
+	} else {
+		dheader(DT_PATH);
+	}
+
 } else {
 	dheader(DT_PATH);
 }
+
+
+
 $goto = isset($goto) ? trim($goto) : '';
 $URI = DT_PATH;
 if($goto == 'register') {

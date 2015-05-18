@@ -25,12 +25,14 @@
 <!-- Container -->
 <div class="container">
 
+	{if !$invite_code}
 	<div class="info-banner">
 		<div class="info-content">
 			<h3>为保证会员质量，本站将以邀请码的形式注册，如无邀请码，请向当地<a href="{DT_PATH}company/" class="b">合作商家</a>申请！</h3>
 		</div>
 		<div class="clearfix"></div>
 	</div>
+	{/if}
 
 	<div class="margin-top-50"></div>
 
@@ -100,7 +102,7 @@
 
 					<p class="form-row form-row-hale">
 						<label >邀请码: <span class="required">*</span></label>
-						<input type="text" class="input-text" name="post[invitecode]" value="" datatype="*"
+						<input type="text" class="input-text" name="post[invitecode]" value="{$invite_code}" datatype="*"
 							   ajaxurl="{DT_PATH}ajax.php?moduleid=2&action=member&job=checkinvitecode"
 							   sucmsg=" " />
 					</p>

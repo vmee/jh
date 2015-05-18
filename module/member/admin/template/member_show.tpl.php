@@ -195,10 +195,14 @@ if(isset($dialog)) {
 </table>
 <div class="tt">其他信息</div>
 <table cellpadding="2" cellspacing="1" class="tb">
-<tr>
+<!--<tr>
 <td class="tl">推荐注册人</td>
-<td>&nbsp;<a href="?moduleid=<?php echo $moduleid;?>&action=show&username=<?php echo $inviter;?>" target="_blank"><?php echo $inviter;?></a></td>
-</tr>
+<td>&nbsp;<a href="?moduleid=<?php /*echo $moduleid;*/?>&action=show&username=<?php /*echo $inviter;*/?>" target="_blank"><?php /*echo $inviter;*/?></a></td>
+</tr>-->
+	<tr>
+		<td class="tl">邀请注册二维码</td>
+		<td><img src="<?php echo generateQRfromLiantu($username);?>"> </td>
+	</tr>
 <tr>
 <td class="tl">企业资料是否通过认证</td>
 <td>&nbsp;<?php echo $validated ? '是' : '否';?></td>
