@@ -9,24 +9,25 @@
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab" id="Tab0"><a href="javascript:Tab(0);"><span>个人资料</span></a></td>
-<td class="tab_nav">&nbsp;</td>
-<td class="tab" id="Tab1"><a href="javascript:Tab(1);"><span>密码管理</span></a></td>
+
 {if $is_company}
-<td class="tab_nav">&nbsp;</td>
 <td class="tab" id="Tab2"><a href="javascript:Tab(2);"><span>公司资料</span></a></td>
 <td class="tab_nav">&nbsp;</td>
 <td class="tab" id="Tab3"><a href="javascript:Tab(3);"><span>公司联系方式</span></a></td>
 <td class="tab_nav">&nbsp;</td>
 <td class="tab" id="Tab4"><a href="javascript:Tab(4);"><span>公司介绍</span></a></td>
+	<td class="tab_nav">&nbsp;</td>
 {/if}
+	<td class="tab" id="Tab0"><a href="javascript:Tab(0);"><span>个人资料</span></a></td>
+	<td class="tab_nav">&nbsp;</td>
+	<td class="tab" id="Tab1"><a href="javascript:Tab(1);"><span>密码管理</span></a></td>
 </tr>
 </table>
 </div>
 <form method="post" action="edit.php" onsubmit="return Dcheck();"  id="dform">
 <input type="hidden" name="tab" id="tab" value="{$tab}"/>
 <table cellpadding="6" cellspacing="1" class="tb">
-<tbody id="Tabs0" style="display:;">
+<tbody id="Tabs0" style="display:none;">
 <tr>
 <td class="tl">会员名</td>
 <td class="tr f_b">{$_username}</td>
@@ -357,7 +358,13 @@ s('edit');
 {if $tab}
 Tab({$tab});
 {else}
-m('Tab0');
+	{if $is_company}
+		m('Tab2');
+		Tab(2);
+		{else}
+		m('Tab0');
+		Tab(0);
+		{/if}
 {/if}
 </script>
 {template 'footer',$module}

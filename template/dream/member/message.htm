@@ -352,21 +352,21 @@ function check() {
 </form>
 {else}
 <div class="tt">
-<div class="mr">
+<!--<div class="mr">
 <a href="?action={$action}" class="{if $typeid==-1}f_b{/if}">全部</a>
 {loop $NAME $k $v}
  | <a href="?action={$action}&typeid={$k}" class="{if $typeid==$k}f_b{/if}">{$v}</a>
 {/loop}
-</div>
+</div>-->
 <form action="message.php">
 <input type="hidden" name="action" value="{$action}"/>
 <input type="hidden" name="status" value="{$status}"/>
-<select name="typeid">
+<!--<select name="typeid">
 <option value="-1">类型</option>
 {loop $NAME $k $v}
 <option value="{$k}"{if $k==$typeid} selected{/if}>{$v}</option>
 {/loop}
-</select>
+</select>-->
 <select name="style">
 <option value="">标记</option>
 {loop $COLORS $v}

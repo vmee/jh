@@ -1296,3 +1296,18 @@ function generateQRfromLiantu($url,$widthHeight ='150',$logo='',$m=5,$el='l')
 	$logo = urlencode($logo);
 	return "http://qr.liantu.com/api.php?text={$text}&logo={$logo}&w={$widthHeight}&el={$el}&m={$m}";
 }
+
+function company_setting($userid, $key = '', $cache = '') {
+	global $db;
+
+	if(is_array($userid) && isset($userid['userid'])){
+		$userid = $userid['userid'];
+	}
+
+	if($key) {
+		$r = $db->get_one("SELECT * FROM {$db->pre}company_setting WHERE userid=$userid AND item_key='$key'", $cache);
+		return $r ? $r['item_value'] : '';
+	}
+
+	return '';
+}
