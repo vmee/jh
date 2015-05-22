@@ -1,10 +1,12 @@
 {template 'header', $template}
 
 {if $COM[ishotel]<3}
+<!--{php $tags=tag("moduleid=5&condition=status>2 and username='$username'&pagesize=9&order=edittime desc&fields=itemid,title,linkurl,thumb,edittime,price,marketprice&template=null");}-->
+{if count($tags)>0}
 <div class="container box margin-top-15">
 <div class="head"><div><span class="pull-right"><a href="{userurl($username, 'file=sell', $domain)}">更多</a></span><strong>精品特价</strong></div></div>
 <div class="row">
-    <!--{php $tags=tag("moduleid=5&condition=status>2 and username='$username'&pagesize=9&order=edittime desc&fields=itemid,title,linkurl,thumb,edittime,price,marketprice&template=null");}-->
+
     {loop $tags $i $t}
 
     <div class="col-md-4">
@@ -20,6 +22,7 @@
 
 </div>
 </div>
+{/if}
 {/if}
 
 <!--{php $tags=tag("moduleid=23&condition=status>2 and username='$username'&pagesize=9&order=edittime desc&fields=itemid,title,linkurl,thumb,edittime,endtime&template=null");}-->
@@ -45,10 +48,11 @@
 {/if}
 
 {if $COM[ishotel]<3}
+<!--{php $tags=tag("moduleid=12&condition=status>2 and username='$username' and items>0&pagesize=9&order=addtime desc&fields=itemid,title,linkurl,thumb,addtime,items,open&template=null");}-->
+{if count($tags)>0}
 <div class="container box margin-top-15">
-<div class="head"><div><span class="pull-right"><a href="{userurl($username, 'file=photo ', $domain)}">更多</a></span><strong>作品案例</strong></div></div>
+<div class="head"><div><span class="pull-right"><a href="{userurl($username, 'file=photo', $domain)}">更多</a></span><strong>作品案例</strong></div></div>
 <div class="row">
-    <!--{php $tags=tag("moduleid=12&condition=status>2 and username='$username' and items>0&pagesize=9&order=addtime desc&fields=itemid,title,linkurl,thumb,addtime,items,open&template=null");}-->
     {loop $tags $i $t}
 
     <div class="col-md-4">
@@ -62,6 +66,7 @@
 
 </div>
 </div>
+{/if}
 {/if}
 
 {if $COM[ishotel]>1}

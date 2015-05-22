@@ -1256,7 +1256,7 @@ function yp_sock_post($url,$query){
 }
 
 /**
- * 模板接口发短信
+ * 模板接口发短信ho
  * apikey 为云片分配的apikey
  * tpl_id 为模板id
  * tpl_value 为模板值

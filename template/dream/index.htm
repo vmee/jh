@@ -85,7 +85,7 @@
                 <h5><a href="{$t[linkurl]}">{$t[company]}</a><span class="pull-right">{area_pos($t[areaid], '&nbsp;')}</span></h5>
                 {php $announce  = company_setting($t[userid], 'announce');}
                 {if $announce}
-                <span class="hidden-xs">{dsubstr($announce, 80, '...')}</span>
+                <span class="hidden-xs">{dsubstr(str_replace(' ', '', $announce), 60, '...')}</span>
                 <span class="visible-xs-block">{$announce}</span>
                 {else}
                 <span>主营：{if $t[business]}{$t[business]}{else}{$c[catname]}{/if}</span>
