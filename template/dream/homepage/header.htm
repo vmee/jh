@@ -68,7 +68,9 @@
             <div class="youlibox">{$announce}</div>
             {/if}
             <div>
-                <input class="rankBtn mdialog" data-username="{$COM[username]}" data-moduleid="2" data-itemid="{$COM[userid]}" data-title="{$COM[company]}" type="button" value="立即免费预约">
+                <a href="{userurl($username, 'file=appointment', $domain)}">
+                    <input class="rankBtn mdialog"  type="button" value="立即免费预约">
+                    </a>
             </div>
         </div>
     </div>
