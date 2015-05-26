@@ -6,8 +6,8 @@ if($_userid){
     if($submit) {
 
 
-        //$session = new dsession();
-        //if($_SESSION['mobile_code'] != md5($_SESSION['mobile'].'|'.mobilecode)) exit(json_encode(array('info'=>'手机验证码错误', 'status'=>'n')));
+        $session = new dsession();
+        if($_SESSION['mobile_code'] != md5($_SESSION['mobile'].'|'.$mobilecode)) exit(json_encode(array('info'=>'手机验证码错误', 'status'=>'n')));
 
         $post = dhtmlspecialchars($post);
         $post = array_map("trim", $post);
@@ -36,6 +36,9 @@ if($_userid){
 
         exit(json_encode(array('info'=>'预约成功', 'status'=>'y')));
     }else{
+
+        $actsend = crypt_action('sendscode');
+
         $mid = $mid ? $mid : 2;
         $title = $title ? $title : $COM['company'];
     }

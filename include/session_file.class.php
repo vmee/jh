@@ -7,7 +7,9 @@ defined('IN_DESTOON') or exit('Access Denied');
 class dsession {
     function dsession() {
 		if(DT_DOMAIN) @ini_set('session.cookie_domain', '.'.DT_DOMAIN);
-		@ini_set('session.gc_maxlifetime', 1800);
+		@ini_set('session.cookie_path', '/');
+		@ini_set('session.cookie_lifetime', '1800');
+		//@ini_set('session.gc_maxlifetime', 1800);
     	if(is_dir(DT_ROOT.'/file/session/')) {
 			$dir = DT_ROOT.'/file/session/'.substr(DT_KEY, 2, 6).'/';
 			if(is_dir($dir)) {

@@ -10,7 +10,11 @@
 	<h1 class="text-center">{$title}</h1>
 	<p class="text-center">优惠价:<b class="text-warning">{$price}</b> <del>门店价:{$marketprice}</del>  此信息已被浏览{$hits}次<p>
 	<div class="content" id="content">{$content}</div>
-
+	<div class="text-center">
+		<a href="{userurl($username, 'file=appointment&itemid='.$itemid.'&mid='.$moduleid.'&title='.$title, $domain)}">
+		<input class="rankBtn mdialog"  type="button" value="立即免费预约">
+	    </a>
+	</div>
 
 </div>
 {else}
