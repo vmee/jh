@@ -151,16 +151,15 @@ switch($job) {
 			//if($_SESSION['mobile_time'] && $DT_TIME - $_SESSION['mobile_time'] < 180) exit('5');
 			//if($_SESSION['mobile_send'] > 4) exit('6');
 
-			//$mobilecode = random(6, '0123456789');
-			$mobilecode = '123456';
+			$mobilecode = random(6, '0123456789');
 			$_SESSION['mobile'] = $mobile;
 			$_SESSION['mobile_code'] = md5($mobile.'|'.$mobilecode);
 			$_SESSION['mobile_time'] = $DT_TIME;
 			$_SESSION['mobile_send'] = $_SESSION['mobile_send'] + 1;
 
 			$content = lang('sms->sms_code', array($mobilecode, $MOD['auth_days'])).$DT['sms_sign'];
-			//send_sms($mobile, $content);
-			exit('1');
+			send_sms($mobile, $content);
+			echo '1';
 		}
 		break;
 }

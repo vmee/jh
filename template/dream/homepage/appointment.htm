@@ -111,7 +111,7 @@
 			if(btnText == '获取验证码' || btnText=='重新发送'){
 
 				var mobile = $("#sendmobile").val();
-				$.get('{$MODULE[1][linkurl]}ajax.php?moduleid=2&action=member&job=sendcode&actsend={$actsend}&value='+mobile, function(response){
+				$.get('{userurl($username, "file=appointment", $domain)}?actsend={$actsend}&value='+mobile, function(response){
 							if(response == 1){
 								//$('#sendbtn').text('发送成功');
 
