@@ -89,7 +89,7 @@
 
                     <li><a>{if $_truename}{$_truename}{else}{$_username}{/if}</a></li>
 
-                    {if $is_company}
+                    {if $_groupid > 5}
                     <li>|</li>
                     <li><a href="{$MODULE[2][linkurl]}">商务中心</a></li>
                     <li>|</li>
