@@ -1,0 +1,139 @@
+{template 'header'}
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}validator.css"/>
+<style type="text/css">
+.tl{width:150px;text-align:right;padding-right:20px;}
+.reg_title {border-bottom:#CCCCCC 1px dashed;font-weight:bold;padding:0 0 10px 10px;margin:10px 0px;font-size:18px;color:#FF6600;}
+.reg_inp {border:#7F9DB9 1px solid;padding:3px 0 3px 0;}
+.tips {position:absolute;z-index:1000;width:300px;background:url('image/tips_bg.gif') no-repeat 0 bottom;overflow:hidden;margin:-5px 0 0 -10px;}
+.tips div{background:url('image/tips_top.gif') no-repeat;line-height:22px;padding:8px 10px 8px 35px;}
+table tr td{padding:5px 0;}
+.f_red{color:red}
+</style>
+
+
+
+<!-- Titlebar
+================================================== -->
+<section class="titlebar hidden-xs">
+	<div class="container">
+		<div class="sixteen columns">
+			<h2>找回密码</h2>
+
+			<nav id="breadcrumbs">
+				<ul>
+					<li><a href="/">首页</a></li>
+					<li>找回密码</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</section>
+
+<div class="container">
+
+
+
+	<div class="six columns centered">
+
+		<div class="info-banner">
+			<div class="info-content">
+				<h3>请填写正确信息, 找回账户密码：</h3>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+
+		<form action="findpass.php" method="post"  id="business_reg">
+			<input name="action" type="hidden" id="action" value="{crypt_action('findpass')}"/>
+			<input name="submit" type="hidden" value="1">
+
+			<p class="form-row form-row-wide">
+
+				<label>用户名: <span class="required">*</span></label>
+				<input type="text" class="input-text" name="username"
+					   datatype="s{$MOD[minusername]}-{$MOD[maxusername]}"
+					   errormsg="{$MOD[minusername]}-{$MOD[maxusername]}个字符，只能使用小写字母(a-z)、数字(0-9)，且以字母或数字开头和结尾"
+					   ajaxurl="{DT_PATH}ajax.php?moduleid=2&action=member&job=checkum"
+					   sucmsg=" "
+					   value="" />
+
+				</p>
+
+			<p class="form-row form-row-wide">
+				<label >手机号: <span class="required">*</span></label>
+				<input type="text" class="input-text" name="mobile" id="sendmobile" datatype="m"
+					   ajaxurl="{DT_PATH}ajax.php?moduleid=2&action=member&job=checkum"
+					   nullmsg="请输入手机号" sucmsg="<a id='sendbtn' href='javascript:;' onclick='sendCode();'>获取验证码</a>" errormsg="请输入正确的手机号！" value="" />
+			</p>
+			<p class="form-row form-row-wide">
+				<label >手机号验证码: <span class="required">*</span></label>
+				<input type="text" class="input-text" name="mobilecode" value="" datatype="*"
+					   ajaxurl="{DT_PATH}ajax.php?moduleid=2&action=member&job=checkmobilecode"
+					   sucmsg=" " />
+			</p>
+
+			<p class="form-row">
+				<input type="submit" class="button" name="submit" value="提交" />
+			</p>
+
+		</form>
+	</div>
+</div>
+
+{template 'footer'}
+<script src="{DT_SKIN}scripts/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript">
+
+
+	$(function(){
+		$("#business_reg").Validform({
+			tiptype:3
+		});
+
+
+	});
+
+
+	//发送验证码
+	function sendCode(){
+
+		var btnText = $('#sendbtn').text();
+
+		if(btnText == '获取验证码' || btnText=='重新发送'){
+
+			var mobile = $("#sendmobile").val();
+			$.get('findpass.php?action={$action_sendscode}&value='+mobile, function(response){
+						if(response == 1){
+							//$('#sendbtn').text('发送成功');
+
+							var i = 90;
+							var interval=window.setInterval(
+									function(){
+										if(i == 0) {
+											$('#sendbtn').text('重新发送')
+											clearInterval(interval);
+										} else {
+											$('#sendbtn').text('发送成功('+i+')');
+											i--;
+										}
+									},
+									1000);
+
+						}else if(response == 2){
+							$('#sendbtn').text('手机号码格式错误，请检查');
+						}else if(response == 3){
+							$('#sendbtn').text('手机号码已存在，请更换');
+						}else if(response == 5){
+							$('#sendbtn').text('短信发送过快，请稍后再试');
+						}else if(response == 6){
+							$('#sendbtn').text('尝试发送次数太多，请稍后再试');
+						}else{
+							$('#sendbtn').text('未知错误');
+						}
+					}
+			);
+		}
+
+
+
+	}
+</script>

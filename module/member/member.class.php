@@ -123,7 +123,7 @@ class member {
 		if(!is_array($member)) return false;
 		if(!$this->is_passport($member['passport'])) return false;
 		if(!$member['groupid']) return $this->_($L['member_groupid_null']);
-		if(strlen($member['truename']) < 2 || !$this->is_clean($member['truename'])) return $this->_($L['member_truename_null']);
+		//if(strlen($member['truename']) < 2 || !$this->is_clean($member['truename'])) return $this->_($L['member_truename_null']);
 		//if(!$this->is_email(trim($member['email']))) return false;
 		//if($this->email_exists(trim($member['email']))) return $this->_($L['member_email_reg']);
 		$areaid = intval($member['areaid']);

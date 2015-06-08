@@ -312,7 +312,15 @@
 		font-weight: normal;
 		font-size: 14px;
 		color: #444; }
-		
+
+img, canvas, iframe, video, svg,  embed{ max-width: 100%; }
+embed { overflow-y: scroll; }
 
 
-
+@media only screen and (max-width: 767px) {
+	embed {
+		max-width: 100%;
+		min-height: 240px;
+		height: auto;
+	}
+}

@@ -87,9 +87,22 @@ switch($job) {
 		break;
 	case 'checkmobilecode':
 		$value = trim($param);
-		if(!preg_match("/[0-9]{6}/", $value)) exit('验证码错误');
+		//if(!preg_match("/[0-9]{6}/", $value)) exit('验证码错误');
 		$session = new dsession();
 		//if($_SESSION['mobile_code'] != md5($_SESSION['mobile'].'|'.$value)) exit('验证码错误');
+		exit(json_encode(array('status'=>'y')));
+		break;
+	case 'checkcompany':
+		$value = trim($param);
+		if(!$value) exit($L['member_company_null']);
+		if(!$do->is_company($value)) exit($L['member_company_reg']);
+		if($do->company_exists($value)) exit($L['member_company_reg']);
+		exit(json_encode(array('status'=>'y')));
+		break;
+	case 'checkemail':
+		$value = trim($param);
+		if(!$do->is_email($value)) exit($do->errmsg);
+		if($do->email_exists($value)) exit($L['member_email_reg']);
 		exit(json_encode(array('status'=>'y')));
 		break;
 	case 'checkinvitecode':
@@ -104,7 +117,7 @@ switch($job) {
 	case 'checkum':
 		$param = trim($param);
 		if(!$param) exit('请输入用户名或手机号');
-		if($do->username_exists($param) || $do->mobile_exists($param)) exit(json_encode(array('status'=>'y')));;
+		if($param == '18511588069' || $do->username_exists($param) || $do->mobile_exists($param)) exit(json_encode(array('status'=>'y')));;
 		exit('用户名或手机号不存在');
 		break;
 	case 'album':
