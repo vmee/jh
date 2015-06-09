@@ -1,11 +1,13 @@
 <?php 
 defined('IN_DESTOON') or exit('Access Denied');
 if(!$_userid) dheader($MODULE[2]['linkurl'].$DT['file_login']);
-require DT_ROOT.'/module/'.$module.'/common.inc.php';
 
-require MD_ROOT.'/member.class.php';
-require DT_ROOT.'/include/post.func.php';
+
+require_once DT_ROOT.'/module/'.$module.'/common.inc.php';
+require_once DT_ROOT.'/module/member/member.class.php';
+require_once DT_ROOT.'/include/post.func.php';
 $do = new member;
+
 switch($action){
 
 	case 'search':
@@ -44,5 +46,7 @@ switch($action){
 		include template('search', 'user');
 		break;
 	default:
-		include template('index', 'user');
+
+
+		include template('index1', 'user');
 }

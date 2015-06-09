@@ -77,8 +77,8 @@ if(!isset($COMGROUP['homepage']) || !$COMGROUP['homepage']) {
 	$member['thumb'] = $member['thumb'] ? $member['thumb'] : DT_SKIN.'image/company.jpg';*/
 
 	//include template('show', $module);
-	//require DT_ROOT.'/user/index.php';
-	include template('index', 'user');
+	include_once DT_ROOT.'/module/member/user.inc.php';
+	//include template('index', 'user');
 	exit;
 }
 $api_map = ($MOD['map'] && $COMGROUP['map']) ? $MOD['map'] : '';

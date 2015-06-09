@@ -1,0 +1,64 @@
+{template 'head'}
+<link rel="stylesheet" href="{DT_SKIN}user.css">
+<div class="margin-top-15"></div>
+
+<div class="container row box">
+    <div class="col-md-3 menu-left">
+        <div class="text-center">
+            {if $_userid==$userid}
+            <img class="img-responsive center-block img-circle" src="{useravatar($username, 'large')}" id="update_avatar" alt="更改头像">
+            {else}
+            <img class="img-responsive center-block img-circle" src="{useravatar($username, 'large')}" alt="{$username}">
+            {/if}
+
+            {if $member[truename]}<h3>{$member[truename]}</h3>{/if}
+            <p>{$member[username]} {if $_userid==$userid}<a href="javascript:;" class="update_profile small">修改信息</a>{/if}</p>
+
+        </div>
+        <hr>
+        <nav class="categories">
+            <ul>
+                <li><a href="#">个人信息</a></li>
+                <li><a href="#">我的日志</a></li>
+                <li><a href="#">我的相册</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="col-md-9">
+        <div class="margin-top-30"></div>
+
+
+            <h2>{if $member[truename]}{$member[truename]}{else}{$member[username]}{/if}</h2>
+            <dl class="dl-horizontal">
+                <dt>所在地:</dt>
+                <dd><strong>{area_pos($member[areaid], '&nbsp;')}</strong></dd>
+                <dt>结婚日期:</dt>
+                <dd><a>{$member[weddate]}</a></dd>
+                <dt>所需服务:</dt>
+                <dd><b><a>{implode(',', $wed_cats)}</a></b></dd>
+                <dt>联系方式:</dt>
+                <dd>{$member[career]}&nbsp;
+                    {if $member[username] && $DT[im_web]}{im_web($member[username],1)}&nbsp;{/if}
+                    {if $member[qq] && $DT[im_qq]}{im_qq($member[qq], 1)}&nbsp;{/if}
+                    {if $member[ali] && $DT[im_ali]}{im_ali($member[ali])}&nbsp;{/if}
+                    {if $member[msn] && $DT[im_msn]}{im_msn($member[msn])}&nbsp;{/if}
+                    {if $member[skype] && $DT[im_skype]}{im_skype($member[skype])}&nbsp;{/if}</dd>
+
+            </dl>
+
+
+
+            <!--
+            <i class="icon-globe"></i> - BlackTie.co <br/>
+            <i class="icon-envelope"></i> - victoria@blacktie.co-->
+
+
+    </div>
+</div>
+
+
+<div class="margin-top-15"></div>
+
+{template 'foot'}
+<script src="{DT_SKIN}scripts/user.js"></script>
