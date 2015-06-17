@@ -1,4 +1,4 @@
-<?php 
+<?php
 defined('IN_DESTOON') or exit('Access Denied');
 isset($file) or $file = 'homepage';
 if(isset($update) || isset($preview)) {
@@ -106,7 +106,34 @@ if($rewrite) {
 }
 include load('homepage.lang');
 in_array($file, $MFILE) or dheader($MOD['linkurl']);
-if($COMGROUP['menu_d']) {
+
+$HOME = get_company_setting($COM['userid'], '', 'CACHE');
+
+//导航排序
+$menu_order = array(
+	15 => 50
+);
+
+$menu_show = explode(',', $COMGROUP['menu_c']);
+
+$MENU = array();
+$menuid = 0;
+foreach($HMENU as $k=>$v) {
+
+	if(in_array($k, $menu_show)){
+		$MENU[$k]['name'] = $v;
+		$MENU[$k]['linkurl'] = userurl($username, 'file='.$MFILE[$k], $domain);
+		$MENU[$k]['sort'] = !isset($menu_order[$k]) ? $k*10 : $menu_order[$k];
+
+	}
+
+}
+var_dump($MENU);
+usort($MENU, function($a, $b){
+	return $a['sort'] > $b['sort'] ? 1 : -1;
+});
+
+/*if($COMGROUP['menu_d']) {
 	$_menu_show = array();
 	foreach($HMENU as $k=>$v) {
 		$_menu_show[$k] = strpos(','.$COMGROUP['menu_d'].',', ','.$k.',') !== false ? 1 : 0;
@@ -186,7 +213,7 @@ $HSIDE = $_HSIDE;
 $side_pos = isset($HOME['side_pos']) && $HOME['side_pos'] ? 1 : 0;
 $side_width = isset($HOME['side_width']) && $HOME['side_width'] ? $HOME['side_width'] : 200;
 $show_stats = isset($HOME['show_stats']) && $HOME['show_stats'] == 0 ? 0 : 1;
-$skin = 'default';
+$skin = 'default';*/
 $template = 'homepage';
 if($COM['skin'] && $COM['template']) {
 	$skin = $COM['skin'];
@@ -280,7 +307,7 @@ foreach($cates as $catesid){
 $head_description = strip_tags($seo_description ? $seo_description : $COM['introduce']);
 if(!$DT_BOT) {
 	if($DT['cache_hits']) {
-		 cache_hits($moduleid, $userid);
+		cache_hits($moduleid, $userid);
 	} else {
 
 		$session = new dsession();
