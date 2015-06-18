@@ -124,12 +124,15 @@ foreach($HMENU as $k=>$v) {
 		$MENU[$k]['name'] = $v;
 		$MENU[$k]['linkurl'] = userurl($username, 'file='.$MFILE[$k], $domain);
 		$MENU[$k]['sort'] = !isset($menu_order[$k]) ? $k*10 : $menu_order[$k];
-
+		if($file == $MFILE[$k]) $menuid = $k;
 	}
 
+
+
 }
-var_dump($MENU);
-usort($MENU, function($a, $b){
+
+$SHOW_MENU = $MENU;
+usort($SHOW_MENU, function($a, $b){
 	return $a['sort'] > $b['sort'] ? 1 : -1;
 });
 
@@ -288,12 +291,13 @@ $kf = isset($HOME['kf']) ? $HOME['kf'] : '';
 $album_js = 0;
 
 
-$head_title = $COM['company'].'_'.($MENU[$menuid]['name'] ? $MENU[$menuid]['name'] : '首页');
+$head_title = $COM['company'].'-'.($MENU[$menuid]['name'] ? $MENU[$menuid]['name'] : '首页');
 $seo_keywords = isset($HOME['seo_keywords']) ? $HOME['seo_keywords'] : '';
 //$seo_description = isset($HOME['seo_description']) ? $HOME['seo_description'] : '';
-$seo_description = $COM['company'].'是'.$DT['sitename'].'精选推荐商家,主要经营'.str_replace('|', ',', $COM['business']);
-$head_keywords = strip_tags($seo_keywords ? $seo_keywords : $COM['company'].','.str_replace('|', ',', $COM['business']));
+$seo_description = $COM['company'].'是'.$DT['sitename'].'精选推荐商家,主要经营'.($COM['business'] ? str_replace('|', ',', $COM['business']) : $com_cat['catname']);
+$head_keywords = strip_tags($seo_keywords ? $seo_keywords : $COM['company'].','.($COM['business'] ? str_replace('|', ',', $COM['business']) : $com_cat['catname']));
 
+$cates = explode(',', trim($COM['catids'], ','));
 $head_keywords = rtrim($head_keywords, ',');
 $com_area = get_area($COM['areaid']);
 foreach($cates as $catesid){
