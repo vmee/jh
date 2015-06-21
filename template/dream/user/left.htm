@@ -13,8 +13,9 @@
                 <li><a href="#">我的日志</a></li>
                 <li><a href="#">我的相册</a></li>-->
                 <li><a href="{userurl($username, '', $domain)}">个人首页</a>
+                    {if $_userid==$userid}
                 <li><a href="{userurl($username, 'action=avatar', $domain)}">更换头像</a>
-                <li>{if $_userid==$userid}<a href="{userurl($username, 'action=password', $domain)}">密码管理</a>{/if}</li>
+                <li><a href="{userurl($username, 'action=password', $domain)}">密码管理</a>{/if}</li>
             </ul>
         </nav>
     </div>

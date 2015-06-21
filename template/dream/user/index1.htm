@@ -21,11 +21,18 @@
                 <dt>所需服务:</dt>
                 <dd><b><a>{implode(',', $wed_cats)}</a></b></dd>
                 <dt>联系方式:</dt>
-                <dd>{$member[career]}&nbsp;{if $member[username] && $DT[im_web]}{im_web($member[username],1)}&nbsp;{/if}
+                <dd>
+                    {if $_userid==$userid || $_groupid>5}
+                    {$member[career]}&nbsp;{if $member[username] && $DT[im_web]}{im_web($member[username],1)}&nbsp;{/if}
                     {if $member[qq] && $DT[im_qq]}{im_qq($member[qq], 1)}&nbsp;{/if}
                     {if $member[ali] && $DT[im_ali]}{im_ali($member[ali])}&nbsp;{/if}
                     {if $member[msn] && $DT[im_msn]}{im_msn($member[msn])}&nbsp;{/if}
-                    {if $member[skype] && $DT[im_skype]}{im_skype($member[skype])}&nbsp;{/if}</dd>
+                    {if $member[skype] && $DT[im_skype]}{im_skype($member[skype])}&nbsp;{/if}
+                    {else}
+                    无权限查看
+                    {/if}
+
+                </dd>
 
             </dl>
 
