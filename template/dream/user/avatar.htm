@@ -1,0 +1,210 @@
+{template 'head'}
+<link rel="stylesheet" href="{DT_SKIN}user.css">
+<link rel="stylesheet" href="{DT_SKIN}/Jcrop/css/jquery.Jcrop.css">
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}validator.css"/>
+<style type="text/css">
+    /*上传文件的css*/
+    .btn {
+        float:left;
+        position: relative;
+        overflow:hidden;
+        margin-right:4px;
+        display:inline-block;
+        *display:inline;
+        padding:4px 10px 4px;
+        font-size:14px;
+        line-height:18px;
+        *line-height:20px;
+        color:#fff;
+        text-align:center;
+        vertical-align:middle;
+        cursor:pointer;
+        background-color:#5bb75b;
+        border:1px solid #cccccc;
+        border-color:#e6e6e6 #e6e6e6 #bfbfbf;
+        border-bottom-color:#b3b3b3;
+        -webkit-border-radius:4px;
+        -moz-border-radius:4px;
+        border-radius:4px;
+    }
+    .btn input {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        border: solid transparent;
+        opacity:0;
+        filter:alpha(opacity=0);
+        cursor: pointer;
+    }
+</style>
+<div class="margin-top-15"></div>
+
+<div class="container row box">
+    {template 'left', 'user'}
+
+    <div class="col-md-9 margin-bottom-50">
+        <div class="margin-top-30"></div>
+
+
+            <h2>更改头像</h2>
+            <hr>
+
+        <div class="ten columns centered">
+
+            {if $perfact=='no'}<div class="notification notice closeable">
+            <p>请上传头像</p>
+        </div>{/if}
+
+            <form action="{userurl($username, 'action=avatar&avatardo=save', $domain)}" id="avatarform" method="post">
+                <div class="demo margin-top-30">
+                    <p>说明：只允许上传gif/jpg/png格式的图片，图片大小不能超过2m。</p>
+                    <div class="btn"> <span>上传图片</span>
+                        <input id="fileupload" type="file" name="mypic">
+                    </div>
+                    <div class="files"></div>
+                    <div id="showimg" class="margin-top-30"><!--<img src="{useravatar($username, 'large')}" />初始图片--></div>
+                </div>
+                <input type="hidden" id="src" name="src" value="" />
+                <input type="hidden" id="x" name="x" value="50" />
+                <input type="hidden" id="y" name="y" value="100" />
+                <input type="hidden" id="w" name="w" value="250" />
+                <input type="hidden" id="h" name="h" value="300" />
+
+                <div id="upbtn" class="margin-top-30" style="display: none"><input type="submit" value="确认保存" class="Intercbtn" /></div>
+            </form>
+        </div>
+
+
+
+
+            <!--
+            <i class="icon-globe"></i> - BlackTie.co <br/>
+            <i class="icon-envelope"></i> - victoria@blacktie.co-->
+
+
+    </div>
+</div>
+
+
+<div class="margin-top-15"></div>
+
+{template 'foot'}
+<script src="{DT_SKIN}scripts/jquery.form.js"></script>
+<script src="{DT_SKIN}Jcrop/js/jquery.Jcrop.js"></script>
+<script src="{DT_SKIN}scripts/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $("#avatarform").Validform({
+            ajaxPost:true,
+            tiptype:4,
+            callback:function(data){
+                if(data.status == 'y'){
+                    layer.alert('头像保存成功' , 6, function(){
+                        location.href = '{userurl($username, '', $domain)}';
+                    });
+
+                }else{
+                    layer.alert('头像保存失败' , 6);
+                }
+
+            },
+            beforeSubmit:function(curform){
+                //在验证成功后，表单提交前执行的函数，curform参数是当前表单对象。
+                //这里明确return false的话表单将不会提交;
+            }
+        }).addRule([
+            {
+                ele:"#w",
+                datatype:"n",
+                nullmsg:"请选择一个区域做为头像！",
+                errormsg:"请选择一个区域做为头像",
+                sucmsg:' '
+            }
+        ]);
+
+        var bar = $('.bar');
+        var percent = $('.percent');
+        var showimg = $('#showimg');
+        var progress = $(".progress");
+        var files = $(".files");
+        var btn = $(".btn span");
+        $("#fileupload").wrap("<form id='myupload' action='{userurl($username, 'action=avatar&avatardo=upload', $domain)}' method='post' enctype='multipart/form-data'></form>");
+        $("#fileupload").change(function(){  //选择文件
+            $("#myupload").ajaxSubmit({
+                dataType:  'json',	//数据格式为json
+                /*beforeSend: function() {	//开始上传
+                    showimg.empty();	//清空显示的图片
+                    progress.show();	//显示进度条
+                    var percentVal = '0%';	//开始进度为0%
+                    bar.width(percentVal);	//进度条的宽度
+                    percent.html(percentVal);	//显示进度为0%
+                    btn.html("上传中...");	//上传按钮显示上传中
+                },
+                uploadProgress: function(event, position, total, percentComplete) {
+                    var percentVal = percentComplete + '%';	//获得进度
+                    bar.width(percentVal);	//上传进度条宽度变宽
+                    percent.html(percentVal);	//显示上传进度百分比
+                },*/
+                success: function(data) {	//成功
+                    //获得后台返回的json数据，显示文件名，大小，以及删除按钮
+                    files.html("<b>"+data.name+"("+data.size+"k)</b>");
+                    //显示上传后的图片
+                    var img = data.pic;
+                    //判断上传图片的大小 然后设置图片的高与宽的固定宽
+                    showimg.html("<img src='"+img+"' id='cropbox' />");
+
+                    //传给php页面，进行保存的图片值
+                    $("#src").val(img);
+                    //截取图片的js
+                    $('#cropbox').Jcrop({
+                        aspectRatio: 1,
+                        onSelect: updateCoords,
+                        minSize:[200,200],
+                        maxSize:[500,500],
+                        allowSelect:false, //允许选择
+                        allowResize:false, //是否允许调整大小
+                        setSelect: [ 50, 100, 250, 300 ]
+                    });
+                    btn.html("上传图片");	//上传按钮还原
+
+                    $("#upbtn").show();
+                },
+                error:function(xhr){	//上传失败
+                    btn.html("重新上传");
+                    bar.width('0')
+                    files.html(xhr.responseText);	//返回失败信息
+                }
+            });
+        });
+
+        $(".delimg").live('click',function(){
+            var pic = $(this).attr("rel");
+            $.post("action=avatar&avatardo=delimg",{imagename:pic},function(msg){
+                if(msg==1){
+                    files.html("删除成功.");
+                    showimg.empty();	//清空图片
+                    progress.hide();	//隐藏进度条
+                }else{
+                    alert(msg);
+                }
+            });
+        });
+
+    });
+
+    function updateCoords(c){
+        $('#x').val(c.x);
+        $('#y').val(c.y);
+        $('#w').val(c.w);
+        $('#h').val(c.h);
+    };
+
+    function checkCoords(){
+        if (parseInt($('#w').val())) return true;
+        alert('请选择一个区域做为头像');
+        return false;
+    };
+</script>

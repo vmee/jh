@@ -4,3 +4,5 @@ body.boxed{ width: 100%;}
 .menu-left{background: #fafafa;border:1px solid #e8e8e8;}
 .categories ul li{text-align: center;line-height: 28px;}
 .categories ul li a{font-size: 16px;}
+.dl-horizontal img,.form-group img{display: inline}
+input[type="text"], input[type="password"], input[type="email"], textarea, select{display: inline}
