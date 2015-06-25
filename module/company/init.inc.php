@@ -128,7 +128,6 @@ foreach($HMENU as $k=>$v) {
 	}
 
 }
-var_dump($MENU);
 usort($MENU, function($a, $b){
 	return $a['sort'] > $b['sort'] ? 1 : -1;
 });
