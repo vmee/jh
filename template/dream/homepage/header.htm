@@ -68,8 +68,8 @@
             <div class="youlibox">{$announce}</div>
             {/if}
             <div>
-                <a href="{userurl($username, 'file=appointment', $domain)}">
-                    <input class="rankBtn mdialog"  type="button" value="立即免费预约">
+                <a href="{userurl($username, 'file=appointment', $domain)}" class="btn btn-danger">
+                    立即免费预约
                     </a>
             </div>
         </div>
@@ -85,7 +85,7 @@
             <ul class="menu" id="responsive">
 
                 <li class="{if $file=='homepage'}current{else}{/if}"><a href="{$COM[linkurl]}">商家首页</a></li>
-                {loop $MENU $k $v}
+                {loop $SHOW_MENU $k $v}
                 {if $COM[ishotel]==3}
                     {if $v[name]!= '精品特价' &&  $v[name]!= '作品精选'}
                         <li class="{if $file==$menu_file[$k]}current{else}{/if}"><a href="{$v[linkurl]}">{$v[name]}</a></li>

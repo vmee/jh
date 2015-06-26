@@ -1,0 +1,149 @@
+{template 'head'}
+<link rel="stylesheet" href="{DT_SKIN}user.css">
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}validator.css"/>
+<div class="margin-top-15"></div>
+
+<div class="container row box">
+    {template 'left', 'user'}
+
+    <div class="col-md-9">
+        <div class="margin-top-30"></div>
+
+
+            <h2>个人信息修改</h2>
+            <hr>
+
+        <div class="ten columns centered">
+
+            {if $perfact=='no'}<div class="notification notice closeable">
+            <p>请先完善个人信息</p>
+        </div>{/if}
+
+            <form action="{userurl($username, 'action=edit', $domain)}" method="post" target="send" id="business_reg">
+                <input name="forward" type="hidden" value="{$forward}"/>
+                <input type="hidden" name="submit" value="1">
+
+                <div class="form-group">
+                    <label>会员名:</label>{$_username}
+                </div>
+
+                <div class="form-group">
+                    <label >手机号: </label>
+                    {$mobile}
+                </div>
+
+
+                <div class="form-group">
+                    <label >真实姓名: <span class="required">*</span></label>
+                    <input type="text" class="input-text" name="post[truename]" value="{$truename}" datatype="s2-8" nullmsg="请输入真实姓名！" errormsg="姓名不正确" sucmsg=" " />
+                </div>
+
+                <div class="form-group">
+                    <label >性别: <span class="required">*</span></label>
+                    <div class="">
+                        <input type="radio" name="post[gender]" class="radio-inline" value="1" {if $gender==1 || $gender==''}checked{/if} id="gender_1"/><label for="gender_1" style="display: inline"> 先生</label>
+                        <input type="radio" name="post[gender]" class="radio-inline" value="2" {if $gender==2}checked {/if} id="gender_2" /><label for="gender_2" style="display: inline"> 女士</label>
+                    </div>
+                </div>
+
+                <p class="form-row form-row-wide">
+                    <label >所在地区: <span class="required">*</span></label>
+                    <select name="post[areaid]" datatype="*" sucmsg=" "><option value="">请选择地区</option>
+
+                        {php $mainarea = get_mainarea(0)}
+                        {loop $mainarea $k $v}
+                        <option value="{$v[areaid]}" {if $areaid ==$v[areaid]}selected{/if}>{$v[areaname]}</option>
+                        {/loop}
+
+                    </select>
+
+
+                </p>
+
+
+
+                <div class="form-group">
+                    <label>结婚日期: <span class="required">*</span></label>
+                    <script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
+                    <script type="text/javascript" src="{DT_STATIC}lang/zh-cn/lang.js"></script>
+                    {dcalendar('post[weddate]', intval($weddate)>0 ? $weddate : '')}
+                </div>
+
+                <div class="form-group">
+                    <label>所需服务: <span class="required">*</span></label>
+                    {php $child = get_maincat(0, 4, 1);}
+                    {loop $child $i $c}
+
+                    <input type="checkbox" name="wed_catids[]" id="wed{$i}" value="{$c[catid]}" {if array_key_exists($c[catid], $wed_cats)}checked{/if} /> {set_style($c[catname], $c[style])}
+
+                    {/loop}
+                </div>
+                <div class="form-group">
+                    <label >QQ号码: <span class="required">*</span></label>
+                    <input type="text" class="input-text" name="post[qq]"
+                           datatype="n5-16" value="{$qq}" sucmsg=" " nullmsg="请输入QQ号！" errormsg="qq号不正确" />
+                </div>
+
+
+                <p class="form-row">
+                    <input type="submit" class="button" name="submit" value="修改" />
+                </p>
+
+            </form>
+        </div>
+
+
+
+
+            <!--
+            <i class="icon-globe"></i> - BlackTie.co <br/>
+            <i class="icon-envelope"></i> - victoria@blacktie.co-->
+
+
+    </div>
+</div>
+
+
+<div class="margin-top-15"></div>
+
+{template 'foot'}
+<script src="{DT_SKIN}scripts/user.js"></script>
+<script src="{DT_SKIN}scripts/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript">
+
+
+    $(function(){
+
+        $("#business_reg").Validform({
+            ajaxPost:true,
+            tiptype:4,
+            callback:function(data){
+                if(data.status == 'y'){
+                    layer.alert('信息修改成功' , 6, function(){
+                        location.href ='{userurl($username, 'action=edit', $domain)}';
+                    });
+
+                }else{
+                    layer.alert('信息修改失败' , 6);
+                }
+
+            }
+        }).addRule([
+            {
+                ele:"#postweddate",
+                datatype:"*",
+                nullmsg:"请输入结婚日期！",
+                errormsg:"结婚日期不能为空",
+                sucmsg:' '
+            },
+            {
+                ele:":checkbox:first",
+                datatype:"*",
+                sucmsg:' '
+
+            }
+        ]);
+
+
+    });
+</script>

@@ -907,7 +907,7 @@ function userurl($username, $qstring = '', $domain = '') {
 }
 
 function useravatar($var, $size = '', $isusername = 1, $real = 0) {
-	in_array($size, array('large', 'small')) or $size = 'middle';
+	in_array($size, array('large', 'small','big')) or $size = 'middle';
 	if($real) {
 		$ext = 'x48.jpg';
 		if($size == 'large') $ext = '.jpg';
@@ -932,7 +932,7 @@ function useravatar($var, $size = '', $isusername = 1, $real = 0) {
 		return strpos($file, '/api/') === false ? $file : '';
 	} else {
 		$name = $isusername ? 'username' : 'userid';
-		return DT_PATH.'api/avatar/show.php?'.$name.'='.$var.'&amp;size='.$size;
+		return DT_PATH.'api/avatar/show.php?'.$name.'='.$var.'&size='.$size;
 	}
 }
 

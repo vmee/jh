@@ -1,12 +1,10 @@
 <?php 
 defined('IN_DESTOON') or exit('Access Denied');
 if(!$_userid) dheader($MODULE[2]['linkurl'].$DT['file_login']);
-
-
 require_once DT_ROOT.'/module/'.$module.'/common.inc.php';
 require_once DT_ROOT.'/module/member/member.class.php';
 require_once DT_ROOT.'/include/post.func.php';
-$do = new member;
+//$do = new member;
 
 switch($action){
 
@@ -45,8 +43,29 @@ switch($action){
 
 		include template('search', 'user');
 		break;
+
+	case 'edit':
+		include DT_ROOT.'/module/member/user.edit.inc.php';
+		break;
+
+	case 'avatar':
+		include DT_ROOT.'/module/member/user.avatar.inc.php';
+		break;
+
+	case 'password':
+		include DT_ROOT.'/module/member/user.password.inc.php';
+		break;
+
 	default:
 
+		if($_userid == $userid){
+			if(empty($member['qq']) || empty($member['weddate']) || empty($wed_cats)){
+				dheader(userurl($username, 'action=edit&perfact=no', $domain));
+			}
+			if(!$member['avatar']){
+				dheader(userurl($username, 'action=avatar&perfact=no', $domain));
+			}
+		}
 
 		include template('index1', 'user');
 }

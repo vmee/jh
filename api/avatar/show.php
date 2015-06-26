@@ -5,9 +5,10 @@ $DT_ROOT = substr($DT_ROOT, 0, -10);
 $size = isset($_GET['size']) ? $_GET['size'] : '';
 $userid = isset($_GET['userid']) ? intval($_GET['userid']) : 0;
 $username = isset($_GET['username']) ? trim($_GET['username']) : '';
-in_array($size, array('large', 'small')) or $size = 'middle';
+in_array($size, array('large', 'small','big')) or $size = 'middle';
 $ext = 'x48.jpg';
 if($size == 'large') $ext = '.jpg';
+if($size == 'big') $ext = 'x0.jpg';
 if($size == 'small') $ext = 'x20.jpg';
 $file = $DT_ROOT.'api/avatar/default'.$ext;
 if($userid) {
