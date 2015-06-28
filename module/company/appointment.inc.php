@@ -30,8 +30,12 @@ if($_userid){
         $sqlk = substr($sqlk, 1);
         $sqlv = substr($sqlv, 1);
 
-
         $itemid = $db->query("INSERT INTO {$DT_PRE}appointment ($sqlk) VALUES ($sqlv)");
+
+        if(!empty($DT['sms_mobile'])){
+            $content = lang('sms->sms_appointment', array($COM['company'], $user['truename'] ? $user['truename'] : $_username , $post['mobile'])).$DT['sms_sign'];
+            send_sms($COM['mobile'], $content);
+        }
 
 
         exit(json_encode(array('info'=>'预约成功', 'status'=>'y')));

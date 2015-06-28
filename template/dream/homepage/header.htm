@@ -36,11 +36,11 @@
             <h2>{$COM[company]}</h2>
 
             <dl class="dl-horizontal">
-                <dt>商家地址:</dt>
+                <dt>{$menu_head_name}地址:</dt>
                 <dd><strong>{$COM[address]}</strong></dd>
                 <dt>联系电话:</dt>
-                <dd>{if $domain}{$COM[telephone]}{else}{anti_spam($COM[telephone])}{/if}</dd>
-                <dt>商铺流量:</dt>
+                <dd><a href="tel:{$COM[telephone]}">{if $domain}{$COM[telephone]}{else}{anti_spam($COM[telephone])}{/if}</a></dd>
+                <dt>{$menu_head_name}流量:</dt>
                 <dd><b>{$COM[uv]}</b><em>位新人关注过</em></dd>
                 <dt>官方网站:</dt>
                 <dd>{if $COM[homepage]}<a href="{$COM[homepage]}" target="_blank" rel="nofollow">{$COM[homepage]}</a><br/>{/if}
@@ -64,6 +64,7 @@
                 <dd>{if online($COM[userid])==1}<span class="danger">当前在线</span>{else}<span>当前离线</span>{/if}</dd>
             </dl>
 
+            {if $COM['groupid'] != 8}
             {if $announce}
             <div class="youlibox">{$announce}</div>
             {/if}
@@ -72,6 +73,7 @@
                     立即免费预约
                     </a>
             </div>
+            {/if}
         </div>
     </div>
 </div>
@@ -79,12 +81,12 @@
 <div class="container margin-top-15 hidden-xs">
     <div class="sixteen">
 
-        <a href="{DT_PATH}index.php" class="menu-trigger"><i class="fa fa-bars"></i>商家导航</a>
+        <a href="{DT_PATH}index.php" class="menu-trigger"><i class="fa fa-bars"></i>{$menu_head_name}导航</a>
 
         <nav id="navigation">
             <ul class="menu" id="responsive">
 
-                <li class="{if $file=='homepage'}current{else}{/if}"><a href="{$COM[linkurl]}">商家首页</a></li>
+                <li class="{if $file=='homepage'}current{else}{/if}"><a href="{$COM[linkurl]}">{$menu_head_name}首页</a></li>
                 {loop $SHOW_MENU $k $v}
                 {if $COM[ishotel]==3}
                     {if $v[name]!= '精品特价' &&  $v[name]!= '作品精选'}

@@ -104,15 +104,27 @@ if($rewrite) {
 	if(strlen($kw) < $DT['min_kw'] || strlen($kw) > $DT['max_kw']) $kw = '';
 	$keyword = $kw ? str_replace(array(' ', '*'), array('%', '%'), $kw) : '';
 }
+
 include load('homepage.lang');
 in_array($file, $MFILE) or dheader($MOD['linkurl']);
 
 $HOME = get_company_setting($COM['userid'], '', 'CACHE');
 
+
 //导航排序
 $menu_order = array(
 	15 => 50
 );
+$menu_head_name = $MOD['name'];
+if($COM['groupid'] == 8){
+	$menu_order = array(
+		19 => 40,
+		20 => 50,
+	);
+
+	$HMENU[0] = '关于我们';
+	$menu_head_name = '';
+}
 
 $menu_show = explode(',', $COMGROUP['menu_c']);
 
@@ -125,12 +137,17 @@ foreach($HMENU as $k=>$v) {
 		$MENU[$k]['linkurl'] = userurl($username, 'file='.$MFILE[$k], $domain);
 		$MENU[$k]['sort'] = !isset($menu_order[$k]) ? $k*10 : $menu_order[$k];
 
+		if($file == $MFILE[$k]) $menuid = $k;
 	}
 
 }
-usort($MENU, function($a, $b){
+
+
+$SHOW_MENU = $MENU;
+usort($SHOW_MENU, function($a, $b){
 	return $a['sort'] > $b['sort'] ? 1 : -1;
 });
+
 
 /*if($COMGROUP['menu_d']) {
 	$_menu_show = array();

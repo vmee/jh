@@ -932,7 +932,12 @@ function useravatar($var, $size = '', $isusername = 1, $real = 0) {
 		return strpos($file, '/api/') === false ? $file : '';
 	} else {
 		$name = $isusername ? 'username' : 'userid';
-		return DT_PATH.'api/avatar/show.php?'.$name.'='.$var.'&size='.$size;
+		$session = new dsession();
+		$rand_str = '';
+		if(isset($_SESSION['avatar_upload_'.$name]) &&  $_SESSION['avatar_upload_'.$name] == $var){
+			$rand_str = '&rand='.random(5);
+		}
+		return DT_PATH.'api/avatar/show.php?'.$name.'='.$var.'&size='.$size.$rand_str;
 	}
 }
 

@@ -1,0 +1,30 @@
+{template 'head'}
+<link rel="stylesheet" href="{DT_SKIN}user.css">
+<div class="margin-top-15"></div>
+
+<div class="container row box">
+    {template 'left', 'user'}
+
+    <div class="col-md-9">
+        <div class="margin-top-30"></div>
+
+
+            <h2>站内信 {if $_userid==$userid}<a href="{userurl($username, 'action=send_message', $domain)}" class="small">发信息</a>{/if}</h2>
+            <hr>
+
+
+
+
+            <!--
+            <i class="icon-globe"></i> - BlackTie.co <br/>
+            <i class="icon-envelope"></i> - victoria@blacktie.co-->
+
+
+    </div>
+</div>
+
+
+<div class="margin-top-15"></div>
+
+{template 'foot'}
+<script src="{DT_SKIN}scripts/user.js"></script>

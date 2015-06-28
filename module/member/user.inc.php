@@ -56,6 +56,10 @@ switch($action){
 		include DT_ROOT.'/module/member/user.password.inc.php';
 		break;
 
+	case 'message':
+		include DT_ROOT.'/module/member/user.message.inc.php';
+		break;
+
 	default:
 
 		if($_userid == $userid){

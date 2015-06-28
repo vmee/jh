@@ -1,4 +1,58 @@
-{template 'header', $module}
+{template 'header'}
+
+<section class="titlebar">
+	<div class="container">
+		<div class="sixteen columns">
+			<h2>站内信</h2>
+
+		</div>
+	</div>
+</section>
+<div class="container">
+
+<div class="sixteen columns">
+	<!-- Tabs Navigation -->
+	<ul class="tabs-nav">
+		<li class="active"><a href="?action=send">收件箱</a></li>
+		<li class=""><a href="?action=inbox">发信</a></li>
+		<li class=""><a href="?action=outbox">已发送</a></li>
+	</ul>
+
+	<!-- Tabs Content -->
+	<div class="tabs-container">
+		<div class="tab-content">
+			<div class="extra-padding">
+
+				<!-- Post -->
+				<article class="post">
+
+
+					<section class="post-content">
+
+						<header class="meta">
+							<h2><a href="blog-single-post.html">Amazon Raises Threshold for Free Shipping</a></h2>
+							<span><i class="fa fa-user"></i>By <a href="#">admin</a></span>
+							<span><i class="fa fa-tag"></i><a href="#">Travel</a>, <a href="#">Nature</a></span>
+							<span><i class="fa fa-comment"></i>With <a href="#">4 Comments</a></span>
+						</header>
+
+						<p>Maecenas placerat bibendum eget dolor pellentesque sed consectetur pulvinar pellentesque bibendum. Vestibulum varius hendrerit turpis quiseam cursus. Donec bibendum vestibulum gravida. Pellentesque condimentum orci vel leo laoreet accumsan interdum eros vel sapien tincidunt dignissim. Integer mauris lacus consequat.</p>
+
+
+					</section>
+
+				</article>
+				<!-- Post / End -->
+				</div>
+		</div>
+		<div class="tab-content">Aenean dolor mi, luctus et laoreet hendrerit, condimentum faucibus mi. Nam et sem eros. Sed sed eros nec massa pellentesque accumsan in nec magna. Donec sollicitudin enim nec justo mollis bibendum. Nulla eleifend mollis velit. Ut sed risus eget metus egestas sagittis. Etiam vestibulum interdum turpis.</div>
+		<div class="tab-content" id="tab3" style="display: none;">Suspendisse ut laoreet massa. Etiam vel dolor eu quam varius tempor eu eu mi. Duis auctor interdum ligula ut faucibus. Vivamus lorem ipsum dolor sit amet in tincidunt augue. Aenean at ligula justo, sed gravida metus. </div>
+	</div>
+
+	<br>
+</div>
+</div>
+
 <script type="text/javascript">c(1);</script>
 <link rel="stylesheet" type="text/css" href="{DT_STATIC}{$MODULE[2][moduledir]}/image/message.css"/>
 <div class="menu">
@@ -453,4 +507,4 @@ function check() {
 <div class="pages">{$pages}</div>
 {/if}
 <script type="text/javascript">s('message');m('{$action}');</script>
-{template 'footer',$module}
+{template 'footer'}

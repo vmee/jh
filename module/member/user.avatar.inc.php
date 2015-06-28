@@ -52,8 +52,8 @@ if($avatardo == 'upload') {
 	$picname = $_FILES['mypic']['name'];
 	$picsize = $_FILES['mypic']['size'];
 	if ($picname != "") {
-		if ($picsize > 2048000) {
-			echo '图片大小不能超过2M';
+		if ($picsize > 1024000*5) {
+			echo '图片大小不能超过5M';
 			exit;
 		}
 		$type = strtolower(trim(substr(strrchr($picname, '.'), 1)));
@@ -79,7 +79,7 @@ if($avatardo == 'upload') {
 	$image_size = getimagesize($pic_path);
 	$arr = array(
 		'name'=>$picname,
-		'pic'=>useravatar($_username, 'big').'&t='.time(),
+		'pic'=>$MODULE[1][linkurl].'/file/avatar/'.substr($md5, 0, 2).'/'.substr($md5, 2, 2).'/_'.$user['username'].'x0.jpg'.'?t='.time(),
 		'size'=>$size,
 		'width'=>$image_size[0],
 		'height'=>$image_size[1]
@@ -93,7 +93,14 @@ if($avatardo == 'upload') {
 	$y = (int)$_POST['y'];
 	$w = (int)$_POST['w'];
 	$h = (int)$_POST['h'];
+	$sw = (int)$_POST['sw'];
+	$sh = (int)$_POST['sh'];
 	$pic = $_POST['src'];
+
+	if($sw != 500 || $sh != 500){
+		$w = intval($w/$sw*500);
+		$h = intval($h/$sh*500);
+	}
 
 	$md5 = md5($user['username']);
 	$pic_path = DT_ROOT.'/file/avatar/'.substr($md5, 0, 2).'/'.substr($md5, 2, 2).'/_'.$user['username'];
@@ -113,13 +120,17 @@ if($avatardo == 'upload') {
 	$avatar2 = $pic_path.'x48.jpg';
 	$avatar3 = $pic_path.'.jpg';
 	$image = new image($file);
-	$image->thumb(50,50,0,$avatar1);
+	$image->thumb(20,20,0,$avatar1);
 	$image = new image($file);
-	$image->thumb(100,100,0,$avatar2);
+	$image->thumb(48,48,0,$avatar2);
 	$image = new image($file);
 	$image->thumb(200,200,0,$avatar3);
 
 	$db->query("UPDATE {$DT_PRE}member SET avatar=1 WHERE userid=$_userid");
+
+	$session = new dsession();
+	$_SESSION['avatar_upload_userid'] = $_userid;
+	$_SESSION['avatar_upload_username'] = $user['username'];
 
 	exit(json_encode(array('status'=>'y', 'info'=>'头像保存成功')));
 

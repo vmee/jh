@@ -58,7 +58,7 @@
 
             <form action="{userurl($username, 'action=avatar&avatardo=save', $domain)}" id="avatarform" method="post">
                 <div class="demo margin-top-30">
-                    <p>说明：只允许上传gif/jpg/png格式的图片，图片大小不能超过2m。</p>
+                    <p>说明：只允许上传gif/jpg/png格式的图片，图片大小不能超过5m。</p>
                     <div class="btn"> <span>上传图片</span>
                         <input id="fileupload" type="file" name="mypic">
                     </div>
@@ -68,8 +68,10 @@
                 <input type="hidden" id="src" name="src" value="" />
                 <input type="hidden" id="x" name="x" value="50" />
                 <input type="hidden" id="y" name="y" value="100" />
-                <input type="hidden" id="w" name="w" value="250" />
-                <input type="hidden" id="h" name="h" value="300" />
+                <input type="hidden" id="w" name="w" value="200" />
+                <input type="hidden" id="h" name="h" value="200" />
+                <input type="hidden" id="sw" name="sw" value="0" />
+                <input type="hidden" id="sh" name="sh" value="0" />
 
                 <div id="upbtn" class="margin-top-30" style="display: none"><input type="submit" value="确认保存" class="Intercbtn" /></div>
             </form>
@@ -159,14 +161,22 @@
                     //传给php页面，进行保存的图片值
                     $("#src").val(img);
                     //截取图片的js
-                    $('#cropbox').Jcrop({
+                    var jc = $('#cropbox').Jcrop({
                         aspectRatio: 1,
                         onSelect: updateCoords,
                         minSize:[200,200],
                         maxSize:[500,500],
-                        allowSelect:false, //允许选择
-                        allowResize:false, //是否允许调整大小
-                        setSelect: [ 50, 100, 250, 300 ]
+                        allowSelect:true, //允许选择
+                        allowResize:true, //是否允许调整大小
+                        setSelect: [ 50, 100, 200, 200 ],
+                        boxWidth:500,
+                        boxHeight:500,
+                        touchSupport:true,
+                        aspectRatio:1
+                    }, function(){
+                        var sv = this.getWidgetSize();
+                        $('#sw').val(sv[0]);
+                        $('#sh').val(sv[1]);
                     });
                     btn.html("上传图片");	//上传按钮还原
 

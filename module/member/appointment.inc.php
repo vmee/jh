@@ -41,6 +41,7 @@ switch($action) {
 		$itemid = $db->query("INSERT INTO {$DT_PRE}appointment ($sqlk) VALUES ($sqlv)");
 
 
+
 		exit(json_encode(array('info'=>'预约成功', 'status'=>'y')));
 
 		break;

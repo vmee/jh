@@ -5,6 +5,7 @@ $DT_ROOT = substr($DT_ROOT, 0, -10);
 $size = isset($_GET['size']) ? $_GET['size'] : '';
 $userid = isset($_GET['userid']) ? intval($_GET['userid']) : 0;
 $username = isset($_GET['username']) ? trim($_GET['username']) : '';
+$randstr = isset($_GET['rand']) ? trim($_GET['rand']) : '';
 in_array($size, array('large', 'small','big')) or $size = 'middle';
 $ext = 'x48.jpg';
 if($size == 'large') $ext = '.jpg';
@@ -25,5 +26,5 @@ if(strpos($file, '/default') === false) {
 	$remote = file_get_contents($DT_ROOT.'file/avatar/remote.html');
 	if(strlen($remote) > 10) $file = str_replace('../../file/', $remote, $file);
 }
-header('location:'.$file);
+header('location:'.$file . ($randstr ? '?r='.$randstr : ''));
 ?>

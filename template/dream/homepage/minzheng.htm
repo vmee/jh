@@ -1,0 +1,64 @@
+{template 'header', $template}
+
+<div class="container box margin-top-15">
+	{if $itemid}
+
+	<div class="head"><div><strong>{$catname}</strong></div></div>
+	<div class="row">
+
+
+
+		<h1 class="text-center">{$title}</h1>
+		<div class="content" id="content">{$content}</div>
+
+	</div>
+
+
+	{else}
+
+
+	<div class="head">
+		<div>
+<span class="f_r f_n px12">
+</span>
+			<strong>{$catname}</strong>
+		</div>
+	</div>
+	<div class="row" style="padding-left: 20px">
+
+		{loop $lists $k $t}
+
+			<div class="item">
+
+				<div><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file='.$module.'-'.$catid.'&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[alt]}">{$t[title]}</a>
+					<i class="text-right">{timetodate($v[addtime], 3)}</i>
+				</div>
+			</div>
+
+		{/loop}
+
+	</div>
+
+	<!-- Pagination -->
+	<div class="pagination-container masonry">
+		<nav class="pagination">
+			{if $showpage && $pages}{$pages}{/if}
+		</nav>
+		<!-- <nav class="pagination">
+                <ul>
+                    <li><a href="shop-full-width.html#" class="current-page">1</a></li>
+                    <li><a href="shop-full-width.html#">2</a></li>
+                    <li><a href="shop-full-width.html#">3</a></li>
+                </ul>
+            </nav>
+
+            <nav class="pagination-next-prev full-width">
+                <ul>
+                    <li><a href="shop-full-width.html#" class="prev"></a></li>
+                    <li><a href="shop-full-width.html#" class="next"></a></li>
+                </ul>
+            </nav>-->
+	</div>
+	{/if}
+</div>
+{template 'footer', $template}

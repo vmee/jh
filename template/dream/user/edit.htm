@@ -86,7 +86,11 @@
 
 
                 <p class="form-row">
+                    {if $perfact=='no'}
+                    <input type="submit" class="button" name="submit" value="完成" />
+                    {else}
                     <input type="submit" class="button" name="submit" value="修改" />
+                    {/if}
                 </p>
 
             </form>

@@ -63,7 +63,7 @@
 {php $child = get_maincat(0, 4, 1);}
 {loop $child $i $c}
 {php $_tags=tag("moduleid=5&table=company&pagesize=8&condition=catid like '%,".$c[catid].",%' and thumb<>''&order=vip desc,userid desc&template=null")}
-{if count($_tags)>0}
+{if count($_tags)>3}
 <!-- New Arrivals
 ================================================== -->
 <div class="container margin-top-15">
