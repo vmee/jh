@@ -273,29 +273,31 @@ var itemids = [{loop $lists $i $t}{if $i},{/if}'{$t[itemid]}'{/loop}];
 <div class="ls">
     <table cellpadding="0" cellspacing="0" class="tb">
         <tr>
-            <th>姓名</th>
-            <th>性别</th>
+			<th>推荐时间</th>
+            <!--<th>性别</th>
             <th>地区</th>
             <th>婚期</th>
             <th>手机号</th>
             <th>qq</th>
-            <th>email</th>
-            <th>备注</th>
+            <th>email</th>-->
+            <!--<th>备注</th>-->
             <th>注册状态</th>
-            <th>添加时间</th>
+            <th>注册时间</th>
+			<th>用户名</th>
         </tr>
         {loop $lists $k $v}
         <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
-            <td>{$v[truename]}</td>
-            <td>{gender($v[gender])}</td>
-            <td>{area_pos($v[areaid], '')}</td>
-            <td>{$v[weddate]}</td>
+			<td>{timetodate($v[addtime])}</td>
+            <!--<td>{gender($v[gender])}</td>
+            <td>{area_pos($v[areaid], '')}</td>-->
+            <!--<td>{$v[weddate]}</td>
             <td>{$v[mobile]}</td>
             <td>{$v[qq]}</td>
-            <td>{$v[email]}</td>
-            <td>{$v[note]}</td>
+            <td>{$v[email]}</td>-->
+            <!--<td>{$v[note]}</td>-->
             <td>{if $v[regtime]}已注册{else}未注册{/if}</td>
-            <td>{timetodate($v[addtime])}</td>
+            <td>{if $v[regtime]}{timetodate($v[regtime])}{/if}</td>
+			<td>{$v[reg_username]}</td>
         </tr>
         {/loop}
     </table>
