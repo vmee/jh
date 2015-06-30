@@ -10,7 +10,7 @@
         <!-- Logo -->
         <div class="four columns">
             <div id="logo">
-                <h1><a href="{$MODULE[1][linkurl]}"><img src="{DT_SKIN}images/site-logo.png" alt="菏泽结婚网" /></a></h1>
+                <h1><a href="{$MODULE[1][linkurl]}" title="{$DT['sitename']}"><img src="{DT_SKIN}images/site-logo.png" alt="{$DT['sitename']}" /></a></h1>
             </div>
         </div>
 
@@ -18,10 +18,10 @@
         <div class="twelve columns">
             <div id="additional-menu">
                 <ul>
-                    <li><a href="{DT_PATH}company/search.php?catid=27">婚纱摄影</a></li>
-                    <li><a href="{DT_PATH}company/search.php?catid=10">婚宴酒店</a></li>
-                    <li><a href="{DT_PATH}company/search.php?catid=8">婚纱礼服</a></li>
-                    <li><a href="{DT_PATH}company/search.php?catid=23">婚庆服务</a></li>
+                    <li><a href="{DT_PATH}company/search.php?catid=27" title="婚纱摄影">婚纱摄影</a></li>
+                    <li><a href="{DT_PATH}company/search.php?catid=10" title="婚宴酒店">婚宴酒店</a></li>
+                    <li><a href="{DT_PATH}company/search.php?catid=8" title="婚纱礼服">婚纱礼服</a></li>
+                    <li><a href="{DT_PATH}company/search.php?catid=23" title="婚庆服务">婚庆服务</a></li>
                 </ul>
             </div>
         </div>
@@ -66,21 +66,21 @@
             <nav id="navigation">
                 <ul class="menu" id="responsive">
 
-                    <li><a href="{DT_PATH}index.php" class="{if $moduleid==1}current {/if}homepage">首页</a></li>
+                    <li><a href="{DT_PATH}index.php" class="{if $moduleid==1}current {/if}homepage" title="{$DT['sitename']}">首页</a></li>
 
                     <li class="dropdown">
                         <a href="{DT_PATH}company/" title="菏泽婚庆企业" {if $moduleid=="4"}class="current"{/if}>婚嫁服务</a>
                         <ul>
                             {php $child = get_maincat(0, 4, 1);}
                             {loop $child $i $c}
-                            <li><a href="{$MODULE[4][linkurl]}search.php?catid={$c[catid]}">{$c[catname]}</a></li>
+                            <li><a href="{$MODULE[4][linkurl]}search.php?catid={$c[catid]}" title="{$c[catname]}">{$c[catname]}</a></li>
                             {/loop}
                         </ul>
                     </li>
 
-                    <li><a href="{DT_PATH}sell/" {if $moduleid=="5"}class="current"{/if}>精品特价</a></li>
-                    <li><a href="{DT_PATH}activity/" {if $moduleid=="23"}class="current"{/if}>优惠活动</a></li>
-                    <li><a href="{DT_PATH}photo/" {if $moduleid=="12"}class="current"{/if}>作品案例</a></li>
+                    <li><a href="{DT_PATH}sell/" {if $moduleid=="5"}class="current"{/if} title="精品特价">精品特价</a></li>
+                    <li><a href="{DT_PATH}activity/" {if $moduleid=="23"}class="current"{/if} title="优惠活动">优惠活动</a></li>
+                    <li><a href="{DT_PATH}photo/" {if $moduleid=="12"}class="current"{/if} title="作品案例">作品案例</a></li>
 
 
                 </ul>

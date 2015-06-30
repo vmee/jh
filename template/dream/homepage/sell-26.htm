@@ -74,7 +74,7 @@
 						<strong>面积:</strong> {$t[mianji]}㎡</p>
 						<p><strong>最低消费:</strong> {$t[xiaofei]}</p>
 						<p><strong>其他:</strong>{$t[introduce]}</p>
-						<a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=yanhuiting&itemid='.$t['itemid'], $domain)}{/if}" class="button gray">更多信息</a>
+						<a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=yanhuiting&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[title]}" class="button gray">更多信息</a>
 					</div>
 
 				</div>

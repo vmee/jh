@@ -9,7 +9,7 @@
             <li{if !$catid} class="active"{/if}><a href="{$MOD[linkurl]}search.php?areaid={$areaid}">所有分类</a></li>
             {php $child = get_maincat(0, 4, 1);}
             {loop $child $i $c}
-            <li {if $catid==$c[catid]} class="active"{/if}><a href="{$MODULE[$mid][linkurl]}search.php?catid={$c[catid]}&areaid={$areaid}">{$c[catname]}</a></li>
+            <li {if $catid==$c[catid]} class="active"{/if}><a href="{$MODULE[$mid][linkurl]}search.php?catid={$c[catid]}&areaid={$areaid}" title="{$c[catname]}">{$c[catname]}</a></li>
             {/loop}
         </ul>
 
@@ -18,7 +18,7 @@
             <li{if !$areaid} class="active"{/if}><a href="{$MOD[linkurl]}search.php?catid={$catid}">所有地区</a></li>
             {php $mainarea = get_mainarea(0)}
             {loop $mainarea $k $v}
-            <li {if $areaid==$v[areaid]} class="active"{/if}><a href="{$MOD[linkurl]}search.php?catid={$catid}&areaid={$v[areaid]}">{$v[areaname]}</a></li>
+            <li {if $areaid==$v[areaid]} class="active"{/if}><a href="{$MOD[linkurl]}search.php?catid={$catid}&areaid={$v[areaid]}" title="{$v[areaname]}">{$v[areaname]}</a></li>
             {/loop}
         </ul>
     </div>
@@ -54,12 +54,12 @@
             <article class="from-the-blog">
 
                 <figure class="from-the-blog-image">
-                    <a href="{userurl($t[username], 'file=activity&itemid='.$t['itemid'], $domain)}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[title]}" /></a>
+                    <a href="{userurl($t[username], 'file=activity&itemid='.$t['itemid'], $domain)}" title="{$t[title]}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[title]}" /></a>
 
                 </figure>
 
                 <section class="from-the-blog-content">
-                    <h5><a href="{userurl($t[username], 'file=activity&itemid='.$t['itemid'], $domain)}">{$t[title]}</a></h5>
+                    <h5><a href="{userurl($t[username], 'file=activity&itemid='.$t['itemid'], $domain)}" title="{$t[title]}">{$t[title]}</a></h5>
                     <i>结束时间:{$t[endtime]}</i>
                     <span>{$t[introduce]}</span>
                 </section>

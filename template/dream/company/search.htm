@@ -9,7 +9,7 @@
             <li{if !$catid} class="active"{/if}><a href="{$MOD[linkurl]}search.php?areaid={$areaid}">所有分类</a></li>
             {php $child = get_maincat(0, $moduleid, 1);}
             {loop $child $i $c}
-            <li {if $catid==$c[catid]} class="active"{/if}><a href="{$MODULE[$mid][linkurl]}search.php?catid={$c[catid]}&areaid={$areaid}">{$c[catname]}</a></li>
+            <li {if $catid==$c[catid]} class="active"{/if}><a href="{$MODULE[$mid][linkurl]}search.php?catid={$c[catid]}&areaid={$areaid}" title="{$c[catname]}">{$c[catname]}</a></li>
             {/loop}
         </ul>
 
@@ -18,7 +18,7 @@
             <li{if !$areaid} class="active"{/if}><a href="{$MOD[linkurl]}search.php?catid={$catid}">所有地区</a></li>
             {php $mainarea = get_mainarea(0)}
             {loop $mainarea $k $v}
-            <li{if $areaid==$v[areaid]} class="active"{/if}><a href="{$MOD[linkurl]}search.php?catid={$catid}&areaid={$v[areaid]}">{$v[areaname]}</a></li>
+            <li{if $areaid==$v[areaid]} class="active"{/if}><a href="{$MOD[linkurl]}search.php?catid={$catid}&areaid={$v[areaid]}" title="{$v[areaname]}">{$v[areaname]}</a></li>
             {/loop}
         </ul>
     </div>
@@ -54,14 +54,14 @@
         <div class="four columns portfolio-item clothing others">
             <figure>
                 <div class="portfolio-holder">
-                    <a href="{$t[linkurl]}">
+                    <a href="{$t[linkurl]}" title="{$t[company]}">
                         <img alt="{$t[company]}" src="{$t[thumb]}"/>
                         <div class="hover-cover"></div>
                     </a>
                 </div>
 
                 <section class="item-description">
-                    <h5><a href="{$t[linkurl]}">{$t[company]}</a></h5>
+                    <h5><a href="{$t[linkurl]}" title="{$t[company]}">{$t[company]}</a></h5>
 
                     {php $announce  = company_setting($t[userid], 'announce');}
                     {if $announce}

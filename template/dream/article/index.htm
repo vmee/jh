@@ -8,7 +8,7 @@
             <li class="active"><a href="{$MOD[linkurl]}search.php?areaid={$areaid}">所有分类</a></li>
             {php $child = get_maincat(0, 4, 1);}
             {loop $child $i $c}
-            <li><a href="{$MODULE[$mid][linkurl]}search.php?catid={$c[catid]}&areaid={$areaid}">{$c[catname]}</a></li>
+            <li><a href="{$MODULE[$mid][linkurl]}search.php?catid={$c[catid]}&areaid={$areaid}" title="{$t[catname]}">{$c[catname]}</a></li>
             {/loop}
         </ul>
 
@@ -17,7 +17,7 @@
             <li class="active"><a href="{$MOD[linkurl]}search.php?catid={$catid}">所有地区</a></li>
             {php $mainarea = get_mainarea(0)}
             {loop $mainarea $k $v}
-            <li><a href="{$MOD[linkurl]}search.php?catid={$catid}&areaid={$v[areaid]}">{$v[areaname]}</a></li>
+            <li><a href="{$MOD[linkurl]}search.php?catid={$catid}&areaid={$v[areaid]}" title="{$v[areaname]}">{$v[areaname]}</a></li>
             {/loop}
         </ul>
     </div>
@@ -64,7 +64,7 @@
                     <li>
                         <figure class="portfolio-item">
                             <div class="portfolio-holder">
-                                <a href="{userurl($t[username], 'file=activity&itemid='.$t['itemid'], $domain)}">
+                                <a href="{userurl($t[username], 'file=activity&itemid='.$t['itemid'], $domain)}" title="{$t[title]}">
                                     <img alt="{$t[title]}" src="{$t[thumb]}"/>
                                     <div class="hover-cover"></div>
                                 </a>
@@ -72,7 +72,7 @@
 
 
                                 <section class="item-description">
-                                    <h5><a href="{userurl($t[username], 'file=activity&itemid='.$t['itemid'], $domain)}">{$t[title]}</a></h5>
+                                    <h5><a href="{userurl($t[username], 'file=activity&itemid='.$t['itemid'], $domain)}" title="{$t[title]}">{$t[title]}</a></h5>
                                     <span>{$t[business]}</span>
                                     <span>结束时间：{$t[endtime]}</span>
                                 </section>

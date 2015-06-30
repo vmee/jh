@@ -11,7 +11,7 @@
 			<li{if !$catid} class="active"{/if}><a href="{$MOD[linkurl]}search.php">所有分类</a></li>
 
 			{loop $child $i $c}
-			<li {if $catid==$c[catid]} class="active"{/if}><a href="{$MODULE[$mid][linkurl]}search.php?catid={$c[catid]}">{$c[catname]}</a></li>
+			<li {if $catid==$c[catid]} class="active"{/if}><a href="{$MODULE[$mid][linkurl]}search.php?catid={$c[catid]}" title="{$c[catname]}">{$c[catname]}</a></li>
 			{/loop}
 		</ul>
 		{/if}
@@ -42,7 +42,7 @@
 		<!-- Project -->
 		<li class="clothing others clickable">
 
-			<a href="{userurl($t[username], 'file=photo&itemid='.$t['itemid'], $domain)}" class="grid-item-image">
+			<a href="{userurl($t[username], 'file=photo&itemid='.$t['itemid'], $domain)}" title="{$t[title]}" class="grid-item-image">
 				<div class="dynamic-portfolio-holder">
 					<img src="{$t[thumb]}" alt="{$t[title]}"/>
 					<div class="hover-cover"></div>
@@ -55,7 +55,7 @@
 			<div class="og-expander">
 				<div class="flexslider gridslider">
 					<ul class="slides">
-						<li><img src="{$t[thumb]}" alt=""></li>
+						<li><img src="{$t[thumb]}" alt="{$t[title]}"></li>
 					</ul>
 				</div>
 
@@ -67,7 +67,7 @@
 
 					<div class="share-buttons">
 						<ul>
-							<li><a href="{userurl($t[username], 'file=photo&itemid='.$t['itemid'], $domain)}">查看详情</a></li>
+							<li><a href="{userurl($t[username], 'file=photo&itemid='.$t['itemid'], $domain)}" title="{$t[title]}">查看详情</a></li>
 
 						</ul>
 					</div>

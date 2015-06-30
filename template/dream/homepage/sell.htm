@@ -30,7 +30,7 @@
 	{loop $lists $k $t}
 	<div class="col-md-4">
 		<div class="item">
-			<a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=sell&itemid='.$t['itemid'], $domain)}{/if}"><img src="{imgurl($t[thumb], 1)}" width="300" height="200" alt="{$t[alt]}"/></a>
+			<a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=sell&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[title]}"><img src="{imgurl($t[thumb], 1)}" width="300" height="200" alt="{$t[alt]}"/></a>
 			<div><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=sell&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[alt]}">{$t[title]}</a>
 				<p>优惠价:<b>{$t[price]}</b> <del>门店价:{$t[marketprice]}</del></p>
 			</div>

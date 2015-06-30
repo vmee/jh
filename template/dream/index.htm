@@ -45,7 +45,7 @@
     {loop $_tags $k $t}
     {if $k>-1}
     <div class="one-third column">
-        <a href="{userurl($t[username], 'file=activity&itemid='.$t['itemid'], $domain)}" class="img-caption" >
+        <a href="{userurl($t[username], 'file=activity&itemid='.$t['itemid'], $domain)}" title="{$t[title]}" class="img-caption" >
             <figure>
                 <img src="{$t[thumb]}" alt="{$t[title]}" />
                 <figcaption>
@@ -79,11 +79,11 @@
         <article class="from-the-blog">
 
             <figure class="from-the-blog-image">
-                <a href="{$t[linkurl]}"><img src="{$t[thumb]}" alt="{$t[company]}" /></a>
+                <a href="{$t[linkurl]}" title="{$t[company]}"><img src="{$t[thumb]}" alt="{$t[company]}" /></a>
             </figure>
 
             <section class="from-the-blog-content">
-                <h5><a href="{$t[linkurl]}">{$t[company]}</a><span class="pull-right">{area_pos($t[areaid], '&nbsp;')}</span></h5>
+                <h5><a href="{$t[linkurl]}"  title="{$t[company]}">{$t[company]}</a><span class="pull-right">{area_pos($t[areaid], '&nbsp;')}</span></h5>
                 {php $announce  = company_setting($t[userid], 'announce');}
                 {if $announce}
                 <span class="hidden-xs">{dsubstr(str_replace(' ', '', $announce), 60, '...')}</span>

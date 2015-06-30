@@ -34,7 +34,7 @@
 				<h3><a>{$t[title]}</a></h3>
 				<p>优惠价:<b>{$t[price]}</b> </p>
 				<span>{$t[introduce]}</span>
-				<a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=caidan&itemid='.$t['itemid'], $domain)}{/if}" class="button gray">更多信息</a>
+				<a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=caidan&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[title]}" class="button gray">更多信息</a>
 			</section>
 
 		</article>

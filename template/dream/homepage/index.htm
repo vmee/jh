@@ -4,15 +4,15 @@
 <!--{php $tags=tag("moduleid=5&condition=status>2 and username='$username'&pagesize=9&order=edittime desc&fields=itemid,title,linkurl,thumb,edittime,price,marketprice&template=null");}-->
 {if count($tags)>0}
 <div class="container box margin-top-15">
-<div class="head"><div><span class="pull-right"><a href="{userurl($username, 'file=sell', $domain)}">更多</a></span><strong>精品特价</strong></div></div>
+<div class="head"><div><span class="pull-right"><a href="{userurl($username, 'file=sell', $domain)}" title="精品特价">更多</a></span><strong>精品特价</strong></div></div>
 <div class="row">
 
     {loop $tags $i $t}
 
     <div class="col-md-4">
         <div class="item">
-            <a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=sell&itemid='.$t['itemid'], $domain)}{/if}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[alt]}"/></a>
-            <div><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=sell&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[alt]}">{$t[title]}</a>
+            <a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=sell&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[title]}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[title]}"/></a>
+            <div><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=sell&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[title]}">{$t[title]}</a>
                 <p>优惠价:<b>{$t[price]}</b> <del>门店价:{$t[marketprice]}</del></p>
             </div>
         </div>
@@ -28,14 +28,14 @@
 <!--{php $tags=tag("moduleid=23&condition=status>2 and username='$username'&pagesize=9&order=edittime desc&fields=itemid,title,linkurl,thumb,edittime,endtime&template=null");}-->
 {if count($tags)>0}
 <div class="container box margin-top-15">
-<div class="head"><div><span class="pull-right"><a href="{userurl($username, 'file=activity ', $domain)}">更多</a></span><strong>优惠活动</strong></div></div>
+<div class="head"><div><span class="pull-right"><a href="{userurl($username, 'file=activity ', $domain)}" title="优惠活动">更多</a></span><strong>优惠活动</strong></div></div>
 <div class="row">
     {loop $tags $i $t}
 
     <div class="col-md-4">
         <div class="item">
-            <a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=activity&itemid='.$t['itemid'], $domain)}{/if}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[alt]}"/></a>
-            <div><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=activity&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[alt]}">{$t[title]}</a>
+            <a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=activity&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[title]}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[title]}"/></a>
+            <div><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=activity&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[title]}">{$t[title]}</a>
                 <p>活动结束时间:{$t[endtime]}</p>
             </div>
         </div>
@@ -51,14 +51,14 @@
 <!--{php $tags=tag("moduleid=12&condition=status>2 and username='$username' and items>0&pagesize=9&order=addtime desc&fields=itemid,title,linkurl,thumb,addtime,items,open&template=null");}-->
 {if count($tags)>0}
 <div class="container box margin-top-15">
-<div class="head"><div><span class="pull-right"><a href="{userurl($username, 'file=photo', $domain)}">更多</a></span><strong>作品案例</strong></div></div>
+<div class="head"><div><span class="pull-right"><a href="{userurl($username, 'file=photo', $domain)}" title="作品案例">更多</a></span><strong>作品案例</strong></div></div>
 <div class="row">
     {loop $tags $i $t}
 
     <div class="col-md-4">
         <div class="item">
-            <a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=photo&itemid='.$t['itemid'], $domain)}{/if}"><img src="{$t[thumb]}" alt="{$t[alt]}" title="{$t[alt]}"/></a>
-            <div><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=photo&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[alt]}">{$t[title]}</a></div>
+            <a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=photo&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[title]}"><img src="{$t[thumb]}" title="{$t[title]}"/></a>
+            <div><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=photo&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[title]}">{$t[title]}</a></div>
         </div>
     </div>
 
@@ -71,7 +71,7 @@
 
 {if $COM[ishotel]>1}
 <div class="container box margin-top-15">
-    <div class="head"><div><span class="pull-right"><a href="{userurl($username, 'file=yanhuiting', $domain)}">更多</a></span><strong>宴会厅</strong></div></div>
+    <div class="head"><div><span class="pull-right"><a href="{userurl($username, 'file=yanhuiting', $domain)}" title="宴会厅">更多</a></span><strong>宴会厅</strong></div></div>
     <div class="row">
         <!--{php $tags=tag("moduleid=26&condition=status>2 and username='$username'&pagesize=9&order=edittime desc&template=null");}-->
         {loop $tags $i $t}
@@ -84,7 +84,7 @@
 
 
 
-                        <a title="{$t[title]}"><img  src="{$t[thumb]}" alt="" /></a>
+                        <a  href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=yanhuiting&itemid='.$t['itemid'], $domain)}{/if}"  title="{$t[title]}"><img  src="{$t[thumb]}" alt="{$t[title]}" /></a>
 
 
             </div>
@@ -106,7 +106,7 @@
                                 <strong>面积:</strong> {$t[mianji]}㎡</p>
                             <p><strong>最低消费:</strong> {$t[xiaofei]}</p>
                             <p><strong>其他:</strong>{$t[introduce]}</p>
-                            <a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=yanhuiting&itemid='.$t['itemid'], $domain)}{/if}" class="button gray">更多信息</a>
+                            <a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=yanhuiting&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[title]}" class="button gray">更多信息</a>
                         </div>
 
                     </div>
@@ -124,7 +124,7 @@
 
 {if $COM[ishotel]>1}
 <div class="container box margin-top-15">
-    <div class="head"><div><span class="pull-right"><a href="{userurl($username, 'file=caidan', $domain)}">更多</a></span><strong>婚宴菜单</strong></div></div>
+    <div class="head"><div><span class="pull-right"><a href="{userurl($username, 'file=caidan', $domain)}" title="婚宴菜单">更多</a></span><strong>婚宴菜单</strong></div></div>
     <div class="row">
         <!--{php $tags=tag("moduleid=27&condition=status>2 and username='$username'&pagesize=6&order=edittime desc&template=null");}-->
         {loop $tags $i $t}
@@ -132,10 +132,10 @@
         <div class="col-md-4">
             <article class="from-the-blog item">
                 <section class="from-the-blog-content">
-                    <h3><a>{$t[title]}</a></h3>
+                    <h3><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=caidan&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[title]}">{$t[title]}</a></h3>
                     <p>优惠价:<b>{$t[price]}</b> </p>
                     <span>{$t[introduce]}</span>
-                    <a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=caidan&itemid='.$t['itemid'], $domain)}{/if}" class="button gray">更多信息</a>
+                    <a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=caidan&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[title]}" class="button gray">更多信息</a>
                 </section>
 
             </article>
@@ -148,14 +148,14 @@
 {/if}
 
 <div class="container box margin-top-15">
-<div class="head"><div><span class="pull-right"><a href="{userurl($username, 'file=introduce', $domain)}">更多</a></span><strong>{$MENU[0][name]}</strong></div></div>
+<div class="head"><div><span class="pull-right"><a href="{userurl($username, 'file=introduce', $domain)}" title="{$MENU[0][name]}">更多</a></span><strong>{$MENU[0][name]}</strong></div></div>
 <div class="row content">
         {$COM[intro]}
 </div>
     </div>
 
 <div class="container box margin-top-15">
-<div class="head"><div><span class="pull-right"><a href="{userurl($username, 'file=guestbook', $domain)}">我要咨询</a></span><strong>留言咨询</strong></div></div>
+<div class="head"><div><span class="pull-right"><a href="{userurl($username, 'file=guestbook', $domain)}" title="留言咨询">我要咨询</a></span><strong>留言咨询</strong></div></div>
 <div class="row">
     <table cellpadding="0" cellspacing="0" width="100%">
         <tr>

@@ -10,7 +10,7 @@
 			<li class="active"><a href="{$MOD[linkurl]}search.php">所有分类</a></li>
 
 			{loop $child $i $c}
-			<li><a href="{$MODULE[$mid][linkurl]}search.php?catid={$c[catid]}">{$c[catname]}</a></li>
+			<li><a href="{$MODULE[$mid][linkurl]}search.php?catid={$c[catid]}" title="{$c[catname]}">{$c[catname]}</a></li>
 			{/loop}
 		</ul>
 		{/if}
@@ -35,7 +35,7 @@
 		<!-- Project -->
 		<li class="clothing others clickable">
 
-			<a href="{userurl($t[username], 'file=photo&itemid='.$t['itemid'], $domain)}" class="grid-item-image">
+			<a href="{userurl($t[username], 'file=photo&itemid='.$t['itemid'], $domain)}" title="{$t[title]}" class="grid-item-image">
 				<div class="dynamic-portfolio-holder">
 					<img src="{$t[thumb]}" alt="{$t[title]}"/>
 					<div class="hover-cover"></div>
