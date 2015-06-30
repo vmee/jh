@@ -107,7 +107,7 @@ if($submit) {
 		if(!preg_match("/[0-9]{6}/", $post['emailcode']) || $_SESSION['email_code'] != md5($post['email'].'|'.$post['emailcode'])) dalert($L['register_pass_emailcode'], '', $reload_captcha.$reload_question);
 	}
 	if($could_mobilecode) {
-		//if(!preg_match("/[0-9]{6}/", $post['mobilecode']) || $_SESSION['mobile_code'] != md5($post['mobile'].'|'.$post['mobilecode'])) dalert($L['register_pass_mobilecode'], '', $reload_captcha.$reload_question);
+		if(!preg_match("/[0-9]{6}/", $post['mobilecode']) || $_SESSION['mobile_code'] != md5($post['mobile'].'|'.$post['mobilecode'])) dalert($L['register_pass_mobilecode'], '', $reload_captcha.$reload_question);
 	}
 
 	if($post['invitecode'] != 'hzjh88' && !$inviter_items = $db->get_one("SELECT * FROM {$DT_PRE}invite_customer WHERE regtime=0 and password='{$post[invitecode]}'")){
