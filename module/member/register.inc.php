@@ -128,6 +128,13 @@ if($submit) {
 		$post['qq'] = $post['qq'] ? $post['qq'] :$inviter_items['qq'];
 		$post['weddate'] = $post['weddate'] ? $post['weddate'] :$inviter_items['weddate'];
 		$post['inviter_company'] = $inviter_items['username'];
+		//$post['areaid'] = $inviter_items['areaid'] ? $inviter_items['areaid'] : '';
+		if($inviter_items['areaid']){
+			$post['areaid'] = $inviter_items['areaid'];
+		}else{
+			$inviter_user = $do->get_one($inviter_items['username']);
+			$post['areaid'] = $inviter_user['areaid'];
+		}
 	}
 
 	//}
@@ -172,6 +179,14 @@ if($submit) {
         if($post['invitecode'] != 'hzjh88' && $inviter_items){
             $db->query("UPDATE {$DT_PRE}invite_customer SET regtime='$DT_TIME',reg_userid='$userid',reg_username='$username'  WHERE itemid='{$inviter_items['itemid']}'");
         }
+
+		$wed_cats = get_maincat(0, 4, 1);
+		foreach($wed_cats as $c){
+			if($c['catid'] != 38){
+				$db->query("INSERT INTO {$DT_PRE}member_wed (username,catid,addtime)  VALUES ('$username', $c[catid], $DT_TIME)");
+			}
+		}
+
 		if(!get_cookie('bind')) session_destroy();
 		echo '<html><head><title>Login...</title><meta http-equiv="Content-Type" content="text/html;charset='.DT_CHARSET.'"></head>';
 		echo '<body onload="document.getElementById(\'login\').submit();">';

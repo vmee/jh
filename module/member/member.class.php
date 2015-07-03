@@ -137,7 +137,7 @@ class member {
 			if(!preg_match("/^[0-9\-]{6,}$/", $member['telephone'])) return $this->_($L['member_telephone_null']);
 		}
 		if($this->userid) {
-			if($member['password'] && !$this->is_password($member['password'], $member['cpassword'])) return false;
+			//if($member['password'] && !$this->is_password($member['password'], $member['cpassword'])) return false;
 			if($member['payword'] && !$this->is_payword($member['payword'], $member['cpayword'])) return false;
 			if($member['groupid'] > 5) {
 				if(empty($member['thumb'])) return $this->_('请上传公司形象照片');
@@ -151,7 +151,7 @@ class member {
 		} else {
 			if(!$this->is_username($member['username'])) return false;
 			if($member['groupid'] > 5 && !$this->is_company($member['company'])) return false;
-			if(!$this->is_password($member['password'], $member['cpassword'])) return false;
+			//if(!$this->is_password($member['password'], $member['cpassword'])) return false;
 		}
 		return true;
 	}

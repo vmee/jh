@@ -40,7 +40,8 @@ if(isset($user) && check_name($user)) {
 		$post['password'] = $invite_code = strtolower(random(6));
 		$do->add($post);
 
-		include template('inviter', $module);
+		//include template('inviter', $module);
+		dheader($DT['file_register'].'?invite_code='.$invite_code);
 		exit;
 
 	} else {
