@@ -41,8 +41,8 @@
                 <div class="form-group">
                     <label >性别: <span class="required">*</span></label>
                     <div class="">
-                        <input type="radio" name="post[gender]" class="radio-inline" value="1" {if $gender==1 || $gender==''}checked{/if} id="gender_1"/><label for="gender_1" style="display: inline"> 先生</label>
-                        <input type="radio" name="post[gender]" class="radio-inline" value="2" {if $gender==2}checked {/if} id="gender_2" /><label for="gender_2" style="display: inline"> 女士</label>
+                        <input type="radio" name="post[gender]" class="radio-inline" value="1" {if $gender==1 || $gender==''}checked{/if} id="gender_1"/><label for="gender_1" style="display: inline"> 新郎</label>
+                        <input type="radio" name="post[gender]" class="radio-inline" value="2" {if $gender==2}checked {/if} id="gender_2" /><label for="gender_2" style="display: inline"> 新娘</label>
                     </div>
                 </div>
 
@@ -124,7 +124,11 @@
             callback:function(data){
                 if(data.status == 'y'){
                     layer.alert('信息修改成功' , 6, function(){
-                        location.href ='{userurl($username, 'action=edit', $domain)}';
+                        if(isWeixin){
+                            location.href ='{userurl($username, 'action=edit&regmp='.$perfact, $domain)}';
+                        }else{
+                            location.href ='{userurl($username, 'action=edit&regweb='.$perfact, $domain)}';
+                        }
                     });
 
                 }else{

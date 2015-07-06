@@ -95,6 +95,15 @@ if($submit) {
 		message($do->errmsg);
 	}
 } else {
+	if($regmp == 'no'){
+		include template('edit.mp', 'user');
+		exit;
+	}
+
+	if($regweb == 'no'){
+		include template('edit.web', 'user');
+		exit;
+	}
 	$COM_TYPE = explode('|', $MOD['com_type']);
 	$COM_SIZE = explode('|', $MOD['com_size']);
 	$COM_MODE = explode('|', $MOD['com_mode']);

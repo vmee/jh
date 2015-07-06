@@ -1,0 +1,78 @@
+{template 'head'}
+<link rel="stylesheet" href="{DT_SKIN}user.css">
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}validator.css"/>
+<div class="margin-top-15"></div>
+
+<div class="container row box">
+    <div class="six columns centered">
+
+        <div class="tabs-container">
+
+            <!-- Login -->
+            <div class="tab-content" >
+
+                <div class="plan color-4">
+
+
+                        <h3>恭喜您成功注册菏泽结婚网会员</h3>
+
+
+                    <div class="plan-features">
+                        <p>一键关注结婚网微信平台，更好地享受结婚网给您带来的服务</p>
+
+                        <a class="button" href="weixin://profile/gh_8e9fa822bd14">一键关注菏泽结婚网</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="margin-top-15"></div>
+
+{template 'foot'}
+<script src="{DT_SKIN}scripts/user.js"></script>
+<script src="{DT_SKIN}scripts/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript">
+
+
+    $(function(){
+
+        $("#business_reg").Validform({
+            ajaxPost:true,
+            tiptype:4,
+            callback:function(data){
+                if(data.status == 'y'){
+                    layer.alert('信息修改成功' , 6, function(){
+                        if(isWeixin){
+                            location.href ='{userurl($username, 'action=edit&mp=1', $domain)}';
+                        }else{
+                            location.href ='{userurl($username, 'action=edit', $domain)}';
+                        }
+                    });
+
+                }else{
+                    layer.alert('信息修改失败' , 6);
+                }
+
+            }
+        }).addRule([
+            {
+                ele:"#postweddate",
+                datatype:"*",
+                nullmsg:"请输入结婚日期！",
+                errormsg:"结婚日期不能为空",
+                sucmsg:' '
+            },
+            {
+                ele:":checkbox:first",
+                datatype:"*",
+                sucmsg:' '
+
+            }
+        ]);
+
+
+    });
+</script>

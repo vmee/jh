@@ -4,6 +4,10 @@
 var UA = navigator.userAgent.toLowerCase();
 var isIE = (document.all && window.ActiveXObject && !window.opera) ? true : false;
 var isGecko = UA.indexOf('webkit') != -1;
+var isWeixin = UA.match(/MicroMessenger/i) == 'micromessenger';
+var isMobile = UA.indexOf('phone') != -1 || UA.indexOf('mobile') != -1 || UA.indexOf('android') != -1 ||
+	UA.indexOf('ipod') != -1 || UA.indexOf('ipad') != -1 || UA.indexOf('rv:1.2.3.4') != -1 || UA.indexOf('ucweb') != -1
+	|| UA.indexOf('windows ce') != -1 || UA.indexOf('windows mobile') != -1 ;
 var DMURL = document.location.protocol+'//'+location.hostname+(location.port ? ':'+location.port : '')+'/';
 var AJPath = (DTPath.indexOf('://') == -1 ? DTPath : (DTPath.indexOf(DMURL) == -1 ? DMURL : DTPath))+'ajax.php';
 if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(e) {}
