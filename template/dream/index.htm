@@ -1,5 +1,6 @@
 {template 'header'}
 
+
 <!-- Slider
 ================================================== -->
 <!--<div class="container fullwidth-element home-slider">
@@ -35,7 +36,23 @@
 ================================================== -->
 <div class="container margin-top-15" >
 
-    <!-- Headline -->
+
+        <div class="sixteen columns margin-bottom-15">
+            <!-- Tabs Navigation -->
+            <ul class="tabs-nav">
+
+                <li class="active"><a href="{{$MODULE[4][linkurl]}}search.php">行业分类</a></li>
+                {php $child = get_maincat(0, 4, 1);}
+                {loop $child $i $c}
+                <li {if $catid==$c[catid]} class="active"{/if}><a href="{$MODULE[4][linkurl]}search.php?catid={$c[catid]}" title="{$c[catname]}">{$c[catname]}</a></li>
+                {/loop}
+            </ul>
+
+        </div>
+
+
+
+        <!-- Headline -->
     <div class="sixteen columns">
         <h3 class="headline">优惠活动</h3>
         <span class="line margin-bottom-0"></span>
