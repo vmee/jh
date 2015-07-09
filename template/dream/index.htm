@@ -151,7 +151,7 @@
                         <th width="30%">所需服务</th>
                     </tr>
 
-                    {php $_tags=tag("table=member&condition=avatar=1 and groupid=5 and weddate>'0000-00-00'&pagesize=20&&order=userid desc&template=null")}
+                    {php $_tags=tag("table=member&condition=groupid=5 and weddate>'0000-00-00'&pagesize=20&&order=userid desc&template=null")}
                     {loop $_tags $k $t}
                     {if $k>-1}
                     {php $c = userinfo($t[inviter_company]);}

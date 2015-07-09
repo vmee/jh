@@ -665,6 +665,37 @@ X
 <input type="text" size="5" name="setting[credit_del_page]" value="<?php echo $credit_del_page;?>"/>
 </td>
 </tr>
+  <tr>
+    <td class="tl">商家从后台推荐注册成功</td>
+    <td>
+      <input type="text" size="5" name="setting[credit_invite_reg]" value="<?php echo $credit_invite_reg;?>"/>
+    </td>
+  </tr>
+  <tr>
+    <td class="tl">二维码扫码推荐注册成功</td>
+    <td>
+      <input type="text" size="5" name="setting[credit_qrcode_reg]" value="<?php echo $credit_qrcode_reg;?>"/>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="tl">发送站内信给多用户每个用户扣</td>
+    <td>
+      <input type="text" size="5" name="setting[credit_send_msg]" value="<?php echo $credit_send_msg;?>"/>
+    </td>
+  </tr>
+  <tr>
+    <td class="tl">查看用户信息包括站内聊天与qq扣</td>
+    <td>
+      <input type="text" size="5" name="setting[credit_view_chat]" value="<?php echo $credit_view_chat;?>"/>
+    </td>
+  </tr>
+  <tr>
+    <td class="tl">查看用户信息手机号扣</td>
+    <td>
+      <input type="text" size="5" name="setting[credit_view_phone]" value="<?php echo $credit_view_phone;?>"/>
+    </td>
+  </tr>
 </table>
 <div class="tt"><?php echo $DT['credit_name'];?>购买</div>
 <table cellpadding="2" cellspacing="1" class="tb">

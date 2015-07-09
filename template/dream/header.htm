@@ -68,7 +68,7 @@
 
                     <li><a href="{DT_PATH}index.php" class="{if $moduleid==1}current {/if}homepage" title="{$DT['sitename']}">首页</a></li>
 
-                    <li class="dropdown">
+                    <!--<li class="dropdown">
                         <a href="{DT_PATH}company/" title="菏泽婚庆企业" {if $moduleid=="4"}class="current"{/if}>婚嫁服务</a>
                         <ul>
                             {php $child = get_maincat(0, 4, 1);}
@@ -76,7 +76,7 @@
                             <li><a href="{$MODULE[4][linkurl]}search.php?catid={$c[catid]}" title="{$c[catname]}">{$c[catname]}</a></li>
                             {/loop}
                         </ul>
-                    </li>
+                    </li>-->
 
                     <li><a href="{DT_PATH}sell/" {if $moduleid=="5"}class="current"{/if} title="精品特价">精品特价</a></li>
                     <li><a href="{DT_PATH}activity/" {if $moduleid=="23"}class="current"{/if} title="优惠活动">优惠活动</a></li>

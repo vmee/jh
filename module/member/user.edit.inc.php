@@ -89,6 +89,24 @@ if($submit) {
 			credit_add($_username, $MOD['credit_edit']);
 			credit_record($_username, $MOD['credit_edit'], 'system', $L['edit_profile'], $DT_IP);
 		}
+
+		if($user['edittime'] == 0) {
+
+			$r = $db->get_one("SELECT username,mobile FROM {$DT_PRE}invite_customer WHERE reg_username='{$_username}'");
+			if($r){
+
+				if($r['mobile']){
+					if($MOD['credit_invite_reg']) {
+						credit_add($r['username'], $MOD['credit_invite_reg']);
+						credit_record($r['username'], $MOD['credit_invite_reg'], 'system', '推荐注册', $_username);
+					}
+				}elseif($MOD['credit_qrcode_reg']){
+					credit_add($r['username'], $MOD['credit_qrcode_reg']);
+					credit_record($r['username'], $MOD['credit_qrcode_reg'], 'system', '扫码注册', $_username);
+				}
+			}
+		}
+
 		if($post['password']) message($L['edit_msg_success'].$L['edit_msg_password'], '?tab='.$tab.'&success=1');
 		exit(json_encode(array('status'=>'y', 'info'=>'信息修改成功')));
 	} else {
