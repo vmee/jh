@@ -49,6 +49,15 @@ class appointment {
 			$r['adddate'] = timetodate($r['addtime'], 5);
 			$r['status_name'] = $status_conf[$r['status']];
 			$r['status_do'] = $status_do[$r['status']];
+			$r['company_url'] = userurl($r['invite_username']);
+			if($r['invite_itemid']){
+				//$r['invite_moduleid']
+				$r['item_url'] = userurl($r['invite_username'], 'file='.$MODULE[$r['invite_moduleid']]['moduledir'].'&itemid='.$r['invite_itemid']);
+			}else{
+				$r['item_url'] = $r['company_url'];
+			}
+
+
 			//$r['title'] = set_style($r['title'], $r['style']);
 			//$r['url'] = $MODULE[3]['linkurl'].'redirect.php?url='.urlencode(fix_link($r['url']));
 			//$r['type'] = $r['typeid'] && isset($TYPE[$r['typeid']]) ? set_style($TYPE[$r['typeid']]['typename'], $TYPE[$r['typeid']]['style']) : $L['default_type'];

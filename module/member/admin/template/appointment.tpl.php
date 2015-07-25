@@ -54,14 +54,14 @@ switch($v['status']){
 }
 ?>">
 <td><input type="checkbox" name="itemid[]" value="<?php echo $v['itemid'];?>"/></td>
-<td><?php echo $v['username'];?></a></td>
-<td><?php echo $v['truename'];?></a></td>
-    <td><?php echo $v['areaid'] ? area_pos($v['areaid'], '') : '';?></a></td>
-<td><?php if($v['status']>0){echo $v['mobile'];}?></a></td>
-<td><?php echo intval($v['weddate']) ? $v['weddate']: '';?></a></td>
-<td><?php echo $v['invite_username'];?></a></td>
+<td><?php echo $v['username'];?></td>
+<td><?php echo $v['truename'];?></td>
+    <td><?php echo $v['areaid'] ? area_pos($v['areaid'], '') : '';?></td>
+<td><?php if($v['status']>0){echo $v['mobile'];}?></td>
+<td><?php echo intval($v['weddate']) ? $v['weddate']: '';?></td>
+<td><a href="<?php echo $v['company_url'];?>" target="_blank"><?php echo $v['invite_username'];?></a></td>
 
-<td><?php if($v['invite_moduleid']==2){ echo '店铺预约';}else{ echo $v['invite_title'];}?></td>
+<td><a href="<?php echo $v['item_url'];?>" target="_blank"><?php if($v['invite_moduleid']==2){ echo '店铺预约';}else{ echo $v['invite_title'];}?></a></td>
 <td class="px11"><?php echo $v['adddate'];?></td>
 <td class="px11"><?php echo $v['status_name'];?></td>
 <td>
