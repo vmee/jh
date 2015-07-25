@@ -39,12 +39,13 @@ if($_userid){
 
             $itemid = $db->query("INSERT INTO {$DT_PRE}appointment ($sqlk) VALUES ($sqlv)");
 
-            /*if(!empty($DT['sms_mobile'])){
-                $content = lang('sms->sms_appointment', array($COM['company'], $user['truename'] ? $user['truename'] : $_username , $post['mobile'])).$DT['sms_sign'];
+            if(!empty($DT['sms_mobile'])){
+                $sms_name = $user['truename'] ? $user['truename'] : $_username;
+                $sms_name = $sms_name ? '新人'.$sms_name : '非注册新人';
+                $content = lang('sms->sms_appointment', array($sms_name, $COM['company'], $post['mobile'])).$DT['sms_sign'];
                 //send_sms($COM['mobile'], $content);
-                //send_sms($DT['sms_mobile'], $content);
-                send_sms('18511588069', $content);
-            }*/
+                send_sms($DT['sms_mobile'], $content);
+            }
 
         }
 
