@@ -5,7 +5,7 @@
 <div class="container box margin-top-15">
 <div class="head"><div><strong>免费预约</strong></div></div>
 <div class="row">
-	{if $_userid}
+	{if !$submit}
 	<div class="six columns centered">
 		<div class="tabs-container">
 
@@ -47,11 +47,17 @@
 	</div>
 			{else}
 			<div class="eight columns centered">
+
+				{if $announce}
+				<div class="notification error closeable">
+					<p><span>{$announce}</span></p>
+				</div>
+				{/if}
+
 				<div class="info-banner">
 					<div class="info-content">
-						<h3>预约商家请先<a href="{$MODULE[2]['linkurl']}{$DT['file_login']}" target="_top">登陆</a>!</h3>
+						<h3>恭喜您，预约成功! 商家稍后会跟您联系</h3>
 					</div>
-					<a href="{$MODULE[2]['linkurl']}{$DT['file_login']}" class="button color">登陆</a>
 					<div class="clearfix"></div>
 				</div>
 

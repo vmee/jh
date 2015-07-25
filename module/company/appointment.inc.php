@@ -1,44 +1,60 @@
 <?php
 defined('IN_DESTOON') or exit('Access Denied');
 
+
 if($_userid){
+    $user = userinfo($_username);
+    $post['username'] = $_username;
+    $post['areaid'] = $user['areaid'];
+    $post['truename'] = $user['truename'];
+    $post['mobile'] = $user['mobile'];
+}
 
-    if($submit) {
 
+    if($submit || $post['mobile']) {
 
-        //$session = new dsession();
-        if($_SESSION['mobile_code'] != md5($_SESSION['mobile'].'|'.$mobilecode)) exit(json_encode(array('info'=>'手机验证码错误', 'status'=>'n')));
+            //$session = new dsession();
+        if($submit && $_SESSION['mobile_code'] != md5($_SESSION['mobile'].'|'.$mobilecode)) exit(json_encode(array('info'=>'手机验证码错误', 'status'=>'n')));
 
         $post = dhtmlspecialchars($post);
         $post = array_map("trim", $post);
 
+
+
         $post['invite_username'] = $username;
+        if(!$post['invite_moduleid']) $post['invite_moduleid'] = $mid ? $mid : 2;
+        if(!$post['invite_title']) $post['invite_title'] = $title ? $title : $COM['company'];
+        if(!$post['invite_itemid']) $post['invite_itemid'] = $itemid;
 
-        if($_userid){
-            $user = userinfo($_username);
-            $post['username'] = $_username;
-            $post['areaid'] = $user['areaid'];
-            $post['truename'] = $user['truename'];
+        $appointment_authkey = md5(json_encode($post));
+        if(!$_SESSION['appointment_'.$appointment_authkey]){
+            $post['addtime'] = time();
+
+            $sqlk = $sqlv = '';
+            foreach($post as $k=>$v) {
+                $sqlk .= ','.$k; $sqlv .= ",'$v'";
+            }
+            $sqlk = substr($sqlk, 1);
+            $sqlv = substr($sqlv, 1);
+
+            $itemid = $db->query("INSERT INTO {$DT_PRE}appointment ($sqlk) VALUES ($sqlv)");
+
+            if(!empty($DT['sms_mobile'])){
+                $content = lang('sms->sms_appointment', array($COM['company'], $user['truename'] ? $user['truename'] : $_username , $post['mobile'])).$DT['sms_sign'];
+                //send_sms($COM['mobile'], $content);
+                //send_sms($DT['sms_mobile'], $content);
+                send_sms('18511588069', $content);
+            }
+
         }
 
-        $post['addtime'] = time();
 
-        $sqlk = $sqlv = '';
-        foreach($post as $k=>$v) {
-            $sqlk .= ','.$k; $sqlv .= ",'$v'";
-        }
-        $sqlk = substr($sqlk, 1);
-        $sqlv = substr($sqlv, 1);
-
-        $itemid = $db->query("INSERT INTO {$DT_PRE}appointment ($sqlk) VALUES ($sqlv)");
-
-        if(!empty($DT['sms_mobile'])){
-            $content = lang('sms->sms_appointment', array($COM['company'], $user['truename'] ? $user['truename'] : $_username , $post['mobile'])).$DT['sms_sign'];
-            send_sms($COM['mobile'], $content);
+        if($submit){
+            exit(json_encode(array('info'=>'预约成功', 'status'=>'y')));
         }
 
-
-        exit(json_encode(array('info'=>'预约成功', 'status'=>'y')));
+        $_SESSION['appointment_'.$appointment_authkey] = 1;
+        $submit = 1;
     }else{
 
 
@@ -72,6 +88,6 @@ if($_userid){
         $mid = $mid ? $mid : 2;
         $title = $title ? $title : $COM['company'];
     }
-}
+//}
 
 include template('appointment', $template);
