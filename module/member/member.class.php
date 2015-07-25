@@ -146,7 +146,7 @@ class member {
 				if(word_count($member['introduce']) < 5) return $this->_($L['member_introduce_null']);
 				//if(!$member['business']) return $this->_($L['member_business_null']);
 				if(strlen($member['catid']) < 2) return $this->_($L['member_catid_null']);
-				if(empty($member['license_thumb'])) return $this->_('请上传营业执照照片');
+				//if(empty($member['license_thumb'])) return $this->_('请上传营业执照照片');
 			}
 		} else {
 			if(!$this->is_username($member['username'])) return false;

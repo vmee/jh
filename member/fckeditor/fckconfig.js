@@ -52,7 +52,7 @@ FCKConfig.ToolbarLocation = 'In';
 FCKConfig.ToolbarSets["Default"] = [
 	['Source','-','PasteWord','PasteText','Preview','Print','-','Templates'],
 	['Cut','Copy','Paste','PasteText','PasteWord'],
-	['Undo','Redo','-','Find','Replace','-','RemoveFormat'],
+	['Undo','Redo','-','Find','Replace','-','RemoveFormat',],
 	'/',
 	['Link','Unlink','Anchor'],
 	['Image','Flash','Table','Rule','Smiley','SpecialChar'],

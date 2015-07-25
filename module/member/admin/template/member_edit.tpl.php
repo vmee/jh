@@ -402,14 +402,14 @@ function Dcheck() {
 		Dmsg('请选择公司主营行业', 'catid');
 		return false;
 	}
-	if(Dd('business').value.length < 2) {
+	/*if(Dd('business').value.length < 2) {
 		Dmsg('请填写主要经营范围', 'business');
 		return false;
-	}
-	if(Dd('regyear').value.length < 4) {
+	}*/
+	/*if(Dd('regyear').value.length < 4) {
 		Dmsg('请填写公司成立年份', 'regyear');
 		return false;
-	}
+	}*/
 	if(Dd('address').value.length < 2) {
 		Dmsg('请填写公司地址', 'address');
 		return false;
