@@ -68,7 +68,15 @@
                     <span class="hidden-xs">{dsubstr($announce, 80, '...')}</span>
                     <span class="visible-xs-block">{$announce}</span>
                     {else}
-                    <span>主营：{if $t[business]}{$t[business]}{else}{$c[catname]}{/if}</span>
+                    <span>主营：{if $t[business]}{$t[business]}{else}
+                        {php $catids = explode(',', $t[catid]); }
+                        {loop $catids $ck $ct}
+                        {if $ct}
+                        {php $catinfo = get_cat($ct)}
+                        {$catinfo[catname]}
+                        {/if}
+                        {/loop}
+                        {/if}</span>
                     {/if}
                 </section>
 
