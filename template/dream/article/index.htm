@@ -57,7 +57,7 @@
                 <ul>
 
 
-                    {php $_tags=tag("moduleid=$moduleid&catid=".$c[catid]."&order=edittime desc&pagesize=10&template=null")}
+                    {php $_tags=tag("moduleid=$moduleid&catid=".$c[catid]."&condition=thumb<>''&order=edittime desc&pagesize=10&template=null")}
                     {loop $_tags $k $t}
 
                     <!-- Product #1 -->

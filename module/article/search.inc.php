@@ -63,7 +63,7 @@ $tags = array();
 	} else {
 		if($keyword) $condition .= " AND $dfields[$fields] LIKE '%$keyword%'";
 		if($pptsql) $condition .= $pptsql;//PPT
-		$condition = "status=3".$condition;
+		$condition = "status=3 and thumb<>''".$condition;
 	}
 	$pagesize = $MOD['pagesize'];
 	$offset = ($page-1)*$pagesize;

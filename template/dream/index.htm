@@ -41,7 +41,7 @@
             <!-- Tabs Navigation -->
             <ul class="tabs-nav">
 
-                <li class="active"><a href="{{$MODULE[4][linkurl]}}search.php">行业分类</a></li>
+                <li class="active"><a href="{$MODULE[4][linkurl]}search.php">行业分类</a></li>
                 {php $child = get_maincat(0, 4, 1);}
                 {loop $child $i $c}
                 <li {if $catid==$c[catid]} class="active"{/if}><a href="{$MODULE[4][linkurl]}search.php?catid={$c[catid]}" title="{$c[catname]}">{$c[catname]}</a></li>
@@ -58,7 +58,7 @@
         <span class="line margin-bottom-0"></span>
     </div>
 
-    {php $_tags=tag("moduleid=23&pagesize=3&order=addtime desc&template=null")}
+    {php $_tags=tag("moduleid=23&pagesize=3&condition=thumb<>''&order=addtime desc&template=null")}
     {loop $_tags $k $t}
     {if $k>-1}
     <div class="one-third column">
