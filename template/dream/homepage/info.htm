@@ -10,7 +10,7 @@
 
 	<h1 class="text-center">{$title}</h1>
 	<p class="text-center">活动截止时间:<b class="text-warning">{$endtime}</b>  此信息已被浏览{$hits}次<p>
-	<div class="content" id="content">{$content}</div>
+	<div class="content" id="content">{info_video_transform($content)}</div>
 
 	<div class="text-center">
 		<a href="{userurl($username, 'file=appointment&itemid='.$itemid.'&mid='.$moduleid.'&title='.$title, $domain)}" class="btn btn-danger btn-lg">立即免费预约</a>

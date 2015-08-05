@@ -1316,3 +1316,31 @@ function company_setting($userid, $key = '', $cache = '') {
 
 	return '';
 }
+
+function info_video_transform($content){
+
+	preg_match_all("/<embed(.*?)src=\"(.*?)\"(.*?)>(.*?)<\/embed>/", $content, $matches);
+	if(empty($matches)) return $content;
+
+	$video_url = $matches[2][0];
+
+	switch($video_url){
+		//<embed src="http://player.youku.com/player.php/sid/XMTMwMTEzNjgwNA==/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+//<iframe height=498 width=510 src="http://player.youku.com/embed/XMTMwMTEzNjgwNA==" frameborder=0 allowfullscreen></iframe>
+		case strpos($video_url, 'player.youku.com')>0:
+			$arr = explode('/', $video_url);
+			$video_url = 'http://player.youku.com/embed/'.$arr[count($arr)-2];
+			break;
+		//<embed src="http://static.video.qq.com/TPout.swf?vid=j0161aergjj&auto=0" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+		//<iframe frameborder="0" width="640" height="498" src="http://v.qq.com/iframe/player.html?vid=j0161aergjj&tiny=0&auto=0" allowfullscreen></iframe>
+		case strpos($video_url, 'static.video.qq.com')>0:
+			$arr = explode('?', $video_url);
+			$video_url = 'http://v.qq.com/iframe/player.html?'.$arr[1];
+			break;
+	}
+
+	$html = '<iframe height=498 width=510 src="'.$video_url.'" frameborder=0 allowfullscreen></iframe>';
+
+	return str_replace($matches[0][0], $html, $content);
+
+}
