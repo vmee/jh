@@ -121,11 +121,11 @@
 {/if}
 {/loop}
 
-<div class="container margin-top-15" >
+<!--<div class="container margin-top-15" >
 <div class="columns">
     <h3 class="headline">会员需求</h3><span class="line margin-bottom-3-"></span><div class="clearfix"></div>
 
-    <!-- Tabs Navigation -->
+    &lt;!&ndash; Tabs Navigation &ndash;&gt;
     <ul class="tabs-nav columns">
         <li class="active"><a href="#all">全部</a></li>
         {loop $child $i $c}
@@ -133,13 +133,13 @@
         {/loop}
     </ul>
 
-    <!-- Tabs Content -->
+    &lt;!&ndash; Tabs Content &ndash;&gt;
     <div class="tabs-container">
         <div class="tab-content" id="all" style="display: block;">
 
             <div class="sixteen columns">
 
-                <!-- Cart -->
+                &lt;!&ndash; Cart &ndash;&gt;
                 <table class="cart-table responsive-table">
 
                     <tr>
@@ -155,7 +155,7 @@
                     {loop $_tags $k $t}
                     {if $k>-1}
                     {php $c = userinfo($t[inviter_company]);}
-                    <!-- Item #{$k} -->
+                    &lt;!&ndash; Item #{$k} &ndash;&gt;
                     <tr>
                         <td><a href="{userurl($t[username])}"><img src="{useravatar($t[username])}" alt="" class="img-circle"/></a></td>
                         <td class="cart-title"><a href="{userurl($t[username])}">{$t[truename]}</a> </td>
@@ -182,7 +182,7 @@
         <div class="tab-content" id="{$c[catid]}" style="display: none;">
             <div class="sixteen columns">
 
-                <!-- Cart -->
+                &lt;!&ndash; Cart &ndash;&gt;
                 <table class="cart-table responsive-table">
 
                     <tr>
@@ -200,7 +200,7 @@
                     {php $u = userinfo($t[username]);}
                     {if $u[groupid]==5}
                     {php $cp = userinfo($u[inviter_company]);}
-                    <!-- Item #{$k} -->
+                    &lt;!&ndash; Item #{$k} &ndash;&gt;
                     <tr>
                         <td><a href="{userurl($t[username])}"><img src="{useravatar($t[username])}" alt="" class="img-circle" /></a></td>
                         <td class="cart-title"><a href="{userurl($t[username])}">{$u[truename]}</a></td>
@@ -226,13 +226,13 @@
 
     <br>
 </div>
-    </div>
+    </div>-->
 
-<div class="container margin-top-15" >
+<!--<div class="container margin-top-15" >
     <div class="columns">
         <h3 class="headline">会员婚期</h3><span class="line margin-bottom-3-"></span><div class="clearfix"></div>
 
-        <!-- Tabs Navigation -->
+        &lt;!&ndash; Tabs Navigation &ndash;&gt;
         <ul class="tabs-nav columns">
             <li class="active"><a href="#wdall">全部</a></li>
             {php $_months = range(0,12);}
@@ -245,7 +245,7 @@
             {/loop}
         </ul>
 
-        <!-- Tabs Content -->
+        &lt;!&ndash; Tabs Content &ndash;&gt;
         <div class="tabs-container">
             <div class="tab-content" id="wdall" style="display: block;">
 
@@ -305,7 +305,7 @@
             {/loop}
         </div>
     </div>
-</div>
+</div>-->
 
 <div class="clearfix"></div>
 
@@ -498,10 +498,10 @@
     <!-- Buttons
     ================================================== -->
 
-    <div class="sixteen columns">
+    <div class="sixteen columns margin-bottom-15">
 
         <!-- Headline -->
-        <h3 class="headline">友情链接</h3><span class="line margin-bottom-10"></span><div class="clearfix"></div>
+        <h3 class="headline">友情链接</h3><div class="clearfix"></div>
 
         {if $DT[page_logo]}
         <!--{tag("table=link&condition=status=3 and level>0 and thumb<>'' and username=''&areaid=$cityid&pagesize=".$DT['page_logo']."&order=listorder desc,itemid desc&lazy=$lazy&template=list-link&cols=9")}-->
