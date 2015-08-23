@@ -13,5 +13,5 @@ $url = $_page == 1 ? $home_url : str_replace('{destoon_page}', $_page, $demo_url
 $pages .= '<a href="'.$url.'">&nbsp;'.$L['next_page'].'&nbsp;</a><input type="hidden" id="des'.'toon_next" value="'.$url.'"/> ';
 $url = $total == 1 ? $home_url : str_replace('{destoon_page}', $total, $demo_url);
 $pages .= '<a href="'.$url.'">&nbsp;'.$L['last_page'].'&nbsp;</a> ';
-$pages .= '<input type="text" class="pages_inp" id="destoon_pageno" value="'.$page.'" onkeydown="if(event.keyCode==13 && this.value) {window.location.href=\''.$demo_url.'\'.replace(/\\{destoon_page\\}/, this.value);return false;}"> <input type="button" class="pages_btn" value="GO" onclick="if(Dd(\'destoon_pageno\').value>0)window.location.href=\''.$demo_url.'\'.replace(/\\{destoon_page\\}/, Dd(\'destoon_pageno\').value);"/>';
+//$pages .= '<input type="text" class="pages_inp" id="destoon_pageno" value="'.$page.'" onkeydown="if(event.keyCode==13 && this.value) {window.location.href=\''.$demo_url.'\'.replace(/\\{destoon_page\\}/, this.value);return false;}"> <input type="button" class="pages_btn" value="GO" onclick="if(Dd(\'destoon_pageno\').value>0)window.location.href=\''.$demo_url.'\'.replace(/\\{destoon_page\\}/, Dd(\'destoon_pageno\').value);"/>';
 ?>

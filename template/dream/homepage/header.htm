@@ -36,6 +36,16 @@
             <h2>{$COM[company]}</h2>
 
             <dl class="dl-horizontal">
+                {if $announce && $consume_gift}
+                <dt>在线咨询:</dt>
+                <dd class="chat-img">{if $COM[username] && $DT[im_web]}{im_web($COM[username])}{/if}
+                    {if $COM[qq] && $DT[im_qq]}{im_qq($COM[qq])}{/if}
+                    {if $COM[ali] && $DT[im_ali]}{im_ali($COM[ali])}{/if}
+                    {if $COM[msn] && $DT[im_msn]}{im_msn($COM[msn])}{/if}
+                    {if $COM[skype] && $DT[im_skype]}{im_skype($COM[skype]){/if}</dd>
+                <dt>在线状态:</dt>
+                <dd>{if online($COM[userid])==1}<span class="danger">当前在线</span>{else}<span>当前离线</span>{/if}</dd>
+                {/if}
                 <dt>{$menu_head_name}地址:</dt>
                 <dd><strong>{$COM[address]}</strong></dd>
                 <dt>{$menu_head_name}流量:</dt>
@@ -51,6 +61,7 @@
         </div>
         <div class="col-md-3">
 
+            {if !$announce || !$consume_gift}
             <dl class="dl-horizontal">
                 <dt>在线咨询:</dt>
                 <dd class="chat-img">{if $COM[username] && $DT[im_web]}{im_web($COM[username])}{/if}
@@ -61,12 +72,18 @@
                 <dt>在线状态:</dt>
                 <dd>{if online($COM[userid])==1}<span class="danger">当前在线</span>{else}<span>当前离线</span>{/if}</dd>
             </dl>
+            {/if}
 
             {if $COM['groupid'] != 8}
             {if $announce}
             <div class="youlibox">{$announce}</div>
             {/if}
-            <div class="youlibox"><h3 class="text-danger">消费返现金</h3></div>
+            {if $consume_gift}
+            <div class="youlibox">{$consume_gift}</div>
+            {/if}
+
+
+            <div class="youlibox"><h3 class="text-danger">消费立返现金 你还等什么</h3></div>
             <div>
                 <a href="{userurl($username, 'file=appointment', $domain)}" class="btn btn-danger">
                     立即免费预约

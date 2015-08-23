@@ -277,13 +277,13 @@ var itemids = [{loop $lists $i $t}{if $i},{/if}'{$t[itemid]}'{/loop}];
             <!--<th>性别</th>
             <th>地区</th>
             <th>婚期</th>
-            <th>手机号</th>
             <th>qq</th>
             <th>email</th>-->
             <!--<th>备注</th>-->
             <th>注册状态</th>
             <th>注册时间</th>
 			<th>用户名</th>
+			<th>手机号</th>
         </tr>
         {loop $lists $k $v}
         <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
@@ -291,13 +291,13 @@ var itemids = [{loop $lists $i $t}{if $i},{/if}'{$t[itemid]}'{/loop}];
             <!--<td>{gender($v[gender])}</td>
             <td>{area_pos($v[areaid], '')}</td>-->
             <!--<td>{$v[weddate]}</td>
-            <td>{$v[mobile]}</td>
             <td>{$v[qq]}</td>
             <td>{$v[email]}</td>-->
             <!--<td>{$v[note]}</td>-->
             <td>{if $v[regtime]}已注册{else}未注册{/if}</td>
             <td>{if $v[regtime]}{timetodate($v[regtime])}{/if}</td>
 			<td>{$v[reg_username]}</td>
+			<td>{$v[mobile]}</td>
         </tr>
         {/loop}
     </table>

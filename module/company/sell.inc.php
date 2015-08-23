@@ -64,7 +64,7 @@ if($itemid) {
 	}
 	$demo_url = userurl($username, $url.'&page={destoon_page}', $domain);
 	$pagesize =intval($menu_num[$menuid]);
-	if(!$pagesize || $pagesize > 100) $pagesize = 16;
+	if(!$pagesize || $pagesize > 100) $pagesize = 18;
 	if($view) $pagesize = ceil($pagesize/2);
 	$offset = ($page-1)*$pagesize;
 	$r = $db->get_one("SELECT COUNT(*) AS num FROM {$table} WHERE $condition", 'CACHE');

@@ -93,6 +93,14 @@ function UpdateURL() {
 	<div id="tabs1" {if !$gift}style="display:none;"{/if}>
 		<table>
 			<tr>
+				<td class="tl">消费返点</td>
+				<td class="tr f_gray"><input name="setting[return_cash]" type="text" size="6" id="return_cash" value="{$return_cash}" />返点 百分比</td>
+			</tr>
+			<tr>
+				<td class="tl">消费有礼</td>
+				<td class="tr f_gray"><input name="setting[consume_gift]" type="text" size="60" id="consume_gift" value="{$consume_gift}" />消费送礼，文本内容</td>
+			</tr>
+			<tr>
 				<td class="tl">预约有礼</td>
 				<td class="tr f_gray"><textarea name="setting[announce]" id="announce" style="width:500px;height:60px;">{$announce}</textarea><br/>内容不能超过20个字</td>
 			</tr>
