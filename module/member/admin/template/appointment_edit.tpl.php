@@ -36,44 +36,35 @@ show_menu($menus);
 
 	<tr>
 		<td class="tl">预约商家用户名</td>
-		<td><input name="post[invite_username]" type="text" id="title" size="60" value="<?php echo $invite_username;?>"/><span id="dtitle" class="f_red">如：wanmeijiayi</span></td>
+		<td><input name="post[invite_username]" type="text" id="invite_username" size="60" value="<?php echo $invite_username;?>"/><span id="dtitle" class="f_red">如：wanmeijiayi</span></td>
 	</tr>
 
 	<tr>
 		<td class="tl">预约内容</td>
-		<td><input name="post[invite_title]" type="text" id="title" size="60" value="<?php echo $invite_title;?>"/></td>
+		<td><input name="post[invite_title]" type="text" id="invite_title" size="60" value="<?php echo $invite_title;?>"/></td>
 	</tr>
 
 	<tr>
 		<td class="tl">预约状态</td>
-		<td><select name="post[status]"><?php $status_conf = array('新预约', '处理中', '处理完成');
+		<td><select name="post[status]"><?php $status_conf = array('新预约', '处理中', '处理结束','完成消费', '已返现');
 				foreach($status_conf as $k=>$c){
 					echo '<option value="'.$k.'" '.($status==$k ? 'selected' : '').'>'.$c.'</option>';
 				}
 			?></select></td>
 	</tr>
 
+	<tr>
+		<td class="tl">消费金额</td>
+		<td><input name="post[consume_money]" type="text" id="consume_money" size="10" value="<?php echo $consume_money;?>"/>元</td>
+	</tr>
+
+	<tr>
+		<td class="tl">消费说明</td>
+		<td><input name="post[consume_note]" type="text" id="consume_note" size="60" value="<?php echo $consume_note;?>"/></td>
+	</tr>
+
 </table>
 <div class="sbt"><input type="submit" name="submit" value=" 确 定 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" 重 置 " class="btn"/></div>
 </form>
-<script type="text/javascript">
-function check() {
-	var l;
-	var f;
-	f = 'title';
-	l = Dd(f).value.length;
-	if(l < 2) {
-		Dmsg('请填写标题', f);
-		return false;
-	}
-	f = 'url';
-	l = Dd(f).value.length;
-	if(l < 2) {
-		Dmsg('请填写URL', f);
-		return false;
-	}
-	return true;
-}
-</script>
 <script type="text/javascript">Menuon(0);</script>
 <?php include tpl('footer');?>

@@ -11,7 +11,8 @@ class appointment {
 		global $db;
 		$this->table = $db->pre.'appointment';
 		$this->db = &$db;
-		$this->fields = array('username', 'truename','areaid','mobile','invite_username','invite_moduleid','invite_itemid','invite_title','status','addtime','weddate','note');
+		$this->fields = array('username', 'truename','areaid','mobile','invite_username','invite_moduleid',
+			'invite_itemid','invite_title','status','addtime','weddate','note','consume_money','consume_note');
     }
 
 	function pass($post) {
@@ -40,8 +41,8 @@ class appointment {
 			$items = $r['num'];
 		}
 
-		$status_conf = array('新预约', '处理中', '处理完成');
-		$status_do = array('查看手机号', '改为处理完成', '');
+		$status_conf = array('新预约', '处理中', '处理结束','完成消费', '已返现');
+		$status_do = array('查看手机号', '改为处理结束', '', '完成返现', '');
 		$pages = pages($items, $page, $pagesize);
 		$lists = array();
 		$result = $this->db->query("SELECT * FROM {$this->table} WHERE $condition ORDER BY $order LIMIT $offset,$pagesize");

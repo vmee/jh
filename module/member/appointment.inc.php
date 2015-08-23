@@ -50,25 +50,30 @@ switch($action) {
 		//$dfields = array('truename', 'truename', 'mobile',  'email', 'qq');
 		//isset($fields) && isset($dfields[$fields]) or $fields = 0;
 		//$fields_select = dselect($sfields, 'fields', '', $fields);
-		$condition = "invite_username='".$_username."'";
+		$condition = "i.username='".$_username."'";
+		//$condition = "1";
 		//if($keyword) $condition .= " AND $dfields[$fields] LIKE '%$keyword%'";
 
 		if($page > 1 && $sum) {
 			$items = $sum;
 		} else {
-			$r = $db->get_one("SELECT COUNT(*) AS num FROM {$DT_PRE}appointment WHERE $condition");
+			//echo "SELECT COUNT(a.itemid) AS num FROM {$DT_PRE}appointment as a left join {$DT_PRE}invite_customer as i on a.mobile=i.mobile WHERE $condition";
+			$r = $db->get_one("SELECT COUNT(*) AS num FROM {$DT_PRE}appointment as a left join {$DT_PRE}invite_customer as i on a.mobile=i.mobile WHERE $condition");
 			$items = $r['num'];
 		}
+
 		$pages = pages($items, $page, $pagesize);
 		$lists = array();
-		$result = $db->query("SELECT * FROM {$DT_PRE}appointment WHERE $condition ORDER BY status LIMIT $offset,$pagesize");
+		$result = $db->query("SELECT a.* FROM {$DT_PRE}appointment as a left join {$DT_PRE}invite_customer as i on a.mobile=i.mobile WHERE $condition ORDER BY a.itemid DESC LIMIT $offset,$pagesize");
+		$status_conf = array('新预约', '处理中', '处理结束','完成消费', '已返现');
 		while($r = $db->fetch_array($result)) {
 			$r['adddate'] = timetodate($r['addtime'], 5);
+			$r['status_name'] = $status_conf[$r['status']];
 			$lists[] = $r;
 		}
 
 
-		$head_title = '用户预约';
+		$head_title = '预约消费';
 }
 include template('appointment', $module);
 ?>

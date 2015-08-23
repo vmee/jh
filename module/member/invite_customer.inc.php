@@ -88,7 +88,7 @@ switch($action) {
 		$dfields = array('truename', 'truename', 'mobile',  'email', 'qq');
 		isset($fields) && isset($dfields[$fields]) or $fields = 0;
 		$fields_select = dselect($sfields, 'fields', '', $fields);
-		$condition = "userid=$_userid";
+		$condition = "userid=$_userid ";
 		if($keyword) $condition .= " AND $dfields[$fields] LIKE '%$keyword%'";
 		$lists = $do->get_list($condition);
 		$head_title = $L['invite_customer_title'];

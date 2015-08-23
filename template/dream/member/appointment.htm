@@ -128,7 +128,7 @@ var itemids = [{loop $lists $i $t}{if $i},{/if}'{$t[itemid]}'{/loop}];
 <div class="menu">
 <table cellpadding="0" cellspacing="0">
 <tr>
-<td class="tab" id="home"><a href="invite_customer.php"><span>我的预约用户</span></a></td>
+<td class="tab" id="home"><a href="invite_customer.php"><span>推荐新人预约消费</span></a></td>
 <td class="tab_nav">&nbsp;</td>
 </tr>
 </table>
@@ -264,24 +264,27 @@ var itemids = [{loop $lists $i $t}{if $i},{/if}'{$t[itemid]}'{/loop}];
     <table cellpadding="0" cellspacing="0" class="tb">
         <tr>
 			<th>Id</th>
-            <th>姓名</th>
-            <th>地区</th>
-            <th>手机号</th>
-            <th>预约内容</th>
-            <th>预约时间</th>
+			<th>用户名</th>
+			<th>手机号</th>
+			<th>预约商家</th>
+			<th>预约内容</th>
+			<th>预约时间</th>
 			<th>状态</th>
-            <th>操作</th>
+			<th>消费金额</th>
+			<th>消费说明</th>
         </tr>
         {loop $lists $k $v}
-        <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center" style="background-color:{if $v['status']==2}#9c9c9c{elseif $v['status']==1}#fff{else}#ffc2c2{/if}">
+        <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
             <td>{$v[itemid]}</td>
-            <td>{$v[truename]}</td>
-            <td>{area_pos($v[areaid], '')}</td>
-            <td>{if $v['status']!=0}{$v[mobile]}{/if}</td>
-            <td>{if $v[invite_moduleid]==2}店铺预约{else}{$v[invite_title]}{/if}</td>
-            <td>{timetodate($v[addtime])}</td>
-			<td>{if $v['status']==2}已处理{elseif $v['status']==1}处理中{else}新预约{/if}</td>
-			<td><a href="appointment.php?action=status&itemid={$v[itemid]}">{if $v['status']==1}改为已处理{elseif $v['status']==0}查看手机号{/if}</a></td>
+            <td>{$v[username]}</td>
+            <td>{$v[mobile]}</td>
+            <td>{$v[invite_username]}</td>
+			<td>{if $v[invite_moduleid]==2}店铺预约{else}{$v[invite_title]}{/if}</td>
+			<td>{timetodate($v[addtime])}</td>
+			<td>{$v[status_name]}</td>
+			<td>{$v[consume_money]}</td>
+			<td>{$v[consume_note]}</td>
+
         </tr>
         {/loop}
     </table>

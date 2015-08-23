@@ -2792,6 +2792,8 @@ CREATE TABLE `hj_appointment` (
   `invite_title` varchar(100) NOT NULL default '',
   `status` tinyint(1) unsigned NOT NULL default '0',
   `addtime` int(10) unsigned NOT NULL default '0',
+  `consume_money` decimal(10,2) unsigned NOT NULL default '0.00',
+  `consume_note` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`itemid`),
   KEY `invite_username` (`invite_username`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户免费预约';

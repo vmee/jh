@@ -176,8 +176,8 @@ var itemids = [{loop $lists $i $t}{if $i},{/if}'{$t[itemid]}'{/loop}];
 
 
 <tr>
-<td class="tl">备注</td>
-<td class="tr"><input type="text" size="40" name="post[note]" id="note"/></td>
+<td class="tl">推荐人</td>
+<td class="tr"><input type="text" size="20" name="post[note]" id="note"/></td>
 </tr>
 <tr>
 <td class="tl">&nbsp;</td>
@@ -298,6 +298,7 @@ var itemids = [{loop $lists $i $t}{if $i},{/if}'{$t[itemid]}'{/loop}];
             <td>{if $v[regtime]}{timetodate($v[regtime])}{/if}</td>
 			<td>{$v[reg_username]}</td>
 			<td>{$v[mobile]}</td>
+			<td></td>
         </tr>
         {/loop}
     </table>

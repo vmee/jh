@@ -177,7 +177,11 @@ if($submit) {
 		if($could_emailcode) $db->query("UPDATE {$DT_PRE}member SET vemail=1 WHERE username='$username'");
 		if($could_mobilecode) $db->query("UPDATE {$DT_PRE}member SET vmobile=1 WHERE username='$username'");
         if($post['invitecode'] != 'hzjh88' && $inviter_items){
-            $db->query("UPDATE {$DT_PRE}invite_customer SET regtime='$DT_TIME',reg_userid='$userid',reg_username='$username'  WHERE itemid='{$inviter_items['itemid']}'");
+			$update_str = '';
+			if(!$inviter_items['mobile']){
+				$update_str = ",mobile='".$post['mobile']."'";
+			}
+            $db->query("UPDATE {$DT_PRE}invite_customer SET regtime='$DT_TIME',reg_userid='$userid',reg_username='$username'{$update_str}  WHERE itemid='{$inviter_items['itemid']}'");
         }
 
 		$wed_cats = get_maincat(0, 4, 1);

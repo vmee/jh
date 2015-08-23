@@ -34,6 +34,8 @@ show_menu($menus);
     <th>预约内容</th>
     <th>预约时间</th>
     <th>状态</th>
+    <th>消费金额</th>
+    <th>消费说明</th>
     <th>操作</th>
 </tr>
 <?php foreach($lists as $k=>$v) {?>
@@ -51,6 +53,12 @@ switch($v['status']){
     case 1:
         echo '#fff';
         break;
+    case 3:
+        echo '#00C957';
+        break;
+    case 4:
+        echo '#33A1C9';
+        break;
 }
 ?>">
 <td><input type="checkbox" name="itemid[]" value="<?php echo $v['itemid'];?>"/></td>
@@ -64,10 +72,15 @@ switch($v['status']){
 <td><a href="<?php echo $v['item_url'];?>" target="_blank"><?php if($v['invite_moduleid']==2){ echo '店铺预约';}else{ echo $v['invite_title'];}?></a></td>
 <td class="px11"><?php echo $v['adddate'];?></td>
 <td class="px11"><?php echo $v['status_name'];?></td>
+<td class="px11"><?php echo $v['consume_money'];?></td>
+<td class="px11"><?php echo $v['consume_note'];?></td>
 <td>
 <a href="?moduleid=<?php echo $moduleid;?>&file=<?php echo $file;?>&action=edit&itemid=<?php echo $v['itemid'];?>">完善资料</a>&nbsp;
 <a href="?moduleid=<?php echo $moduleid;?>&file=<?php echo $file;?>&action=note&itemid=<?php echo $v['itemid'];?>">备注</a>&nbsp;
 <a href="?moduleid=<?php echo $moduleid;?>&file=<?php echo $file;?>&action=do&itemid=<?php echo $v['itemid'];?>"><?php echo $v['status_do'];?></a>
+    <?php if($v['status']>0 && $v['status']<3){?>
+    <a href="?moduleid=<?php echo $moduleid;?>&file=<?php echo $file;?>&action=consume&itemid=<?php echo $v['itemid'];?>">完成消费</a>
+    <?php } ?>
 </td>
 </tr>
 <?php }?>

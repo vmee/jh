@@ -33,6 +33,7 @@ $menu_relate = array(
 	array('站内信件', '?moduleid=2&file=message'),
 	array('商机收藏', '?moduleid=2&file=favorite'),
 	array('新人预约', '?moduleid=2&file=appointment'),
+	array('推荐新人', '?moduleid=2&file=invite_customer'),
 	array('会员商友', '?moduleid=2&file=friend'),
 	array('收货地址', '?moduleid=2&file=address'),
 	array('登录日志', '?moduleid=2&file=loginlog'),
