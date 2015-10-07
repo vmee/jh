@@ -2,6 +2,9 @@
 defined('IN_DESTOON') or exit('Access Denied');
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
 if(!check_group($_groupid, $MOD['group_index'])) include load('403.inc');
+if($cityid){
+    dheader('search.php');
+}
 $typeid = isset($typeid) ? intval($typeid) : 99;
 isset($TYPE[$typeid]) or $typeid = 99;
 $dtype = $typeid != 99 ? " AND typeid=$typeid" : '';

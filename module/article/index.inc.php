@@ -1,6 +1,11 @@
 <?php 
 defined('IN_DESTOON') or exit('Access Denied');
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
+
+if($cityid){
+	dheader('search.php');
+}
+
 if($MOD['index_html']) {	
 	$html_file = DT_ROOT.'/'.$MOD['moduledir'].'/'.$DT['index'].'.'.$DT['file_ext'];
 	if(!is_file($html_file)) tohtml('index', $module);

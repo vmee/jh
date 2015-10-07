@@ -8,10 +8,11 @@ $AREA = cache_read('area.php');
 $c = array();
 $city = get_cookie('city');
 $http_host = get_env('host');
-if($city) {
+if($city && strpos(DT_PATH, $http_host) === false) {
 	list($cityid, $city_domain) = explode('|', $city);
 	$cityid = intval($cityid);
-	if(strpos(DT_PATH, $http_host) === false && strpos($city_domain, $http_host) === false) {
+	//if(strpos(DT_PATH, $http_host) === false && strpos($city_domain, $http_host) === false) {
+	if(strpos($city_domain, $http_host) === false) {
 		$c = $db->get_one("SELECT * FROM {$DT_PRE}city WHERE domain='http://".$http_host."/'");
 		if($c) {
 			set_cookie('city', $c['areaid'].'|'.$c['domain'], $DT_TIME + 365*86400);

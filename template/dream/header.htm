@@ -8,27 +8,28 @@
 
 
         <!-- Logo -->
-        <div class="four columns">
+        <div class="five columns">
             <div id="logo">
-                <h1><a href="{$MODULE[1][linkurl]}" title="{$DT['sitename']}"><img src="{DT_SKIN}images/site-logo.png" alt="{$DT['sitename']}" /></a></h1>
+                <h1><a href="{$MODULE[1][linkurl]}" title="{$DT['sitename']}"><img src="{DT_SKIN}images/site-logo.png" alt="{$DT['sitename']}" /></a>
+                    {if $cityid}<div class="text-muted" style="line-height: 60px;">【{area_pos($cityid, '&nbsp;')}】</div>{/if}</h1>
             </div>
         </div>
 
         <!-- Additional Menu -->
-        <div class="twelve columns">
+        <div class="eleven columns">
             <div id="additional-menu">
                 <ul>
-                    <li><a href="{DT_PATH}company/search.php?catid=27" title="婚纱摄影">婚纱摄影</a></li>
-                    <li><a href="{DT_PATH}company/search.php?catid=10" title="婚宴酒店">婚宴酒店</a></li>
-                    <li><a href="{DT_PATH}company/search.php?catid=8" title="婚纱礼服">婚纱礼服</a></li>
-                    <li><a href="{DT_PATH}company/search.php?catid=23" title="婚庆服务">婚庆服务</a></li>
+                    <li><a href="{$MODULE[1][linkurl]}company/search.php?catid=27" title="婚纱摄影">婚纱摄影</a></li>
+                    <li><a href="{$MODULE[1][linkurl]}company/search.php?catid=10" title="婚宴酒店">婚宴酒店</a></li>
+                    <li><a href="{$MODULE[1][linkurl]}company/search.php?catid=8" title="婚纱礼服">婚纱礼服</a></li>
+                    <li><a href="{$MODULE[1][linkurl]}company/search.php?catid=23" title="婚庆服务">婚庆服务</a></li>
                 </ul>
             </div>
         </div>
 
 
         <!-- Shopping Cart -->
-        <div class="twelve columns">
+        <div class="eleven columns">
 
             <!-- Search -->
             <form action="{$MODULE[$searchid][linkurl]}/search.php" method="get">
@@ -61,15 +62,15 @@
     <div class="container hidden-xs">
         <div class="sixteen columns">
 
-            <a href="{DT_PATH}index.php" class="menu-trigger"><i class="fa fa-bars"></i> 网站导航</a>
+            <a href="{$MODULE[1][linkurl]}index.php" class="menu-trigger"><i class="fa fa-bars"></i> 网站导航</a>
 
             <nav id="navigation">
                 <ul class="menu" id="responsive">
 
-                    <li><a href="{DT_PATH}index.php" class="{if $moduleid==1}current {/if}homepage" title="{$DT['sitename']}">首页</a></li>
+                    <li><a href="{$MODULE[1][linkurl]}index.php" class="{if $moduleid==1}current {/if}homepage" title="{$DT['sitename']}">首页</a></li>
 
                     <li class="dropdown">
-                        <a href="{DT_PATH}company/" title="菏泽婚庆公司" {if $moduleid=="4"}class="current"{/if}>婚嫁服务</a>
+                        <a href="{$MODULE[1][linkurl]}company/" title="菏泽婚庆公司" {if $moduleid=="4"}class="current"{/if}>婚嫁服务</a>
                         <!--
                         <ul>
                             {php $child = get_maincat(0, 4, 1);}
@@ -80,9 +81,9 @@
                         -->
                     </li>
 
-                    <li><a href="{DT_PATH}sell/" {if $moduleid=="5"}class="current"{/if} title="精品特价">精品特价</a></li>
-                    <li><a href="{DT_PATH}activity/" {if $moduleid=="23"}class="current"{/if} title="优惠活动">优惠活动</a></li>
-                    <li><a href="{DT_PATH}photo/" {if $moduleid=="12"}class="current"{/if} title="作品案例">作品案例</a></li>
+                    <li><a href="{$MODULE[1][linkurl]}sell/" {if $moduleid=="5"}class="current"{/if} title="精品特价">精品特价</a></li>
+                    <li><a href="{$MODULE[1][linkurl]}activity/" {if $moduleid=="23"}class="current"{/if} title="优惠活动">优惠活动</a></li>
+                    <li><a href="{$MODULE[1][linkurl]}photo/" {if $moduleid=="12"}class="current"{/if} title="作品案例">作品案例</a></li>
                     <li class="visible-xs-block"><a href="{$MODULE[2][linkurl]}logout.php">退出账户</a></li>
 
 

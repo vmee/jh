@@ -1,0 +1,533 @@
+{template 'header'}
+
+
+<!-- Slider
+================================================== -->
+<div class="container fullwidth-element home-slider">
+
+    <div class="tp-banner-container">
+        <div class="tp-banner">
+            <ul style="display: none;">
+
+                <!-- Slide 1  -->
+                <li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
+                    <img src="file/image/index_banner_fanxian.jpg"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                </li>
+
+                <!-- Slide 2  -->
+                <!--<li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000">
+                    <img src="http://www.hezejiehun.com/file/upload/201504/15/10-10-01-93-32.jpg"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                </li>-->
+
+                <!-- Slide 3  -->
+                <!--<li data-transition="fadetotopfadefrombottom" data-slotamount="7" data-masterspeed="1000">
+                    <img src="http://www.hezejiehun.com/file/upload/201504/14/09-58-38-22-31.jpg"  alt="slidebg1" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                </li>-->
+
+
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<!-- Featured
+================================================== -->
+<div class="container margin-top-15" >
+
+
+    <div class="sixteen columns margin-bottom-15">
+        <!-- Tabs Navigation -->
+        <ul class="tabs-nav">
+
+            <li class="active"><a href="{$MODULE[4][linkurl]}search.php">行业分类</a></li>
+            {php $child = get_maincat(0, 4, 1);}
+            {loop $child $i $c}
+            <li {if $catid==$c[catid]} class="active"{/if}><a href="{$MODULE[4][linkurl]}search.php?catid={$c[catid]}" title="{$c[catname]}">{$c[catname]}</a></li>
+            {/loop}
+        </ul>
+
+    </div>
+
+
+
+    <!-- Headline -->
+    <div class="sixteen columns">
+        <h3 class="headline">优惠活动</h3>
+        <span class="line margin-bottom-0"></span>
+    </div>
+
+    {php $_tags=tag("moduleid=23&areaid=397&pagesize=3&condition=thumb<>''&order=addtime desc&template=null")}
+    {loop $_tags $k $t}
+    {if $k>-1}
+    <div class="one-third column">
+        <a href="{userurl($t[username], 'file=activity&itemid='.$t['itemid'], $domain)}" title="{$t[title]}" class="img-caption" >
+            <figure>
+                <img src="{$t[thumb]}" alt="{$t[title]}" />
+                <figcaption>
+                    <h3>{$t[title]}</h3>
+                    <span>{$t[introduce]} {if $t[endtime]}结束时间：{$t[endtime]}{/if}</span>
+                </figcaption>
+            </figure>
+        </a>
+    </div>
+    {/if}
+    {/loop}
+
+</div>
+
+{php $child = get_maincat(0, 4, 1);}
+{loop $child $i $c}
+{php $_tags=tag("moduleid=5&table=company&pagesize=8&areaid=397&condition=catid like '%,".$c[catid].",%' and thumb<>''&order=vip desc,userid desc&template=null")}
+{if count($_tags)>=1}
+<!-- New Arrivals
+================================================== -->
+<div class="container margin-top-15">
+
+
+    <div class="sixteen columns" >
+        <h3 class="headline">{$c[catname]}</h3>
+        <span class="line margin-bottom-30"></span>
+    </div>
+
+    {loop $_tags $k $t}
+    <div class="four columns portfolio-item margin-bottom-15">
+        <article class="from-the-blog">
+
+            <figure class="from-the-blog-image">
+                <a href="{$t[linkurl]}" title="{$t[company]}"><img src="{$t[thumb]}" alt="{$t[company]}" /></a>
+            </figure>
+
+            <section class="from-the-blog-content">
+                <h5><a href="{$t[linkurl]}"  title="{$t[company]}">{$t[company]}</a><span class="pull-right">{area_pos($t[areaid], '&nbsp;')}</span></h5>
+                {php $announce  = company_setting($t[userid], 'announce');}
+                {if $announce}
+                <span class="hidden-xs">{dsubstr(str_replace(' ', '', $announce), 60, '...')}</span>
+                <span class="visible-xs-block">{$announce}</span>
+                {else}
+                <span>主营：{if $t[business]}{$t[business]}{else}{$c[catname]}{/if}</span>
+                {/if}
+
+            </section>
+
+        </article>
+    </div>
+    {/loop}
+
+
+</div>
+<div class="clearfix"></div>
+{/if}
+{/loop}
+
+<!--<div class="container margin-top-15" >
+<div class="columns">
+    <h3 class="headline">会员需求</h3><span class="line margin-bottom-3-"></span><div class="clearfix"></div>
+
+    &lt;!&ndash; Tabs Navigation &ndash;&gt;
+    <ul class="tabs-nav columns">
+        <li class="active"><a href="#all">全部</a></li>
+        {loop $child $i $c}
+        <li><a href="#{$c[catid]}">{$c[catname]}</a></li>
+        {/loop}
+    </ul>
+
+    &lt;!&ndash; Tabs Content &ndash;&gt;
+    <div class="tabs-container">
+        <div class="tab-content" id="all" style="display: block;">
+
+            <div class="sixteen columns">
+
+                &lt;!&ndash; Cart &ndash;&gt;
+                <table class="cart-table responsive-table">
+
+                    <tr>
+                        <th></th>
+                        <th>用户</th>
+                        <th>推荐商家</th>
+                        <th>所在地区</th>
+                        <th>结婚日期</th>
+                        <th width="30%">所需服务</th>
+                    </tr>
+
+                    {php $_tags=tag("table=member&condition=groupid=5 and weddate>'0000-00-00'&pagesize=20&&order=userid desc&template=null")}
+                    {loop $_tags $k $t}
+                    {if $k>-1}
+                    {php $c = userinfo($t[inviter_company]);}
+                    &lt;!&ndash; Item #{$k} &ndash;&gt;
+                    <tr>
+                        <td><a href="{userurl($t[username])}"><img src="{useravatar($t[username])}" alt="" class="img-circle"/></a></td>
+                        <td class="cart-title"><a href="{userurl($t[username])}">{$t[truename]}</a> </td>
+                        <td  class="cart-title"><a href="{userurl($c[username])}">{$c[company]}</a></td>
+                        <td>{area_pos($t[areaid], '&nbsp;')}</td>
+                        <td>{timetodate(strtotime($t[weddate]), 7)}</td>
+                        <td>{implode(',',userwed($t[username]))}</td>
+                    </tr>
+                    {/if}
+                    {/loop}
+
+
+                </table>
+
+
+                <div class="clearfix"></div>
+
+            </div>
+
+        </div>
+
+        {php $child = get_maincat(0, 4, 1);}
+        {loop $child $i $c}
+        <div class="tab-content" id="{$c[catid]}" style="display: none;">
+            <div class="sixteen columns">
+
+                &lt;!&ndash; Cart &ndash;&gt;
+                <table class="cart-table responsive-table">
+
+                    <tr>
+                        <th></th>
+                        <th>用户</th>
+                        <th>推荐商家</th>
+                        <th>所在地区</th>
+                        <th>结婚日期</th>
+                        <th>所需服务</th>
+                    </tr>
+
+                    {php $_tags=tag("table=member_wed&condition=catid=".$c[catid]." and del=0&pagesize=20&order=updatetime desc&template=null")}
+                    {loop $_tags $k $t}
+                    {if $k>-1}
+                    {php $u = userinfo($t[username]);}
+                    {if $u[groupid]==5}
+                    {php $cp = userinfo($u[inviter_company]);}
+                    &lt;!&ndash; Item #{$k} &ndash;&gt;
+                    <tr>
+                        <td><a href="{userurl($t[username])}"><img src="{useravatar($t[username])}" alt="" class="img-circle" /></a></td>
+                        <td class="cart-title"><a href="{userurl($t[username])}">{$u[truename]}</a></td>
+                        <td class="cart-title"><a href="{userurl($cp[username])}">{$cp[company]}</a></td>
+                        <td>{area_pos($u[areaid], '&nbsp;')}</td>
+                        <td>{timetodate(strtotime($u[weddate]), 7)}</td>
+                        <td>{implode(',',userwed($t[username]))}</td>
+                    </tr>
+                    {/if}
+                    {/if}
+                    {/loop}
+
+
+                </table>
+
+
+                <div class="clearfix"></div>
+
+            </div>
+        </div>
+        {/loop}
+    </div>
+
+    <br>
+</div>
+    </div>-->
+
+<!--<div class="container margin-top-15" >
+    <div class="columns">
+        <h3 class="headline">会员婚期</h3><span class="line margin-bottom-3-"></span><div class="clearfix"></div>
+
+        &lt;!&ndash; Tabs Navigation &ndash;&gt;
+        <ul class="tabs-nav columns">
+            <li class="active"><a href="#wdall">全部</a></li>
+            {php $_months = range(0,12);}
+            {php $month = date('n');}
+            {php $year = date('Y');}
+            {loop $_months $k $t}
+            <li><a href="#wd{$year}{$month}">{$yeartxt}{$month++}月</a></li>
+            {php if($month>12){$year=date('Y')+1;$yeartxt=$year.'年';}}
+            {php $month = $month>12 ? 1 : $month }
+            {/loop}
+        </ul>
+
+        &lt;!&ndash; Tabs Content &ndash;&gt;
+        <div class="tabs-container">
+            <div class="tab-content" id="wdall" style="display: block;">
+
+                <div class="container product-categories">
+
+                    {php $_tags=tag("table=member&condition=avatar=1 and weddate>'0000-00-00'&pagesize=20&order=userid desc&template=null")}
+                    {loop $_tags $k $t}
+                    {if $k>-1}
+                    <div class="two columns">
+                        <a href="{userurl($t[username])}" class="img-caption" >
+                            <figure>
+                                <img src="{useravatar($t[username], 'large')}" alt="" />
+                                <figcaption>
+                                    <h3>{$t[username]}</h3>
+                                    <span>婚期:{timetodate(strtotime($t[weddate]), 7)}</span>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </div>
+                    {/if}
+                    {/loop}
+
+                </div>
+
+            </div>
+            {php $month = date('n');}
+            {php $year = date('Y');}
+            {loop $_months $_m $_t}
+            <div class="tab-content" id="wd{$year}{$month}" style="display: none;">
+
+                <div class="container product-categories">
+
+                    {php $_tags=tag("table=member&condition=avatar=1 and weddate>'".$year."-".($month>10 ? $month :"0".$month)."-00' and weddate<'".$year."-".($month>10 ? $month :"0".$month)."-32'&pagesize=24&order=userid desc&template=null")}
+                    {loop $_tags $k $t}
+                    {if $k>-1}
+                    <div class="two columns">
+                        <a href="{userurl($t[username])}" class="img-caption" >
+                            <figure>
+                                <img src="{useravatar($t[username], 'large')}" alt="" />
+                                <figcaption>
+                                    <h3>{$t[username]}</h3>
+                                    <span>{timetodate(strtotime($t[weddate]), 7)}</span>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </div>
+                    {/if}
+                    {/loop}
+
+                </div>
+
+            </div>
+
+            {php $month++;}
+            {php if($month>12) $year=date('Y')+1;}
+            {php $month = $month>12 ? 1 : $month }
+            {/loop}
+        </div>
+    </div>
+</div>-->
+
+<div class="clearfix"></div>
+
+<!-- New Arrivals
+================================================== -->
+<!--
+<div class="container">
+
+    &lt;!&ndash; Headline &ndash;&gt;
+    <div class="sixteen columns">
+        <h3 class="headline">精品特价</h3>
+        <span class="line margin-bottom-0"></span>
+    </div>
+
+    &lt;!&ndash; Carousel &ndash;&gt;
+    <div id="new-arrivals" class="showbiz-container sixteen columns" >
+
+        &lt;!&ndash; Navigation &ndash;&gt;
+        <div class="showbiz-navigation">
+            <div id="showbiz_left_1" class="sb-navigation-left"><i class="fa fa-angle-left"></i></div>
+            <div id="showbiz_right_1" class="sb-navigation-right"><i class="fa fa-angle-right"></i></div>
+        </div>
+        <div class="clearfix"></div>
+
+        &lt;!&ndash; Products &ndash;&gt;
+        <div class="showbiz" data-left="#showbiz_left_1" data-right="#showbiz_right_1" data-play="#showbiz_play_1" >
+            <div class="overflowholder">
+
+                <ul>
+
+                    {php $_tags=tag("moduleid=5&pagesize=10&template=null")}
+                    {loop $_tags $k $t}
+                    {if $k>-1}
+                    &lt;!&ndash; Product #1 &ndash;&gt;
+                    <li>
+                        <figure class="product">
+                            <div class="mediaholder">
+                                <a href="{userurl($t[username], 'file=sell&itemid='.$t['itemid'], $domain)}">
+                                    <img alt="" src="{imgurl($t[thumb],240)}" />
+                                </a>
+                                <a href="{userurl($t[username])}" class="product-button">{$t[company]}</a>
+                            </div>
+
+                            <a href="{userurl($t[username], 'file=sell&itemid='.$t['itemid'], $domain)}">
+                                <section>
+                                    <span class="product-category">{$t[title]}</span>
+                                    <span class="product-price">现价{$t[price]}</span>
+                                </section>
+                            </a>
+                        </figure>
+                    </li>
+
+                    {/if}
+                    {/loop}
+
+
+                </ul>
+                <div class="clearfix"></div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+</div>
+-->
+
+
+<!--&lt;!&ndash; Product Lists
+================================================== &ndash;&gt;
+<div class="container margin-bottom-25">
+
+    &lt;!&ndash; Best Sellers &ndash;&gt;
+    <div class="one-third column">
+
+        &lt;!&ndash; Headline &ndash;&gt;
+        <h3 class="headline">婚纱摄影</h3>
+        <span class="line margin-bottom-0"></span>
+        <div class="clearfix"></div>
+
+
+        <ul class="product-list">
+
+            {php $_tags=tag("moduleid=4&pagesize=6&catid=27&template=null");}
+            {loop $_tags $k $t}
+            <li><a href="{$t[linkurl]}">
+                <img src="{imgurl($t[thumb], 240)}" alt="{$t[company]}" />
+                <div class="product-list-desc">{$t[company]}</div>
+            </a></li>
+            {/loop}
+
+
+            <li><div class="clearfix"></div></li>
+
+        </ul>
+
+    </div>
+
+
+    &lt;!&ndash; Top Rated &ndash;&gt;
+    <div class="one-third column">
+
+        &lt;!&ndash; Headline &ndash;&gt;
+        <h3 class="headline">婚庆公司</h3>
+        <span class="line margin-bottom-0"></span>
+        <div class="clearfix"></div>
+
+
+        <ul class="product-list top-rated">
+
+            {php $_tags=tag("moduleid=4&pagesize=6&catid=23&template=null");}
+            {loop $_tags $k $t}
+            <li><a href="{$t[linkurl]}">
+                <img src="{imgurl($t[thumb], 240)}" alt="{$t[company]}" />
+                <div class="product-list-desc">{$t[company]}</div>
+            </a></li>
+            {/loop}
+
+            <li><div class="clearfix"></div></li>
+
+        </ul>
+
+    </div>
+
+
+    &lt;!&ndash; Weekly Sales &ndash;&gt;
+    <div class="one-third column">
+
+        &lt;!&ndash; Headline &ndash;&gt;
+        <h3 class="headline">婚宴酒店</h3>
+        <span class="line margin-bottom-0"></span>
+        <div class="clearfix"></div>
+
+
+        <ul class="product-list discount">
+
+            {php $_tags=tag("moduleid=4&pagesize=6&catid=10&template=null");}
+            {loop $_tags $k $t}
+            <li><a href="{$t[linkurl]}">
+                <img src="{imgurl($t[thumb], 240)}" alt="{$t[company]}" />
+                <div class="product-list-desc">{$t[company]}</div>
+            </a></li>
+            {/loop}
+
+            <li><div class="clearfix"></div></li>
+
+        </ul>
+
+    </div>
+
+</div>
+<div class="clearfix"></div>-->
+
+
+<!-- Latest Articles
+================================================== -->
+<!--<div class="container" >
+
+    &lt;!&ndash; Headline &ndash;&gt;
+    <div class="sixteen columns" >
+        <h3 class="headline">作品案例</h3>
+        <span class="line margin-bottom-30"></span>
+    </div>
+
+    {php $_tags=tag("moduleid=12&condition=status=3 AND items>0&pagesize=5&template=null&order=addtime desc")}
+    {loop $_tags $k $t}
+    &lt;!&ndash; Post #1 &ndash;&gt;
+    <div class="four columns">
+        <article class="from-the-blog">
+
+            <figure class="from-the-blog-image">
+                <a href="{userurl($t[username], 'file=photo&itemid='.$t['itemid'], $domain)}"><img src="{$t[thumb]}" alt="{$t[title]}" /></a>
+            </figure>
+
+            <section class="from-the-blog-content">
+                <a href="{userurl($t[username], 'file=photo&itemid='.$t['itemid'], $domain)}"><h5>{$t[title]}</h5></a>
+            </section>
+
+        </article>
+    </div>
+
+    {/loop}
+
+</div>-->
+
+
+<!-- Container -->
+<div class="container hidden-xs">
+
+    <!-- Buttons
+    ================================================== -->
+
+    <div class="sixteen columns margin-bottom-15">
+
+        <!-- Headline -->
+        <h3 class="headline">友情链接</h3><div class="clearfix"></div>
+
+        {if $DT[page_logo]}
+        <!--{tag("table=link&condition=status=3 and level>0 and thumb<>'' and username=''&areaid=$cityid&pagesize=".$DT['page_logo']."&order=listorder desc,itemid desc&lazy=$lazy&template=list-link&cols=9")}-->
+        {/if}
+        {if $DT[page_text]}
+        <!--{tag("table=link&condition=status=3 and level>0 and thumb='' and username=''&areaid=$cityid&pagesize=".$DT['page_text']."&order=listorder desc,itemid desc&template=list-link&cols=9")}-->
+        {/if}
+
+    </div>
+
+</div>
+<!-- Container / End -->
+
+<div id="service" class="visible-lg">
+    <div class="box">
+        <i class="fa fa-qq"></i>
+        <span>客服QQ</span>
+        <p><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3057128284&site=qq&menu=yes" class="a-qq"><img src="http://pub.idqqimg.com/wpa/images/counseling_style_51.png">咨询</a></p>
+    </div>
+    <div class="box">
+        <i class="fa fa-fax"></i>
+        <span>客服电话</span>
+        <p><a>0530-5562017</a></p>
+        <p><a> 15864657763</a></p>
+    </div>
+</div>
+
+{template 'footer'}
+
