@@ -72,15 +72,18 @@
         <div class="container">
 
             <!-- Top Bar Menu -->
-            <div class="six columns">
+            <div class="eight columns">
                 <ul class="top-bar-menu">
                     <li><a href="{$MODULE[1][linkurl]}" title="{$DT['sitename']}">{$DT['sitename']}</a>,让选择更多,让服务更好,让婚礼更美!</li>
+                    {if !$cityid}
+                    <li>进入分站 <a href="http://mdq.hezejiehun.com" title="牡丹区婚庆网">【牡丹区】</a><a href="http://yc.hezejiehun.com" title="郓城婚庆网">【郓城】</a><li>
+                    {/if}
                 </ul>
 
             </div>
 
             <!-- Member menu -->
-            <div class="ten columns">
+            <div class="eight columns">
                 <ul class="member-menu">
 
                     {if !$is_home}
