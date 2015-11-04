@@ -1042,7 +1042,7 @@ function rewrite($url, $encode = 0) {
 
 function timetodate($time = 0, $type = 6) {
 	if(!$time) $time = $GLOBALS['DT_TIME'];
-	$types = array('Y-m-d', 'Y', 'm-d', 'Y-m-d', 'm-d H:i', 'Y-m-d H:i', 'Y-m-d H:i:s','Y年m月d日');
+	$types = array('Y-m-d', 'Y', 'm-d', 'Y-m-d', 'm-d H:i', 'Y-m-d H:i', 'Y-m-d H:i:s','Y年m月d日','m月d日');
 	if(isset($types[$type])) $type = $types[$type];
 	$date = '';
 	if($time > 2147212800) {		

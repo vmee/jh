@@ -830,7 +830,7 @@ span.skill-title i {
 }
 
 .happy-clients-cite {
-	font-size: 24px;
+	font-size: 16px;
 	font-weight: 300;
 	color: #999;
 	width: 75%;
@@ -842,13 +842,12 @@ span.skill-title i {
 }
 
 .happy-clients-author {
-	font-size: 18px;
+	font-size: 12px;
 	font-weight: 500;
 	color: #808080;
 	margin: 0 auto;
 	display: block;
 	text-align: center;
-	line-height: 32px;
 }
 
 

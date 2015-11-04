@@ -155,13 +155,16 @@ if(isIE) try {document.execCommand("BackgroundImageCache", false, true);} catch(
 			easing:'Back.easeOut'
 		});
 
-		/*$('#happy-clients').showbizpro({
+		$('#happy-clients').showbizpro({
 			dragAndScroll:"off",
-			visibleElementsArray:[1,1,1,1],
+			visibleElementsArray:[6,3,2,1],
 			carousel:"off",
 			entrySizeOffset:0,
-			allEntryAtOnce:"off"
+			allEntryAtOnce:"off",
+			autoPlay:"on"
 		});
+
+		/*
 
 		$('#our-clients').showbizpro({
 			dragAndScroll:"off",
